@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="FabioSHouse">
+  <rect width="64" height="64" rx="12" fill="#0d3b66"/>
+  <circle cx="32" cy="22" r="8" fill="#c8961e"/>
+  <path d="M6 42 Q15 36 24 42 T42 42 T58 42" stroke="#c8961e" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M6 52 Q15 46 24 52 T42 52 T58 52" stroke="#c8961e" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.55"/>
+</svg>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FabioSHouse — Due case in Sardegna · Stintino e Alghero</title>
+  <meta name="description" content="Due case vacanze in Sardegna, gestite da una famiglia. Villa Stintino a cinque minuti dalla Pelosa, La Porta del Lido nel centro catalano di Alghero. Giugno–Settembre." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link id="font-display" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header id="nav" class="nav">
+    <div class="nav-inner">
+      <a href="#/" class="brand" aria-label="FabioSHouse home">
+        <span class="brand-mark" aria-hidden="true">ƒ</span>
+        <span class="brand-name">FabioS<em>House</em></span>
+      </a>
+      <nav class="nav-links" id="nav-links">
+        <a href="#/" data-route="/">Home</a>
+        <a href="#/case" data-route="/case">Le Case</a>
+        <a href="#/incluso" data-route="/incluso">Cosa è incluso</a>
+        <a href="#/chi-siamo" data-route="/chi-siamo">Chi siamo</a>
+        <a href="#/contatti" data-route="/contatti">Contatti</a>
+      </nav>
+      <a href="#/contatti" class="cta-pill">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Prenota</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="view" class="view"></main>
+
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <span class="brand-name">FabioS<em>House</em></span>
+        <p class="micro">Due case esclusive a Stintino e Alghero per la tua estate sarda.</p>
+      </div>
+      <div class="foot-col">
+        <p class="eyebrow">Navigare</p>
+        <a href="#/">Home</a>
+        <a href="#/case">Le Case</a>
+        <a href="#/incluso">Cosa è incluso</a>
+      </div>
+      <div class="foot-col">
+        <p class="eyebrow">Raccontarci</p>
+        <a href="#/contatti">Contatti</a>
+        <a href="#/chi-siamo">Chi siamo</a>
+        <a href="privacy.html">Privacy &amp; Cookie</a>
+      </div>
+      <div class="foot-col">
+        <p class="eyebrow">Scriveteci</p>
+        <p class="micro mono">info@fabioshouse.it</p>
+        <p class="micro">Sardegna · Italia</p>
+        <p class="micro">P.IVA / CF: IN AGGIORNAMENTO</p>
+        <p class="micro">CIN: IN AGGIORNAMENTO</p>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span class="mono">© 2026 FabioSHouse</span>
+      <span class="mono">— Tutti i diritti riservati</span>
+    </div>
+  </footer>
+
+  <div id="hover-cue" class="hover-cue" aria-hidden="true">
+    <span>Scopri →</span>
+  </div>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="lb-close" data-lb="close" aria-label="Chiudi">×</button>
+    <button class="lb-prev" data-lb="prev" aria-label="Precedente">‹</button>
+    <button class="lb-next" data-lb="next" aria-label="Successiva">›</button>
+    <img class="lb-img" alt="" />
+    <div class="lb-counter mono"><span id="lb-n">1</span> / <span id="lb-m">1</span></div>
+  </div>
+
+  <button id="tweaks-toggle" class="tweaks-toggle" aria-label="Apri pannello tweaks">⚙</button>
+  <aside id="tweaks" class="tweaks" aria-hidden="true">
+    <header class="tw-head">
+      <span class="eyebrow">Tweaks</span>
+      <button class="tw-close" aria-label="Chiudi">×</button>
+    </header>
+    <section class="tw-row">
+      <p class="tw-label">Accento</p>
+      <div class="tw-swatches">
+        <button class="tw-sw" data-accent="terra" style="--s:oklch(52% 0.14 42)"></button>
+        <button class="tw-sw" data-accent="olive" style="--s:oklch(48% 0.07 115)"></button>
+        <button class="tw-sw" data-accent="sky" style="--s:oklch(56% 0.10 230)"></button>
+        <button class="tw-sw" data-accent="plum" style="--s:oklch(42% 0.12 340)"></button>
+      </div>
+    </section>
+    <section class="tw-row">
+      <p class="tw-label">Paper</p>
+      <div class="tw-pills">
+        <button class="tw-pill" data-paper="avorio">Avorio caldo</button>
+        <button class="tw-pill" data-paper="pietra">Pietra fredda</button>
+        <button class="tw-pill" data-paper="crema">Crema</button>
+      </div>
+    </section>
+    <section class="tw-row">
+      <p class="tw-label">Display</p>
+      <div class="tw-pills">
+        <button class="tw-pill" data-font="fraunces">Fraunces</button>
+        <button class="tw-pill" data-font="playfair">Playfair</button>
+        <button class="tw-pill" data-font="dmserif">DM Serif</button>
+      </div>
+    </section>
+    <section class="tw-row">
+      <p class="tw-label">Motion</p>
+      <div class="tw-pills">
+        <button class="tw-pill" data-motion="full">Pieno</button>
+        <button class="tw-pill" data-motion="calm">Calmo</button>
+        <button class="tw-pill" data-motion="off">Off</button>
+      </div>
+    </section>
+    <section class="tw-row">
+      <p class="tw-label">Radius</p>
+      <div class="tw-pills">
+        <button class="tw-pill" data-radius="sharp">Squadrato</button>
+        <button class="tw-pill" data-radius="soft">Morbido</button>
+      </div>
+    </section>
+  </aside>
+
+  <script src="data.js"></script>
+  <script src="pages.js"></script>
+  <script src="pages2.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
