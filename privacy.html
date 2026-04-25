@@ -169,16 +169,15 @@
       <h2>2. Dati raccolti e finalità</h2>
       <p>Raccogliamo i seguenti dati:</p>
       <ul>
-        <li><strong>Dati di contatto</strong> (nome, email, telefono): forniti volontariamente tramite il form di contatto, al fine di rispondere alle richieste degli utenti.</li>
+        <li><strong>Dati di contatto</strong> (nome, email, telefono): forniti volontariamente tramite il form di contatto o WhatsApp, al fine di rispondere alle richieste degli utenti.</li>
         <li><strong>Dati di navigazione</strong>: indirizzo IP, pagine visitate, tipo di browser. Raccolti automaticamente dai server per finalità tecniche e di sicurezza.</li>
-        <li><strong>Cookie analitici</strong> (solo con consenso): statistiche anonime di navigazione.</li>
+        <li><strong>Archiviazione locale tecnica</strong>: lingua scelta, ultima sezione visitata e posizione di scroll (vedi sez. 7). Resta sul tuo dispositivo, non viene inviata a terzi.</li>
       </ul>
 
       <h2>3. Base giuridica del trattamento</h2>
       <ul>
         <li>Esecuzione di misure precontrattuali (gestione delle richieste di locazione): art. 6(1)(b) GDPR.</li>
         <li>Legittimo interesse del titolare per la sicurezza del sito: art. 6(1)(f) GDPR.</li>
-        <li>Consenso dell'utente per i cookie analitici: art. 6(1)(a) GDPR.</li>
       </ul>
 
       <h2>4. Conservazione dei dati</h2>
@@ -212,30 +211,38 @@
         (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>).
       </p>
 
-      <h2 id="cookie">7. Cookie Policy</h2>
+      <h2 id="cookie">7. Cookie e archiviazione locale</h2>
       <p>
-        Questo sito utilizza cookie. I cookie sono piccoli file di testo salvati sul tuo dispositivo.
+        Questo sito <strong>non utilizza cookie</strong> propri né strumenti di analytics o profilazione.
+        Per il funzionamento di alcune comodità (memoria della lingua scelta, ripristino della posizione di scroll)
+        utilizza esclusivamente il <code>localStorage</code> e il <code>sessionStorage</code> del browser:
+        sono spazi di archiviazione tecnici interni al tuo dispositivo, non vengono mai inviati a server esterni
+        e non contengono dati personali.
       </p>
 
-      <h3>7.1 Cookie tecnici (sempre attivi)</h3>
+      <h3>7.1 Voci di archiviazione tecniche (sempre attive)</h3>
       <ul>
-        <li><code>fsh_lang</code>: memorizza la lingua selezionata. Durata: 1 anno. Nessun dato personale.</li>
-        <li><code>fsh_cookie_consent</code>: memorizza la tua scelta riguardo ai cookie. Durata: 1 anno. Nessun dato personale.</li>
+        <li><code>localStorage["fh.lang"]</code>: lingua selezionata (it/en/fr/de). Senza scadenza, eliminabile dal browser.</li>
+        <li><code>localStorage.fh_route</code>: ultima sezione visitata, per riaprirla al rientro. Senza scadenza.</li>
+        <li><code>sessionStorage.fh_places_return</code>: posizione di scroll quando entri in una pagina luogo dal carosello, per riportarti al punto giusto al ritorno. Si cancella alla chiusura della scheda del browser.</li>
       </ul>
-
-      <h3>7.2 Cookie analitici (solo con consenso)</h3>
-      <ul>
-        <li><strong>Google Analytics 4</strong>: statistiche anonime sulle visite al sito. I dati sono anonimi e aggregati. Attivati solo previo consenso esplicito.</li>
-      </ul>
-
-      <h3>7.3 Cookie di terze parti</h3>
-      <ul>
-        <li><strong>Google Maps</strong> (embed): potrebbe impostare cookie tecnici propri. Consulta la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy di Google</a>.</li>
-      </ul>
-
-      <h3>7.4 Come gestire i cookie</h3>
       <p>
-        Puoi modificare le tue preferenze in qualsiasi momento tramite le impostazioni del tuo browser:
+        Nessuna di queste voci contiene informazioni personali identificabili.
+        Trattandosi di archiviazione strettamente necessaria al funzionamento del sito, ai sensi
+        dell'art. 122 del Codice Privacy e delle linee guida del Garante (8 maggio 2014 e 10 giugno 2021)
+        non è richiesto il consenso preventivo dell'utente.
+      </p>
+
+      <h3>7.2 Servizi di terze parti</h3>
+      <ul>
+        <li><strong>Google Fonts</strong>: i font del sito sono caricati da <code>fonts.googleapis.com</code> e <code>fonts.gstatic.com</code>. Google può registrare l'indirizzo IP della richiesta. Vedi la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy di Google</a>.</li>
+        <li><strong>OpenStreetMap</strong>: la mappa interattiva delle case carica tile da <code>tile.openstreetmap.org</code>. Vedi la <a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">Privacy Policy di OpenStreetMap</a>.</li>
+        <li><strong>WhatsApp</strong>: il pulsante di contatto rimanda a <code>wa.me</code>. Si applicano i termini di Meta/WhatsApp.</li>
+      </ul>
+
+      <h3>7.3 Come cancellare l'archiviazione locale</h3>
+      <p>
+        Puoi svuotare il <code>localStorage</code> e il <code>sessionStorage</code> dalle impostazioni del browser:
       </p>
       <ul>
         <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Chrome</a></li>

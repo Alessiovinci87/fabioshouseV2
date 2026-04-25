@@ -52,8 +52,33 @@
     }
   }
 
+  // Aggiunge un <link rel="preload" as="image" fetchpriority="high"> per la
+  // hero della pagina target (detail/luogo) prima del render del DOM. Il
+  // browser inizia il fetch in parallelo al parsing/render, riducendo l'LCP.
+  function preloadRouteHero(r) {
+    var existing = document.getElementById('preload-route-hero');
+    if (existing) existing.remove();
+    var src = null;
+    if (r.name === 'detail' && window.FH_getHouse) {
+      var h = window.FH_getHouse(r.id);
+      if (h && h.hero) src = h.hero;
+    } else if (r.name === 'luogo' && window.FH_getLuogo) {
+      var L = window.FH_getLuogo(r.slug);
+      if (L && L.hero) src = L.hero;
+    }
+    if (!src) return;
+    var link = document.createElement('link');
+    link.id = 'preload-route-hero';
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = src;
+    link.setAttribute('fetchpriority', 'high');
+    document.head.appendChild(link);
+  }
+
   function renderRoute() {
     var r = parseHash();
+    preloadRouteHero(r);
     var html = '';
     switch (r.name) {
       case 'home':     html = P.home();       break;

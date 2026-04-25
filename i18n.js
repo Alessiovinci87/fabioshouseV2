@@ -285,10 +285,10 @@
       de: 'Sechs Orte, zu Fuß, per Boot oder mit dem Auto erreichbar. Strände, Park, Geschichte und Küche des Nordwestens.'
     },
     'det.dintorni.alghero_h2': {
-      it: 'Intorno a <em>La Porta del Lido</em>.',
-      en: 'Around <em>La Porta del Lido</em>.',
-      fr: 'Autour de <em>La Porta del Lido</em>.',
-      de: 'Rund um <em>La Porta del Lido</em>.'
+      it: 'Intorno all\'<em>Appartamento</em>.',
+      en: 'Around the <em>Apartment</em>.',
+      fr: 'Autour de l\'<em>Appartement</em>.',
+      de: 'Rund um die <em>Wohnung</em>.'
     },
     'det.dintorni.alghero_lede': {
       it: 'Sei posti tra il centro catalano, le spiagge della Riviera del Corallo e la scogliera di Capo Caccia.',

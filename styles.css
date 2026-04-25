@@ -881,6 +881,31 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--title-em); font-weight: 4
   .place-card { flex-basis: 75vw; }
 }
 
+/* ===== <noscript> fallback ===== */
+.noscript-fallback {
+  padding: clamp(40px, 6vw, 80px) 0;
+  background: var(--paper-2);
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+.noscript-fallback h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(28px, 4vw, 44px);
+  margin: 0 0 18px;
+}
+.noscript-fallback ul {
+  margin: 18px 0;
+  padding-left: 20px;
+}
+.noscript-fallback li {
+  margin-bottom: 8px;
+}
+.noscript-fallback a {
+  color: var(--terra-deep);
+  text-decoration: underline;
+}
+
 /* ===== LUOGO — pagina interna POI: griglia related + placeholder ===== */
 .luogo-related { padding: clamp(40px, 6vw, 80px) 0 clamp(20px, 3vw, 40px); }
 .luogo-related .sect-head { padding-bottom: clamp(20px, 3vw, 36px); }
