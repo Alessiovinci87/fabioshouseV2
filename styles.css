@@ -166,9 +166,42 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--title-em); font-weight: 4
   100% { box-shadow: 0 0 0 0 oklch(68% 0.16 145 / 0); }
 }
 
+/* Right side of nav: language switcher + CTA pill */
+.nav-right { display: inline-flex; align-items: center; gap: 14px; }
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: color-mix(in oklab, var(--paper) 70%, transparent);
+}
+.lang-switcher button {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 4px 9px;
+  border-radius: var(--r-pill);
+  color: var(--ink-3);
+  transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+.lang-switcher button:hover { color: var(--ink); }
+.lang-switcher button.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+
 @media (max-width: 860px) {
   .nav-links { display: none; }
   .nav-inner { grid-template-columns: auto 1fr auto; }
+}
+@media (max-width: 520px) {
+  /* switcher compatto + gap ridotto per non andare in overflow */
+  .nav-right { gap: 8px; }
+  .lang-switcher { padding: 3px; gap: 1px; }
+  .lang-switcher button { padding: 4px 6px; font-size: 10.5px; letter-spacing: 0.04em; }
+  .cta-pill { padding: 8px 12px; font-size: 12px; }
 }
 
 /* ===== REVEAL ===== */
@@ -684,13 +717,343 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--title-em); font-weight: 4
   margin-bottom: 14px;
   text-transform: uppercase;
 }
+/* ===== BREADCRUMB (detail page) ===== */
+.det-breadcrumb {
+  padding: 18px 0 0;
+  border-top: 1px solid var(--line);
+}
+.det-breadcrumb ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+}
+.det-breadcrumb li { display: flex; align-items: center; }
+.det-breadcrumb li + li::before {
+  content: "›";
+  margin-right: 8px;
+  color: var(--ink-3);
+  opacity: 0.6;
+}
+.det-breadcrumb a {
+  color: var(--ink-2);
+  transition: color var(--t-fast) var(--ease);
+}
+.det-breadcrumb a:hover { color: var(--terra-deep); }
+.det-breadcrumb [aria-current="page"] { color: var(--ink); }
+
 .det-head .loc-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+  text-align: right;
+  color: var(--ink-2);
+}
+.det-head .loc-txt {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 22px;
-  color: var(--ink-2);
-  text-align: right;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.2;
 }
+.share-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--ink-2);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-pill);
+  background: transparent;
+  transition: background var(--t-fast) var(--ease),
+              color var(--t-fast) var(--ease),
+              border-color var(--t-fast) var(--ease);
+  cursor: pointer;
+}
+.share-btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* ===== LUOGHI DA VEDERE — carosello orizzontale foto ===== */
+.det-places {
+  padding: clamp(40px, 6vw, 80px) 0 clamp(30px, 4vw, 60px);
+}
+.det-places .sect-head {
+  padding-bottom: clamp(24px, 3vw, 40px);
+}
+.places-track {
+  display: flex;
+  gap: clamp(12px, 1.5vw, 20px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: var(--gutter);
+  padding: 6px var(--gutter) 20px;
+  margin: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-2) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+.places-track::-webkit-scrollbar { height: 8px; }
+.places-track::-webkit-scrollbar-track { background: transparent; }
+.places-track::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 4px; }
+.place-card {
+  flex: 0 0 clamp(240px, 28vw, 320px);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper-2);
+  border-top: 2px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease);
+  will-change: transform;
+}
+.place-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px -20px oklch(0% 0 0 / 0.25);
+}
+.place-img {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: oklch(90% 0.01 230);
+}
+.place-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 1s var(--ease);
+}
+.place-card:hover .place-img img { transform: scale(1.05); }
+/* Focus modifiers: quando la foto ha bisogno di un crop specifico */
+.place-img--focus-top img {
+  transform: scale(1.18);
+  transform-origin: center top;
+}
+.place-card:hover .place-img--focus-top img { transform: scale(1.22); }
+.place-img--focus-bottom img {
+  transform: scale(1.18);
+  transform-origin: center bottom;
+}
+.place-card:hover .place-img--focus-bottom img { transform: scale(1.22); }
+.place-body {
+  padding: clamp(14px, 1.6vw, 20px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.place-body h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+.place-body p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-3);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.place-cta {
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--title-em);
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  transition: color var(--t-fast) var(--ease);
+}
+.place-card:hover .place-cta { color: var(--terra-deep); }
+@media (max-width: 640px) {
+  .place-card { flex-basis: 75vw; }
+}
+
+/* ===== LUOGO — pagina interna POI: griglia related + placeholder ===== */
+.luogo-related { padding: clamp(40px, 6vw, 80px) 0 clamp(20px, 3vw, 40px); }
+.luogo-related .sect-head { padding-bottom: clamp(20px, 3vw, 36px); }
+.luogo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 2vw, 24px);
+}
+.luogo-grid .place-card {
+  flex: none;
+  scroll-snap-align: none;
+}
+@media (max-width: 960px) {
+  .luogo-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .luogo-grid { grid-template-columns: 1fr; }
+  .luogo-grid .place-card { flex-basis: auto; }
+}
+.luogo-placeholder {
+  padding: clamp(36px, 5vw, 64px) 0;
+  background: var(--paper-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+/* ===== MAPPA (Leaflet) ===== */
+.det-map-section { padding: clamp(40px, 6vw, 80px) 0 var(--section-y); }
+.det-map-section .sect-head { padding-bottom: clamp(24px, 3vw, 40px); }
+.det-map-wrap {
+  position: relative;
+  background: var(--paper-2);
+  border-top: 2px solid var(--ink);
+  padding: clamp(12px, 1.6vw, 20px);
+}
+#det-map {
+  width: 100%;
+  height: clamp(380px, 55vh, 560px);
+  background: oklch(90% 0.005 230);
+}
+.det-map-note {
+  margin: 14px 0 2px;
+  font-size: 12px;
+  color: var(--ink-3);
+  text-align: center;
+}
+/* Pin custom per casa + POI */
+.fh-pin { position: relative; }
+.fh-pin-dot {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px; height: 10px;
+  background: var(--title-em);
+  border: 2px solid var(--paper);
+  border-radius: 50%;
+  box-shadow: 0 1px 4px oklch(0% 0 0 / 0.4);
+}
+.fh-pin-house .fh-pin-dot {
+  width: 14px; height: 14px;
+  background: var(--terra);
+}
+.fh-pin-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--terra);
+  animation: fh-pulse 2.2s infinite ease-out;
+  pointer-events: none;
+}
+@keyframes fh-pulse {
+  0%   { transform: translate(-50%, -50%) scale(0.7); opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+}
+/* Popup Leaflet in tono col sito */
+.leaflet-popup-content-wrapper {
+  border-radius: 2px !important;
+  background: var(--paper) !important;
+}
+.leaflet-popup-content {
+  font-family: var(--font-sans) !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  margin: 12px 14px !important;
+}
+.leaflet-popup-content strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--ink);
+}
+.leaflet-popup-content a { color: var(--terra-deep); border-bottom: 1px solid currentColor; }
+.leaflet-popup-tip { background: var(--paper) !important; }
+
+/* ===== BACK-TO-TOP ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 80px; right: 20px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 18px;
+  display: grid; place-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity var(--t-med) var(--ease), transform var(--t-med) var(--ease), background var(--t-fast) var(--ease);
+  z-index: 90;
+  box-shadow: 0 10px 24px -8px oklch(0% 0 0 / 0.3);
+}
+.back-to-top.show { opacity: 0.92; pointer-events: auto; transform: translateY(0); }
+.back-to-top:hover { opacity: 1; background: var(--title-em); }
+@media (max-width: 520px) {
+  .back-to-top { bottom: 76px; right: 16px; width: 40px; height: 40px; }
+}
+
+/* ===== WHATSAPP FLOAT ===== */
+.wa-float {
+  position: fixed;
+  bottom: 20px; right: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: #25D366; /* brand WA */
+  color: white;
+  border-radius: var(--r-pill);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0 10px 30px -10px oklch(0% 0 0 / 0.35);
+  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+  z-index: 90;
+}
+.wa-float:hover { transform: translateY(-2px); box-shadow: 0 14px 32px -8px oklch(0% 0 0 / 0.4); }
+.wa-float svg { width: 20px; height: 20px; flex-shrink: 0; }
+@media (max-width: 520px) {
+  .wa-float {
+    padding: 12px; /* diventa solo icona */
+    bottom: 16px; right: 16px;
+  }
+  .wa-float .wa-lbl { display: none; }
+}
+
+/* Email copy link */
+.email-copy {
+  position: relative;
+  border-bottom: 1px dashed var(--line-2);
+  color: var(--ink);
+  cursor: pointer;
+  transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+.email-copy:hover { color: var(--terra-deep); border-bottom-color: var(--terra-deep); }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 28px; left: 50%;
+  transform: translate(-50%, 12px);
+  background: var(--ink); color: var(--paper);
+  padding: 10px 18px;
+  font-size: 13px; letter-spacing: 0.04em;
+  border-radius: var(--r-pill);
+  box-shadow: 0 10px 30px -10px oklch(0% 0 0 / 0.3);
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--t-med) var(--ease), transform var(--t-med) var(--ease);
+  z-index: 200;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
 .det-hero {
   position: relative;
   height: 78vh;
@@ -744,7 +1107,7 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--title-em); font-weight: 4
   .det-stats .cell:nth-child(3n) { border-right: 0; }
   .det-stats .cell { border-bottom: 1px solid var(--line); }
   .det-head-grid { grid-template-columns: 1fr; }
-  .det-head .loc-side { text-align: left; }
+  .det-head .loc-side { text-align: left; align-items: flex-start; }
 }
 
 .det-split {
@@ -888,6 +1251,122 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--title-em); font-weight: 4
   .gallery .g8 { grid-column: span 12; grid-row: span 2; }
 }
 
+/* Ultima foto del mosaic con overlay "+N foto" — segnale visivo forte */
+.gallery .g-has-more { position: relative; }
+.gallery .g-has-more img {
+  filter: brightness(0.55);
+  transition: filter var(--t-slow) var(--ease);
+}
+.gallery .g-has-more:hover img { filter: brightness(0.45); }
+.g-more-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--paper);
+  pointer-events: none;
+}
+.g-more-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(36px, 4.5vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.g-more-lbl {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: oklch(100% 0 0 / 0.82);
+}
+
+/* CTA "Apri tutte le N foto" — bordeaux come gli italic dei titoli */
+.gallery:has(+ .gallery-more) { padding-bottom: 0; }
+.gallery-more {
+  display: flex;
+  justify-content: center;
+  padding: clamp(24px, 3vw, 40px) 0 var(--section-y);
+}
+.gallery-more .btn-primary {
+  background: var(--title-em);
+  color: var(--paper);
+}
+.gallery-more .btn-primary:hover { background: color-mix(in oklab, var(--title-em) 88%, black); }
+
+/* ===== VIDEO TOUR — mockup smartphone + testo ===== */
+.video-tour {
+  padding: clamp(40px, 6vw, 80px) 0 var(--section-y);
+}
+.vt-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(32px, 6vw, 80px);
+  align-items: center;
+}
+.vt-copy { max-width: 56ch; }
+.vt-copy .vt-meta { font-size: 12px; letter-spacing: 0.08em; }
+
+/* Phone mockup (CSS puro, nessun asset).
+   --video-ar è impostato da JS leggendo l'aspect del poster; fallback 9/16. */
+.vt-phone {
+  --phone-w: clamp(220px, 28vw, 320px);
+  --video-ar: 9 / 16;
+  width: var(--phone-w);
+  justify-self: center;
+}
+.vt-phone-frame {
+  position: relative;
+  width: 100%;
+  background: oklch(14% 0.008 60);
+  border-radius: calc(var(--phone-w) * 0.14);
+  padding: calc(var(--phone-w) * 0.035);
+  box-shadow:
+    0 2px 0 oklch(100% 0 0 / 0.05) inset,
+    0 0 0 1px oklch(100% 0 0 / 0.06) inset,
+    0 30px 60px -20px oklch(0% 0 0 / 0.35),
+    0 10px 24px -8px oklch(0% 0 0 / 0.2);
+}
+.vt-phone-notch {
+  position: absolute;
+  top: calc(var(--phone-w) * 0.055);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28%;
+  height: calc(var(--phone-w) * 0.04);
+  background: oklch(6% 0 0);
+  border-radius: 999px;
+  z-index: 2;
+  pointer-events: none;
+}
+.vt-phone-screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--video-ar);
+  background: oklch(10% 0 0);
+  border-radius: calc(var(--phone-w) * 0.09);
+  overflow: hidden;
+}
+.vt-phone-screen video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: oklch(10% 0 0);
+}
+
+@media (max-width: 860px) {
+  .vt-grid {
+    grid-template-columns: 1fr;
+    gap: clamp(24px, 4vw, 40px);
+  }
+  .vt-phone { --phone-w: min(260px, 70vw); }
+  .vt-copy { max-width: none; }
+}
+
 .det-foot {
   padding: var(--section-y) 0;
   border-top: 1px solid var(--line);
@@ -904,6 +1383,73 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--title-em); font-weight: 4
 }
 .det-foot a:hover { color: var(--terra-deep); }
 .det-foot a small { font-family: var(--font-sans); font-style: normal; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); }
+
+/* ===== LUOGO (pagina interna POI) ===== */
+.luogo-head {
+  padding: clamp(40px, 5vw, 70px) 0 clamp(30px, 4vw, 50px);
+}
+.luogo-head h1 {
+  font-size: clamp(46px, 7vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+.luogo-head h1 em { font-style: italic; color: var(--title-em); }
+.luogo-head .caption {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.luogo-hero {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  margin: 0 0 clamp(30px, 4vw, 60px);
+  background: var(--ink-4);
+}
+.luogo-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.luogo-intro {
+  padding: clamp(20px, 3vw, 40px) 0 clamp(30px, 4vw, 60px);
+}
+.luogo-intro .lede {
+  font-size: clamp(19px, 2vw, 23px);
+  line-height: 1.55;
+  color: var(--ink);
+}
+.luogo-sect {
+  padding: clamp(30px, 4vw, 60px) 0;
+  border-top: 1px solid var(--line);
+}
+.luogo-sect--alt {
+  background: var(--paper-alt, var(--paper));
+}
+.luogo-sect h2 {
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.1;
+  margin-bottom: clamp(16px, 2vw, 24px);
+}
+.luogo-body p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink-2);
+  margin-bottom: 14px;
+}
+.luogo-body p:last-child { margin-bottom: 0; }
+.luogo-body strong { color: var(--ink); font-weight: 600; }
+.luogo-links {
+  padding: clamp(40px, 5vw, 70px) 0;
+  border-top: 1px solid var(--line);
+}
+.luogo-link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.luogo-link-row .btn-primary,
+.luogo-link-row .btn-ghost {
+  font-size: 14px;
+}
 
 /* ===== SERVIZI ===== */
 .srv-list { padding: clamp(30px, 4vw, 60px) 0; }
@@ -1207,12 +1753,16 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--title-em); font-weight: 4
   z-index: 100;
   align-items: center; justify-content: center;
   padding: 40px;
+  touch-action: pan-y; /* consente lo swipe orizzontale senza interferenze scroll */
+  user-select: none;
 }
 .lightbox[aria-hidden="false"] { display: flex; }
 .lightbox img {
   max-width: 90vw; max-height: 86vh;
   object-fit: contain;
   animation: zin 0.4s var(--ease);
+  pointer-events: none; /* così pointerdown va al container per lo swipe */
+  -webkit-user-drag: none;
 }
 @keyframes zin { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
 .lb-close, .lb-prev, .lb-next {
@@ -1376,6 +1926,15 @@ body[data-radius="soft"] .img-break {
 /* ===== ACTIVITIES ===== */
 .activities { padding: clamp(50px, 7vw, 100px) 0 clamp(20px, 3vw, 40px); }
 .activities .sect-head { padding-bottom: clamp(20px, 3vw, 40px); }
+/* Titolo dintorni: leggermente più piccolo per tenere "Intorno a La Porta del Lido." su una riga */
+.activities .sect-head h2 {
+  font-size: clamp(28px, 3.4vw, 44px);
+  text-wrap: balance;
+  white-space: nowrap;
+}
+@media (max-width: 860px) {
+  .activities .sect-head h2 { white-space: normal; font-size: clamp(26px, 5vw, 36px); }
+}
 .act-list { display: flex; flex-direction: column; }
 .act-row {
   display: grid;
@@ -1429,7 +1988,244 @@ body[data-radius="soft"] .img-break {
   padding-top: 14px;
   border-top: 1px solid var(--line);
 }
+.act-row .act-more {
+  margin-top: 18px;
+}
 @media (max-width: 860px) {
   .act-row, .act-row.alt { grid-template-columns: 1fr; }
   .act-row.alt .act-media { order: 0; }
+}
+
+/* ===== GUIDA LOCALE (3 card: mangiare / escursioni / servizi) ===== */
+.guide { padding: clamp(40px, 6vw, 80px) 0 var(--section-y); }
+.guide .sect-head { padding-bottom: clamp(24px, 3vw, 44px); }
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2vw, 28px);
+}
+.guide-card {
+  background: var(--paper-2);
+  padding: clamp(22px, 2.4vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border-top: 2px solid var(--ink);
+}
+.guide-card-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 8px;
+}
+.guide-icon {
+  font-size: 22px;
+  line-height: 1;
+  filter: grayscale(0.1);
+}
+.guide-card h3 {
+  font-size: var(--fs-xl);
+  margin: 0;
+}
+.guide-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.guide-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+.guide-item:last-child { border-bottom: 1px solid var(--line); }
+.guide-item-info { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.guide-item-info strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 17px;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.guide-item-info span {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+.guide-link {
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  display: grid; place-items: center;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  color: var(--ink-2);
+  font-size: 16px;
+  transition: background var(--t-fast) var(--ease),
+              color var(--t-fast) var(--ease),
+              border-color var(--t-fast) var(--ease),
+              transform var(--t-fast) var(--ease);
+}
+.guide-link:hover {
+  background: var(--title-em);
+  color: var(--paper);
+  border-color: var(--title-em);
+  transform: translateX(2px);
+}
+.guide-note {
+  margin-top: clamp(24px, 3vw, 40px);
+  font-size: 14px;
+  color: var(--ink-3);
+  text-align: center;
+}
+.guide-note a {
+  color: var(--title-em);
+  border-bottom: 1px solid currentColor;
+}
+.guide-note a:hover { color: var(--ink); }
+
+@media (max-width: 1000px) {
+  .guide-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .guide-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   STILI STAMPA — pulisce la pagina per chi la stampa:
+   via nav, footer, interattività (share, wa, back-to-top,
+   carosello, video, mappa, lightbox, tweaks). Mantiene:
+   breadcrumb testuale, hero + stats, storia, amenities,
+   rules, booking card con prezzo, dintorni (no immagini),
+   guida locale con link.
+   ============================================================ */
+@media print {
+  :root {
+    --paper:   #fff;
+    --paper-2: #f5f3ef;
+    --ink:     #111;
+    --ink-2:   #222;
+    --ink-3:   #555;
+    --line:    #ccc;
+    --line-2:  #999;
+    --section-y: 18mm;
+    --gutter:  12mm;
+  }
+  html, body { background: #fff; color: #111; font-size: 11pt; line-height: 1.45; }
+  body { margin: 0; }
+  @page { margin: 16mm 14mm; }
+
+  /* Chrome ed elementi interattivi — nascosti in stampa */
+  .nav, .site-foot, .hover-cue,
+  #lightbox, .lightbox,
+  #tweaks, #tweaks-toggle,
+  .lang-switcher,
+  .cta-pill, .share-btn,
+  .wa-float, .back-to-top,
+  .det-breadcrumb,
+  .ticker,
+  .hero-frame, .hero-overlay,
+  .video-tour,
+  .det-places, .places-track,
+  .det-map-section, #det-map, .det-map-wrap,
+  .gallery-more, .g-more-overlay,
+  .final-cta,
+  .det-foot,
+  [data-reveal] { transition: none !important; animation: none !important; }
+  .nav, .site-foot, .hover-cue,
+  #lightbox, #tweaks, #tweaks-toggle,
+  .lang-switcher, .cta-pill, .share-btn,
+  .wa-float, .back-to-top,
+  .det-breadcrumb, .ticker,
+  .video-tour, .det-places,
+  .det-map-section,
+  .gallery-more,
+  .det-foot { display: none !important; }
+
+  /* Immagini: niente crop violenti, bianco/nero se i toner lo gradiscono */
+  img { max-width: 100%; height: auto; break-inside: avoid; page-break-inside: avoid; }
+  .det-hero img { max-height: 100mm; object-fit: contain; }
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2mm; grid-auto-rows: 40mm; }
+  .gallery .g1, .gallery .g2, .gallery .g3, .gallery .g4,
+  .gallery .g5, .gallery .g6, .gallery .g7, .gallery .g8 {
+    grid-column: auto; grid-row: auto;
+  }
+
+  /* Titoli compatti */
+  h1 { font-size: 22pt; margin: 0 0 4mm; }
+  h2 { font-size: 15pt; margin: 6mm 0 3mm; break-after: avoid; }
+  h3 { font-size: 12pt; margin: 4mm 0 2mm; break-after: avoid; }
+  .eyebrow { font-size: 8pt; letter-spacing: 0.15em; color: #555; }
+
+  /* Forza reveal visibile anche senza JS di intersection */
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+
+  /* Evita break in mezzo a blocchi-chiave */
+  .det-split, .book-card, .act-row, .guide-card,
+  .srv-row, figure, section { break-inside: avoid; page-break-inside: avoid; }
+
+  /* Booking card: diventa lista prezzi leggibile */
+  .book-card {
+    border: 1px solid #999;
+    padding: 4mm;
+    display: block;
+    background: #f5f3ef;
+  }
+  .book-card .bk-price .p { font-size: 16pt; }
+  .season-row { display: flex; flex-wrap: wrap; gap: 2mm; }
+  .season-chip { border: 1px solid #999; padding: 1mm 2mm; background: #fff; }
+  .season-chip.active { background: #111; color: #fff; }
+
+  /* Activities: senza immagine grossa, solo testo */
+  .act-row { display: block !important; margin: 6mm 0; }
+  .act-media { display: none !important; }
+  .act-body { padding: 0 !important; }
+
+  /* Guida locale: lista lineare */
+  .guide-grid { display: block; }
+  .guide-card { page-break-inside: avoid; border-top: 1px solid #ccc; padding: 3mm 0; margin: 3mm 0; }
+  .guide-list { list-style: none; padding: 0; margin: 2mm 0 0; }
+  .guide-item { display: flex; justify-content: space-between; gap: 4mm; padding: 1.5mm 0; border-top: 1px dotted #bbb; }
+  .guide-item:first-child { border-top: 0; }
+  .guide-link { display: none; } /* freccia inutile su carta */
+
+  /* Link esterni: mostra l'URL tra parentesi dopo il testo link */
+  main a[href^="http"]::after,
+  main a[href^="https"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #555;
+    word-break: break-all;
+  }
+  /* Non aggiungere URL ai link interni (hash), email, tel */
+  main a[href^="#"]::after,
+  main a[href^="mailto:"]::after,
+  main a[href^="tel:"]::after { content: ""; }
+
+  /* Header stampa: aggiunto in coda con brand + URL canonico */
+  main::before {
+    content: "FabioSHouse — www.fabioshouse.it";
+    display: block;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 10pt;
+    color: #555;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3mm;
+    margin-bottom: 6mm;
+  }
+  main::after {
+    content: "Stampato da www.fabioshouse.it · info@fabioshouse.it";
+    display: block;
+    margin-top: 10mm;
+    padding-top: 3mm;
+    border-top: 1px solid #ccc;
+    font-family: Georgia, serif;
+    font-size: 9pt;
+    color: #777;
+    text-align: center;
+  }
 }

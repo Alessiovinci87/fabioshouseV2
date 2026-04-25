@@ -42,6 +42,9 @@
       case 'case':
         if (parts[1]) return { name: 'detail', id: parts[1] };
         return { name: 'case' };
+      case 'luogo':
+        if (parts[1]) return { name: 'luogo', slug: parts[1] };
+        return { name: 'home' };
       case 'incluso':    return { name: 'included' };
       case 'chi-siamo':  return { name: 'chiSiamo' };
       case 'contatti':   return { name: 'contatti' };
@@ -56,21 +59,181 @@
       case 'home':     html = P.home();       break;
       case 'case':     html = P.case();       break;
       case 'detail':   html = P.detail(r.id); break;
+      case 'luogo':    html = P.luogo(r.slug); break;
       case 'included': html = P.included();   break;
       case 'chiSiamo': html = P.chiSiamo();   break;
       case 'contatti': html = P.contatti();   break;
       default:         html = P.notFound();
     }
     view.innerHTML = html;
-    window.scrollTo({ top: 0, behavior: 'auto' });
+
+    // Ripristino scroll quando si torna alla detail dal carosello "Luoghi
+    // da vedere" (click su .place-card → salviamo houseId+scrollY in
+    // sessionStorage; qui li consumiamo se la casa coincide).
+    var restored = false;
+    if (r.name === 'detail') {
+      try {
+        var raw = sessionStorage.getItem('fh_places_return');
+        if (raw) {
+          var p = JSON.parse(raw);
+          if (p && p.houseId === r.id && typeof p.scrollY === 'number') {
+            sessionStorage.removeItem('fh_places_return');
+            restored = true;
+            // due rAF per dare tempo al layout (immagini cached) di stabilizzarsi
+            requestAnimationFrame(function () {
+              requestAnimationFrame(function () {
+                window.scrollTo({ top: p.scrollY, behavior: 'auto' });
+              });
+            });
+          }
+        }
+      } catch (e) {}
+    }
+    if (!restored) window.scrollTo({ top: 0, behavior: 'auto' });
 
     // persist
     try { localStorage.setItem('fh_route', location.hash || '#/'); } catch (e) {}
 
     updateActiveNav(r);
+    // applica i18n ai [data-i18n] appena renderizzati
+    if (window.FH_I18N && window.FH_I18N.translateDom) window.FH_I18N.translateDom(view);
+    applyRouteMeta(r);
+    applyLuogoJsonLd(r);
+    updateWhatsApp(r);
     initReveal();
     initPageSpecific(r);
   }
+
+  // Origin assoluto per og:image / canonical / JSON-LD: in produzione
+  // forziamo il dominio finale anche quando l'utente naviga su localhost.
+  var SITE_ORIGIN = 'https://www.fabioshouse.it';
+  var DEFAULT_OG_IMAGE = SITE_ORIGIN + '/img/og-home.jpg';
+
+  function absUrl(path) {
+    if (!path) return null;
+    if (/^https?:\/\//.test(path)) return path;
+    return SITE_ORIGIN + '/' + String(path).replace(/^\/+/, '');
+  }
+
+  // SEO per route: aggiorna <title> + meta description + og:title/description/image
+  // coerenti con la route SPA attiva e la lingua corrente.
+  function applyRouteMeta(r) {
+    if (!window.FH_I18N) return;
+    var t = window.FH_I18N.t;
+    var key;
+    var ogImage = DEFAULT_OG_IMAGE;
+    // Rotte "luogo": titolo/description/og:image generati dal dato del luogo,
+    // non da una chiave i18n: ogni luogo nuovo funziona senza toccare i dict.
+    if (r.name === 'luogo' && window.FH_getLuogo) {
+      var L = window.FH_getLuogo(r.slug);
+      if (L) {
+        var tt = (L.name && (t(L.name) || L.name.it)) || '';
+        var ds = (L.subtitle && (t(L.subtitle) || L.subtitle.it)) || '';
+        if (tt) document.title = tt + ' — Fabio\'s House';
+        setMeta('name',     'description',       ds);
+        setMeta('property', 'og:title',          tt);
+        setMeta('property', 'og:description',    ds);
+        setMeta('name',     'twitter:title',     tt);
+        setMeta('name',     'twitter:description', ds);
+        if (L.hero) {
+          ogImage = absUrl(L.hero);
+          setMeta('property', 'og:image',       ogImage);
+          setMeta('name',     'twitter:image',  ogImage);
+        } else {
+          setMeta('property', 'og:image',       DEFAULT_OG_IMAGE);
+          setMeta('name',     'twitter:image',  DEFAULT_OG_IMAGE);
+        }
+        return;
+      }
+    }
+    // Rotte "detail": og:image dalla foto hero della casa.
+    if (r.name === 'detail' && window.FH_getHouse) {
+      var h = window.FH_getHouse(r.id);
+      if (h && h.hero) ogImage = absUrl(h.hero);
+    }
+    switch (r.name) {
+      case 'home':     key = null; break; // meta base già a posto (meta.title/description)
+      case 'case':     key = 'meta.route.case';    break;
+      case 'detail':
+        if      (r.id === 'villa-stintino')       key = 'meta.route.stintino';
+        else if (r.id === 'appartamento-alghero') key = 'meta.route.alghero';
+        else                                       key = null;
+        break;
+      case 'included': key = 'meta.route.incluso';   break;
+      case 'chiSiamo': key = 'meta.route.chisiamo';  break;
+      case 'contatti': key = 'meta.route.contatti';  break;
+      default:         key = 'meta.nf';              break;
+    }
+    // se non abbiamo override, uso i meta base della home
+    var titleKey = key ? key + '.title'       : 'meta.title';
+    var descKey  = key ? key + '.description' : 'meta.description';
+    var title = t(titleKey);
+    var desc  = t(descKey);
+    if (title) document.title = title;
+    setMeta('name',     'description',      desc);
+    setMeta('property', 'og:title',         title);
+    setMeta('property', 'og:description',   desc);
+    setMeta('name',     'twitter:title',    title);
+    setMeta('name',     'twitter:description', desc);
+    setMeta('property', 'og:image',         ogImage);
+    setMeta('name',     'twitter:image',    ogImage);
+  }
+  function setMeta(attr, val, content) {
+    if (!content) return;
+    var el = document.querySelector('meta[' + attr + '="' + val + '"]');
+    if (el) el.setAttribute('content', content);
+  }
+
+  // JSON-LD TouristAttraction per ogni pagina luogo. Lo iniettiamo come
+  // <script id="jsonld-luogo"> e lo rimuoviamo quando si lascia la route.
+  function applyLuogoJsonLd(r) {
+    var existing = document.getElementById('jsonld-luogo');
+    if (r.name !== 'luogo' || !window.FH_getLuogo) {
+      if (existing) existing.remove();
+      return;
+    }
+    var L = window.FH_getLuogo(r.slug);
+    if (!L) { if (existing) existing.remove(); return; }
+    var t = (window.FH_I18N && window.FH_I18N.t) || function (x) { return x && x.it; };
+    var h = L.parent && window.FH_getHouse ? window.FH_getHouse(L.parent) : null;
+    var areaName = (h && h.location) ||
+                   (L.parent === 'villa-stintino' ? 'Stintino' :
+                    L.parent === 'appartamento-alghero' ? 'Alghero' : 'Sardegna');
+    var url = SITE_ORIGIN + '/#/luogo/' + r.slug;
+    var img = L.hero ? absUrl(L.hero) : DEFAULT_OG_IMAGE;
+    var data = {
+      '@context': 'https://schema.org',
+      '@type': 'TouristAttraction',
+      '@id': url,
+      name: t(L.name) || (L.name && L.name.it) || r.slug,
+      description: t(L.subtitle) || (L.subtitle && L.subtitle.it) || '',
+      image: img,
+      url: url,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: areaName,
+        addressRegion: 'Sardegna',
+        addressCountry: 'IT'
+      },
+      isAccessibleForFree: true
+    };
+    if (h) {
+      data.containedInPlace = {
+        '@type': 'LodgingBusiness',
+        '@id': SITE_ORIGIN + '/#/case/' + h.id,
+        name: (typeof h.name === 'string') ? h.name : t(h.name)
+      };
+    }
+    if (existing) existing.remove();
+    var s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.id = 'jsonld-luogo';
+    s.textContent = JSON.stringify(data);
+    document.head.appendChild(s);
+  }
+
+  // Permette a i18n.setLang() di richiedere un re-render della route corrente
+  window.FH_rerender = renderRoute;
 
   function updateActiveNav(r) {
     if (!navLinks) return;
@@ -79,7 +242,7 @@
       var route = a.getAttribute('data-route');
       var active = false;
       if (route === '/' && r.name === 'home') active = true;
-      else if (route === '/case' && (r.name === 'case' || r.name === 'detail')) active = true;
+      else if (route === '/case' && (r.name === 'case' || r.name === 'detail' || r.name === 'luogo')) active = true;
       else if (route === '/incluso'   && r.name === 'included') active = true;
       else if (route === '/chi-siamo' && r.name === 'chiSiamo') active = true;
       else if (route === '/' + r.name) active = true;
@@ -88,6 +251,23 @@
   }
 
   window.addEventListener('hashchange', renderRoute);
+
+  // Salva la posizione della detail quando si entra in una pagina luogo
+  // (qualsiasi link a #/luogo/<slug>: card del carosello, "Scopri di più"
+  // delle activity, ecc.) così al ritorno si riapre allo scroll del click
+  // invece che in cima alla pagina.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#/luogo/"]');
+    if (!a) return;
+    var r = parseHash();
+    if (r.name !== 'detail' || !r.id) return;
+    try {
+      sessionStorage.setItem('fh_places_return', JSON.stringify({
+        houseId: r.id,
+        scrollY: window.scrollY || window.pageYOffset || 0
+      }));
+    } catch (err) {}
+  }, true);
 
   // --------------------------- REVEAL ---------------------------
   var revealObs = null;
@@ -109,11 +289,106 @@
     els.forEach(function (e) { revealObs.observe(e); });
   }
 
+  // --------------------------- WHATSAPP FLOAT ---------------------------
+  // Aggiorna link WhatsApp in base a route + lingua.
+  var waEl = document.getElementById('wa-float');
+  function updateWhatsApp(r) {
+    if (!waEl) return;
+    var num = waEl.getAttribute('data-wa-number');
+    if (!num) return;
+    var msgKey = 'ui.wa.msg_home';
+    if (r) {
+      if (r.name === 'detail' && r.id === 'villa-stintino')       msgKey = 'ui.wa.msg_stintino';
+      else if (r.name === 'detail' && r.id === 'appartamento-alghero') msgKey = 'ui.wa.msg_alghero';
+    }
+    var msg = (window.FH_I18N && window.FH_I18N.t) ? window.FH_I18N.t(msgKey) : '';
+    waEl.href = 'https://wa.me/' + num + (msg ? '?text=' + encodeURIComponent(msg) : '');
+  }
+  // init all'avvio
+  updateWhatsApp(null);
+
+  // --------------------------- BACK-TO-TOP ---------------------------
+  var btt = document.getElementById('back-to-top');
+  if (btt) {
+    btt.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    var onScroll = function () {
+      var show = window.scrollY > 500;
+      btt.classList.toggle('show', show);
+      btt.setAttribute('aria-hidden', show ? 'false' : 'true');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  // --------------------------- TOAST + CLIPBOARD ---------------------------
+  var toastEl = null;
+  function toast(msg) {
+    if (!toastEl) {
+      toastEl = document.createElement('div');
+      toastEl.className = 'toast';
+      toastEl.setAttribute('role', 'status');
+      toastEl.setAttribute('aria-live', 'polite');
+      document.body.appendChild(toastEl);
+    }
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function () { toastEl.classList.remove('show'); }, 1800);
+  }
+  function copyToClipboard(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+    // fallback legacy
+    return new Promise(function (res, rej) {
+      try {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); ta.remove(); res();
+      } catch (e) { rej(e); }
+    });
+  }
+  var ti18n = function (k) { return (window.FH_I18N && window.FH_I18N.t) ? window.FH_I18N.t(k) : k; };
+
+  // Delegation: share + copy-email buttons lavorano ovunque nella SPA
+  document.addEventListener('click', function (e) {
+    var shareBtn = e.target.closest && e.target.closest('[data-share-house]');
+    if (shareBtn) {
+      e.preventDefault();
+      var houseId = shareBtn.getAttribute('data-share-house');
+      var h = window.FH_getHouse(houseId);
+      var url = location.origin + location.pathname + '#/case/' + houseId;
+      var title = (h && ti18n(h.name)) || 'FabioSHouse';
+      if (navigator.share) {
+        navigator.share({ title: title, url: url }).catch(function () {});
+      } else {
+        copyToClipboard(url).then(function () {
+          toast(ti18n('det.share.copied'));
+        }, function () {
+          toast(ti18n('det.share.fail'));
+        });
+      }
+      return;
+    }
+    var emailBtn = e.target.closest && e.target.closest('[data-copy-email]');
+    if (emailBtn) {
+      e.preventDefault();
+      var addr = emailBtn.getAttribute('data-copy-email');
+      copyToClipboard(addr).then(function () {
+        toast(ti18n('contact.email.copied'));
+      }, function () {
+        toast(ti18n('det.share.fail'));
+      });
+    }
+  });
+
   // --------------------------- PAGE-SPECIFIC ---------------------------
   function initPageSpecific(r) {
     if (r.name === 'home')     initHeroCarousel();
     if (r.name === 'case')     initCaseFilters();
-    if (r.name === 'detail')   { initGallery(r.id); initBookingCard(); }
+    if (r.name === 'detail')   { initGallery(r.id); initBookingCard(); initVideoTour(); initDetailMap(r.id); }
     if (r.name === 'contatti') { initContactForm(); prefillContactHouse(); }
 
     // "Vedi galleria" scroll
@@ -246,6 +521,117 @@
     }
   }
 
+  // --------------------------- MAP (Leaflet, lazy-loaded) ---------------------------
+  // Carica Leaflet da CDN solo quando si apre una detail page con geo+poi.
+  var _leafletPromise = null;
+  function loadLeaflet() {
+    if (_leafletPromise) return _leafletPromise;
+    _leafletPromise = new Promise(function (resolve, reject) {
+      if (window.L) return resolve(window.L);
+      var css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+      css.crossOrigin = '';
+      document.head.appendChild(css);
+      var js = document.createElement('script');
+      js.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      js.crossOrigin = '';
+      js.onload = function () { resolve(window.L); };
+      js.onerror = reject;
+      document.head.appendChild(js);
+    });
+    return _leafletPromise;
+  }
+
+  function initDetailMap(houseId) {
+    var h = window.FH_getHouse(houseId);
+    if (!h || !h.geo || !h.poi) return;
+    var el = document.getElementById('det-map');
+    if (!el) return;
+    var ti = function (v) { return (window.FH_I18N && window.FH_I18N.t) ? window.FH_I18N.t(v) : (typeof v === 'string' ? v : (v && v.it) || ''); };
+
+    loadLeaflet().then(function (L) {
+      if (!el.isConnected) return; // route già cambiata
+      el.innerHTML = '';
+      var map = L.map(el, {
+        scrollWheelZoom: false,
+        zoomControl: true
+      }).setView([h.geo.lat, h.geo.lng], h.geo.zoom || 12);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>',
+        maxZoom: 18
+      }).addTo(map);
+
+      // Pin "casa" — icona custom CSS
+      var houseIcon = L.divIcon({
+        className: 'fh-pin fh-pin-house',
+        html: '<span class="fh-pin-dot"></span><span class="fh-pin-ring"></span>',
+        iconSize: [22, 22],
+        iconAnchor: [11, 11]
+      });
+      var homePopup =
+        '<strong>' + ti(h.name) + '</strong><br/>' +
+        '<span style="color:#666; font-size:12px;">' + ti('det.map.here') + ' · ' + h.location + '</span>';
+      L.marker([h.geo.lat, h.geo.lng], { icon: houseIcon, title: ti(h.name), zIndexOffset: 1000 })
+        .addTo(map)
+        .bindPopup(homePopup);
+
+      // POI pins
+      var poiIcon = L.divIcon({
+        className: 'fh-pin fh-pin-poi',
+        html: '<span class="fh-pin-dot"></span>',
+        iconSize: [16, 16],
+        iconAnchor: [8, 8]
+      });
+      var bounds = [[h.geo.lat, h.geo.lng]];
+      h.poi.forEach(function (p) {
+        var name = ti(p.name);
+        var desc = ti(p.desc);
+        var parts = [];
+        if (p.gmaps) parts.push('<a href="' + p.gmaps + '" target="_blank" rel="noopener">→ ' + ti('det.map.directions') + '</a>');
+        if (p.link)  parts.push('<a href="' + p.link  + '" target="_blank" rel="noopener">' + ti('det.map.info') + '</a>');
+        if (p.wiki)  parts.push('<a href="' + p.wiki  + '" target="_blank" rel="noopener">' + ti('det.map.wiki') + '</a>');
+        var links = parts.join(' · ');
+        var html =
+          '<strong>' + name + '</strong>' +
+          (desc ? '<br/><span style="color:#555; font-size:12px;">' + desc + '</span>' : '') +
+          (links ? '<br/><span style="font-size:12px;">' + links + '</span>' : '');
+        L.marker([p.lat, p.lng], { icon: poiIcon, title: name })
+          .addTo(map)
+          .bindPopup(html);
+        bounds.push([p.lat, p.lng]);
+      });
+
+      // fit alle bounds tenendo un pad
+      try { map.fitBounds(bounds, { padding: [40, 40], maxZoom: 13 }); } catch (_) {}
+
+      // salvo reference per cleanup su route change
+      el._fhMap = map;
+    }).catch(function () {
+      el.innerHTML = '<p style="padding:40px; text-align:center; color:var(--ink-3);">Mappa non disponibile.</p>';
+    });
+  }
+
+  // --------------------------- VIDEO TOUR (phone mockup) ---------------------------
+  // Adatta l'aspect del mockup leggendo le dimensioni reali del poster,
+  // così il video riempie lo schermo senza bande nere anche se non è 9:16 esatto.
+  function initVideoTour() {
+    var phones = document.querySelectorAll('.vt-phone');
+    phones.forEach(function (phone) {
+      var video = phone.querySelector('video');
+      if (!video) return;
+      var poster = video.getAttribute('poster');
+      if (!poster) return;
+      var img = new Image();
+      img.onload = function () {
+        if (!img.naturalWidth || !img.naturalHeight) return;
+        phone.style.setProperty('--video-ar', img.naturalWidth + ' / ' + img.naturalHeight);
+      };
+      img.src = poster;
+    });
+  }
+
   // --------------------------- GALLERY + LIGHTBOX ---------------------------
   var lbState = { images: [], idx: 0, open: false };
 
@@ -259,6 +645,13 @@
     figs.forEach(function (f) {
       f.addEventListener('click', function () {
         var idx = parseInt(f.getAttribute('data-lightbox-index'), 10) || 0;
+        openLightbox(idx);
+      });
+    });
+    // "Vedi tutte le N foto" — apre il lightbox all'indice richiesto
+    document.querySelectorAll('[data-open-lightbox]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var idx = parseInt(btn.getAttribute('data-open-lightbox'), 10) || 0;
         openLightbox(idx);
       });
     });
@@ -289,6 +682,14 @@
     lbImg.src = src;
     if (lbN) lbN.textContent = (lbState.idx + 1);
     if (lbM) lbM.textContent = lbState.images.length;
+    // Preload vicine per transizioni senza flash
+    var n = lbState.images.length;
+    if (n > 1) {
+      [ (lbState.idx + 1) % n, (lbState.idx - 1 + n) % n ].forEach(function (i) {
+        var img = new Image();
+        img.src = lbState.images[i];
+      });
+    }
   }
   function lbPrev() {
     if (!lbState.images.length) return;
@@ -308,6 +709,25 @@
       else if (act === 'prev') lbPrev();
       else if (act === 'next') lbNext();
     });
+
+    // Touch/swipe: pointer events coprono touch, pen, mouse.
+    // Soglia 40px orizzontale, verticale tollerante (evita trigger durante scroll).
+    var sw = { active: false, sx: 0, sy: 0 };
+    lb.addEventListener('pointerdown', function (e) {
+      if (!lbState.open) return;
+      if (e.target && e.target.getAttribute && e.target.getAttribute('data-lb')) return;
+      sw.active = true; sw.sx = e.clientX; sw.sy = e.clientY;
+    });
+    lb.addEventListener('pointerup', function (e) {
+      if (!sw.active) return;
+      sw.active = false;
+      var dx = e.clientX - sw.sx;
+      var dy = e.clientY - sw.sy;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) lbNext(); else lbPrev();
+      }
+    });
+    lb.addEventListener('pointercancel', function () { sw.active = false; });
   }
   document.addEventListener('keydown', function (e) {
     if (!lbState.open) return;

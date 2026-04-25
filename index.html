@@ -3,15 +3,303 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>FabioSHouse — Due case in Sardegna · Stintino e Alghero</title>
-  <meta name="description" content="Due case vacanze in Sardegna, gestite da una famiglia. Villa Stintino a cinque minuti dalla Pelosa, La Porta del Lido nel centro catalano di Alghero. Giugno–Settembre." />
+  <title data-i18n="meta.title">FabioSHouse — Due case in Sardegna · Stintino e Alghero</title>
+  <meta name="description" data-i18n-attr="content:meta.description" content="Due case vacanze in Sardegna, gestite da una famiglia. Villa Stintino a cinque minuti dalla Pelosa, La Porta del Lido nel centro catalano di Alghero. Giugno–Settembre." />
+  <meta name="author" content="FabioSHouse" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="theme-color" content="#f4efe3" />
 
+  <link rel="canonical" href="https://www.fabioshouse.it/" />
+
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="it"        href="https://www.fabioshouse.it/" />
+  <link rel="alternate" hreflang="en"        href="https://www.fabioshouse.it/?lang=en" />
+  <link rel="alternate" hreflang="fr"        href="https://www.fabioshouse.it/?lang=fr" />
+  <link rel="alternate" hreflang="de"        href="https://www.fabioshouse.it/?lang=de" />
+  <link rel="alternate" hreflang="x-default" href="https://www.fabioshouse.it/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="FabioSHouse" />
+  <meta property="og:url" content="https://www.fabioshouse.it/" />
+  <meta property="og:title" data-i18n-attr="content:meta.og.title" content="FabioSHouse — Due case in Sardegna · Stintino e Alghero" />
+  <meta property="og:description" data-i18n-attr="content:meta.og.description" content="Una villa a cinque minuti dalla Pelosa, un appartamento nel centro catalano di Alghero. Gestite direttamente, senza intermediari. Giugno–Settembre." />
+  <meta property="og:image" content="https://www.fabioshouse.it/img/og-home.jpg" />
+  <meta property="og:image:width" content="1536" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:image:alt" data-i18n-attr="content:meta.og.image_alt" content="La Pelosa, Stintino — Torre aragonese e barca a vela sull'acqua turchese" />
+  <meta property="og:locale" data-i18n-attr="content:meta.og.locale" content="it_IT" />
+  <meta property="og:locale:alternate" content="en_GB" />
+  <meta property="og:locale:alternate" content="fr_FR" />
+  <meta property="og:locale:alternate" content="de_DE" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" data-i18n-attr="content:meta.twitter.title" content="FabioSHouse — Due case in Sardegna" />
+  <meta name="twitter:description" data-i18n-attr="content:meta.twitter.description" content="Villa Stintino a cinque minuti dalla Pelosa, La Porta del Lido nel centro catalano di Alghero. Due case, una famiglia." />
+  <meta name="twitter:image" content="https://www.fabioshouse.it/img/og-home.jpg" />
+  <meta name="twitter:image:alt" data-i18n-attr="content:meta.og.image_alt" content="La Pelosa, Stintino — Torre aragonese e barca a vela" />
+
+  <!-- Favicons + PWA -->
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Preload LCP (hero image) + fonts -->
+  <link rel="preload" as="image" href="img/home/hero-home-spiaggia-pelosa.jpg" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link id="font-display" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- ===== JSON-LD Structured Data ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://www.fabioshouse.it/#website",
+    "url": "https://www.fabioshouse.it/",
+    "name": "FabioSHouse",
+    "description": "Due case vacanze in Sardegna, gestite direttamente da una famiglia: Villa Stintino e La Porta del Lido ad Alghero.",
+    "inLanguage": "it-IT",
+    "publisher": { "@id": "https://www.fabioshouse.it/#organization" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://www.fabioshouse.it/#organization",
+    "name": "FabioSHouse",
+    "url": "https://www.fabioshouse.it/",
+    "logo": "https://www.fabioshouse.it/img/favicon.svg",
+    "email": "info@fabioshouse.it",
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "Sardegna, Italia"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Sardegna",
+      "addressCountry": "IT"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "@id": "https://www.fabioshouse.it/#/case/villa-stintino",
+    "name": "Villa Stintino",
+    "description": "Villa con giardino a cinque minuti a piedi dalla Spiaggia della Pelosa. Tre camere, due bagni, barbecue e parcheggio privato. Pulizie finali, biancheria, WiFi in fibra e aria condizionata inclusi.",
+    "url": "https://www.fabioshouse.it/#/case/villa-stintino",
+    "image": "https://www.fabioshouse.it/img/home/hero-home-spiaggia-pelosa.jpg",
+    "telephone": "",
+    "priceRange": "€€",
+    "numberOfRooms": 3,
+    "maximumAttendeeCapacity": 6,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Stintino",
+      "addressRegion": "SS",
+      "addressCountry": "IT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 40.9378,
+      "longitude": 8.2281
+    },
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Aria condizionata",  "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Cucina attrezzata",  "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "WiFi in fibra",      "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Lavatrice",          "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Barbecue esterno",   "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Parcheggio privato", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Biancheria inclusa", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Culla disponibile",  "value": true }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.95",
+      "bestRating": "5",
+      "reviewCount": 38
+    },
+    "parentOrganization": { "@id": "https://www.fabioshouse.it/#organization" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "@id": "https://www.fabioshouse.it/#/case/appartamento-alghero",
+    "name": "La Porta del Lido",
+    "description": "Appartamento nel centro di Alghero, a dieci minuti a piedi dal Lido e cinque dal centro storico catalano. Due camere, un bagno, balcone, ascensore e parcheggio condominiale. Pulizie finali, biancheria, WiFi in fibra e aria condizionata inclusi.",
+    "url": "https://www.fabioshouse.it/#/case/appartamento-alghero",
+    "image": "https://www.fabioshouse.it/img/alghero/appartamento-alghero-hero.jpg",
+    "priceRange": "€€",
+    "numberOfRooms": 2,
+    "maximumAttendeeCapacity": 4,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Alghero",
+      "addressRegion": "SS",
+      "addressCountry": "IT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 40.5589,
+      "longitude": 8.3197
+    },
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Aria condizionata",        "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Cucina attrezzata",        "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "WiFi in fibra",            "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Lavatrice",                "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Balcone privato",          "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Ascensore",                "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Parcheggio condominiale",  "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Biancheria inclusa",       "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Culla disponibile",        "value": true }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.90",
+      "bestRating": "5",
+      "reviewCount": 46
+    },
+    "parentOrganization": { "@id": "https://www.fabioshouse.it/#organization" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Video tour · La Porta del Lido",
+    "description": "Un giro dentro l'appartamento di Alghero, dal soggiorno al balcone, col telefono in mano. Tour breve, senza montaggio — quello che c'è è quello che trovate entrando.",
+    "thumbnailUrl": "https://www.fabioshouse.it/video/video-tour-alghero-poster.jpg",
+    "contentUrl": "https://www.fabioshouse.it/video/video-tour-alghero.mp4",
+    "uploadDate": "2026-04-20",
+    "duration": "PT1M20S",
+    "inLanguage": "it",
+    "isPartOf": { "@id": "https://www.fabioshouse.it/#/case/appartamento-alghero" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Le nostre case",
+    "numberOfItems": 2,
+    "itemListOrder": "https://schema.org/ItemListOrderAscending",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "url":  "https://www.fabioshouse.it/#/case/villa-stintino",
+        "name": "Villa Stintino",
+        "image": "https://www.fabioshouse.it/img/home/hero-home-spiaggia-pelosa.jpg"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "url":  "https://www.fabioshouse.it/#/case/appartamento-alghero",
+        "name": "La Porta del Lido",
+        "image": "https://www.fabioshouse.it/img/alghero/appartamento-alghero-hero.jpg"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",    "item": "https://www.fabioshouse.it/" },
+      { "@type": "ListItem", "position": 2, "name": "Le Case", "item": "https://www.fabioshouse.it/#/case" },
+      { "@type": "ListItem", "position": 3, "name": "Villa Stintino" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",    "item": "https://www.fabioshouse.it/" },
+      { "@type": "ListItem", "position": 2, "name": "Le Case", "item": "https://www.fabioshouse.it/#/case" },
+      { "@type": "ListItem", "position": 3, "name": "La Porta del Lido" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Come si effettua la prenotazione?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Scrivici dal modulo di contatto o via email. Rispondiamo entro ventiquattro ore con disponibilità e condizioni. Il trenta percento di caparra conferma la data; il saldo una settimana prima dell'arrivo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Sono ammessi animali domestici?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Al momento no, in nessuna delle due case — ad Alghero è il regolamento condominiale a impedirlo, a Stintino è una scelta nostra. Per casi particolari, scriveteci: ne parliamo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Cosa è incluso nel prezzo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Soggiorno, biancheria da letto e da bagno, pulizia finale, WiFi in fibra, aria condizionata, utenze. La tassa di soggiorno comunale è a parte e si salda all'arrivo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Come funzionano le cancellazioni?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Fino a trenta giorni prima dell'arrivo: rimborso completo meno dieci percento. Fra trenta e quattordici giorni: rimborso del cinquanta percento. Sotto i quattordici giorni: nessun rimborso, ma proviamo sempre a rivendere le date e vi ricontattiamo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Come funziona il check-in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Check-in dalle sedici, check-out entro le dieci. Possiamo organizzare arrivi tardivi (entro mezzanotte) o check-in autonomo con cassetta di sicurezza. Segnalateci l'orario stimato il giorno prima: ci sentiamo direttamente."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Come si arriva?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "L'aeroporto più vicino è Alghero-Fertilia (AHO): dieci minuti in auto dall'appartamento di Alghero, un'ora dalla villa di Stintino. Voli diretti da tutta Europa. In alternativa, traghetti per Porto Torres (30 km da Stintino) da Genova, Civitavecchia e Barcellona, oppure Olbia (due ore d'auto). Consigliamo sempre di noleggiare un'auto in aeroporto: le distanze fra le due case e i posti più belli del nord-ovest si coprono comode con la macchina."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -22,16 +310,24 @@
         <span class="brand-name">FabioS<em>House</em></span>
       </a>
       <nav class="nav-links" id="nav-links">
-        <a href="#/" data-route="/">Home</a>
-        <a href="#/case" data-route="/case">Le Case</a>
-        <a href="#/incluso" data-route="/incluso">Cosa è incluso</a>
-        <a href="#/chi-siamo" data-route="/chi-siamo">Chi siamo</a>
-        <a href="#/contatti" data-route="/contatti">Contatti</a>
+        <a href="#/"           data-route="/"           data-i18n="nav.home">Home</a>
+        <a href="#/case"       data-route="/case"       data-i18n="nav.cases">Le Case</a>
+        <a href="#/incluso"    data-route="/incluso"    data-i18n="nav.included">Cosa è incluso</a>
+        <a href="#/chi-siamo"  data-route="/chi-siamo"  data-i18n="nav.about">Chi siamo</a>
+        <a href="#/contatti"   data-route="/contatti"   data-i18n="nav.contact">Contatti</a>
       </nav>
-      <a href="#/contatti" class="cta-pill">
-        <span class="dot" aria-hidden="true"></span>
-        <span>Prenota</span>
-      </a>
+      <div class="nav-right">
+        <div class="lang-switcher" role="group" aria-label="Lingua">
+          <button type="button" data-lang-btn="it" aria-label="Italiano">IT</button>
+          <button type="button" data-lang-btn="en" aria-label="English">EN</button>
+          <button type="button" data-lang-btn="fr" aria-label="Français">FR</button>
+          <button type="button" data-lang-btn="de" aria-label="Deutsch">DE</button>
+        </div>
+        <a href="#/contatti" class="cta-pill">
+          <span class="dot" aria-hidden="true"></span>
+          <span data-i18n="nav.book">Prenota</span>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -41,31 +337,31 @@
     <div class="foot-inner">
       <div class="foot-brand">
         <span class="brand-name">FabioS<em>House</em></span>
-        <p class="micro">Due case esclusive a Stintino e Alghero per la tua estate sarda.</p>
+        <p class="micro" data-i18n="foot.brand_tag">Due case esclusive a Stintino e Alghero per la tua estate sarda.</p>
       </div>
       <div class="foot-col">
-        <p class="eyebrow">Navigare</p>
-        <a href="#/">Home</a>
-        <a href="#/case">Le Case</a>
-        <a href="#/incluso">Cosa è incluso</a>
+        <p class="eyebrow" data-i18n="foot.navigate">Navigare</p>
+        <a href="#/"        data-i18n="nav.home">Home</a>
+        <a href="#/case"    data-i18n="nav.cases">Le Case</a>
+        <a href="#/incluso" data-i18n="nav.included">Cosa è incluso</a>
       </div>
       <div class="foot-col">
-        <p class="eyebrow">Raccontarci</p>
-        <a href="#/contatti">Contatti</a>
-        <a href="#/chi-siamo">Chi siamo</a>
-        <a href="privacy.html">Privacy &amp; Cookie</a>
+        <p class="eyebrow" data-i18n="foot.tellus">Raccontarci</p>
+        <a href="#/contatti"   data-i18n="nav.contact">Contatti</a>
+        <a href="#/chi-siamo"  data-i18n="nav.about">Chi siamo</a>
+        <a href="privacy.html" data-i18n="foot.privacy">Privacy &amp; Cookie</a>
       </div>
       <div class="foot-col">
-        <p class="eyebrow">Scriveteci</p>
+        <p class="eyebrow" data-i18n="foot.writeus">Scriveteci</p>
         <p class="micro mono">info@fabioshouse.it</p>
-        <p class="micro">Sardegna · Italia</p>
-        <p class="micro">P.IVA / CF: IN AGGIORNAMENTO</p>
-        <p class="micro">CIN: IN AGGIORNAMENTO</p>
+        <p class="micro" data-i18n="foot.location">Sardegna · Italia</p>
+        <p class="micro">P.IVA / CF: <span data-i18n="foot.updating">IN AGGIORNAMENTO</span></p>
+        <p class="micro">CIN: <span data-i18n="foot.updating">IN AGGIORNAMENTO</span></p>
       </div>
     </div>
     <div class="foot-base">
       <span class="mono">© 2026 FabioSHouse</span>
-      <span class="mono">— Tutti i diritti riservati</span>
+      <span class="mono">— <span data-i18n="foot.rights">Tutti i diritti riservati</span></span>
     </div>
   </footer>
 
@@ -80,6 +376,20 @@
     <img class="lb-img" alt="" />
     <div class="lb-counter mono"><span id="lb-n">1</span> / <span id="lb-m">1</span></div>
   </div>
+
+  <a id="wa-float" class="wa-float" href="#" target="_blank" rel="noopener"
+     data-wa-number="393403689635"
+     data-i18n-attr="aria-label:ui.wa.label">
+    <svg viewBox="0 0 32 32" aria-hidden="true" fill="currentColor">
+      <path d="M16.001 3C9.374 3 4 8.373 4 15c0 2.13.56 4.212 1.624 6.05L4 29l8.138-1.594A12.004 12.004 0 0016.001 27C22.627 27 28 21.627 28 15S22.627 3 16.001 3zm0 22a9.97 9.97 0 01-5.164-1.43l-.37-.22-4.83.946.975-4.709-.241-.384A9.97 9.97 0 016 15c0-5.514 4.486-10 10.001-10C21.514 5 26 9.486 26 15s-4.486 10-9.999 10zm5.566-7.492c-.305-.153-1.804-.89-2.083-.992-.28-.102-.483-.152-.686.152-.203.305-.787.992-.964 1.195-.178.204-.356.23-.66.076-.305-.152-1.286-.474-2.45-1.511-.906-.808-1.517-1.805-1.695-2.11-.177-.305-.019-.47.134-.622.138-.137.305-.356.458-.534.152-.178.203-.305.305-.508.102-.204.051-.382-.025-.534-.076-.152-.685-1.651-.939-2.26-.247-.593-.497-.512-.685-.521l-.584-.01a1.124 1.124 0 00-.812.381c-.279.305-1.065 1.04-1.065 2.538s1.09 2.944 1.243 3.148c.152.204 2.143 3.27 5.194 4.588.725.313 1.29.5 1.73.64.727.232 1.388.2 1.91.121.583-.087 1.804-.736 2.058-1.447.254-.71.254-1.32.178-1.447-.076-.127-.279-.203-.584-.355z"/>
+    </svg>
+    <span class="wa-lbl">WhatsApp</span>
+  </a>
+
+  <button id="back-to-top" class="back-to-top" type="button" aria-hidden="true"
+          data-i18n-attr="aria-label:ui.back_to_top|title:ui.back_to_top">
+    <span aria-hidden="true">↑</span>
+  </button>
 
   <button id="tweaks-toggle" class="tweaks-toggle" aria-label="Apri pannello tweaks">⚙</button>
   <aside id="tweaks" class="tweaks" aria-hidden="true">
@@ -129,6 +439,7 @@
     </section>
   </aside>
 
+  <script src="i18n.js"></script>
   <script src="data.js"></script>
   <script src="pages.js"></script>
   <script src="pages2.js"></script>

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /dev-server.py
+
+Sitemap: https://www.fabioshouse.it/sitemap.xml

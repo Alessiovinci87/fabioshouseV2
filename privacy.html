@@ -3,9 +3,34 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Privacy Policy &amp; Cookie Policy | FabioSHouse</title>
-  <meta name="description" content="Informativa sulla privacy e sulla gestione dei cookie del sito FabioSHouse — affitti case vacanze in Sardegna." />
-  <meta name="robots" content="noindex, follow" />
+  <title data-i18n="meta.priv.title">Privacy Policy &amp; Cookie Policy | FabioSHouse</title>
+  <meta name="description" data-i18n-attr="content:meta.priv.description" content="Informativa sulla privacy e sulla gestione dei cookie del sito FabioSHouse — affitti case vacanze in Sardegna." />
+  <meta name="author" content="FabioSHouse" />
+  <meta name="robots" content="noindex,follow" />
+  <meta name="theme-color" content="#f4efe3" />
+
+  <link rel="canonical" href="https://www.fabioshouse.it/privacy.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="FabioSHouse" />
+  <meta property="og:url" content="https://www.fabioshouse.it/privacy.html" />
+  <meta property="og:title" data-i18n-attr="content:meta.priv.title" content="Privacy &amp; Cookie · FabioSHouse" />
+  <meta property="og:description" data-i18n-attr="content:meta.priv.description" content="Come trattiamo i dati personali sul sito di FabioSHouse — due case vacanze in Sardegna." />
+  <meta property="og:image" content="https://www.fabioshouse.it/img/og-home.jpg" />
+  <meta property="og:locale" data-i18n-attr="content:meta.og.locale" content="it_IT" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" data-i18n-attr="content:meta.priv.title" content="Privacy &amp; Cookie · FabioSHouse" />
+  <meta name="twitter:description" data-i18n-attr="content:meta.priv.description" content="Informativa privacy del sito FabioSHouse." />
+
+  <!-- Favicons + PWA -->
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.json" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,17 +41,6 @@
 
   <style>
     /* Privacy page specifics — keep V2 visual language, container-narrow */
-    .legal-top {
-      padding: clamp(24px, 4vw, 40px) 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .legal-top a.back {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 13px;
-      color: var(--ink-2);
-      transition: color var(--t-fast) var(--ease);
-    }
-    .legal-top a.back:hover { color: var(--terra-deep); }
     .legal-content {
       padding: clamp(50px, 8vw, 110px) 0 clamp(60px, 8vw, 110px);
     }
@@ -106,21 +120,40 @@
 </head>
 <body>
 
-  <header class="legal-top">
-    <div class="narrow" style="display:flex; justify-content:space-between; align-items:center;">
-      <a href="index.html" class="brand" aria-label="FabioSHouse home" style="display:inline-flex; align-items:center; gap:10px;">
+  <header id="nav" class="nav">
+    <div class="nav-inner">
+      <a href="index.html#/" class="brand" aria-label="FabioSHouse home">
         <span class="brand-mark" aria-hidden="true">ƒ</span>
         <span class="brand-name">FabioS<em>House</em></span>
       </a>
-      <a href="index.html" class="back">← Torna alla home</a>
+      <nav class="nav-links">
+        <a href="index.html#/"          data-i18n="nav.home">Home</a>
+        <a href="index.html#/case"      data-i18n="nav.cases">Le Case</a>
+        <a href="index.html#/incluso"   data-i18n="nav.included">Cosa è incluso</a>
+        <a href="index.html#/chi-siamo" data-i18n="nav.about">Chi siamo</a>
+        <a href="index.html#/contatti"  data-i18n="nav.contact">Contatti</a>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-switcher" role="group" aria-label="Lingua">
+          <button type="button" data-lang-btn="it" aria-label="Italiano">IT</button>
+          <button type="button" data-lang-btn="en" aria-label="English">EN</button>
+          <button type="button" data-lang-btn="fr" aria-label="Français">FR</button>
+          <button type="button" data-lang-btn="de" aria-label="Deutsch">DE</button>
+        </div>
+        <a href="index.html#/contatti" class="cta-pill">
+          <span class="dot" aria-hidden="true"></span>
+          <span data-i18n="nav.book">Prenota</span>
+        </a>
+      </div>
     </div>
   </header>
 
   <main class="legal-content">
     <div class="narrow">
-      <p class="eyebrow">Informativa legale</p>
-      <h1>Privacy Policy &amp; <em>Cookie Policy</em></h1>
-      <p class="meta">Ultimo aggiornamento: Gennaio 2025 · Titolare: [IN AGGIORNAMENTO]</p>
+      <p class="eyebrow" data-i18n="priv.eyebrow">Informativa legale</p>
+      <h1 data-i18n="priv.h1">Privacy Policy &amp; <em>Cookie Policy</em></h1>
+      <p class="meta">Ultimo aggiornamento: Aprile 2026 · Titolare: [IN AGGIORNAMENTO]</p>
+      <p class="meta" data-i18n="priv.lang_note" style="text-transform:none; letter-spacing:0; font-size:13px; color:var(--ink-3); max-width:62ch;"></p>
 
       <h2>1. Titolare del trattamento</h2>
       <p>
@@ -229,10 +262,43 @@
       </p>
 
       <div class="legal-back">
-        <a href="index.html">← Torna alla home</a>
+        <a href="index.html" data-i18n="priv.back">← Torna alla home</a>
       </div>
     </div>
   </main>
 
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <span class="brand-name">FabioS<em>House</em></span>
+        <p class="micro" data-i18n="foot.brand_tag">Due case esclusive a Stintino e Alghero per la tua estate sarda.</p>
+      </div>
+      <div class="foot-col">
+        <p class="eyebrow" data-i18n="foot.navigate">Navigare</p>
+        <a href="index.html#/"        data-i18n="nav.home">Home</a>
+        <a href="index.html#/case"    data-i18n="nav.cases">Le Case</a>
+        <a href="index.html#/incluso" data-i18n="nav.included">Cosa è incluso</a>
+      </div>
+      <div class="foot-col">
+        <p class="eyebrow" data-i18n="foot.tellus">Raccontarci</p>
+        <a href="index.html#/contatti"  data-i18n="nav.contact">Contatti</a>
+        <a href="index.html#/chi-siamo" data-i18n="nav.about">Chi siamo</a>
+        <a href="privacy.html"          data-i18n="foot.privacy">Privacy &amp; Cookie</a>
+      </div>
+      <div class="foot-col">
+        <p class="eyebrow" data-i18n="foot.writeus">Scriveteci</p>
+        <p class="micro mono">info@fabioshouse.it</p>
+        <p class="micro" data-i18n="foot.location">Sardegna · Italia</p>
+        <p class="micro">P.IVA / CF: <span data-i18n="foot.updating">IN AGGIORNAMENTO</span></p>
+        <p class="micro">CIN: <span data-i18n="foot.updating">IN AGGIORNAMENTO</span></p>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span class="mono">© 2026 FabioSHouse</span>
+      <span class="mono">— <span data-i18n="foot.rights">Tutti i diritti riservati</span></span>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
 </body>
 </html>
