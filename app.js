@@ -1,5 +1,5 @@
 /* ============================================================
-   FabioSHouse v2 — APP
+   Le Porte di Sardegna v2 — APP
    Router, reveal, lightbox, hover-cue, tweaks, nav, hero carousel,
    booking-card season chips
    ============================================================ */
@@ -131,7 +131,7 @@
 
   // Origin assoluto per og:image / canonical / JSON-LD: in produzione
   // forziamo il dominio finale anche quando l'utente naviga su localhost.
-  var SITE_ORIGIN = 'https://www.fabioshouse.it';
+  var SITE_ORIGIN = 'https://www.leportedisardegna.com';
   var DEFAULT_OG_IMAGE = SITE_ORIGIN + '/img/og-home.jpg';
 
   function absUrl(path) {
@@ -154,7 +154,7 @@
       if (L) {
         var tt = (L.name && (t(L.name) || L.name.it)) || '';
         var ds = (L.subtitle && (t(L.subtitle) || L.subtitle.it)) || '';
-        if (tt) document.title = tt + ' — Fabio\'s House';
+        if (tt) document.title = tt + ' — Le Porte di Sardegna';
         setMeta('name',     'description',       ds);
         setMeta('property', 'og:title',          tt);
         setMeta('property', 'og:description',    ds);
@@ -294,6 +294,113 @@
     } catch (err) {}
   }, true);
 
+  // --------------------------- INTRO VIDEO TRANSITION ---------------------------
+  // Click su una prop-card della home con [data-intro-video]: apre overlay
+  // full-screen, riproduce il video ~4s, fade-to-white ~0.8s, poi naviga.
+  // Fallback (errore caricamento, play bloccato, reduced-motion): naviga
+  // diretto come una qualsiasi <a href="#/...">.
+  var introBusy = false;
+  function playIntroAndGo(videoSrc, targetHash) {
+    if (introBusy) return;
+    introBusy = true;
+
+    var overlay = document.createElement('div');
+    overlay.className = 'fh-intro';
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.innerHTML =
+      '<video class="fh-intro-video" muted playsinline preload="auto" disablepictureinpicture></video>' +
+      '<div class="fh-intro-fade"></div>';
+    document.body.appendChild(overlay);
+    document.documentElement.classList.add('fh-intro-active');
+
+    var video = overlay.querySelector('video');
+    var navigated = false;
+
+    function go() {
+      if (navigated) return;
+      navigated = true;
+      if (location.hash === targetHash) {
+        // stessa route: forziamo un re-render via hashchange manuale
+        renderRoute();
+      } else {
+        location.hash = targetHash;
+      }
+      // tieni il bianco coprente fino a che la nuova pagina ha fatto scroll/render
+      setTimeout(function () {
+        overlay.remove();
+        document.documentElement.classList.remove('fh-intro-active');
+        introBusy = false;
+      }, 250);
+    }
+
+    function startFade() {
+      if (overlay.classList.contains('fade-to-white')) return;
+      overlay.classList.add('fade-to-white');
+      setTimeout(go, 800);
+    }
+
+    function bail() {
+      if (navigated) return;
+      navigated = true;
+      clearTimeout(fadeTimer);
+      location.hash = targetHash;
+      overlay.remove();
+      document.documentElement.classList.remove('fh-intro-active');
+      introBusy = false;
+    }
+    video.addEventListener('error', bail);
+    video.addEventListener('ended', startFade);
+
+    // Cap a ~4s totali di video prima del fade
+    var fadeTimer = setTimeout(startFade, 4000);
+    // Safety net: se per qualsiasi ragione il video resta appeso, forziamo dopo 6s
+    setTimeout(function () { if (!navigated) startFade(); }, 6000);
+
+    video.src = videoSrc;
+    var p = video.play();
+    if (p && typeof p.catch === 'function') {
+      // autoplay bloccato o src non riproducibile: salta l'effetto
+      p.catch(bail);
+    }
+  }
+
+  // Click sul brand (logo + nome) della navbar: porta alla home anche
+  // se l'href "#/" è un no-op perché siamo già lì (in quel caso scrolla
+  // in cima). Funziona in tutta la SPA, non sulle pagine statiche
+  // (privacy/404) che hanno href verso index.html.
+  document.addEventListener('click', function (e) {
+    var brand = e.target.closest && e.target.closest('a.brand');
+    if (!brand) return;
+    if (e.defaultPrevented) return;
+    if (e.button !== 0) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var href = brand.getAttribute('href') || '';
+    if (href.charAt(0) !== '#') return; // pagine statiche: lascia il default
+    e.preventDefault();
+    var atHome = !location.hash || location.hash === '#/' || location.hash === '#';
+    if (atHome) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      location.hash = '#/';
+    }
+  });
+
+  document.addEventListener('click', function (e) {
+    var card = e.target.closest && e.target.closest('a[data-intro-video]');
+    if (!card) return;
+    // rispetta modificatori (apri in nuova tab) e tasto destro/centrale
+    if (e.defaultPrevented) return;
+    if (e.button !== 0) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var src = card.getAttribute('data-intro-video');
+    var href = card.getAttribute('href') || '';
+    if (!src || href.charAt(0) !== '#') return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return; // segui il link normalmente
+    e.preventDefault();
+    playIntroAndGo(src, href);
+  });
+
   // --------------------------- REVEAL ---------------------------
   var revealObs = null;
   function initReveal() {
@@ -385,7 +492,7 @@
       var houseId = shareBtn.getAttribute('data-share-house');
       var h = window.FH_getHouse(houseId);
       var url = location.origin + location.pathname + '#/case/' + houseId;
-      var title = (h && ti18n(h.name)) || 'FabioSHouse';
+      var title = (h && ti18n(h.name)) || 'Le Porte di Sardegna';
       if (navigator.share) {
         navigator.share({ title: title, url: url }).catch(function () {});
       } else {
@@ -597,7 +704,8 @@
       });
       var homePopup =
         '<strong>' + ti(h.name) + '</strong><br/>' +
-        '<span style="color:#666; font-size:12px;">' + ti('det.map.here') + ' · ' + h.location + '</span>';
+        '<span style="color:#666; font-size:12px;">' + ti('det.map.here') + ' · ' + h.location + '</span>' +
+        (h.gmaps ? '<br/><span style="font-size:12px;"><a href="' + h.gmaps + '" target="_blank" rel="noopener">→ ' + ti('det.map.open_gmaps') + '</a></span>' : '');
       L.marker([h.geo.lat, h.geo.lng], { icon: houseIcon, title: ti(h.name), zIndexOffset: 1000 })
         .addTo(map)
         .bindPopup(homePopup);
@@ -839,8 +947,12 @@
   };
   var motions = { full: 1, calm: 1.8, off: 0.0001 };
 
+  // fraunces: self-hostato in fonts/fonts.css (link sempre attivo). Per
+  // playfair/dmserif il link#font-display viene caricato da Google Fonts
+  // SOLO se l'utente clicca nel pannello tweaks — il click esplicito è
+  // consenso ai sensi dell'art. 4(11) GDPR.
   var fontStylesheets = {
-    fraunces: 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&display=swap',
+    fraunces: '',
     playfair: 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..800&display=swap',
     dmserif:  'https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap'
   };
@@ -877,7 +989,11 @@
     root.style.setProperty('--accent', a.terra);
     document.body.setAttribute('data-paper', t.paper);
     var link = document.getElementById('font-display');
-    if (link && fontStylesheets[t.font]) link.href = fontStylesheets[t.font];
+    if (link) {
+      var target = fontStylesheets[t.font] || '';
+      // toglie il link href quando si torna a Fraunces (self-hosted): no call a Google
+      if (link.getAttribute('href') !== target) link.setAttribute('href', target);
+    }
     root.style.setProperty('--font-display', fontFamilies[t.font] || fontFamilies.fraunces);
     root.style.setProperty('--t-mult', motions[t.motion] != null ? motions[t.motion] : 1);
     document.body.setAttribute('data-radius', t.radius);

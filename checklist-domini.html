@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Checklist registrazione domini — Le Porte di Sardegna</title>
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --ink-2: #444;
+      --ink-3: #777;
+      --line: #d8d4cb;
+      --paper: #f8f5ee;
+      --terra: #a05530;
+      --warning: #b8732a;
+      --good: #2a7a3e;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 48px 60px;
+    }
+    header.doc-head {
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 16px;
+      margin-bottom: 32px;
+    }
+    header.doc-head .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin: 0 0 8px;
+    }
+    header.doc-head h1 {
+      font-size: 28px;
+      letter-spacing: -0.01em;
+      margin: 0 0 6px;
+    }
+    header.doc-head .meta {
+      font-size: 12px;
+      color: var(--ink-3);
+      margin: 0;
+    }
+    h2 {
+      font-size: 17px;
+      margin: 36px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line);
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 20px 0 8px;
+      color: var(--ink);
+    }
+    p { margin: 0 0 12px; }
+    ul.checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+    }
+    ul.checklist li {
+      position: relative;
+      padding: 6px 0 6px 28px;
+      border-bottom: 1px dashed var(--line);
+      page-break-inside: avoid;
+    }
+    ul.checklist li:last-child { border-bottom: 0; }
+    ul.checklist li::before {
+      content: "☐";
+      position: absolute;
+      left: 0; top: 6px;
+      font-size: 16px;
+      color: var(--ink-2);
+    }
+    ul.checklist li strong { color: var(--ink); }
+    .note {
+      font-size: 12px;
+      color: var(--ink-3);
+      margin-top: 4px;
+      display: block;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 16px;
+      font-size: 13px;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th {
+      background: rgba(0,0,0,0.03);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+    code, .mono {
+      font-family: ui-monospace, "SF Mono", "Consolas", "Liberation Mono", monospace;
+      font-size: 12.5px;
+      background: rgba(0,0,0,0.04);
+      padding: 1px 5px;
+      border-radius: 2px;
+    }
+    .callout {
+      border-left: 3px solid var(--warning);
+      background: rgba(184, 115, 42, 0.08);
+      padding: 12px 16px;
+      margin: 16px 0;
+      font-size: 13px;
+    }
+    .callout.good {
+      border-left-color: var(--good);
+      background: rgba(42, 122, 62, 0.08);
+    }
+    .callout strong { display: block; margin-bottom: 4px; }
+    .signature {
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--line);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      font-size: 12px;
+      color: var(--ink-3);
+    }
+    .signature .line {
+      border-bottom: 1px solid var(--ink-3);
+      height: 32px;
+      margin-bottom: 6px;
+    }
+    @media print {
+      html, body { background: white; }
+      main { max-width: none; padding: 18mm 16mm 16mm; }
+      .no-print { display: none !important; }
+      ul.checklist li { break-inside: avoid; }
+      h2 { break-after: avoid; }
+      a { color: inherit; text-decoration: none; }
+      .callout { break-inside: avoid; }
+    }
+    .actions {
+      position: fixed;
+      bottom: 16px; right: 16px;
+      display: flex; gap: 8px;
+    }
+    .actions button {
+      padding: 10px 16px;
+      font: inherit; font-size: 13px;
+      background: var(--ink);
+      color: white;
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+    }
+    .actions button.ghost {
+      background: white;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="doc-head">
+      <p class="eyebrow">Le Porte di Sardegna · Checklist operativa</p>
+      <h1>Registrazione domini — guida pratica</h1>
+      <p class="meta">Versione 1 · 30 aprile 2026 · da seguire all'acquisto, prima di pagare</p>
+    </header>
+
+    <p>
+      Questa checklist accompagna l'acquisto dei domini del sito.
+      Ogni voce va spuntata <strong>prima di confermare il pagamento</strong> presso il registrar.
+      Le scelte sbagliate qui sono difficili da correggere dopo (cambio intestatario, trasferimenti, rinnovi).
+    </p>
+
+    <h2>1 · Decisioni preliminari</h2>
+
+    <h3>Intestatario del dominio</h3>
+    <ul class="checklist">
+      <li>
+        <strong>Fabio Italo Peigotty</strong> · CF <span class="mono">PGTFTL84D05I452T</span>
+        <span class="note">È il titolare del trattamento dati indicato nella privacy del sito; il dominio deve essere intestato a lui per coerenza.</span>
+      </li>
+      <li>
+        Indirizzo registrante: <span class="mono">Via Ziu Remundu n. 4, 07100 Sassari (SS), Italia</span>
+      </li>
+      <li>
+        Email di contatto registrar (NON usare la mail pubblica del sito):
+        <span class="note">Suggerito: creare un alias dedicato dopo l'acquisto. Per il primo acquisto va bene anche <span class="mono">cosmoalghero@gmail.com</span>.</span>
+      </li>
+      <li>
+        Telefono di emergenza per il registrar (in caso di blocco account): __________________________
+      </li>
+    </ul>
+
+    <h3>Registrar consigliati</h3>
+    <table>
+      <thead>
+        <tr><th>Registrar</th><th>.com</th><th>.it</th><th>Note</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Cloudflare Registrar</strong></td>
+          <td>~9 €/anno</td>
+          <td>—</td>
+          <td>Prezzo a costo, no markup, 2FA solido, DNS velocissimo. <strong>Consigliato per i .com.</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Aruba</strong></td>
+          <td>~12 €/anno</td>
+          <td>~9 €/anno</td>
+          <td>Italiano, fattura italiana, gestisce .it. <strong>Consigliato per il .it.</strong></td>
+        </tr>
+        <tr>
+          <td>Namecheap</td>
+          <td>~11 €/anno</td>
+          <td>~10 €/anno</td>
+          <td>Alternativa unica per tutti, UI in inglese.</td>
+        </tr>
+        <tr>
+          <td>OVH</td>
+          <td>~10 €/anno</td>
+          <td>~9 €/anno</td>
+          <td>Italiana, UI complessa ma completa.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:13px; color:var(--ink-2);">
+      <strong>Setup consigliato</strong>: Cloudflare per i tre <span class="mono">.com</span>, Aruba per il <span class="mono">.it</span>.
+      Costo totale anno 1: indicativamente <strong>35–45 €</strong>.
+    </p>
+
+    <h2>2 · Domini da registrare</h2>
+
+    <table>
+      <thead>
+        <tr><th>Priorità</th><th>Dominio</th><th>Uso</th><th>Spunta</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Alta</strong></td>
+          <td><span class="mono">leportedisardegna.com</span></td>
+          <td>Sito principale</td>
+          <td>☐</td>
+        </tr>
+        <tr>
+          <td><strong>Alta</strong></td>
+          <td><span class="mono">leportedisardegna.it</span></td>
+          <td>Brand protection (redirect a <span class="mono">.com</span>)</td>
+          <td>☐</td>
+        </tr>
+        <tr>
+          <td>Media</td>
+          <td><span class="mono">laportadellido.com</span></td>
+          <td>Redirect → pagina Alghero</td>
+          <td>☐</td>
+        </tr>
+        <tr>
+          <td>Media</td>
+          <td><span class="mono">lamimosastintino.com</span></td>
+          <td>Redirect → pagina Stintino</td>
+          <td>☐</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:13px; color:var(--ink-2);">
+      Se il budget è stretto, partire dai due <strong>ad alta priorità</strong>; gli altri due si possono aggiungere quando il sito è attivo.
+    </p>
+
+    <h2>3 · Configurazioni da spuntare DURANTE l'acquisto</h2>
+
+    <p>Sono opzioni quasi sempre presenti nel carrello del registrar. Da attivare tutte:</p>
+
+    <ul class="checklist">
+      <li>
+        <strong>Auto-renewal ON</strong>
+        <span class="note">Rinnovo automatico annuale. Senza questa spunta, alla scadenza il dominio si perde e qualcun altro può comprarlo.</span>
+      </li>
+      <li>
+        <strong>WHOIS privacy / Domain privacy</strong>
+        <span class="note">Nasconde il tuo nome e indirizzo dal database pubblico WHOIS. Con la GDPR è quasi sempre già attivo per default UE, ma verifica.</span>
+      </li>
+      <li>
+        <strong>Domain lock / Transfer lock</strong>
+        <span class="note">Impedisce trasferimenti del dominio senza il tuo consenso (protezione anti-furto/phishing).</span>
+      </li>
+      <li>
+        <strong>2FA sull'account del registrar</strong>
+        <span class="note">Autenticazione a due fattori (app Authenticator o SMS). Da attivare nelle impostazioni dell'account, NON nel carrello.</span>
+      </li>
+      <li>
+        <strong>Email di recupero</strong> diversa da quella di registrazione
+        <span class="note">Una seconda email a cui ricevere alert in caso di problemi sull'account principale.</span>
+      </li>
+      <li>
+        <strong>DNSSEC</strong> (se disponibile)
+        <span class="note">Protezione anti-spoofing DNS. Cloudflare lo attiva di default.</span>
+      </li>
+    </ul>
+
+    <h2>4 · Cose da NON comprare (upselling)</h2>
+
+    <div class="callout">
+      <strong>I registrar offrono sempre extra: rifiutali tutti.</strong>
+      Lo SSL/HTTPS è gratuito tramite Let's Encrypt, fornito automaticamente dall'hosting (Netlify, Cloudflare Pages, Vercel).
+    </div>
+
+    <ul class="checklist">
+      <li><strong>Certificato SSL a pagamento</strong> — non serve, è gratuito con l'hosting.</li>
+      <li><strong>Hosting/sitebuilder del registrar</strong> — useremo Netlify o Cloudflare Pages, gratuiti.</li>
+      <li><strong>Email professionale a pagamento</strong> — opzionale, valuteremo dopo se serve <span class="mono">info@leportedisardegna.com</span>.</li>
+      <li><strong>"Domain monitoring"</strong>, "premium DNS", "anti-spam" — non serve, il registrar base copre tutto.</li>
+      <li><strong>Sicurezza extra a pagamento</strong> — DNSSEC + 2FA + lock sono sufficienti e gratuiti.</li>
+    </ul>
+
+    <h2>5 · Subito dopo l'acquisto</h2>
+
+    <ul class="checklist">
+      <li>
+        <strong>Conferma email di registrazione</strong> — alcuni registrar inviano un link da cliccare entro 15 giorni (regola ICANN). Se non clicchi, il dominio viene sospeso.
+      </li>
+      <li>
+        <strong>Salva le credenziali</strong> in un password manager (1Password, Bitwarden, Apple Keychain).
+      </li>
+      <li>
+        <strong>Attiva 2FA</strong> sull'account registrar prima di chiudere la sessione.
+      </li>
+      <li>
+        <strong>Annota le date di scadenza</strong> di ogni dominio: ___ / ___ / ______ (per quello principale).
+      </li>
+      <li>
+        <strong>Salva il PIN/Auth Code</strong> di trasferimento di ogni dominio (serve solo se in futuro vorrai cambiare registrar).
+      </li>
+    </ul>
+
+    <h2>6 · Da inviarmi (a registrazione completata)</h2>
+
+    <p>Per procedere con la fase 2 (DNS, hosting, redirect) ho bisogno di queste informazioni:</p>
+
+    <ul class="checklist">
+      <li>Nome registrar scelto e link al pannello di controllo</li>
+      <li>Conferma che i 4 (o 2) domini sono nel tuo account</li>
+      <li>Decisione hosting: <strong>Netlify</strong>, Cloudflare Pages, Vercel? (suggerisco Netlify per drag &amp; drop semplice)</li>
+      <li>
+        Decisione email: vuoi attivare un'email <span class="mono">@leportedisardegna.com</span> ora,
+        oppure restare su <span class="mono">cosmoalghero@gmail.com</span>?
+      </li>
+    </ul>
+
+    <div class="callout good">
+      <strong>Tempo stimato totale</strong>
+      Acquisto + configurazione iniziale dei 4 domini: 30–45 minuti.
+      Vai con calma, non saltare le spunte di sicurezza.
+    </div>
+
+    <div class="signature">
+      <div>
+        <p>Data acquisto</p>
+        <div class="line"></div>
+      </div>
+      <div>
+        <p>Firma operatore</p>
+        <div class="line"></div>
+      </div>
+    </div>
+  </main>
+
+  <div class="actions no-print">
+    <button class="ghost" onclick="window.close()">Chiudi</button>
+    <button onclick="window.print()">Stampa / Salva PDF</button>
+  </div>
+</body>
+</html>

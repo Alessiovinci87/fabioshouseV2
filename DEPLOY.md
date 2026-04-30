@@ -1,12 +1,12 @@
-# Deploy checklist — FabioSHouse v2
+# Deploy checklist — Le Porte di Sardegna v2
 
 Tutte le operazioni da fare quando il sito sarà pronto per andare online. Ogni blocco è indipendente, puoi farli in qualsiasi ordine purché l'hosting sia il primo.
 
 ## 0. Prerequisiti
 
 - [ ] Fabio conferma che si può procedere
-- [ ] Dominio `fabioshouse.it` registrato e intestato (verificare scadenza e credenziali registrar)
-- [ ] Email di servizio (es. `info@fabioshouse.it`) funzionante — serve per Formspree + test form
+- [ ] Dominio `leportedisardegna.com` registrato e intestato (verificare scadenza e credenziali registrar)
+- [ ] Email di servizio (`cosmoalghero@gmail.com`) funzionante — serve per Formspree + test form
 - [ ] Un hosting scelto fra:
   - **Netlify** (consigliato: drag & drop, gratis, HTTPS automatico, form handling integrato)
   - **Cloudflare Pages** (gratis, CDN globale, deploy via git)
@@ -15,21 +15,21 @@ Tutte le operazioni da fare quando il sito sarà pronto per andare online. Ogni 
 
 ## 1. Git + hosting
 
-- [ ] `git init` nella cartella `FabioSHouse-v2/`
+- [ ] `git init` nella cartella `Le Porte di Sardegna-v2/`
 - [ ] Aggiungi `.gitignore`: `.DS_Store`, `*.output`, cartelle IDE
-- [ ] `git add . && git commit -m "FabioSHouse v2 — initial"`
+- [ ] `git add . && git commit -m "Le Porte di Sardegna v2 — initial"`
 - [ ] Crea repo GitHub (private va bene) e `git push`
 - [ ] Collega il repo a Netlify/Vercel/Cloudflare Pages (auto-deploy su ogni push)
 - [ ] Deploy primo — verifica che la home carichi
 
 ## 2. Dominio + DNS
 
-- [ ] Aggiungi dominio custom `www.fabioshouse.it` all'hosting
+- [ ] Aggiungi dominio custom `www.leportedisardegna.com` all'hosting
 - [ ] Configura DNS presso il registrar:
   - `A` o `CNAME` del root/www secondo istruzioni dell'hosting
   - Attendi propagazione (minuti/ore)
 - [ ] Verifica HTTPS automatico (Let's Encrypt è gestito dall'hosting)
-- [ ] Imposta redirect `fabioshouse.it` → `www.fabioshouse.it` (o viceversa, ma coerente col `canonical` nell'HTML)
+- [ ] Imposta redirect `leportedisardegna.com` → `www.leportedisardegna.com` (o viceversa, ma coerente col `canonical` nell'HTML)
 - [ ] Verifica che `/404.html` dia status 404 reale (non 200): su Netlify serve `_redirects` o `_headers`, oppure configurazione "Custom 404"
 - [ ] Verifica che `/sitemap.xml` e `/robots.txt` siano raggiungibili
 
@@ -47,7 +47,7 @@ Il form in `renderContatti` è ora `onsubmit="return false;"` — non invia. Ser
 
 Se si sceglie **cookieless** (nessun banner consent richiesto):
 
-- [ ] Plausible (€9/mese) — aggiungi `<script defer data-domain="fabioshouse.it" src="https://plausible.io/js/script.js"></script>` in `<head>`
+- [ ] Plausible (€9/mese) — aggiungi `<script defer data-domain="leportedisardegna.com" src="https://plausible.io/js/script.js"></script>` in `<head>`
 - [ ] Umami (self-host gratis o cloud) — simile
 
 Se si sceglie Google Analytics 4:
@@ -59,9 +59,9 @@ Se si sceglie Google Analytics 4:
 - [ ] Verifica proprietà su `https://search.google.com/search-console`:
   - Metodo consigliato: record TXT DNS (permanente)
   - In alternativa: tag HTML aggiunto all'head
-- [ ] Submit sitemap: `https://www.fabioshouse.it/sitemap.xml`
+- [ ] Submit sitemap: `https://www.leportedisardegna.com/sitemap.xml`
 - [ ] Testa i Rich Results con `https://search.google.com/test/rich-results`:
-  - [ ] LodgingBusiness Villa Stintino
+  - [ ] LodgingBusiness La Mimosa
   - [ ] LodgingBusiness La Porta del Lido
   - [ ] FAQPage
   - [ ] BreadcrumbList
@@ -103,7 +103,7 @@ Nota: lo scraper Facebook non esegue JS → vede sempre la versione IT dei meta.
 ## 10. Promozione iniziale (quando il sito è live)
 
 - [ ] Invio link a ex-ospiti per recensioni Google
-- [ ] Google My Business: crea scheda Villa Stintino + La Porta del Lido
+- [ ] Google My Business: crea scheda La Mimosa + La Porta del Lido
 - [ ] OTA: aggiorna descrizione Airbnb/Booking con link al sito proprio
 - [ ] Social: post Instagram / Facebook di lancio con hero + 3 foto
 

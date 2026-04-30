@@ -1,5 +1,5 @@
 /* ============================================================
-   FabioSHouse v2 — DATA
+   Le Porte di Sardegna v2 — DATA
    Exposes a single global: window.FH_DATA
    Copy: IT only (structure leaves room for EN/FR/DE later)
    ============================================================ */
@@ -25,10 +25,13 @@
   var houses = [
     {
       id: 'villa-stintino',
-      name: 'Villa Stintino',
+      name: 'Villa La Mimosa',
       location: 'Stintino',
       region: 'Sardegna',
       province: 'Sassari',
+      address: 'Via Le Vele 9, Stintino (Loc. Cala Lupo)',
+      cin: 'IT090089C2000T0180', // CIN ministeriale BDSR — verificato 2026-04-30. Titolare BDSR: Careddu Maria Carmela.
+      cinHolder: 'Careddu Maria Carmela',
       type: {
         it: 'Villa con giardino', en: 'Villa with garden',
         fr: 'Villa avec jardin',  de: 'Villa mit Garten'
@@ -39,13 +42,14 @@
         fr: 'À cinq minutes à pied de La Pelosa.',
         de: 'Fünf Minuten zu Fuß von La Pelosa.'
       },
-      beds: 3, guests: 6, baths: 2, sqm: 90,
+      beds: 4, totalBeds: 6, guests: 8, baths: 2, sqm: 90,
       prices: { giugno: 800, luglio: 1200, agosto: 1500, settembre: 700 },
       priceFrom: 700, cleaning: 0, deposit: 300,
-      rating: 4.95, reviews: 38, year_restored: null,
+      year_restored: null,
       tags: ['mare', 'pelosa', 'giardino', 'famiglia'],
-      // Coordinate APPROSSIMATE (centro Stintino) — aggiornare con indirizzo esatto in fase 2
-      geo: { lat: 40.9378, lng: 8.2281, zoom: 12 },
+      // Coordinate fornite da Fabio (2026-04-30) — pin esatto della villa via maps.app.goo.gl/j3sW5yuV3edGMheD6
+      geo: { lat: 40.9463725, lng: 8.2326289, zoom: 16 },
+      gmaps: 'https://maps.app.goo.gl/j3sW5yuV3edGMheD6',
       poi: [
         { lat: 40.9573, lng: 8.1987, name: 'Spiaggia della Pelosa',
           slug: 'spiaggia-la-pelosa',
@@ -143,17 +147,17 @@
         { it: 'Lavatrice',            en: 'Washing machine',     fr: 'Lave-linge',             de: 'Waschmaschine' },
         { it: 'TV Smart',             en: 'Smart TV',            fr: 'TV connectée',           de: 'Smart-TV' },
         { it: 'Barbecue esterno',     en: 'Outdoor barbecue',    fr: 'Barbecue extérieur',     de: 'Außengrill' },
-        { it: 'Lettini da giardino',  en: 'Garden sunloungers',  fr: 'Chaises longues de jardin', de: 'Gartenliegen' },
+        { it: 'Giardino e veranda',   en: 'Garden and veranda',  fr: 'Jardin et véranda',      de: 'Garten und Veranda' },
         { it: 'Parcheggio privato',   en: 'Private parking',     fr: 'Stationnement privé',    de: 'Privater Parkplatz' },
         { it: 'WiFi fibra',           en: 'Fibre WiFi',          fr: 'WiFi fibre',             de: 'Glasfaser-WLAN' },
         { it: 'Biancheria inclusa',   en: 'Linen included',      fr: 'Linge inclus',           de: 'Wäsche inklusive' },
         { it: 'Culla disponibile',    en: 'Cot available',       fr: 'Berceau disponible',     de: 'Babybett verfügbar' }
       ],
       story: {
-        it: "La Villa Stintino è una proprietà immersa nel verde della macchia mediterranea, a cinque minuti a piedi dalla Spiaggia della Pelosa — sabbia bianchissima, acqua trasparente, la Torre aragonese sullo sfondo. Intorno alla villa un giardino privato con barbecue, tavoli da esterno e ombrelloni. Dentro, un soggiorno luminoso con angolo cottura completo, tre camere da letto (una matrimoniale, una doppia, una con letti singoli) e due bagni con doccia. Climatizzazione in ogni stanza. È il punto di partenza giusto per il nord-ovest della Sardegna: dal porto di Stintino partono i traghetti per l'Asinara, poco lontano il sentiero di Capo Falcone, il Museo della Tonnara e i ristoranti di pesce del borgo. Alghero è a un'ora d'auto, comoda per una gita di un giorno.",
-        en: "Villa Stintino sits immersed in the Mediterranean scrub, five minutes on foot from La Pelosa beach — brilliant white sand, crystal-clear water, the Aragonese tower in the background. Around the villa, a private garden with barbecue, outdoor tables and parasols. Inside, a bright living room with a full kitchenette, three bedrooms (a double, a twin, and one with single beds) and two shower bathrooms. Air conditioning in every room. It's the right base for Sardinia's north-west: the ferries to Asinara leave from Stintino's harbour, just nearby you'll find the Capo Falcone trail, the Tuna Fishery Museum and the village's seafood restaurants. Alghero is an hour's drive — comfortable for a day trip.",
-        fr: "La Villa Stintino est nichée dans le maquis méditerranéen, à cinq minutes à pied de la plage de La Pelosa — sable d'un blanc éclatant, eau transparente, la tour aragonaise en toile de fond. Autour de la villa, un jardin privé avec barbecue, tables extérieures et parasols. À l'intérieur, un séjour lumineux avec kitchenette complète, trois chambres (une double, une à deux lits, une à lits simples) et deux salles de bain avec douche. Climatisation dans chaque pièce. C'est la bonne base pour le nord-ouest de la Sardaigne : les ferries pour l'Asinara partent du port de Stintino, tout près se trouvent le sentier de Capo Falcone, le Musée de la Tonnara et les restaurants de poisson du village. Alghero est à une heure de route, parfaite pour une excursion d'une journée.",
-        de: 'Die Villa Stintino liegt eingebettet in die mediterrane Macchia, fünf Minuten zu Fuß vom Strand La Pelosa — leuchtend weißer Sand, kristallklares Wasser, der aragonesische Turm im Hintergrund. Rund um die Villa ein privater Garten mit Grill, Tischen und Sonnenschirmen. Innen ein heller Wohnraum mit voll ausgestatteter Kochnische, drei Schlafzimmer (ein Doppelzimmer, ein Zweibettzimmer, eines mit Einzelbetten) und zwei Duschbäder. Klimaanlage in jedem Raum. Der richtige Ausgangspunkt für den Nordwesten Sardiniens: Vom Hafen in Stintino fahren die Fähren zur Asinara, ganz in der Nähe liegen der Capo-Falcone-Wanderweg, das Thunfisch-Museum und die Fischrestaurants des Dorfes. Alghero erreicht man in einer Stunde mit dem Auto — angenehm für einen Tagesausflug.'
+        it: "Villa La Mimosa è una proprietà immersa nel verde della macchia mediterranea, a cinque minuti a piedi dalla Spiaggia della Pelosa — sabbia bianchissima, acqua trasparente, la Torre aragonese sullo sfondo. Intorno alla villa un giardino privato con veranda, barbecue, tavoli da esterno e ombrelloni. Dentro, un soggiorno luminoso con angolo cottura completo, quattro camere da letto per un totale di sei posti letto e due bagni con doccia. Climatizzazione in ogni stanza, fino a otto ospiti. È il punto di partenza giusto per il nord-ovest della Sardegna: dal porto di Stintino partono i traghetti per l'Asinara, poco lontano il sentiero di Capo Falcone, il Museo della Tonnara e i ristoranti di pesce del borgo. Alghero è a un'ora d'auto, comoda per una gita di un giorno.",
+        en: "Villa La Mimosa sits immersed in the Mediterranean scrub, five minutes on foot from La Pelosa beach — brilliant white sand, crystal-clear water, the Aragonese tower in the background. Around the villa, a private garden with veranda, barbecue, outdoor tables and parasols. Inside, a bright living room with a full kitchenette, four bedrooms with six beds in total and two shower bathrooms. Air conditioning in every room, sleeps up to eight. It's the right base for Sardinia's north-west: the ferries to Asinara leave from Stintino's harbour, just nearby you'll find the Capo Falcone trail, the Tuna Fishery Museum and the village's seafood restaurants. Alghero is an hour's drive — comfortable for a day trip.",
+        fr: "Villa La Mimosa est nichée dans le maquis méditerranéen, à cinq minutes à pied de la plage de La Pelosa — sable d'un blanc éclatant, eau transparente, la tour aragonaise en toile de fond. Autour de la villa, un jardin privé avec véranda, barbecue, tables extérieures et parasols. À l'intérieur, un séjour lumineux avec kitchenette complète, quatre chambres pour un total de six couchages et deux salles de bain avec douche. Climatisation dans chaque pièce, jusqu'à huit personnes. C'est la bonne base pour le nord-ouest de la Sardaigne : les ferries pour l'Asinara partent du port de Stintino, tout près se trouvent le sentier de Capo Falcone, le Musée de la Tonnara et les restaurants de poisson du village. Alghero est à une heure de route, parfaite pour une excursion d'une journée.",
+        de: 'Villa La Mimosa liegt eingebettet in die mediterrane Macchia, fünf Minuten zu Fuß vom Strand La Pelosa — leuchtend weißer Sand, kristallklares Wasser, der aragonesische Turm im Hintergrund. Rund um die Villa ein privater Garten mit Veranda, Grill, Tischen und Sonnenschirmen. Innen ein heller Wohnraum mit voll ausgestatteter Kochnische, vier Schlafzimmer mit insgesamt sechs Schlafplätzen und zwei Duschbäder. Klimaanlage in jedem Raum, bis zu acht Gäste. Der richtige Ausgangspunkt für den Nordwesten Sardiniens: Vom Hafen in Stintino fahren die Fähren zur Asinara, ganz in der Nähe liegen der Capo-Falcone-Wanderweg, das Thunfisch-Museum und die Fischrestaurants des Dorfes. Alghero erreicht man in einer Stunde mit dem Auto — angenehm für einen Tagesausflug.'
       },
       bestFor: [
         { it: 'Famiglie', en: 'Families', fr: 'Familles', de: 'Familien' },
@@ -405,9 +409,9 @@
           id: 'services', icon: '🛒',
           items: [
             {
-              name: 'Supermercato Conad',
-              desc: { it: 'A 5 min dalla villa, aperto tutti i giorni in estate', en: '5 min from the villa, open every day in summer', fr: "À 5 min de la villa, ouvert tous les jours en été", de: '5 Min. von der Villa, im Sommer täglich geöffnet' },
-              href: 'https://www.google.com/maps/search/?api=1&query=Conad+Stintino'
+              name: 'Supermercato Nonna Isa',
+              desc: { it: 'Via Sassari 23, in paese — pochi minuti in auto dalla villa, aperto tutti i giorni in estate', en: 'Via Sassari 23, in the village — a few minutes by car from the villa, open every day in summer', fr: 'Via Sassari 23, au village — à quelques minutes en voiture de la villa, ouvert tous les jours en été', de: 'Via Sassari 23, im Ort — wenige Autominuten von der Villa, im Sommer täglich geöffnet' },
+              href: 'https://www.google.com/maps/search/?api=1&query=Supermercato+Nonna+Isa+Via+Sassari+23+Stintino'
             },
             {
               name: { it: 'Farmacia di Stintino', en: 'Stintino pharmacy', fr: 'Pharmacie de Stintino', de: 'Apotheke Stintino' },
@@ -434,6 +438,9 @@
       location: 'Alghero',
       region: 'Sardegna',
       province: 'Sassari',
+      address: 'Via Goceano 23, Alghero',
+      cin: 'IT090003C2000U2044', // CIN ministeriale BDSR — verificato 2026-04-30. Denominazione BDSR: LA PORTA DEL LIDO.
+      cinHolder: null,
       type: {
         it: 'Appartamento in centro', en: 'Apartment in the centre',
         fr: 'Appartement au centre',  de: 'Wohnung im Zentrum'
@@ -444,13 +451,14 @@
         fr: 'Au cœur de la Riviera du Corail.',
         de: 'Im Herzen der Korallenriviera.'
       },
-      beds: 2, guests: 4, baths: 1, sqm: 70,
+      beds: 2, totalBeds: 4, guests: 6, baths: 1, sqm: 70,
       prices: { giugno: 600, luglio: 900, agosto: 1100, settembre: 550 },
       priceFrom: 550, cleaning: 0, deposit: 200,
-      rating: 4.90, reviews: 46, year_restored: null,
+      year_restored: null,
       tags: ['città', 'centro', 'balcone', 'catalana'],
-      // Coordinate APPROSSIMATE (centro Alghero) — aggiornare con indirizzo esatto in fase 2
-      geo: { lat: 40.5589, lng: 8.3197, zoom: 12 },
+      // Coordinate da Nominatim su Via Goceano 23, Alghero (2026-04-30)
+      geo: { lat: 40.5640468, lng: 8.3209460, zoom: 16 },
+      gmaps: 'https://www.google.com/maps/search/?api=1&query=Via+Goceano+23+Alghero',
       poi: [
         { lat: 40.5711, lng: 8.3303, name: 'Spiaggia del Lido',
           slug: 'spiaggia-del-lido',
@@ -583,16 +591,16 @@
         { it: 'TV Smart',               en: 'Smart TV',            fr: 'TV connectée',              de: 'Smart-TV' },
         { it: 'Balcone privato',        en: 'Private balcony',     fr: 'Balcon privé',              de: 'Privater Balkon' },
         { it: 'Ascensore',              en: 'Lift',                fr: 'Ascenseur',                 de: 'Aufzug' },
-        { it: 'Parcheggio condominiale', en: 'Shared parking',     fr: 'Stationnement commun',      de: 'Gemeinschaftsparkplatz' },
+        { it: 'Parcheggio gratuito su strada', en: 'Free on-street parking', fr: 'Stationnement gratuit en rue', de: 'Kostenlose Parkplätze auf der Straße' },
         { it: 'WiFi fibra',             en: 'Fibre WiFi',          fr: 'WiFi fibre',                de: 'Glasfaser-WLAN' },
         { it: 'Biancheria inclusa',     en: 'Linen included',      fr: 'Linge inclus',              de: 'Wäsche inklusive' },
         { it: 'Culla disponibile',      en: 'Cot available',       fr: 'Berceau disponible',        de: 'Babybett verfügbar' }
       ],
       story: {
-        it: "La Porta del Lido è in posizione centralissima, a dieci minuti a piedi dal Lido e a cinque dal centro storico catalano. L'edificio è dotato di ascensore e parcheggio condominiale. Dentro: un soggiorno ampio con cucina a vista completamente attrezzata, due camere da letto — una matrimoniale e una doppia — e un bagno con doccia. Il balcone dà su un cortile interno tranquillo. Dalla porta di casa si arriva a piedi alle mura medievali e ai bastioni sul mare, alle vie pedonali del centro vecchio, al porto turistico, alla Cattedrale. Con l'auto, in venti-quaranta minuti, ci sono le Grotte di Nettuno, Capo Caccia, il Parco di Porto Conte e le cantine di Vermentino.",
-        en: "La Porta del Lido is in a very central position, ten minutes on foot from the Lido and five from the Catalan old town. The building has a lift and shared parking. Inside: a spacious living room with a full open-plan kitchen, two bedrooms — a double and a twin — and a shower bathroom. The balcony looks onto a quiet inner courtyard. From the front door you reach, on foot, the medieval walls and the sea-facing bastions, the pedestrian streets of the old town, the marina and the cathedral. By car, in twenty to forty minutes, you reach the Grottoes of Neptune, Capo Caccia, the Porto Conte park and the Vermentino wineries.",
-        fr: "La Porta del Lido se trouve en position très centrale, à dix minutes à pied du Lido et à cinq du centre historique catalan. L'immeuble dispose d'un ascenseur et d'un parking de copropriété. À l'intérieur : un vaste séjour avec cuisine ouverte entièrement équipée, deux chambres — une double et une à deux lits — et une salle de bain avec douche. Le balcon donne sur une cour intérieure tranquille. Depuis la porte d'entrée, on rejoint à pied les remparts médiévaux et les bastions côté mer, les rues piétonnes de la vieille ville, le port de plaisance et la cathédrale. En voiture, en vingt à quarante minutes, on atteint les Grottes de Neptune, Capo Caccia, le parc de Porto Conte et les caves de Vermentino.",
-        de: 'La Porta del Lido liegt zentral, zehn Minuten zu Fuß vom Lido und fünf von der katalanischen Altstadt. Das Gebäude verfügt über einen Aufzug und einen gemeinschaftlichen Parkplatz. Innen: ein großzügiger Wohnraum mit voll ausgestatteter offener Küche, zwei Schlafzimmer — ein Doppel- und ein Zweibettzimmer — und ein Duschbad. Der Balkon geht auf einen ruhigen Innenhof. Von der Haustür erreicht man zu Fuß die mittelalterlichen Stadtmauern und die Meer-Bastionen, die Fußgängerstraßen der Altstadt, den Jachthafen und die Kathedrale. Mit dem Auto sind in zwanzig bis vierzig Minuten die Neptungrotten, Capo Caccia, der Porto-Conte-Park und die Vermentino-Weingüter erreichbar.'
+        it: "La Porta del Lido è in posizione centralissima, a dieci minuti a piedi dal Lido e a cinque dal centro storico catalano. L'edificio è dotato di ascensore; parcheggio gratuito su strada nelle vie circostanti. Dentro: un soggiorno ampio con cucina a vista completamente attrezzata, due camere da letto — una matrimoniale e una doppia — per un totale di quattro posti letto, e un bagno con doccia. Il balcone dà su un cortile interno tranquillo. Fino a sei ospiti. Dalla porta di casa si arriva a piedi alle mura medievali e ai bastioni sul mare, alle vie pedonali del centro vecchio, al porto turistico, alla Cattedrale. Con l'auto, in venti-quaranta minuti, ci sono le Grotte di Nettuno, Capo Caccia, il Parco di Porto Conte e le cantine di Vermentino.",
+        en: "La Porta del Lido is in a very central position, ten minutes on foot from the Lido and five from the Catalan old town. The building has a lift; free on-street parking in the surrounding roads. Inside: a spacious living room with a full open-plan kitchen, two bedrooms — a double and a twin — with four beds in total, and a shower bathroom. The balcony looks onto a quiet inner courtyard. Sleeps up to six. From the front door you reach, on foot, the medieval walls and the sea-facing bastions, the pedestrian streets of the old town, the marina and the cathedral. By car, in twenty to forty minutes, you reach the Grottoes of Neptune, Capo Caccia, the Porto Conte park and the Vermentino wineries.",
+        fr: "La Porta del Lido se trouve en position très centrale, à dix minutes à pied du Lido et à cinq du centre historique catalan. L'immeuble dispose d'un ascenseur ; stationnement gratuit en rue dans les voies environnantes. À l'intérieur : un vaste séjour avec cuisine ouverte entièrement équipée, deux chambres — une double et une à deux lits — pour quatre couchages au total, et une salle de bain avec douche. Le balcon donne sur une cour intérieure tranquille. Jusqu'à six personnes. Depuis la porte d'entrée, on rejoint à pied les remparts médiévaux et les bastions côté mer, les rues piétonnes de la vieille ville, le port de plaisance et la cathédrale. En voiture, en vingt à quarante minutes, on atteint les Grottes de Neptune, Capo Caccia, le parc de Porto Conte et les caves de Vermentino.",
+        de: 'La Porta del Lido liegt zentral, zehn Minuten zu Fuß vom Lido und fünf von der katalanischen Altstadt. Das Gebäude verfügt über einen Aufzug; kostenlose Parkplätze auf der Straße in den umliegenden Gassen. Innen: ein großzügiger Wohnraum mit voll ausgestatteter offener Küche, zwei Schlafzimmer — ein Doppel- und ein Zweibettzimmer — mit insgesamt vier Schlafplätzen, und ein Duschbad. Der Balkon geht auf einen ruhigen Innenhof. Bis zu sechs Gäste. Von der Haustür erreicht man zu Fuß die mittelalterlichen Stadtmauern und die Meer-Bastionen, die Fußgängerstraßen der Altstadt, den Jachthafen und die Kathedrale. Mit dem Auto sind in zwanzig bis vierzig Minuten die Neptungrotten, Capo Caccia, der Porto-Conte-Park und die Vermentino-Weingüter erreichbar.'
       },
       bestFor: [
         { it: 'Coppie',         en: 'Couples',   fr: 'Couples',     de: 'Paare' },
@@ -993,16 +1001,16 @@
         fr: 'Stationnement', de: 'Parkplatz'
       },
       one_line: {
-        it: 'Privato a Stintino, condominiale ad Alghero.',
-        en: 'Private in Stintino, shared in Alghero.',
-        fr: 'Privé à Stintino, commun à Alghero.',
-        de: 'Privat in Stintino, gemeinschaftlich in Alghero.'
+        it: 'Privato a Stintino, gratuito su strada ad Alghero.',
+        en: 'Private in Stintino, free on the street in Alghero.',
+        fr: 'Privé à Stintino, gratuit en rue à Alghero.',
+        de: 'Privat in Stintino, kostenlos auf der Straße in Alghero.'
       },
       body: {
-        it: "A Stintino trovate posto dentro il giardino della villa. Ad Alghero il palazzo ha un'area condominiale a pochi metri dall'ingresso. In entrambi i casi l'auto la scaricate solo una volta.",
-        en: "In Stintino you park inside the villa's garden. In Alghero the building has a shared lot a few metres from the entrance. Either way, you unload the car only once.",
-        fr: "À Stintino, on se gare dans le jardin de la villa. À Alghero, l'immeuble a un espace commun à quelques mètres de l'entrée. Dans les deux cas, on décharge la voiture une seule fois.",
-        de: 'In Stintino parken Sie im Garten der Villa. In Alghero gibt es einen gemeinschaftlichen Stellplatz wenige Meter vom Eingang. In beiden Fällen laden Sie das Auto nur einmal aus.'
+        it: "A Stintino trovate posto dentro il giardino della villa. Ad Alghero parcheggio gratuito su strada nelle vie attorno al palazzo, di solito senza problemi anche in alta stagione.",
+        en: "In Stintino you park inside the villa's garden. In Alghero there's free on-street parking in the roads around the building — usually no trouble finding a spot even in high season.",
+        fr: "À Stintino, on se gare dans le jardin de la villa. À Alghero, stationnement gratuit en rue dans les voies autour de l'immeuble — généralement sans souci même en haute saison.",
+        de: 'In Stintino parken Sie im Garten der Villa. In Alghero gibt es kostenlose Parkplätze auf der Straße in den umliegenden Gassen — auch in der Hochsaison meist problemlos.'
       }
     },
     {
@@ -1044,40 +1052,6 @@
         fr: "Lit parapluie et chaise haute disponibles dans les deux maisons. Dites-nous l'âge de l'enfant à la réservation et nous les trouverez dans la chambre à l'arrivée.",
         de: 'Reisebett und Hochstuhl in beiden Häusern verfügbar. Teilen Sie uns bei der Buchung das Alter des Kindes mit — sie stehen bei Ankunft bereit.'
       }
-    }
-  ];
-
-  // Testimonials: 6 real reviews from V1 (3 per house). Format: author · city · casa
-  var testimonials = [
-    {
-      lang: 'it',
-      quote: 'Villa splendida, esattamente come nelle foto. A 5 minuti dalla Pelosa — impagabile. Fabio è gentilissimo e sempre disponibile. Torneremo sicuramente.',
-      author: 'Marco R.', city: 'Milano', casa: 'Villa Stintino', houseId: 'villa-stintino'
-    },
-    {
-      lang: 'fr',
-      quote: 'Séjour parfait. La villa est très agréable, calme et bien équipée. La plage de La Pelosa est tout simplement magique. On recommande vivement.',
-      author: 'Sophie L.', city: 'Lyon', casa: 'Villa Stintino', houseId: 'villa-stintino'
-    },
-    {
-      lang: 'de',
-      quote: 'Traumurlaub in Stintino. Das Haus ist top ausgestattet, der Garten wunderschön. La Pelosa ist wirklich einer der schönsten Strände Europas.',
-      author: 'Klaus M.', city: 'München', casa: 'Villa Stintino', houseId: 'villa-stintino'
-    },
-    {
-      lang: 'it',
-      quote: 'Appartamento pulitissimo in posizione perfetta. In dieci minuti a piedi si raggiungono spiaggia e centro storico. Fabio risponde sempre subito.',
-      author: 'Anna B.', city: 'Roma', casa: 'La Porta del Lido', houseId: 'appartamento-alghero'
-    },
-    {
-      lang: 'en',
-      quote: 'Great apartment, very clean and well-equipped. The location is unbeatable — close to the beach and the gorgeous old town. Will definitely return.',
-      author: 'James T.', city: 'London', casa: 'La Porta del Lido', houseId: 'appartamento-alghero'
-    },
-    {
-      lang: 'fr',
-      quote: 'Appartement charmant et très bien situé. Alghero est une ville magnifique. Le propriétaire est très réactif et de bon conseil.',
-      author: 'Céline D.', city: 'Paris', casa: 'La Porta del Lido', houseId: 'appartamento-alghero'
     }
   ];
 
@@ -2968,7 +2942,6 @@
   window.FH_DATA = {
     houses: houses,
     included: included,
-    testimonials: testimonials,
     tickerWords: tickerWords,
     faqs: faqs,
     luoghi: luoghi

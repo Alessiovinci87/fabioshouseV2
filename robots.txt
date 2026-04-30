@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /dev-server.py
 
-Sitemap: https://www.fabioshouse.it/sitemap.xml
+Sitemap: https://www.leportedisardegna.com/sitemap.xml

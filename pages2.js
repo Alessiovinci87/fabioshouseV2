@@ -1,5 +1,5 @@
 /* ============================================================
-   FabioSHouse v2 — PAGES 2
+   Le Porte di Sardegna v2 — PAGES 2
    Detail, Cosa è incluso, Chi siamo, Contatti, 404
    ============================================================ */
 
@@ -179,6 +179,7 @@
             '</div>' +
             '<div class="loc-side">' +
               '<span class="loc-txt">' + esc(h.location) + ', ' + esc(h.region) + '</span>' +
+              (h.address ? '<span class="loc-addr mono">' + esc(h.address) + '</span>' : '') +
               '<button type="button" class="share-btn" data-share-house="' + esc(h.id) + '" aria-label="' + esc(t('det.share')) + '">' +
                 '<span aria-hidden="true">↗</span> <span class="share-lbl">' + esc(t('det.share')) + '</span>' +
               '</button>' +
@@ -193,10 +194,9 @@
           '<div class="det-stats" data-reveal>' +
             '<div class="cell"><span class="big">' + h.guests + '</span>' + t('det.stats.guests') + '</div>' +
             '<div class="cell"><span class="big">' + h.beds   + '</span>' + t('det.stats.beds') + '</div>' +
+            '<div class="cell"><span class="big">' + h.totalBeds + '</span>' + t('det.stats.totalBeds') + '</div>' +
             '<div class="cell"><span class="big">' + h.baths  + '</span>' + t('det.stats.baths') + '</div>' +
             '<div class="cell"><span class="big">' + h.sqm    + '</span>' + t('det.stats.sqm') + '</div>' +
-            '<div class="cell"><span class="big">' + h.rating.toFixed(2) + ' ★</span>' + t('det.stats.rating') + '</div>' +
-            '<div class="cell"><span class="big">' + h.reviews + '</span>' + t('det.stats.reviews') + '</div>' +
           '</div>' +
         '</div>' +
       '</section>' +
@@ -224,7 +224,6 @@
                 '<span class="p" data-bk-price>' + priceFmt(defaultPrice) + '</span>' +
                 '<small>' + t('det.book.perweek') + '</small>' +
               '</div>' +
-              '<div class="rating"><span class="star">★</span> ' + h.rating.toFixed(2) + ' · ' + h.reviews + ' ' + t('det.book.reviews') + '</div>' +
               '<div class="season-row" role="tablist" aria-label="' + esc(t('det.book.season_aria')) + '">' + chipsHtml + '</div>' +
               '<div class="guests"><strong>' + t('det.book.guests') + '</strong> · ' + t('det.book.guests_up_to') + ' ' + h.guests + '</div>' +
               '<div class="breakdown">' +
@@ -359,6 +358,7 @@
             '</div>' +
             '<div class="det-map-wrap" data-reveal>' +
               '<div id="det-map" data-map-house="' + esc(h.id) + '" role="application" aria-label="' + esc(t('det.map.lede')) + '"></div>' +
+              (h.gmaps ? '<a class="det-map-cta" href="' + esc(h.gmaps) + '" target="_blank" rel="noopener">' + t('det.map.open_gmaps') + ' →</a>' : '') +
               '<p class="det-map-note mono">' + t('det.map.approx') + '</p>' +
             '</div>' +
           '</div>' +
@@ -513,7 +513,7 @@
           '<aside class="cnt-side" data-reveal>' +
             '<div class="block">' +
               '<p class="eyebrow">' + t('contact.side.email') + '</p>' +
-              '<p><a class="email-copy" href="mailto:info@fabioshouse.it" data-copy-email="info@fabioshouse.it" title="' + esc(t('contact.email.copy')) + '">info@fabioshouse.it</a></p>' +
+              '<p><a class="email-copy" href="mailto:cosmoalghero@gmail.com" data-copy-email="cosmoalghero@gmail.com" title="' + esc(t('contact.email.copy')) + '">cosmoalghero@gmail.com</a></p>' +
               '<p class="sub">' + t('contact.side.email_sub') + '</p>' +
             '</div>' +
             '<div class="block">' +
@@ -531,7 +531,7 @@
             '<div class="row"><label>' + t('contact.form.name') + '</label><input type="text" name="name" required /></div>' +
             '<div class="row"><label>' + t('contact.side.email') + '</label><input type="email" name="email" required /></div>' +
             '<div class="row"><label>' + t('contact.form.phone') + '</label><input type="tel" name="phone" /></div>' +
-            '<div class="row"><label>' + t('contact.form.guests') + '</label><input type="number" name="guests" min="1" max="6" /></div>' +
+            '<div class="row"><label>' + t('contact.form.guests') + '</label><input type="number" name="guests" min="1" max="8" /></div>' +
             '<div class="row wide"><label>' + t('contact.form.house') + '</label>' +
               '<select name="house">' +
                 '<option value="">' + t('contact.form.undecided') + '</option>' +
@@ -543,6 +543,7 @@
             '<div class="row"><label>' + t('contact.form.duration') + '</label><input type="text" name="duration" placeholder="' + esc(t('contact.form.duration_ph')) + '" /></div>' +
             '<div class="row wide"><label>' + t('contact.form.message') + '</label><textarea name="message" placeholder="' + esc(t('contact.form.message_ph')) + '"></textarea></div>' +
             '<div class="submit"><button type="submit" class="btn-primary">' + t('contact.form.submit') + '</button>' +
+            '<p class="cnt-privacy">' + t('contact.form.privacy_notice') + ' <a href="privacy.html" target="_blank" rel="noopener">' + t('contact.form.privacy_link') + '</a>.</p>' +
             '<p class="nota mono" id="cnt-ok" style="margin-top:14px; color: var(--olive); min-height:18px;"></p></div>' +
           '</form>' +
         '</div>' +

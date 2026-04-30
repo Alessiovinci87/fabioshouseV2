@@ -1,5 +1,5 @@
 /* ============================================================
-   FabioSHouse v2 — PAGES (home + case list)
+   Le Porte di Sardegna v2 — PAGES (home + case list)
    Each page function returns an HTML string to be mounted in #view
    ============================================================ */
 
@@ -47,16 +47,20 @@
     }).join('');
 
     // property grid (2 cards, custom spans via .pc-1 / .pc-2)
+    var INTRO_VIDEO = {
+      'villa-stintino':        'video/la-pelosa-stintino.mp4',
+      'appartamento-alghero':  'video/porta-del-lido-alghero.mp4'
+    };
     var propHtml = D.houses.map(function (h, i) {
-      var no = String(i + 1).padStart(2, '0');
+      var introAttr = INTRO_VIDEO[h.id] ? ' data-intro-video="' + esc(INTRO_VIDEO[h.id]) + '"' : '';
       return (
-        '<a href="#/case/' + esc(h.id) + '" class="prop-card pc-' + (i + 1) + '" data-reveal data-delay="' + ((i % 4) + 1) + '">' +
-          '<div class="tag-row"><span class="no">№ ' + no + '</span><span class="region">' + esc(h.location) + '</span></div>' +
+        '<a href="#/case/' + esc(h.id) + '" class="prop-card pc-' + (i + 1) + '"' + introAttr + ' data-reveal data-delay="' + ((i % 4) + 1) + '">' +
           '<div class="prop-frame"><img src="' + esc(h.hero) + '" alt="' + esc(h.name) + '" loading="lazy" /></div>' +
           '<div class="prop-meta">' +
-            '<h3>' + emFirstWord(h.name) + '</h3>' +
+            '<h3>' + esc(h.name) + '</h3>' +
+            '<span class="loc">' + esc(h.location) + '</span>' +
             '<span class="price">' + t('home.prop.from') + ' ' + priceFmt(h.priceFrom) + ' ' + t('home.prop.per_week') + '</span>' +
-            '<span class="loc">' + esc(h.location) + ' · ' + esc(h.type) + '</span>' +
+            '<span class="prop-cta">' + t('home.prop.cta_open_door') + '</span>' +
           '</div>' +
         '</a>'
       );
@@ -76,33 +80,6 @@
           '<h4>' + t(p.hKey) + '</h4>' +
           '<p>' + t(p.tKey) + '</p>' +
         '</div>'
-      );
-    }).join('');
-
-    // testimonials — privilegia la lingua attiva, poi completa con altre + mix per casa
-    var curLang = (window.FH_I18N && window.FH_I18N.current) || 'it';
-    var inLang  = D.testimonials.filter(function (x) { return x.lang === curLang; });
-    var other   = D.testimonials.filter(function (x) { return x.lang !== curLang; });
-    // dedup per casa se possibile: una per Stintino, una per Alghero, più libera
-    function pickOnePerHouse(list) {
-      var seen = {}, out = [];
-      list.forEach(function (x) { if (!seen[x.houseId]) { seen[x.houseId] = 1; out.push(x); } });
-      return out;
-    }
-    var combined = pickOnePerHouse(inLang).concat(pickOnePerHouse(other)).concat(inLang, other);
-    // dedup finale per author + limita a 3
-    var used = {};
-    var picks = [];
-    combined.forEach(function (x) {
-      var key = x.author + '·' + x.city;
-      if (!used[key] && picks.length < 3) { used[key] = 1; picks.push(x); }
-    });
-    var quotesHtml = picks.map(function (q) {
-      return (
-        '<figure data-reveal>' +
-          '<blockquote>' + esc(q.quote) + '</blockquote>' +
-          '<figcaption>' + esc(q.author) + ' — ' + esc(q.city) + ', ' + t('home.sect3.by') + ' <em>' + esc(q.casa) + '</em></figcaption>' +
-        '</figure>'
       );
     }).join('');
 
@@ -133,7 +110,6 @@
           '<div class="hero-stats" data-reveal>' +
             '<div class="stat">2 <small>' + t('home.stats.houses') + '</small></div>' +
             '<div class="stat">' + t('home.stats.season_val') + ' <small>' + t('home.stats.season_label') + '</small></div>' +
-            '<div class="stat">4.92 ★ <small>' + t('home.stats.rating') + '</small></div>' +
             '<div class="stat">&lt; 24h <small>' + t('home.stats.response') + '</small></div>' +
             '<a href="#/case" class="btn-primary">' + t('home.stats.cta') + '</a>' +
           '</div>' +
@@ -181,17 +157,6 @@
         '</div>' +
       '</section>' +
 
-      '<section class="sect">' +
-        '<div class="container">' +
-          '<div class="sect-head" data-reveal>' +
-            '<p class="eyebrow">' + t('home.sect3.eyebrow') + '</p>' +
-            '<h2>' + t('home.sect3.h2') + '</h2>' +
-            '<p class="side-note">' + t('home.sect3.lede') + '</p>' +
-          '</div>' +
-          '<div class="quotes">' + quotesHtml + '</div>' +
-        '</div>' +
-      '</section>' +
-
       '<section class="final-cta">' +
         '<div class="container">' +
           '<p class="eyebrow" style="color: oklch(72% 0.04 75);" data-reveal>' + t('home.final.eyebrow') + '</p>' +
@@ -222,7 +187,7 @@
       var alt = i % 2 === 1 ? ' alt' : '';
       // For the list we filter on location (not region, all are Sardegna)
       return (
-        '<article class="case-row' + alt + '" data-region="' + esc(h.location) + '" data-price="' + h.priceFrom + '" data-rating="' + h.rating + '" data-guests="' + h.guests + '" data-featured-order="' + i + '" data-reveal>' +
+        '<article class="case-row' + alt + '" data-region="' + esc(h.location) + '" data-price="' + h.priceFrom + '" data-guests="' + h.guests + '" data-featured-order="' + i + '" data-reveal>' +
           '<div class="cr-media">' +
             '<a href="#/case/' + esc(h.id) + '"><img src="' + esc(h.hero) + '" alt="' + esc(t(h.name)) + '" loading="lazy" /></a>' +
           '</div>' +

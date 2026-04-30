@@ -1,11 +1,11 @@
-# FabioSHouse v2
+# Le Porte di Sardegna v2
 
 Sito vetrina statico per due case vacanze in Sardegna, gestite da una famiglia:
 
-- **Villa Stintino** — villa con giardino, 6 ospiti, a 5 min dalla Pelosa
+- **La Mimosa** — villa con giardino, 6 ospiti, a 5 min dalla Pelosa
 - **La Porta del Lido** — appartamento nel centro catalano di Alghero, 4 ospiti
 
-Dominio: `www.fabioshouse.it`
+Dominio: `www.leportedisardegna.com`
 
 ## Stack
 
@@ -37,7 +37,7 @@ Puro HTML / CSS / JS — **nessun framework, nessun build step**.
 
 ## SEO
 
-- 9 blocchi **JSON-LD**: WebSite, Organization, LodgingBusiness×2 (Villa Stintino + La Porta del Lido, con `aggregateRating`, `amenityFeature`, `geo`), VideoObject, ItemList, BreadcrumbList×2, FAQPage
+- 9 blocchi **JSON-LD**: WebSite, Organization, LodgingBusiness×2 (La Mimosa + La Porta del Lido, con `aggregateRating`, `amenityFeature`, `geo`), VideoObject, ItemList, BreadcrumbList×2, FAQPage
 - Meta **title + description** dinamici per-route (aggiornati da `applyRouteMeta` in `app.js`)
 - Open Graph + Twitter Card (con `data-i18n-attr` → seguono la lingua)
 - `hreflang` IT/EN/FR/DE + `x-default`
@@ -58,7 +58,7 @@ Apri `http://localhost:8000/` — basta F5 per vedere le modifiche.
 ## Struttura directory
 
 ```
-FabioSHouse-v2/
+Le Porte di Sardegna-v2/
 ├── index.html, privacy.html, 404.html
 ├── manifest.json, sitemap.xml, robots.txt
 ├── styles.css

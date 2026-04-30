@@ -1,5 +1,5 @@
 /* ============================================================
-   FabioSHouse v2 — i18n
+   Le Porte di Sardegna v2 — i18n
    - Rileva lingua da ?lang=, localStorage, navigator, fallback 'it'
    - Persiste scelta in localStorage + URL
    - Aggiorna <html lang> dinamicamente
@@ -162,6 +162,7 @@
     // -------- home: prop-card micro labels --------
     'home.prop.from':      { it: 'da',           en: 'from',     fr: 'à partir de', de: 'ab' },
     'home.prop.per_week':  { it: '/ settimana',  en: '/ week',   fr: '/ semaine',   de: '/ Woche' },
+    'home.prop.cta_open_door': { it: 'Apri la porta', en: 'Open the door', fr: 'Ouvrir la porte', de: 'Tür öffnen' },
 
     // -------- home: sect3 "Testimonial" --------
     'home.sect3.eyebrow': { it: '03 — Testimonial', en: '03 — Guests say', fr: '03 — Témoignages', de: '03 — Gästestimmen' },
@@ -194,10 +195,10 @@
       de: 'Schreiben Sie uns, wann immer Sie möchten. Antwort innerhalb von vierundzwanzig Stunden — auf Italienisch, Englisch, Französisch oder Deutsch. Keine fingierten Angebotsformulare.'
     },
     'home.final.cta': {
-      it: 'Scrivere a FabioSHouse →',
-      en: 'Write to FabioSHouse →',
-      fr: 'Écrire à FabioSHouse →',
-      de: 'An FabioSHouse schreiben →'
+      it: 'Scrivere a Le Porte di Sardegna →',
+      en: 'Write to Le Porte di Sardegna →',
+      fr: 'Écrire à Le Porte di Sardegna →',
+      de: 'An Le Porte di Sardegna schreiben →'
     },
 
     // -------- case list --------
@@ -223,9 +224,10 @@
 
     // -------- detail (hero, sections, gallery, tour, guide, book-card) --------
     'det.gallery_cta':  { it: 'Vedi galleria', en: 'View gallery', fr: 'Voir la galerie', de: 'Galerie ansehen' },
-    'det.stats.guests':  { it: 'Ospiti',        en: 'Guests',       fr: 'Hôtes',           de: 'Gäste' },
-    'det.stats.beds':    { it: 'Camere',        en: 'Bedrooms',     fr: 'Chambres',        de: 'Zimmer' },
-    'det.stats.baths':   { it: 'Bagni',         en: 'Bathrooms',    fr: 'Salles de bain',  de: 'Bäder' },
+    'det.stats.guests':    { it: 'Ospiti',        en: 'Guests',       fr: 'Hôtes',           de: 'Gäste' },
+    'det.stats.beds':      { it: 'Camere',        en: 'Bedrooms',     fr: 'Chambres',        de: 'Zimmer' },
+    'det.stats.totalBeds': { it: 'Letti',         en: 'Beds',         fr: 'Couchages',       de: 'Schlafplätze' },
+    'det.stats.baths':     { it: 'Bagni',         en: 'Bathrooms',    fr: 'Salles de bain',  de: 'Bäder' },
     'det.stats.sqm':     { it: 'M²',            en: 'sq m',         fr: 'm²',              de: 'm²' },
     'det.stats.rating':  { it: 'Rating',        en: 'Rating',       fr: 'Note',            de: 'Bewertung' },
     'det.stats.reviews': { it: 'Recensioni',    en: 'Reviews',      fr: 'Avis',            de: 'Bewertungen' },
@@ -350,6 +352,7 @@
 
     'ui.back_to_top': { it: 'Torna su', en: 'Back to top', fr: 'Retour en haut', de: 'Nach oben' },
     'ui.wa.label':    { it: 'WhatsApp', en: 'WhatsApp',  fr: 'WhatsApp',       de: 'WhatsApp' },
+    'ui.hover_cue_open': { it: 'Apri →', en: 'Open →', fr: 'Ouvrir →', de: 'Öffnen →' },
     'ui.wa.msg_home': {
       it: "Buongiorno, vorrei informazioni sulle vostre case in Sardegna.",
       en: 'Hello, I\'d like some information about your houses in Sardinia.',
@@ -357,10 +360,10 @@
       de: 'Guten Tag, ich hätte gerne Informationen zu Ihren Häusern auf Sardinien.'
     },
     'ui.wa.msg_stintino': {
-      it: "Buongiorno, vorrei informazioni su Villa Stintino.",
-      en: 'Hello, I\'d like information about Villa Stintino.',
-      fr: 'Bonjour, je souhaiterais des informations sur Villa Stintino.',
-      de: 'Guten Tag, ich hätte gerne Informationen zu Villa Stintino.'
+      it: "Buongiorno, vorrei informazioni su Villa La Mimosa.",
+      en: 'Hello, I\'d like information about Villa La Mimosa.',
+      fr: 'Bonjour, je souhaiterais des informations sur Villa La Mimosa.',
+      de: 'Guten Tag, ich hätte gerne Informationen zu Villa La Mimosa.'
     },
     'ui.wa.msg_alghero': {
       it: "Buongiorno, vorrei informazioni su La Porta del Lido ad Alghero.",
@@ -391,12 +394,13 @@
     },
     'det.map.here': { it: 'Siamo qui', en: 'We are here', fr: 'Nous sommes ici', de: 'Wir sind hier' },
     'det.map.approx': {
-      it: 'Posizione indicativa. L\'indirizzo esatto viene comunicato in fase di prenotazione.',
-      en: "Approximate location. The exact address is shared when you book.",
-      fr: "Emplacement approximatif. L'adresse exacte est communiquée au moment de la réservation.",
-      de: 'Ungefähre Lage. Die genaue Adresse wird bei der Buchung mitgeteilt.'
+      it: 'Pin sulla mappa indicativo. L\'indirizzo esatto è riportato in alto.',
+      en: 'The map pin is approximate. The exact address is shown above.',
+      fr: "L'épingle sur la carte est indicative. L'adresse exacte figure plus haut.",
+      de: 'Pin auf der Karte ist nur ungefähr. Die genaue Adresse steht oben.'
     },
     'det.map.directions': { it: 'Indicazioni', en: 'Directions', fr: 'Itinéraire', de: 'Wegbeschreibung' },
+    'det.map.open_gmaps': { it: 'Apri in Google Maps', en: 'Open in Google Maps', fr: 'Ouvrir dans Google Maps', de: 'In Google Maps öffnen' },
     'det.map.wiki':       { it: 'Wikipedia', en: 'Wikipedia', fr: 'Wikipédia', de: 'Wikipedia' },
     'det.share':           { it: 'Condividi',        en: 'Share',            fr: 'Partager',         de: 'Teilen' },
     'det.share.copied':    { it: 'Link copiato',     en: 'Link copied',      fr: 'Lien copié',       de: 'Link kopiert' },
@@ -526,6 +530,18 @@
       de: 'Anlass, Gäste, besondere Bedürfnisse, worauf Sie Wert legen…'
     },
     'contact.form.submit':     { it: 'Inviare la richiesta →', en: 'Send request →', fr: 'Envoyer la demande →', de: 'Anfrage senden →' },
+    'contact.form.privacy_notice': {
+      it: "Inviando il modulo dichiari di aver letto l'",
+      en: 'By submitting this form you confirm you have read the ',
+      fr: "En envoyant ce formulaire, vous déclarez avoir lu l'",
+      de: 'Durch das Absenden bestätigen Sie, die '
+    },
+    'contact.form.privacy_link': {
+      it: 'informativa sul trattamento dei dati',
+      en: 'privacy policy',
+      fr: 'politique de confidentialité',
+      de: 'Datenschutzerklärung gelesen zu haben'
+    },
     'contact.faq.eyebrow':     { it: 'FAQ', en: 'FAQ', fr: 'FAQ', de: 'FAQ' },
     'contact.faq.h2': {
       it: 'Le domande <em>ricorrenti</em>.',
@@ -567,31 +583,31 @@
     },
     'priv.lang_note': {
       it: '',
-      en: 'The authoritative version of this policy is in Italian. The full legal text is kept in Italian for compliance reasons — if anything is unclear, write to info@fabioshouse.it.',
-      fr: 'La version faisant foi de cette politique est en italien. Le texte juridique complet est conservé en italien pour des raisons de conformité — pour toute question, écrivez à info@fabioshouse.it.',
-      de: 'Die verbindliche Fassung dieser Richtlinie ist auf Italienisch. Der vollständige Rechtstext wird aus Compliance-Gründen auf Italienisch gehalten — bei Fragen schreiben Sie an info@fabioshouse.it.'
+      en: 'The authoritative version of this policy is in Italian. The full legal text is kept in Italian for compliance reasons — if anything is unclear, write to cosmoalghero@gmail.com.',
+      fr: 'La version faisant foi de cette politique est en italien. Le texte juridique complet est conservé en italien pour des raisons de conformité — pour toute question, écrivez à cosmoalghero@gmail.com.',
+      de: 'Die verbindliche Fassung dieser Richtlinie ist auf Italienisch. Der vollständige Rechtstext wird aus Compliance-Gründen auf Italienisch gehalten — bei Fragen schreiben Sie an cosmoalghero@gmail.com.'
     },
     'priv.back': { it: '← Torna alla home', en: '← Back to home', fr: "← Retour à l'accueil", de: '← Zur Startseite' },
 
     // -------- SEO meta (per pagina, per lingua) --------
     // Home (index.html)
     'meta.title': {
-      it: 'FabioSHouse — Due case in Sardegna · Stintino e Alghero',
-      en: 'FabioSHouse — Two houses in Sardinia · Stintino and Alghero',
-      fr: 'FabioSHouse — Deux maisons en Sardaigne · Stintino et Alghero',
-      de: 'FabioSHouse — Zwei Häuser auf Sardinien · Stintino und Alghero'
+      it: 'Le Porte di Sardegna — Due case in Sardegna · Stintino e Alghero',
+      en: 'Le Porte di Sardegna — Two houses in Sardinia · Stintino and Alghero',
+      fr: 'Le Porte di Sardegna — Deux maisons en Sardaigne · Stintino et Alghero',
+      de: 'Le Porte di Sardegna — Zwei Häuser auf Sardinien · Stintino und Alghero'
     },
     'meta.description': {
-      it: "Due case vacanze in Sardegna, gestite da una famiglia. Villa Stintino a cinque minuti dalla Pelosa, La Porta del Lido nel centro catalano di Alghero. Giugno–Settembre.",
-      en: 'Two holiday houses in Sardinia, run by a family. Villa Stintino five minutes from La Pelosa, La Porta del Lido in the Catalan heart of Alghero. June–September.',
-      fr: "Deux maisons de vacances en Sardaigne, tenues par une famille. Villa Stintino à cinq minutes de La Pelosa, La Porta del Lido au cœur catalan d'Alghero. Juin–Septembre.",
-      de: 'Zwei Ferienhäuser auf Sardinien, geführt von einer Familie. Villa Stintino fünf Minuten von La Pelosa, La Porta del Lido im katalanischen Zentrum von Alghero. Juni–September.'
+      it: "Due case vacanze in Sardegna, gestite da una famiglia. Villa La Mimosa a cinque minuti dalla Pelosa, La Porta del Lido nel centro catalano di Alghero. Giugno–Settembre.",
+      en: 'Two holiday houses in Sardinia, run by a family. Villa La Mimosa five minutes from La Pelosa, La Porta del Lido in the Catalan heart of Alghero. June–September.',
+      fr: "Deux maisons de vacances en Sardaigne, tenues par une famille. Villa La Mimosa à cinq minutes de La Pelosa, La Porta del Lido au cœur catalan d'Alghero. Juin–Septembre.",
+      de: 'Zwei Ferienhäuser auf Sardinien, geführt von einer Familie. Villa La Mimosa fünf Minuten von La Pelosa, La Porta del Lido im katalanischen Zentrum von Alghero. Juni–September.'
     },
     'meta.og.title': {
-      it: 'FabioSHouse — Due case in Sardegna · Stintino e Alghero',
-      en: 'FabioSHouse — Two houses in Sardinia · Stintino and Alghero',
-      fr: 'FabioSHouse — Deux maisons en Sardaigne · Stintino et Alghero',
-      de: 'FabioSHouse — Zwei Häuser auf Sardinien · Stintino und Alghero'
+      it: 'Le Porte di Sardegna — Due case in Sardegna · Stintino e Alghero',
+      en: 'Le Porte di Sardegna — Two houses in Sardinia · Stintino and Alghero',
+      fr: 'Le Porte di Sardegna — Deux maisons en Sardaigne · Stintino et Alghero',
+      de: 'Le Porte di Sardegna — Zwei Häuser auf Sardinien · Stintino und Alghero'
     },
     'meta.og.description': {
       it: 'Una villa a cinque minuti dalla Pelosa, un appartamento nel centro catalano di Alghero. Gestite direttamente, senza intermediari. Giugno–Settembre.',
@@ -609,38 +625,38 @@
       it: 'it_IT', en: 'en_GB', fr: 'fr_FR', de: 'de_DE'
     },
     'meta.twitter.title': {
-      it: 'FabioSHouse — Due case in Sardegna',
-      en: 'FabioSHouse — Two houses in Sardinia',
-      fr: 'FabioSHouse — Deux maisons en Sardaigne',
-      de: 'FabioSHouse — Zwei Häuser auf Sardinien'
+      it: 'Le Porte di Sardegna — Due case in Sardegna',
+      en: 'Le Porte di Sardegna — Two houses in Sardinia',
+      fr: 'Le Porte di Sardegna — Deux maisons en Sardaigne',
+      de: 'Le Porte di Sardegna — Zwei Häuser auf Sardinien'
     },
     'meta.twitter.description': {
-      it: 'Villa Stintino a cinque minuti dalla Pelosa, La Porta del Lido nel centro catalano di Alghero. Due case, una famiglia.',
-      en: 'Villa Stintino five minutes from La Pelosa, La Porta del Lido in the Catalan heart of Alghero. Two houses, one family.',
-      fr: "Villa Stintino à cinq minutes de La Pelosa, La Porta del Lido au cœur catalan d'Alghero. Deux maisons, une famille.",
-      de: 'Villa Stintino fünf Minuten von La Pelosa, La Porta del Lido im katalanischen Zentrum von Alghero. Zwei Häuser, eine Familie.'
+      it: 'Villa La Mimosa a cinque minuti dalla Pelosa, La Porta del Lido nel centro catalano di Alghero. Due case, una famiglia.',
+      en: 'Villa La Mimosa five minutes from La Pelosa, La Porta del Lido in the Catalan heart of Alghero. Two houses, one family.',
+      fr: "Villa La Mimosa à cinq minutes de La Pelosa, La Porta del Lido au cœur catalan d'Alghero. Deux maisons, une famille.",
+      de: 'Villa La Mimosa fünf Minuten von La Pelosa, La Porta del Lido im katalanischen Zentrum von Alghero. Zwei Häuser, eine Familie.'
     },
 
     // Privacy (privacy.html)
     'meta.priv.title': {
-      it: 'Privacy & Cookie Policy | FabioSHouse',
-      en: 'Privacy & Cookie Policy | FabioSHouse',
-      fr: 'Politique de Confidentialité & Cookies | FabioSHouse',
-      de: 'Datenschutz & Cookie-Richtlinie | FabioSHouse'
+      it: 'Privacy & Cookie Policy | Le Porte di Sardegna',
+      en: 'Privacy & Cookie Policy | Le Porte di Sardegna',
+      fr: 'Politique de Confidentialité & Cookies | Le Porte di Sardegna',
+      de: 'Datenschutz & Cookie-Richtlinie | Le Porte di Sardegna'
     },
     'meta.priv.description': {
-      it: "Informativa sulla privacy e sulla gestione dei cookie del sito FabioSHouse — affitti case vacanze in Sardegna.",
-      en: 'Privacy and cookie policy for the FabioSHouse website — holiday rentals in Sardinia.',
-      fr: "Politique de confidentialité et de cookies du site FabioSHouse — locations de vacances en Sardaigne.",
-      de: 'Datenschutz- und Cookie-Richtlinie der FabioSHouse-Website — Ferienvermietungen auf Sardinien.'
+      it: "Informativa sulla privacy e sulla gestione dei cookie del sito Le Porte di Sardegna — affitti case vacanze in Sardegna.",
+      en: 'Privacy and cookie policy for the Le Porte di Sardegna website — holiday rentals in Sardinia.',
+      fr: "Politique de confidentialité et de cookies du site Le Porte di Sardegna — locations de vacances en Sardaigne.",
+      de: 'Datenschutz- und Cookie-Richtlinie der Le Porte di Sardegna-Website — Ferienvermietungen auf Sardinien.'
     },
 
     // 404 (404.html)
     'meta.nf.title': {
-      it: 'Pagina non trovata · FabioSHouse',
-      en: 'Page not found · FabioSHouse',
-      fr: 'Page introuvable · FabioSHouse',
-      de: 'Seite nicht gefunden · FabioSHouse'
+      it: 'Pagina non trovata · Le Porte di Sardegna',
+      en: 'Page not found · Le Porte di Sardegna',
+      fr: 'Page introuvable · Le Porte di Sardegna',
+      de: 'Seite nicht gefunden · Le Porte di Sardegna'
     },
     'meta.nf.description': {
       it: 'La pagina che cercavate non esiste o è stata spostata. Tornate alla home o alle nostre due case in Sardegna.',
@@ -651,10 +667,10 @@
 
     // -------- SEO: title + description per ogni route SPA --------
     'meta.route.case.title': {
-      it: 'Le Case · Villa Stintino e La Porta del Lido | FabioSHouse',
-      en: 'The Houses · Villa Stintino and La Porta del Lido | FabioSHouse',
-      fr: 'Les Maisons · Villa Stintino et La Porta del Lido | FabioSHouse',
-      de: 'Die Häuser · Villa Stintino und La Porta del Lido | FabioSHouse'
+      it: 'Le Case · Villa La Mimosa e La Porta del Lido | Le Porte di Sardegna',
+      en: 'The Houses · Villa La Mimosa and La Porta del Lido | Le Porte di Sardegna',
+      fr: 'Les Maisons · Villa La Mimosa et La Porta del Lido | Le Porte di Sardegna',
+      de: 'Die Häuser · Villa La Mimosa und La Porta del Lido | Le Porte di Sardegna'
     },
     'meta.route.case.description': {
       it: 'Due case in Sardegna: una villa di 90 m² a Stintino a 5 min dalla Pelosa, un appartamento di 70 m² nel centro storico di Alghero. Stessa cura, due vacanze molto diverse.',
@@ -663,34 +679,34 @@
       de: 'Zwei Häuser auf Sardinien: eine 90 m² Villa in Stintino, 5 Min. von La Pelosa, und eine 70 m² Wohnung in der Altstadt von Alghero. Dieselbe Sorgfalt, zwei sehr unterschiedliche Urlaube.'
     },
     'meta.route.stintino.title': {
-      it: 'Villa Stintino · Casa vacanze a 5 min dalla Pelosa | FabioSHouse',
-      en: 'Villa Stintino · Holiday home 5 min from La Pelosa | FabioSHouse',
-      fr: 'Villa Stintino · Maison de vacances à 5 min de La Pelosa | FabioSHouse',
-      de: 'Villa Stintino · Ferienhaus 5 Min. von La Pelosa | FabioSHouse'
+      it: 'Villa La Mimosa · Casa vacanze a 5 min dalla Pelosa | Le Porte di Sardegna',
+      en: 'Villa La Mimosa · Holiday home 5 min from La Pelosa | Le Porte di Sardegna',
+      fr: 'Villa La Mimosa · Maison de vacances à 5 min de La Pelosa | Le Porte di Sardegna',
+      de: 'Villa La Mimosa · Ferienhaus 5 Min. von La Pelosa | Le Porte di Sardegna'
     },
     'meta.route.stintino.description': {
-      it: 'Villa di 90 m² a Stintino, Sardegna: tre camere, due bagni, giardino con barbecue, cinque minuti a piedi dalla Spiaggia della Pelosa. Giugno–Settembre, da € 700 a settimana.',
-      en: 'A 90 m² villa in Stintino, Sardinia: three bedrooms, two bathrooms, garden with barbecue, five minutes on foot from La Pelosa beach. June–September, from €700 per week.',
-      fr: 'Villa de 90 m² à Stintino, Sardaigne : trois chambres, deux salles de bain, jardin avec barbecue, à cinq minutes à pied de la plage de La Pelosa. Juin–Septembre, à partir de 700 € par semaine.',
-      de: 'Villa mit 90 m² in Stintino, Sardinien: drei Schlafzimmer, zwei Bäder, Garten mit Grill, fünf Minuten zu Fuß vom Strand La Pelosa. Juni–September, ab 700 € pro Woche.'
+      it: 'Villa di 90 m² a Stintino, Sardegna: quattro camere, sei posti letto, due bagni, fino a otto ospiti, giardino con veranda e barbecue, cinque minuti a piedi dalla Spiaggia della Pelosa. Giugno–Settembre.',
+      en: 'A 90 m² villa in Stintino, Sardinia: four bedrooms, six beds, two bathrooms, sleeps up to eight, garden with veranda and barbecue, five minutes on foot from La Pelosa beach. June–September.',
+      fr: 'Villa de 90 m² à Stintino, Sardaigne : quatre chambres, six couchages, deux salles de bain, jusqu\'à huit personnes, jardin avec véranda et barbecue, à cinq minutes à pied de la plage de La Pelosa. Juin–Septembre.',
+      de: 'Villa mit 90 m² in Stintino, Sardinien: vier Schlafzimmer, sechs Schlafplätze, zwei Bäder, bis zu acht Gäste, Garten mit Veranda und Grill, fünf Minuten zu Fuß vom Strand La Pelosa. Juni–September.'
     },
     'meta.route.alghero.title': {
-      it: 'La Porta del Lido · Appartamento nel centro di Alghero | FabioSHouse',
-      en: 'La Porta del Lido · Apartment in the centre of Alghero | FabioSHouse',
-      fr: 'La Porta del Lido · Appartement au centre d\'Alghero | FabioSHouse',
-      de: 'La Porta del Lido · Wohnung im Zentrum von Alghero | FabioSHouse'
+      it: 'La Porta del Lido · Appartamento nel centro di Alghero | Le Porte di Sardegna',
+      en: 'La Porta del Lido · Apartment in the centre of Alghero | Le Porte di Sardegna',
+      fr: 'La Porta del Lido · Appartement au centre d\'Alghero | Le Porte di Sardegna',
+      de: 'La Porta del Lido · Wohnung im Zentrum von Alghero | Le Porte di Sardegna'
     },
     'meta.route.alghero.description': {
-      it: 'Appartamento di 70 m² ad Alghero, Sardegna: due camere, ascensore, balcone, a dieci minuti a piedi dal Lido e cinque dal centro storico catalano. Giugno–Settembre, da € 550 a settimana.',
-      en: 'A 70 m² apartment in Alghero, Sardinia: two bedrooms, lift, balcony, ten minutes on foot from the Lido and five from the Catalan old town. June–September, from €550 per week.',
-      fr: "Appartement de 70 m² à Alghero, Sardaigne : deux chambres, ascenseur, balcon, à dix minutes à pied du Lido et cinq du centre historique catalan. Juin–Septembre, à partir de 550 € par semaine.",
-      de: 'Wohnung mit 70 m² in Alghero, Sardinien: zwei Schlafzimmer, Aufzug, Balkon, zehn Minuten zu Fuß vom Lido und fünf von der katalanischen Altstadt. Juni–September, ab 550 € pro Woche.'
+      it: 'Appartamento di 70 m² ad Alghero, Sardegna: due camere, quattro posti letto, un bagno, fino a sei ospiti, ascensore, balcone, a dieci minuti a piedi dal Lido e cinque dal centro storico catalano. Giugno–Settembre.',
+      en: 'A 70 m² apartment in Alghero, Sardinia: two bedrooms, four beds, one bathroom, sleeps up to six, lift, balcony, ten minutes on foot from the Lido and five from the Catalan old town. June–September.',
+      fr: "Appartement de 70 m² à Alghero, Sardaigne : deux chambres, quatre couchages, une salle de bain, jusqu'à six personnes, ascenseur, balcon, à dix minutes à pied du Lido et cinq du centre historique catalan. Juin–Septembre.",
+      de: 'Wohnung mit 70 m² in Alghero, Sardinien: zwei Schlafzimmer, vier Schlafplätze, ein Bad, bis zu sechs Gäste, Aufzug, Balkon, zehn Minuten zu Fuß vom Lido und fünf von der katalanischen Altstadt. Juni–September.'
     },
     'meta.route.incluso.title': {
-      it: 'Cosa è incluso · Biancheria, pulizie, WiFi, aria | FabioSHouse',
-      en: 'What\'s included · Linen, cleaning, WiFi, A/C | FabioSHouse',
-      fr: 'Ce qui est inclus · Linge, ménage, WiFi, clim | FabioSHouse',
-      de: 'Inbegriffene Leistungen · Wäsche, Reinigung, WLAN, Klima | FabioSHouse'
+      it: 'Cosa è incluso · Biancheria, pulizie, WiFi, aria | Le Porte di Sardegna',
+      en: 'What\'s included · Linen, cleaning, WiFi, A/C | Le Porte di Sardegna',
+      fr: 'Ce qui est inclus · Linge, ménage, WiFi, clim | Le Porte di Sardegna',
+      de: 'Inbegriffene Leistungen · Wäsche, Reinigung, WLAN, Klima | Le Porte di Sardegna'
     },
     'meta.route.incluso.description': {
       it: 'Tutto quello che è compreso nella tariffa settimanale: biancheria, pulizie finali, WiFi in fibra, aria condizionata. Nessun costo nascosto, solo la tassa di soggiorno a parte.',
@@ -699,10 +715,10 @@
       de: 'Alles, was im Wochenpreis enthalten ist: Wäsche, Endreinigung, Glasfaser-WLAN, Klimaanlage. Keine versteckten Kosten — nur die Kurtaxe wird separat bezahlt.'
     },
     'meta.route.chisiamo.title': {
-      it: 'Chi siamo · Una famiglia, due case, la stessa Sardegna | FabioSHouse',
-      en: 'About us · One family, two houses, the same Sardinia | FabioSHouse',
-      fr: 'À propos · Une famille, deux maisons, la même Sardaigne | FabioSHouse',
-      de: 'Über uns · Eine Familie, zwei Häuser, dasselbe Sardinien | FabioSHouse'
+      it: 'Chi siamo · Una famiglia, due case, la stessa Sardegna | Le Porte di Sardegna',
+      en: 'About us · One family, two houses, the same Sardinia | Le Porte di Sardegna',
+      fr: 'À propos · Une famille, deux maisons, la même Sardaigne | Le Porte di Sardegna',
+      de: 'Über uns · Eine Familie, zwei Häuser, dasselbe Sardinien | Le Porte di Sardegna'
     },
     'meta.route.chisiamo.description': {
       it: 'Siamo una famiglia sarda che gestisce direttamente due case vacanze nel nord-ovest dell\'isola: la villa di Stintino e l\'appartamento nel centro catalano di Alghero.',
@@ -711,16 +727,16 @@
       de: 'Wir sind eine sardische Familie, die zwei Ferienhäuser im Nordwesten der Insel direkt verwaltet: die Villa in Stintino und die Wohnung im katalanischen Zentrum von Alghero.'
     },
     'meta.route.contatti.title': {
-      it: 'Contatti · Scriveteci per disponibilità e prenotazioni | FabioSHouse',
-      en: 'Contact · Write to us for availability and bookings | FabioSHouse',
-      fr: 'Contact · Écrivez-nous pour disponibilité et réservations | FabioSHouse',
-      de: 'Kontakt · Schreiben Sie uns für Verfügbarkeit und Buchungen | FabioSHouse'
+      it: 'Contatti · Scriveteci per disponibilità e prenotazioni | Le Porte di Sardegna',
+      en: 'Contact · Write to us for availability and bookings | Le Porte di Sardegna',
+      fr: 'Contact · Écrivez-nous pour disponibilité et réservations | Le Porte di Sardegna',
+      de: 'Kontakt · Schreiben Sie uns für Verfügbarkeit und Buchungen | Le Porte di Sardegna'
     },
     'meta.route.contatti.description': {
-      it: 'Modulo di contatto e email diretta per prenotazioni a Villa Stintino e La Porta del Lido. Rispondiamo entro 24 ore, in italiano, inglese, francese o tedesco.',
-      en: 'Contact form and direct email for bookings at Villa Stintino and La Porta del Lido. We reply within 24 hours, in Italian, English, French or German.',
-      fr: 'Formulaire de contact et e-mail direct pour les réservations à Villa Stintino et La Porta del Lido. Réponse sous 24 heures, en italien, anglais, français ou allemand.',
-      de: 'Kontaktformular und direkte E-Mail für Buchungen in Villa Stintino und La Porta del Lido. Antwort innerhalb von 24 Stunden — auf Italienisch, Englisch, Französisch oder Deutsch.'
+      it: 'Modulo di contatto e email diretta per prenotazioni a Villa La Mimosa e La Porta del Lido. Rispondiamo entro 24 ore, in italiano, inglese, francese o tedesco.',
+      en: 'Contact form and direct email for bookings at Villa La Mimosa and La Porta del Lido. We reply within 24 hours, in Italian, English, French or German.',
+      fr: 'Formulaire de contact et e-mail direct pour les réservations à Villa La Mimosa et La Porta del Lido. Réponse sous 24 heures, en italien, anglais, français ou allemand.',
+      de: 'Kontaktformular und direkte E-Mail für Buchungen in Villa La Mimosa und La Porta del Lido. Antwort innerhalb von 24 Stunden — auf Italienisch, Englisch, Französisch oder Deutsch.'
     }
   };
 
