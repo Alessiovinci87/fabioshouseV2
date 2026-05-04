@@ -14,6 +14,23 @@
   var nav = document.getElementById('nav');
   var navLinks = document.getElementById('nav-links');
 
+  // --------------------------- TWEAKS GATING ---------------------------
+  // Il pannello "tweaks" è dev-only. Si attiva con ?tweaks=1 (persistito in
+  // localStorage), si disattiva con ?tweaks=0. In produzione resta nascosto.
+  (function gateTweaks() {
+    try {
+      var qs = location.search || '';
+      if (/[?&]tweaks=1(?:\b|$)/.test(qs)) {
+        try { localStorage.setItem('fh_show_tweaks', '1'); } catch (e) {}
+      } else if (/[?&]tweaks=0(?:\b|$)/.test(qs)) {
+        try { localStorage.removeItem('fh_show_tweaks'); } catch (e) {}
+      }
+      var enabled = false;
+      try { enabled = localStorage.getItem('fh_show_tweaks') === '1'; } catch (e) {}
+      if (enabled && document.body) document.body.classList.add('has-tweaks');
+    } catch (e) {}
+  })();
+
   // --------------------------- ROUTER ---------------------------
   // Old V2 routes we silently redirect (giornale removed entirely;
   // servizi → incluso; storia → chi-siamo)
@@ -261,8 +278,8 @@
   window.FH_rerender = renderRoute;
 
   function updateActiveNav(r) {
-    if (!navLinks) return;
-    var links = navLinks.querySelectorAll('a[data-route]');
+    // Match anche i link del mobile drawer, non solo quelli dell'header.
+    var links = document.querySelectorAll('a[data-route]');
     links.forEach(function (a) {
       var route = a.getAttribute('data-route');
       var active = false;
