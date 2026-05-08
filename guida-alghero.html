@@ -1,0 +1,1136 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alghero · La tua guida — Le Porte di Sardegna</title>
+  <meta name="description" content="Guida elegante alla Riviera del Corallo per gli ospiti di La Porta del Lido. Spiagge, centro storico, ristoranti, escursioni e servizi." />
+  <meta name="robots" content="noindex,follow" />
+
+  <link rel="stylesheet" href="fonts/fonts.css" />
+
+  <style>
+    /* ============================================================
+       Le Porte di Sardegna — Guida Alghero (printable A4)
+       ============================================================ */
+    :root {
+      --paper:        #f4efe3;
+      --paper-2:      #ebe5d6;
+      --paper-3:      #e3dcc9;
+      --ink:          #1a1a1a;
+      --ink-2:        #3d3d3d;
+      --ink-3:        #6e6e6e;
+      --line:         #d8d4cb;
+      --line-2:       #c8c2b3;
+      --terra:        #a05530;
+      --terra-deep:   #6e3a20;
+      --olive:        #5e6a3a;
+      --gold:         #b58e3f;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-sans:    'Geist', -apple-system, system-ui, sans-serif;
+      --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 12.5pt;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 18mm 18mm 14mm;
+      position: relative;
+      page-break-after: always;
+      break-after: page;
+      overflow: hidden;
+      /* Texture sottile carta */
+      background:
+        radial-gradient(ellipse at 0% 0%, rgba(160, 85, 48, 0.04), transparent 55%),
+        radial-gradient(ellipse at 100% 100%, rgba(110, 58, 32, 0.05), transparent 55%),
+        var(--paper);
+    }
+    .page:last-child {
+      page-break-after: auto;
+      break-after: auto;
+    }
+
+    .page-frame {
+      position: absolute;
+      inset: 12mm;
+      border: 1px solid var(--line-2);
+      pointer-events: none;
+    }
+    .page-frame::before,
+    .page-frame::after {
+      content: "";
+      position: absolute;
+      width: 12mm; height: 12mm;
+      border: 1px solid var(--terra);
+    }
+    .page-frame::before { top: -3mm; left: -3mm; border-right: 0; border-bottom: 0; }
+    .page-frame::after  { bottom: -3mm; right: -3mm; border-left: 0; border-top: 0; }
+
+    .page-num {
+      position: absolute;
+      bottom: 8mm; left: 0; right: 0;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 8pt;
+      letter-spacing: 0.18em;
+      color: var(--ink-3);
+      text-transform: uppercase;
+    }
+    .page-num em {
+      font-style: italic;
+      font-family: var(--font-display);
+      color: var(--terra-deep);
+      letter-spacing: 0;
+      font-size: 11pt;
+    }
+
+    /* ===== Cover ===== */
+    .cover {
+      padding: 0;
+      background: var(--ink);
+      color: #f6efe0;
+      display: grid;
+      grid-template-rows: 1fr auto;
+    }
+    .cover .cover-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('img/alghero/dintorni/bastioni-marco-polo.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: saturate(0.92) brightness(0.78);
+    }
+    .cover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.05) 35%, rgba(0,0,0,0.55) 75%, rgba(0,0,0,0.85) 100%);
+      pointer-events: none;
+    }
+    .cover-content {
+      position: relative;
+      z-index: 2;
+      padding: 22mm 18mm 18mm;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 14mm;
+      min-height: 297mm;
+    }
+    .cover-brand {
+      font-family: var(--font-mono);
+      font-size: 9pt;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(246, 239, 224, 0.75);
+    }
+    .cover-brand em {
+      font-family: var(--font-display);
+      font-style: italic;
+      letter-spacing: 0;
+      color: #e9c98a;
+      font-size: 12pt;
+      margin-left: 6px;
+    }
+    .cover-title {
+      align-self: end;
+    }
+    .cover-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 9.5pt;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(246, 239, 224, 0.85);
+      margin-bottom: 14px;
+    }
+    .cover-title h1 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 88pt;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      margin: 0;
+      color: #f6efe0;
+    }
+    .cover-title h1 em {
+      font-style: italic;
+      color: #e9c98a;
+    }
+    .cover-sub {
+      margin-top: 18px;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 22pt;
+      line-height: 1.2;
+      color: rgba(246, 239, 224, 0.92);
+      max-width: 16cm;
+    }
+    .cover-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      font-family: var(--font-mono);
+      font-size: 9pt;
+      letter-spacing: 0.16em;
+      color: rgba(246, 239, 224, 0.7);
+      text-transform: uppercase;
+    }
+    .cover-foot .right {
+      text-align: right;
+    }
+    .cover-foot .right em {
+      display: block;
+      font-family: var(--font-display);
+      font-style: italic;
+      color: #e9c98a;
+      font-size: 13pt;
+      letter-spacing: 0;
+      margin-top: 4px;
+      text-transform: none;
+    }
+
+    /* ===== Index page ===== */
+    .index-page h2 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 42pt;
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      margin: 0 0 8mm;
+    }
+    .index-page h2 em { font-style: italic; color: var(--terra-deep); }
+    .lede {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 16pt;
+      font-weight: 300;
+      line-height: 1.45;
+      color: var(--ink-2);
+      max-width: 16cm;
+      margin: 0 0 12mm;
+    }
+    .toc {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-top: 1px solid var(--line);
+    }
+    .toc li {
+      display: grid;
+      grid-template-columns: 14mm 1fr auto;
+      align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13pt;
+    }
+    .toc .num {
+      font-family: var(--font-mono);
+      font-size: 10pt;
+      color: var(--terra);
+      letter-spacing: 0.04em;
+    }
+    .toc .ttl {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--ink);
+    }
+    .toc .pg {
+      font-family: var(--font-mono);
+      font-size: 10pt;
+      color: var(--ink-3);
+      letter-spacing: 0.06em;
+    }
+
+    /* ===== Section header ===== */
+    .sect-head {
+      display: grid;
+      grid-template-columns: 24mm 1fr;
+      gap: 10mm;
+      margin-bottom: 8mm;
+      align-items: end;
+    }
+    .sect-head .num {
+      font-family: var(--font-mono);
+      font-size: 10pt;
+      color: var(--terra);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-top: 2px solid var(--terra);
+      padding-top: 8px;
+    }
+    .sect-head .titles {
+      border-top: 1px solid var(--line);
+      padding-top: 8px;
+    }
+    .sect-head .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 9.5pt;
+      letter-spacing: 0.18em;
+      color: var(--ink-3);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .sect-head h2 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 36pt;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      margin: 0;
+    }
+    .sect-head h2 em { font-style: italic; color: var(--terra-deep); }
+
+    /* ===== POI block ===== */
+    .poi {
+      margin-bottom: 12mm;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .poi-img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 6mm;
+      box-shadow: 0 0 0 1px var(--line) inset;
+    }
+    .poi-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+      font-family: var(--font-mono);
+      font-size: 9pt;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .poi-meta .dist {
+      color: var(--terra);
+    }
+    .poi h3 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 22pt;
+      line-height: 1.1;
+      letter-spacing: -0.005em;
+      margin: 0 0 8px;
+    }
+    .poi h3 em { font-style: italic; color: var(--terra-deep); }
+    .poi p {
+      font-family: var(--font-sans);
+      font-size: 11pt;
+      line-height: 1.55;
+      color: var(--ink-2);
+      margin: 0 0 8px;
+    }
+    .poi .practical {
+      margin-top: 8px;
+      padding: 10px 14px;
+      background: var(--paper-2);
+      border-left: 3px solid var(--terra);
+      font-size: 10.5pt;
+      line-height: 1.5;
+      color: var(--ink-2);
+    }
+    .poi .practical strong {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 8.5pt;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terra-deep);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .poi .links {
+      margin-top: 8px;
+      font-family: var(--font-mono);
+      font-size: 9.5pt;
+      color: var(--ink-3);
+    }
+    .poi .links a {
+      color: var(--terra-deep);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--terra-deep);
+    }
+    .poi .links a + a { margin-left: 14px; }
+
+    /* ===== Two-column variants ===== */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8mm;
+    }
+
+    /* ===== Beach grid (mini POI) ===== */
+    .beach-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6mm;
+      margin-top: 4mm;
+    }
+    .beach {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .beach-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 0 0 1px var(--line) inset;
+      margin-bottom: 6px;
+    }
+    .beach h4 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 14pt;
+      letter-spacing: -0.005em;
+      margin: 4px 0 2px;
+    }
+    .beach .meta {
+      font-family: var(--font-mono);
+      font-size: 8pt;
+      letter-spacing: 0.14em;
+      color: var(--terra);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .beach p {
+      font-size: 10pt;
+      line-height: 1.5;
+      color: var(--ink-2);
+      margin: 0;
+    }
+
+    /* ===== Restaurant list ===== */
+    .restaurants {
+      list-style: none;
+      padding: 0;
+      margin: 4mm 0 0;
+    }
+    .restaurants li {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .restaurants li:first-child { border-top: 1px solid var(--line); }
+    .restaurants .name {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 16pt;
+      font-weight: 400;
+      color: var(--ink);
+    }
+    .restaurants .desc {
+      font-size: 10.5pt;
+      color: var(--ink-2);
+      margin-top: 2px;
+    }
+    .restaurants .gmap {
+      font-family: var(--font-mono);
+      font-size: 9pt;
+      color: var(--terra);
+      margin-top: 4px;
+    }
+
+    /* ===== Big quote / pullquote ===== */
+    .pullquote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 22pt;
+      line-height: 1.3;
+      color: var(--ink);
+      max-width: 16cm;
+      margin: 6mm 0 10mm;
+      padding-left: 8mm;
+      border-left: 2px solid var(--terra);
+    }
+    .pullquote em { color: var(--terra-deep); }
+
+    /* ===== Last page (contacts) ===== */
+    .end-page {
+      background:
+        radial-gradient(ellipse at 50% 30%, rgba(160, 85, 48, 0.07), transparent 55%),
+        var(--paper);
+      display: grid;
+      grid-template-rows: 1fr auto;
+    }
+    .end-content {
+      padding-top: 30mm;
+      text-align: center;
+    }
+    .end-content .mark {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 16pt;
+      color: var(--terra-deep);
+      margin-bottom: 12mm;
+    }
+    .end-content h2 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 56pt;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin: 0 0 6mm;
+    }
+    .end-content h2 em { font-style: italic; color: var(--terra-deep); }
+    .end-content .tag {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 18pt;
+      color: var(--ink-2);
+      max-width: 14cm;
+      margin: 0 auto 14mm;
+      line-height: 1.4;
+    }
+    .end-contacts {
+      display: inline-grid;
+      grid-template-columns: auto auto;
+      gap: 4mm 14mm;
+      text-align: left;
+      font-size: 11pt;
+      color: var(--ink-2);
+      padding: 8mm 12mm;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+    }
+    .end-contacts dt {
+      font-family: var(--font-mono);
+      font-size: 8.5pt;
+      letter-spacing: 0.18em;
+      color: var(--ink-3);
+      text-transform: uppercase;
+      align-self: center;
+    }
+    .end-contacts dd {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 11pt;
+      color: var(--ink);
+    }
+    .end-foot {
+      padding: 12mm 0 0;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 8.5pt;
+      letter-spacing: 0.22em;
+      color: var(--ink-3);
+      text-transform: uppercase;
+    }
+    .end-foot em {
+      font-family: var(--font-display);
+      font-style: italic;
+      color: var(--terra-deep);
+      font-size: 11pt;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    /* QR code box (placeholder) */
+    .qr-box {
+      display: inline-block;
+      margin: 0 auto 14mm;
+      padding: 8mm;
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+    .qr-box .qr {
+      width: 38mm;
+      height: 38mm;
+      display: block;
+    }
+    .qr-box .qr-cap {
+      font-family: var(--font-mono);
+      font-size: 8pt;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-top: 4mm;
+      text-align: center;
+    }
+
+    /* Reset for screen view */
+    @media screen {
+      body { padding: 24px; }
+      .page {
+        margin: 0 auto 28px;
+        box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+      }
+    }
+
+    /* Print: zero margins, exact colors */
+    @media print {
+      body { background: var(--paper); padding: 0; }
+      .page { margin: 0; box-shadow: none; }
+      .no-print { display: none !important; }
+      a { color: var(--terra-deep); }
+    }
+
+    /* Floating action buttons (screen only) */
+    .actions {
+      position: fixed;
+      bottom: 18px; right: 18px;
+      display: flex; gap: 8px;
+      z-index: 999;
+    }
+    .actions button {
+      padding: 10px 18px;
+      font: 500 13px/1 var(--font-sans);
+      background: var(--ink);
+      color: white;
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+    }
+    .actions button.ghost {
+      background: white; color: var(--ink); border: 1px solid var(--line);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       PAGINA 1 — COPERTINA
+       ============================================================ -->
+  <section class="page cover">
+    <div class="cover-img" aria-hidden="true"></div>
+    <div class="cover-content">
+      <p class="cover-brand">Le Porte di <em>Sardegna</em></p>
+      <div class="cover-title">
+        <p class="cover-eyebrow">La tua guida — Edizione 2026</p>
+        <h1><em>Alghero</em></h1>
+        <p class="cover-sub">
+          La Riviera del Corallo a portata di passeggiata. Spiagge, bastioni, grotte, vino e aragosta — tutto quello che vorrete fare, raccontato come glielo racconteremmo a voce.
+        </p>
+      </div>
+      <div class="cover-foot">
+        <div>
+          <p>Per gli ospiti di</p>
+          <p><strong>La Porta del Lido</strong></p>
+        </div>
+        <div class="right">
+          <p>A cura di</p>
+          <em>Le Porte di Sardegna</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAGINA 2 — INTRO + INDICE
+       ============================================================ -->
+  <section class="page index-page">
+    <div class="page-frame"></div>
+    <h2>Una città <em>catalana</em><br/>nel cuore del Mediterraneo.</h2>
+    <p class="lede">
+      Alghero è unica in Sardegna: una città murata di fondazione catalano-aragonese del XV secolo,
+      dove ancora oggi una piccola comunità parla l'algherese — dialetto catalano riconosciuto
+      dall'UNESCO come lingua in pericolo. Tra bastioni, scogliere bianche e vigneti, troverete
+      tutto quello che cercate per una vacanza di mare e di cultura, senza muovervi troppo.
+    </p>
+
+    <ol class="toc">
+      <li><span class="num">01</span><span class="ttl">Spiagge della Riviera</span><span class="pg">p. 03</span></li>
+      <li><span class="num">02</span><span class="ttl">Centro storico e Bastioni</span><span class="pg">p. 04</span></li>
+      <li><span class="num">03</span><span class="ttl">Grotte di Nettuno e Capo Caccia</span><span class="pg">p. 05</span></li>
+      <li><span class="num">04</span><span class="ttl">Parco di Porto Conte e Nuraghe Palmavera</span><span class="pg">p. 06</span></li>
+      <li><span class="num">05</span><span class="ttl">Cantina Sella &amp; Mosca</span><span class="pg">p. 07</span></li>
+      <li><span class="num">06</span><span class="ttl">Aragosta alla catalana e ristoranti</span><span class="pg">p. 08</span></li>
+      <li><span class="num">07</span><span class="ttl">Servizi pratici — supermercati, farmacia, bici</span><span class="pg">p. 09</span></li>
+    </ol>
+
+    <p class="page-num">p. <em>02</em></p>
+  </section>
+
+  <!-- ============================================================
+       PAGINA 3 — SPIAGGE
+       ============================================================ -->
+  <section class="page">
+    <div class="page-frame"></div>
+
+    <div class="sect-head">
+      <p class="num">01 — Spiagge</p>
+      <div class="titles">
+        <p class="eyebrow">A piedi e in auto</p>
+        <h2>Le spiagge della <em>Riviera</em>.</h2>
+      </div>
+    </div>
+
+    <p style="margin: 0 0 6mm; font-size: 11.5pt; line-height: 1.6; color: var(--ink-2);">
+      Alghero offre una varietà di spiagge per ogni esigenza. Il <strong>Lido di Alghero</strong>
+      (Lido San Giovanni) è la spiaggia urbana — ampia, sabbiosa, attrezzata con lettini e stabilimenti, a dieci minuti a piedi dall'appartamento. Per acque verde smeraldo da cartolina caraibica,
+      a 10 km a ovest ci sono <strong>Le Bombarde</strong> e <strong>Lazzaretto</strong>.
+      Per chi ama la natura selvaggia, <strong>Porto Ferro</strong> a 20 km è una baia incontaminata con dune di sabbia, ideale per il tramonto.
+    </p>
+
+    <div class="poi practical-only" style="margin-bottom: 6mm;">
+      <div class="practical">
+        <strong>Da sapere</strong>
+        Lido a piedi, 10 min. Bombarde e Lazzaretto in auto/bus, 20 min — arriva entro le 9:30 per il parcheggio. Porto Ferro in auto, 30 min, ideale al tramonto. Stagione balneare giugno–settembre. Lettini ~20–30 €/giorno; spiagge libere gratuite.
+      </div>
+    </div>
+
+    <div class="beach-grid">
+
+      <div class="beach">
+        <div class="beach-img" style="background-image: url('img/alghero/dintorni/lido-alghero.jpg');"></div>
+        <p class="meta">10 min a piedi</p>
+        <h4>Spiaggia del Lido</h4>
+        <p>Spiaggia urbana sabbiosa, attrezzata. La più comoda dall'appartamento.</p>
+      </div>
+
+      <div class="beach">
+        <div class="beach-img" style="background-image: url('img/alghero/dintorni/spiaggia-bombarde.jpg');"></div>
+        <p class="meta">10 km a ovest</p>
+        <h4>Le Bombarde</h4>
+        <p>Sabbia dorata, acqua verde smeraldo. Da cartolina caraibica.</p>
+      </div>
+
+      <div class="beach">
+        <div class="beach-img" style="background-image: url('img/alghero/dintorni/spiaggia-lazzaretto.jpg');"></div>
+        <p class="meta">10 km a ovest</p>
+        <h4>Lazzaretto</h4>
+        <p>Piccola baia a forma di mezzaluna, sabbia bianca finissima.</p>
+      </div>
+
+      <div class="beach">
+        <div class="beach-img" style="background-image: url('img/alghero/dintorni/spiaggia-la-stalla.jpg');"></div>
+        <p class="meta">10 km a ovest</p>
+        <h4>La Stalla</h4>
+        <p>Caletta tra Lazzaretto e Bombarde, riparata dal vento.</p>
+      </div>
+
+      <div class="beach">
+        <div class="beach-img" style="background-image: url('img/alghero/dintorni/spiaggia-maria-pia.jpg');"></div>
+        <p class="meta">3 km a nord</p>
+        <h4>Maria Pia</h4>
+        <p>Sabbia fine tra dune e pineta. Ideale per famiglie.</p>
+      </div>
+
+      <div class="beach">
+        <div class="beach-img" style="background-image: url('img/alghero/dintorni/spiaggia-mugoni.jpg');"></div>
+        <p class="meta">15 km — Porto Conte</p>
+        <h4>Mugoni</h4>
+        <p>Lunga spiaggia nella baia di Porto Conte, acqua bassa.</p>
+      </div>
+
+      <div class="beach">
+        <div class="beach-img" style="background-image: url('img/alghero/dintorni/spiaggia-porto-ferro.jpg');"></div>
+        <p class="meta">20 km a nord</p>
+        <h4>Porto Ferro</h4>
+        <p>Baia selvaggia con dune di sabbia. Imperdibile al tramonto.</p>
+      </div>
+
+      <div class="beach">
+        <div class="beach-img" style="background-image: url('img/alghero/dintorni/lido-alghero.jpg'); filter: grayscale(0.2) brightness(0.95);"></div>
+        <p class="meta">Dal sito</p>
+        <h4>Tutte le spiagge</h4>
+        <p>Mappa interattiva e descrizioni complete su <strong>leportedisardegna.com</strong>.</p>
+      </div>
+
+    </div>
+
+    <p class="page-num">p. <em>03</em></p>
+  </section>
+
+  <!-- ============================================================
+       PAGINA 4 — CENTRO STORICO E BASTIONI
+       ============================================================ -->
+  <section class="page">
+    <div class="page-frame"></div>
+
+    <div class="sect-head">
+      <p class="num">02 — Centro storico</p>
+      <div class="titles">
+        <p class="eyebrow">5 min a piedi</p>
+        <h2>Centro storico e <em>Bastioni</em>.</h2>
+      </div>
+    </div>
+
+    <div class="poi">
+      <div class="poi-img" style="background-image: url('img/alghero/dintorni/bastioni-marco-polo.jpg');"></div>
+      <div class="poi-meta">
+        <span class="dist">↓ 5 min a piedi</span>
+        <span>Sempre accessibile · gratuito</span>
+      </div>
+      <h3>I <em>Bastioni aragonesi</em> al tramonto.</h3>
+      <p>
+        I Bastioni aragonesi sul lato mare sono il luogo ideale per il tramonto: dal belvedere
+        della Maddalena la vista abbraccia il golfo, Le Bombarde e, nelle giornate limpide,
+        Capo Caccia all'orizzonte. Una piccola comunità qui parla ancora l'algherese, dialetto
+        catalano riconosciuto dall'UNESCO come lingua in pericolo.
+      </p>
+      <div class="practical">
+        <strong>Consiglio</strong>
+        Il tramonto sui Bastioni in luglio–agosto è uno spettacolo: arriva trenta minuti prima per
+        trovare posto sulle mura. Le chiese sono aperte 9:00–12:30 / 16:30–19:00, gratuite (alcune
+        chiedono un obolo volontario).
+      </div>
+      <p class="links">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Bastioni+Alghero">→ Apri su Google Maps</a>
+      </p>
+    </div>
+
+    <div class="poi">
+      <div class="poi-img" style="background-image: url('img/alghero/dintorni/centro-storico-alghero.jpg');"></div>
+      <div class="poi-meta">
+        <span class="dist">↓ 5 min a piedi</span>
+        <span>Cuore catalano</span>
+      </div>
+      <h3>Vie pedonali e <em>Cattedrale</em>.</h3>
+      <p>
+        Dalle mura si scende nelle vie pedonali del centro vecchio: Via Carlo Alberto, Piazza Civica, la Cattedrale di Santa Maria con la sua facciata neoclassica. Ovunque locali, botteghe di corallo (la
+        "Riviera del Corallo" prende il nome proprio da qui) e ristorantini di pesce.
+      </p>
+      <p class="links">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Cattedrale+Alghero">→ Cattedrale</a>
+        <a href="https://it.wikipedia.org/wiki/Torri_e_bastioni_di_Alghero">↗ Wikipedia bastioni</a>
+      </p>
+    </div>
+
+    <p class="page-num">p. <em>04</em></p>
+  </section>
+
+  <!-- ============================================================
+       PAGINA 5 — GROTTE DI NETTUNO + CAPO CACCIA
+       ============================================================ -->
+  <section class="page">
+    <div class="page-frame"></div>
+
+    <div class="sect-head">
+      <p class="num">03 — Escursione</p>
+      <div class="titles">
+        <p class="eyebrow">A 24 km, in barca o a piedi</p>
+        <h2>Grotte di <em>Nettuno</em>.</h2>
+      </div>
+    </div>
+
+    <div class="poi">
+      <div class="poi-img" style="background-image: url('img/alghero/dintorni/grotte-di-nettuno.jpg');"></div>
+      <div class="poi-meta">
+        <span class="dist">↓ Capo Caccia · 24 km</span>
+        <span>Aperto aprile–ottobre</span>
+      </div>
+      <h3>Cattedrali sotterranee, <em>scolpite dal mare</em>.</h3>
+      <p>
+        Le Grotte di Nettuno sono tra le più spettacolari cavità carsiche del Mediterraneo,
+        scavate per millenni dal mare nella scogliera a strapiombo di Capo Caccia. Il complesso
+        si estende per oltre 2,5 km: stalattiti e stalagmiti alte fino a venti metri, laghi
+        sotterranei silenziosi e sale di rara bellezza.
+      </p>
+      <div class="practical">
+        <strong>Come arrivare</strong>
+        Due opzioni — <strong>in barca</strong> dal porto di Alghero (~30 minuti, consigliato) oppure <strong>a piedi</strong> scendendo l'Escala del Cabirol, 656 gradini scavati nella roccia a picco sul mare.
+        <br/><br/>
+        <strong>Orari e costi</strong><br/>
+        9:00–19:00 · Ingresso ~16 € adulti, 8 € bambini · Barca ~13 € andata e ritorno · Con mare mosso le barche non partono.
+      </div>
+      <p class="links">
+        <a href="https://grottadinettuno.it/">→ grottadinettuno.it</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Grotte+di+Nettuno">→ Google Maps</a>
+      </p>
+    </div>
+
+    <div class="poi">
+      <div class="poi-img" style="background-image: url('img/alghero/dintorni/capo-caccia.jpg');"></div>
+      <div class="poi-meta">
+        <span class="dist">↓ 24 km</span>
+        <span>Riserva marina</span>
+      </div>
+      <h3>Capo Caccia.</h3>
+      <p>
+        La scogliera bianca a strapiombo che domina il golfo. Riserva marina, panorami mozzafiato e tramonti memorabili — fermatevi al belvedere prima di scendere alle grotte.
+      </p>
+    </div>
+
+    <p class="page-num">p. <em>05</em></p>
+  </section>
+
+  <!-- ============================================================
+       PAGINA 6 — PARCO DI PORTO CONTE + NURAGHE
+       ============================================================ -->
+  <section class="page">
+    <div class="page-frame"></div>
+
+    <div class="sect-head">
+      <p class="num">04 — Natura e archeologia</p>
+      <div class="titles">
+        <p class="eyebrow">15 km in auto</p>
+        <h2>Parco di <em>Porto Conte</em>.</h2>
+      </div>
+    </div>
+
+    <div class="poi">
+      <div class="poi-img" style="background-image: url('img/alghero/dintorni/parco-porto-conte.jpg');"></div>
+      <div class="poi-meta">
+        <span class="dist">↓ 15 km · in auto</span>
+        <span>Ingresso libero</span>
+      </div>
+      <h3>Macchia mediterranea e <em>mufloni</em>.</h3>
+      <p>
+        Il Parco Naturale Regionale di Porto Conte abbraccia la penisola di Capo Caccia e
+        la Riserva "Le Prigionette". Sentieri nella macchia mediterranea di corbezzolo,
+        lentisco e olivastro, con volpi, martore, falchi pellegrini e i mufloni delle Prigionette.
+        Perfetto per trekking e cicloturismo.
+      </p>
+      <div class="practical">
+        <strong>Pratico</strong>
+        Parco sempre aperto, accesso gratuito. Tour "Le Prigionette" su prenotazione, ~10 €. Porta acqua e scarpe comode; il caldo estivo si sente.
+      </div>
+      <p class="links">
+        <a href="https://www.algheroparks.it/">→ algheroparks.it</a>
+      </p>
+    </div>
+
+    <div class="poi">
+      <div class="poi-img" style="background-image: url('img/alghero/dintorni/nuraghe-palmavera.jpg');"></div>
+      <div class="poi-meta">
+        <span class="dist">↓ 10 km · in auto</span>
+        <span>3.500 anni di storia</span>
+      </div>
+      <h3>Nuraghe <em>Palmavera</em>.</h3>
+      <p>
+        Uno dei nuraghi megalitici meglio conservati della Sardegna, costruito oltre tre millenni
+        e mezzo fa. La torre centrale, le mura, il villaggio. Lasciatevi guidare dal silenzio e dalla
+        pietra: spiega la civiltà nuragica meglio di mille libri.
+      </p>
+      <div class="practical">
+        <strong>Orari e costi</strong>
+        9:00–19:00 d'estate · ~5 € · Visita preferibilmente al mattino presto per evitare il caldo.
+      </div>
+      <p class="links">
+        <a href="https://nuraghepalmavera.it/">→ nuraghepalmavera.it</a>
+      </p>
+    </div>
+
+    <p class="page-num">p. <em>06</em></p>
+  </section>
+
+  <!-- ============================================================
+       PAGINA 7 — SELLA & MOSCA
+       ============================================================ -->
+  <section class="page">
+    <div class="page-frame"></div>
+
+    <div class="sect-head">
+      <p class="num">05 — Vino</p>
+      <div class="titles">
+        <p class="eyebrow">5 km in auto</p>
+        <h2>Cantina <em>Sella &amp; Mosca</em>.</h2>
+      </div>
+    </div>
+
+    <div class="poi">
+      <div class="poi-img" style="background-image: url('img/alghero/dintorni/cantina-sella-mosca.jpg'); background-position: top;"></div>
+      <div class="poi-meta">
+        <span class="dist">↓ 5 km · in auto</span>
+        <span>Lun–Sab · prenotazione</span>
+      </div>
+      <h3>650 ettari di <em>Vermentino, Cannonau, Torbato</em>.</h3>
+      <p>
+        Uno dei monumenti enogastronomici della Sardegna: fondata nel 1899, si estende su oltre 650 ettari di vigneti alle porte di Alghero — una delle più grandi tenute vinicole a conduzione unitaria d'Europa. Qui si producono il Torbato di Alghero (vitigno autoctono recuperato), il Cannonau di Sardegna, il Vermentino e le Terre Rare.
+      </p>
+      <div class="practical">
+        <strong>Come visitare</strong>
+        Lunedì–sabato 9:00–18:00 (aprile–ottobre), tour guidati su prenotazione. Degustazione ~15–25 € a persona (3–4 vini).
+        <br/><br/>
+        <strong>Bonus archeologico</strong><br/>
+        A 200 metri dalla cantina c'è la <strong>Necropoli di Anghelu Ruju</strong>, tombe ipogeiche del 3.500 a.C. — combinate le due visite per una mattinata perfetta.
+      </div>
+      <p class="links">
+        <a href="https://www.sellaemosca.com/site/it/la_cantina/">→ sellaemosca.com</a>
+      </p>
+    </div>
+
+    <p class="pullquote">
+      «Un calice di <em>Torbato di Alghero</em> al tramonto, sui Bastioni — questa è la Riviera del Corallo.»
+    </p>
+
+    <p class="page-num">p. <em>07</em></p>
+  </section>
+
+  <!-- ============================================================
+       PAGINA 8 — ARAGOSTA + RISTORANTI
+       ============================================================ -->
+  <section class="page">
+    <div class="page-frame"></div>
+
+    <div class="sect-head">
+      <p class="num">06 — Mangiare</p>
+      <div class="titles">
+        <p class="eyebrow">In centro</p>
+        <h2>Aragosta alla <em>catalana</em>.</h2>
+      </div>
+    </div>
+
+    <div class="poi">
+      <div class="poi-img" style="background-image: url('img/alghero/dintorni/aragosta-alla-catalana.webp');"></div>
+      <div class="poi-meta">
+        <span class="dist">↓ 5 min a piedi</span>
+        <span>Cena 19:30–23:00</span>
+      </div>
+      <h3>Il piatto <em>simbolo</em> di Alghero.</h3>
+      <p>
+        L'aragosta alla catalana è il piatto simbolo di Alghero. Aragosta bollita servita a temperatura ambiente su un letto di pomodori a fette, cipolla rossa, prezzemolo e un filo d'olio extravergine sardo. Semplice ma straordinaria quando l'aragosta è fresca e pescata localmente.
+      </p>
+      <div class="practical">
+        <strong>Consiglio</strong>
+        Aragosta intera ~40–60 € a persona a seconda del peso. <strong>Chiedi sempre il prezzo al chilo prima di ordinare</strong>; in alta stagione prenota con due-tre giorni di anticipo. Abbinamento ideale: Torbato di Alghero DOC.
+      </div>
+    </div>
+
+    <h3 style="font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 18pt; margin: 4mm 0 2mm; color: var(--terra-deep);">I nostri quattro preferiti</h3>
+
+    <ul class="restaurants">
+      <li>
+        <span class="name">Al Tuguri</span>
+        <span class="desc">Cucina catalana storica, centro storico — prenota sempre.</span>
+        <span class="gmap">→ google.com/maps · cerca "Al Tuguri Alghero"</span>
+      </li>
+      <li>
+        <span class="name">Il Pavone</span>
+        <span class="desc">Piazza Civica, vista bastioni, pesce e carne sarda.</span>
+        <span class="gmap">→ google.com/maps · cerca "Il Pavone Alghero"</span>
+      </li>
+      <li>
+        <span class="name">La Piazzetta</span>
+        <span class="desc">Cucina di mare, ottimo rapporto qualità-prezzo.</span>
+        <span class="gmap">→ google.com/maps · cerca "Ristorante La Piazzetta Alghero"</span>
+      </li>
+      <li>
+        <span class="name">Trattoria Lo Quarter</span>
+        <span class="desc">Cucina sarda tradizionale: malloreddus, pecorino, mirto.</span>
+        <span class="gmap">→ google.com/maps · cerca "Trattoria Lo Quarter Alghero"</span>
+      </li>
+    </ul>
+
+    <p class="page-num">p. <em>08</em></p>
+  </section>
+
+  <!-- ============================================================
+       PAGINA 9 — SERVIZI PRATICI
+       ============================================================ -->
+  <section class="page">
+    <div class="page-frame"></div>
+
+    <div class="sect-head">
+      <p class="num">07 — Servizi</p>
+      <div class="titles">
+        <p class="eyebrow">Tutto a portata di mano</p>
+        <h2>Pratico, <em>vicino casa</em>.</h2>
+      </div>
+    </div>
+
+    <ul class="restaurants" style="margin-top: 0;">
+      <li>
+        <span class="name">Supermercato Lidl / Conad</span>
+        <span class="desc">A 10 minuti dall'appartamento, ampia scelta di prodotti locali e tutto il necessario per la cucina di casa.</span>
+        <span class="gmap">→ google.com/maps · cerca "Supermercato Alghero"</span>
+      </li>
+      <li>
+        <span class="name">Farmacia Centrale</span>
+        <span class="desc">Centro storico, turno notturno in estate. Per emergenze: farmacie aperte 24h ruotano settimanalmente.</span>
+        <span class="gmap">→ google.com/maps · cerca "Farmacia Centrale Alghero"</span>
+      </li>
+      <li>
+        <span class="name">Bike Alghero</span>
+        <span class="desc">Noleggio bici ed e-bike, consegna e ritiro su richiesta. Ideale per la pista ciclabile fino al Lido e Le Bombarde.</span>
+        <span class="gmap">→ bikealghero.com</span>
+      </li>
+      <li>
+        <span class="name">Aeroporto di Fertilia</span>
+        <span class="desc">A soli 10 minuti dall'appartamento in auto. Voli da tutta Europa con Ryanair, easyJet e altre.</span>
+        <span class="gmap">→ aeroportodialghero.it</span>
+      </li>
+    </ul>
+
+    <h3 style="font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 18pt; margin: 8mm 0 2mm; color: var(--terra-deep);">Numeri utili</h3>
+
+    <div class="practical" style="background: var(--paper-2); border-left: 3px solid var(--terra); padding: 14px 18px; font-size: 11pt; line-height: 1.7;">
+      <strong style="display: block; font-family: var(--font-mono); font-size: 8.5pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terra-deep); margin-bottom: 6px;">Emergenze</strong>
+      Numero unico di emergenza · <strong>112</strong><br/>
+      Guardia medica turistica Alghero · <strong>079 996 538</strong><br/>
+      Carabinieri Alghero · <strong>079 977 117</strong><br/>
+      Capitaneria di Porto · <strong>079 977 322</strong>
+    </div>
+
+    <p class="pullquote" style="margin-top: 10mm;">
+      Tutto quello che vi serve è a meno di <em>dieci minuti</em>.
+    </p>
+
+    <p class="page-num">p. <em>09</em></p>
+  </section>
+
+  <!-- ============================================================
+       PAGINA 10 — CONTATTI / BACK COVER
+       ============================================================ -->
+  <section class="page end-page">
+    <div class="page-frame"></div>
+
+    <div class="end-content">
+      <p class="mark">— Le Porte di Sardegna —</p>
+      <h2>Buona <em>vacanza</em>.</h2>
+      <p class="tag">
+        Per qualsiasi cosa, anche solo un consiglio sul vento di domani — scriveteci.
+        Siamo qui, a un messaggio di distanza.
+      </p>
+
+      <dl class="end-contacts">
+        <dt>WhatsApp</dt>
+        <dd>+39 393 971 4566</dd>
+
+        <dt>Email</dt>
+        <dd>cosmoalghero@gmail.com</dd>
+
+        <dt>Web</dt>
+        <dd>leportedisardegna.com</dd>
+
+        <dt>CIN</dt>
+        <dd>IT090003C2000U2044</dd>
+      </dl>
+    </div>
+
+    <div class="end-foot">
+      <p>
+        La Porta del Lido · Via Goceano 23, Alghero (SS) · Sardegna<br/>
+        <em>Due mari ti aspettano. Tu scegli la porta.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- Floating actions (screen only) -->
+  <div class="actions no-print">
+    <button class="ghost" onclick="window.close()">Chiudi</button>
+    <button onclick="window.print()">Stampa / Salva PDF</button>
+  </div>
+
+</body>
+</html>
