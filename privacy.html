@@ -140,6 +140,19 @@
           <button type="button" data-lang-btn="fr" aria-label="Français">FR</button>
           <button type="button" data-lang-btn="de" aria-label="Deutsch">DE</button>
         </div>
+        <div class="lang-mobile">
+          <button type="button" class="lang-mobile-toggle" id="lang-mobile-toggle"
+                  aria-haspopup="listbox" aria-expanded="false" aria-label="Lingua">
+            <span class="lang-mobile-code" data-lang-current>IT</span>
+            <span class="lang-mobile-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="lang-mobile-panel" id="lang-mobile-panel" role="listbox" hidden>
+            <button type="button" data-lang-btn="it">IT · Italiano</button>
+            <button type="button" data-lang-btn="en">EN · English</button>
+            <button type="button" data-lang-btn="fr">FR · Français</button>
+            <button type="button" data-lang-btn="de">DE · Deutsch</button>
+          </div>
+        </div>
         <a href="/contatti" class="cta-pill">
           <span class="dot" aria-hidden="true"></span>
           <span data-i18n="nav.book">Prenota</span>

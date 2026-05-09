@@ -815,6 +815,10 @@
     document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
       b.classList.toggle('active', b.getAttribute('data-lang-btn') === lang);
     });
+    // aggiorna codice lingua visibile (toggle dropdown mobile)
+    document.querySelectorAll('[data-lang-current]').forEach(function (el) {
+      el.textContent = lang.toUpperCase();
+    });
     // ri-traduci DOM statico
     translateDom(document);
     // ri-renderizza SPA
@@ -837,6 +841,9 @@
     });
     document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
       b.classList.toggle('active', b.getAttribute('data-lang-btn') === state.lang);
+    });
+    document.querySelectorAll('[data-lang-current]').forEach(function (el) {
+      el.textContent = state.lang.toUpperCase();
     });
   }
 

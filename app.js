@@ -94,6 +94,12 @@
 
   function renderRoute() {
     var r = parseRoute();
+    // Reset hover-cue: dopo click su prop-card il cursore resta fermo, mousemove
+    // non fira, l'indicatore "Apri" resta visibile sulla nuova rotta. Lo nascondo
+    // qui ad ogni cambio di rotta. Si riattiva al prossimo hover su .prop-card.
+    var cueEl = document.getElementById('hover-cue');
+    if (cueEl) cueEl.classList.remove('on');
+    cueActive = false;
     preloadRouteHero(r);
     var html = '';
     switch (r.name) {
@@ -368,10 +374,17 @@
     video.addEventListener('error', bail);
     video.addEventListener('ended', startFade);
 
-    // Cap a ~4s totali di video prima del fade
-    var fadeTimer = setTimeout(startFade, 4000);
-    // Safety net: se per qualsiasi ragione il video resta appeso, forziamo dopo 6s
-    setTimeout(function () { if (!navigated) startFade(); }, 6000);
+    // Il fade parte solo DOPO che il video ha iniziato a riprodurre
+    // (evento "playing"): su rete mobile lenta il video può richiedere
+    // qualche secondo per buffer iniziale, e il timer fisso a 4s farebbe
+    // partire il fade su uno schermo nero.
+    var fadeTimer = null;
+    video.addEventListener('playing', function () {
+      if (fadeTimer || navigated) return;
+      fadeTimer = setTimeout(startFade, 4000);
+    });
+    // Safety net: se il video resta appeso (mai "playing") forziamo fade dopo 7s
+    setTimeout(function () { if (!navigated) startFade(); }, 7000);
 
     video.src = videoSrc;
     var p = video.play();
@@ -413,8 +426,6 @@
     var src = card.getAttribute('data-intro-video');
     var href = card.getAttribute('href') || '';
     if (!src || href.charAt(0) !== '/') return;
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) return; // segui il link normalmente
     e.preventDefault();
     playIntroAndGo(src, href);
   });

@@ -50,4 +50,36 @@
 
   // ?menu=1 → apri drawer all'avvio (utile per test responsive)
   if (/[?&]menu=1\b/.test(location.search || '')) setOpen(true);
+
+  // ============================================================
+  // LANG MOBILE DROPDOWN — selettore lingua compatto in navbar mobile
+  // ============================================================
+  var langToggle = document.getElementById('lang-mobile-toggle');
+  var langPanel = document.getElementById('lang-mobile-panel');
+  if (langToggle && langPanel) {
+    function langClose() {
+      langPanel.hidden = true;
+      langToggle.setAttribute('aria-expanded', 'false');
+    }
+    function langOpen() {
+      langPanel.hidden = false;
+      langToggle.setAttribute('aria-expanded', 'true');
+    }
+    langToggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (langPanel.hidden) langOpen(); else langClose();
+    });
+    langPanel.addEventListener('click', function (e) {
+      // chiudi dopo aver selezionato una lingua (l'i18n handler globale fa il setLang)
+      if (e.target.closest('[data-lang-btn]')) langClose();
+    });
+    document.addEventListener('click', function (e) {
+      if (langPanel.hidden) return;
+      if (langToggle.contains(e.target) || langPanel.contains(e.target)) return;
+      langClose();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !langPanel.hidden) langClose();
+    });
+  }
 })();
