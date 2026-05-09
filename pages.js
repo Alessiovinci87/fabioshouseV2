@@ -59,7 +59,6 @@
           '<div class="prop-meta">' +
             '<h3>' + esc(h.name) + '</h3>' +
             '<span class="loc">' + esc(h.location) + '</span>' +
-            '<span class="price">' + t('home.prop.from') + ' ' + priceFmt(h.priceFrom) + ' ' + t('home.prop.per_week') + '</span>' +
             '<span class="prop-cta">' + t('home.prop.cta_open_door') + '</span>' +
           '</div>' +
         '</a>'
@@ -187,7 +186,7 @@
       var alt = i % 2 === 1 ? ' alt' : '';
       // For the list we filter on location (not region, all are Sardegna)
       return (
-        '<article class="case-row' + alt + '" data-region="' + esc(h.location) + '" data-price="' + h.priceFrom + '" data-guests="' + h.guests + '" data-featured-order="' + i + '" data-reveal>' +
+        '<article class="case-row' + alt + '" data-region="' + esc(h.location) + '" data-guests="' + h.guests + '" data-featured-order="' + i + '" data-reveal>' +
           '<div class="cr-media">' +
             '<a href="#/case/' + esc(h.id) + '"><img src="' + esc(h.hero) + '" alt="' + esc(t(h.name)) + '" loading="lazy" /></a>' +
           '</div>' +
@@ -202,7 +201,6 @@
               '<div class="s"><span class="num">' + h.sqm    + '</span>' + t('case.row.sqm') + '</div>' +
             '</div>' +
             '<div class="cr-foot">' +
-              '<div class="price">' + t('home.prop.from') + ' ' + priceFmt(h.priceFrom) + ' <small>' + t('home.prop.per_week') + '</small></div>' +
               '<a href="#/case/' + esc(h.id) + '" class="btn-ghost">' + t('case.row.explore') + '</a>' +
             '</div>' +
           '</div>' +
@@ -225,8 +223,6 @@
           '<span class="spacer"></span>' +
           '<select id="case-sort" aria-label="' + esc(t('case.sort_aria')) + '">' +
             '<option value="featured">'  + t('case.sort.featured')  + '</option>' +
-            '<option value="priceAsc">'  + t('case.sort.priceAsc')  + '</option>' +
-            '<option value="priceDesc">' + t('case.sort.priceDesc') + '</option>' +
             '<option value="guests">'    + t('case.sort.guests')    + '</option>' +
           '</select>' +
         '</div>' +

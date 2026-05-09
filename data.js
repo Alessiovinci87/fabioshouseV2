@@ -44,7 +44,7 @@
       },
       beds: 4, totalBeds: 6, guests: 8, baths: 2, sqm: 90,
       prices: { giugno: 800, luglio: 1200, agosto: 1500, settembre: 700 },
-      priceFrom: 700, cleaning: 0, deposit: 300,
+      priceFrom: 700, cleaning: 0,
       year_restored: null,
       tags: ['mare', 'pelosa', 'giardino', 'famiglia'],
       // Coordinate fornite da Fabio (2026-04-30) — pin esatto della villa via maps.app.goo.gl/j3sW5yuV3edGMheD6
@@ -145,19 +145,17 @@
         { it: 'Aria condizionata',    en: 'Air conditioning',   fr: 'Climatisation',         de: 'Klimaanlage' },
         { it: 'Cucina attrezzata',    en: 'Full kitchen',        fr: 'Cuisine équipée',        de: 'Voll ausgestattete Küche' },
         { it: 'Lavatrice',            en: 'Washing machine',     fr: 'Lave-linge',             de: 'Waschmaschine' },
-        { it: 'TV Smart',             en: 'Smart TV',            fr: 'TV connectée',           de: 'Smart-TV' },
+        { it: 'TV',                   en: 'TV',                  fr: 'TV',                     de: 'TV' },
         { it: 'Barbecue esterno',     en: 'Outdoor barbecue',    fr: 'Barbecue extérieur',     de: 'Außengrill' },
         { it: 'Giardino e veranda',   en: 'Garden and veranda',  fr: 'Jardin et véranda',      de: 'Garten und Veranda' },
         { it: 'Parcheggio privato',   en: 'Private parking',     fr: 'Stationnement privé',    de: 'Privater Parkplatz' },
-        { it: 'WiFi fibra',           en: 'Fibre WiFi',          fr: 'WiFi fibre',             de: 'Glasfaser-WLAN' },
-        { it: 'Biancheria inclusa',   en: 'Linen included',      fr: 'Linge inclus',           de: 'Wäsche inklusive' },
-        { it: 'Culla disponibile',    en: 'Cot available',       fr: 'Berceau disponible',     de: 'Babybett verfügbar' }
+        { it: 'WiFi',                 en: 'WiFi',                fr: 'WiFi',                   de: 'WLAN' }
       ],
       story: {
-        it: "Villa La Mimosa è una proprietà immersa nel verde della macchia mediterranea, a cinque minuti a piedi dalla Spiaggia della Pelosa — sabbia bianchissima, acqua trasparente, la Torre aragonese sullo sfondo. Intorno alla villa un giardino privato con veranda, barbecue, tavoli da esterno e ombrelloni. Dentro, un soggiorno luminoso con angolo cottura completo, quattro camere da letto per un totale di sei posti letto e due bagni con doccia. Climatizzazione in ogni stanza, fino a otto ospiti. È il punto di partenza giusto per il nord-ovest della Sardegna: dal porto di Stintino partono i traghetti per l'Asinara, poco lontano il sentiero di Capo Falcone, il Museo della Tonnara e i ristoranti di pesce del borgo. Alghero è a un'ora d'auto, comoda per una gita di un giorno.",
-        en: "Villa La Mimosa sits immersed in the Mediterranean scrub, five minutes on foot from La Pelosa beach — brilliant white sand, crystal-clear water, the Aragonese tower in the background. Around the villa, a private garden with veranda, barbecue, outdoor tables and parasols. Inside, a bright living room with a full kitchenette, four bedrooms with six beds in total and two shower bathrooms. Air conditioning in every room, sleeps up to eight. It's the right base for Sardinia's north-west: the ferries to Asinara leave from Stintino's harbour, just nearby you'll find the Capo Falcone trail, the Tuna Fishery Museum and the village's seafood restaurants. Alghero is an hour's drive — comfortable for a day trip.",
-        fr: "Villa La Mimosa est nichée dans le maquis méditerranéen, à cinq minutes à pied de la plage de La Pelosa — sable d'un blanc éclatant, eau transparente, la tour aragonaise en toile de fond. Autour de la villa, un jardin privé avec véranda, barbecue, tables extérieures et parasols. À l'intérieur, un séjour lumineux avec kitchenette complète, quatre chambres pour un total de six couchages et deux salles de bain avec douche. Climatisation dans chaque pièce, jusqu'à huit personnes. C'est la bonne base pour le nord-ouest de la Sardaigne : les ferries pour l'Asinara partent du port de Stintino, tout près se trouvent le sentier de Capo Falcone, le Musée de la Tonnara et les restaurants de poisson du village. Alghero est à une heure de route, parfaite pour une excursion d'une journée.",
-        de: 'Villa La Mimosa liegt eingebettet in die mediterrane Macchia, fünf Minuten zu Fuß vom Strand La Pelosa — leuchtend weißer Sand, kristallklares Wasser, der aragonesische Turm im Hintergrund. Rund um die Villa ein privater Garten mit Veranda, Grill, Tischen und Sonnenschirmen. Innen ein heller Wohnraum mit voll ausgestatteter Kochnische, vier Schlafzimmer mit insgesamt sechs Schlafplätzen und zwei Duschbäder. Klimaanlage in jedem Raum, bis zu acht Gäste. Der richtige Ausgangspunkt für den Nordwesten Sardiniens: Vom Hafen in Stintino fahren die Fähren zur Asinara, ganz in der Nähe liegen der Capo-Falcone-Wanderweg, das Thunfisch-Museum und die Fischrestaurants des Dorfes. Alghero erreicht man in einer Stunde mit dem Auto — angenehm für einen Tagesausflug.'
+        it: "Villa La Mimosa è una proprietà immersa nel verde della macchia mediterranea, a cinque minuti a piedi dalla Spiaggia della Pelosa — sabbia bianchissima, acqua trasparente, la Torre aragonese sullo sfondo. Intorno alla villa un giardino privato con veranda, barbecue e tavoli da esterno. Dentro, un soggiorno luminoso con angolo cottura completo, quattro camere da letto per un totale di sei posti letto e due bagni con doccia. Aria condizionata, fino a otto ospiti. È il punto di partenza giusto per il nord-ovest della Sardegna: dal porto di Stintino partono i traghetti per l'Asinara, poco lontano il sentiero di Capo Falcone, il Museo della Tonnara e i ristoranti di pesce del borgo. Alghero è a un'ora d'auto, comoda per una gita di un giorno.",
+        en: "Villa La Mimosa sits immersed in the Mediterranean scrub, five minutes on foot from La Pelosa beach — brilliant white sand, crystal-clear water, the Aragonese tower in the background. Around the villa, a private garden with veranda, barbecue and outdoor tables. Inside, a bright living room with a full kitchenette, four bedrooms with six beds in total and two shower bathrooms. Air conditioning, sleeps up to eight. It's the right base for Sardinia's north-west: the ferries to Asinara leave from Stintino's harbour, just nearby you'll find the Capo Falcone trail, the Tuna Fishery Museum and the village's seafood restaurants. Alghero is an hour's drive — comfortable for a day trip.",
+        fr: "Villa La Mimosa est nichée dans le maquis méditerranéen, à cinq minutes à pied de la plage de La Pelosa — sable d'un blanc éclatant, eau transparente, la tour aragonaise en toile de fond. Autour de la villa, un jardin privé avec véranda, barbecue et tables extérieures. À l'intérieur, un séjour lumineux avec kitchenette complète, quatre chambres pour un total de six couchages et deux salles de bain avec douche. Climatisation, jusqu'à huit personnes. C'est la bonne base pour le nord-ouest de la Sardaigne : les ferries pour l'Asinara partent du port de Stintino, tout près se trouvent le sentier de Capo Falcone, le Musée de la Tonnara et les restaurants de poisson du village. Alghero est à une heure de route, parfaite pour une excursion d'une journée.",
+        de: 'Villa La Mimosa liegt eingebettet in die mediterrane Macchia, fünf Minuten zu Fuß vom Strand La Pelosa — leuchtend weißer Sand, kristallklares Wasser, der aragonesische Turm im Hintergrund. Rund um die Villa ein privater Garten mit Veranda, Grill und Außentischen. Innen ein heller Wohnraum mit voll ausgestatteter Kochnische, vier Schlafzimmer mit insgesamt sechs Schlafplätzen und zwei Duschbäder. Klimaanlage, bis zu acht Gäste. Der richtige Ausgangspunkt für den Nordwesten Sardiniens: Vom Hafen in Stintino fahren die Fähren zur Asinara, ganz in der Nähe liegen der Capo-Falcone-Wanderweg, das Thunfisch-Museum und die Fischrestaurants des Dorfes. Alghero erreicht man in einer Stunde mit dem Auto — angenehm für einen Tagesausflug.'
       },
       bestFor: [
         { it: 'Famiglie', en: 'Families', fr: 'Familles', de: 'Familien' },
@@ -185,22 +183,10 @@
           en: 'No parties or events. Quiet after 23:00',
           fr: 'Pas de fêtes ni événements. Silence après 23h00',
           de: 'Keine Partys oder Veranstaltungen. Ruhe nach 23:00 Uhr' },
-        { it: 'Caparra cauzionale € 300, resa alla partenza',
-          en: 'Refundable deposit €300, returned on departure',
-          fr: 'Caution remboursable de 300 €, rendue au départ',
-          de: 'Rückerstattbare Kaution 300 €, Rückgabe bei Abreise' },
-        { it: 'Pulizie finali incluse nel prezzo',
-          en: 'Final cleaning included in the price',
-          fr: 'Ménage final inclus dans le prix',
-          de: 'Endreinigung im Preis enthalten' },
-        { it: 'WiFi fibra ~100 Mbps incluso',
-          en: '~100 Mbps fibre WiFi included',
-          fr: 'WiFi fibre ~100 Mbps inclus',
-          de: 'Glasfaser-WLAN ~100 Mbit/s inklusive' },
-        { it: 'Biancheria da letto e da bagno inclusa',
-          en: 'Bed and bath linen included',
-          fr: 'Linge de lit et de bain inclus',
-          de: 'Bett- und Handwäsche inklusive' }
+        { it: 'WiFi incluso',
+          en: 'WiFi included',
+          fr: 'WiFi inclus',
+          de: 'WLAN inklusive' }
       ],
       activities: [
         {
@@ -359,24 +345,24 @@
           id: 'eat', icon: '🍽️',
           items: [
             {
-              name: 'Ristorante Il Porticciolo',
-              desc: { it: 'Pesce fresco sul porto, specialità locali sarde', en: 'Fresh fish on the harbour, local Sardinian specialities', fr: 'Poisson frais sur le port, spécialités sardes locales', de: 'Frischer Fisch am Hafen, lokale sardische Spezialitäten' },
-              href: 'https://www.google.com/maps/search/?api=1&query=Ristorante+Il+Porticciolo+Stintino'
+              name: 'Il Sarago',
+              desc: { it: 'Pizzeria con forno a legna e pesce fresco, terrazza vista Asinara', en: 'Pizzeria with wood-fired oven and fresh fish, terrace overlooking Asinara', fr: 'Pizzeria au four à bois et poisson frais, terrasse avec vue sur l\'Asinara', de: 'Pizzeria mit Holzofen und frischem Fisch, Terrasse mit Blick auf Asinara' },
+              href: 'https://www.ristorantepizzeriailsarago.com/'
             },
             {
-              name: 'Trattoria La Rete',
-              desc: { it: 'Cucina casalinga, fregola con arselle e bottarga', en: 'Home-style cooking, fregola with clams and bottarga', fr: 'Cuisine familiale, fregola aux palourdes et boutargue', de: 'Hausmannskost, Fregola mit Venusmuscheln und Bottarga' },
-              href: 'https://www.google.com/maps/search/?api=1&query=Trattoria+La+Rete+Stintino'
+              name: 'Ristorante Lina',
+              desc: { it: 'Storico dal 1967, cucina stintinese, fregola ai frutti di mare', en: 'A landmark since 1967, Stintino cuisine, fregola with seafood', fr: 'Adresse historique depuis 1967, cuisine stintinoise, fregola aux fruits de mer', de: 'Traditionshaus seit 1967, Stintiner Küche, Fregola mit Meeresfrüchten' },
+              href: 'https://ristorantelina.it/'
             },
             {
-              name: 'Ristorante Silvestrino',
-              desc: { it: 'Vista sul mare, menu degustazione di pesce', en: 'Sea view, fish tasting menu', fr: 'Vue sur la mer, menu dégustation de poisson', de: 'Meerblick, Fisch-Degustationsmenü' },
-              href: 'https://www.google.com/maps/search/?api=1&query=Ristorante+Silvestrino+Stintino'
+              name: 'Ittiturismo Antares',
+              desc: { it: 'Pescato del giorno, cucinato dal pescatore Agostino, atmosfera familiare', en: 'Catch of the day, cooked by fisherman Agostino, family atmosphere', fr: 'Pêche du jour, cuisinée par le pêcheur Agostino, ambiance familiale', de: 'Fang des Tages, vom Fischer Agostino zubereitet, familiäre Atmosphäre' },
+              href: 'https://it.tripadvisor.ch/Restaurant_Review-g608925-d10395503-Reviews-Ittiturismo_Antares-Stintino_Province_of_Sassari_Sardinia.html'
             },
             {
-              name: 'Bar del Porto',
-              desc: { it: 'Colazione e aperitivo, la migliore granita di Stintino', en: 'Breakfast and aperitivo, the best granita in Stintino', fr: 'Petit-déjeuner et apéritif, la meilleure granita de Stintino', de: 'Frühstück und Aperitif, die beste Granita in Stintino' },
-              href: 'https://www.google.com/maps/search/?api=1&query=Bar+del+Porto+Stintino'
+              name: 'Musciarra',
+              desc: { it: 'Sul lungomare fronte porto, pasta ai frutti di mare e aperitivi', en: 'On the seafront facing the harbour, seafood pasta and aperitivos', fr: 'Sur la promenade face au port, pâtes aux fruits de mer et apéritifs', de: 'An der Strandpromenade gegenüber dem Hafen, Meeresfrüchte-Pasta und Aperitifs' },
+              href: 'https://www.tripadvisor.it/Restaurant_Review-g608925-d12856597-Reviews-Musciarra-Stintino_Province_of_Sassari_Sardinia.html'
             }
           ]
         },
@@ -453,7 +439,7 @@
       },
       beds: 2, totalBeds: 4, guests: 6, baths: 1, sqm: 70,
       prices: { giugno: 600, luglio: 900, agosto: 1100, settembre: 550 },
-      priceFrom: 550, cleaning: 0, deposit: 200,
+      priceFrom: 550, cleaning: 0,
       year_restored: null,
       tags: ['città', 'centro', 'balcone', 'catalana'],
       // Coordinate da Nominatim su Via Goceano 23, Alghero (2026-04-30)
@@ -588,19 +574,16 @@
         { it: 'Aria condizionata',      en: 'Air conditioning',   fr: 'Climatisation',            de: 'Klimaanlage' },
         { it: 'Cucina attrezzata',      en: 'Full kitchen',        fr: 'Cuisine équipée',           de: 'Voll ausgestattete Küche' },
         { it: 'Lavatrice',              en: 'Washing machine',     fr: 'Lave-linge',                de: 'Waschmaschine' },
-        { it: 'TV Smart',               en: 'Smart TV',            fr: 'TV connectée',              de: 'Smart-TV' },
+        { it: 'TV',                     en: 'TV',                  fr: 'TV',                        de: 'TV' },
         { it: 'Balcone privato',        en: 'Private balcony',     fr: 'Balcon privé',              de: 'Privater Balkon' },
-        { it: 'Ascensore',              en: 'Lift',                fr: 'Ascenseur',                 de: 'Aufzug' },
         { it: 'Parcheggio gratuito su strada', en: 'Free on-street parking', fr: 'Stationnement gratuit en rue', de: 'Kostenlose Parkplätze auf der Straße' },
-        { it: 'WiFi fibra',             en: 'Fibre WiFi',          fr: 'WiFi fibre',                de: 'Glasfaser-WLAN' },
-        { it: 'Biancheria inclusa',     en: 'Linen included',      fr: 'Linge inclus',              de: 'Wäsche inklusive' },
-        { it: 'Culla disponibile',      en: 'Cot available',       fr: 'Berceau disponible',        de: 'Babybett verfügbar' }
+        { it: 'WiFi',                   en: 'WiFi',                fr: 'WiFi',                      de: 'WLAN' }
       ],
       story: {
-        it: "La Porta del Lido è in posizione centralissima, a dieci minuti a piedi dal Lido e a cinque dal centro storico catalano. L'edificio è dotato di ascensore; parcheggio gratuito su strada nelle vie circostanti. Dentro: un soggiorno ampio con cucina a vista completamente attrezzata, due camere da letto — una matrimoniale e una doppia — per un totale di quattro posti letto, e un bagno con doccia. Il balcone dà su un cortile interno tranquillo. Fino a sei ospiti. Dalla porta di casa si arriva a piedi alle mura medievali e ai bastioni sul mare, alle vie pedonali del centro vecchio, al porto turistico, alla Cattedrale. Con l'auto, in venti-quaranta minuti, ci sono le Grotte di Nettuno, Capo Caccia, il Parco di Porto Conte e le cantine di Vermentino.",
-        en: "La Porta del Lido is in a very central position, ten minutes on foot from the Lido and five from the Catalan old town. The building has a lift; free on-street parking in the surrounding roads. Inside: a spacious living room with a full open-plan kitchen, two bedrooms — a double and a twin — with four beds in total, and a shower bathroom. The balcony looks onto a quiet inner courtyard. Sleeps up to six. From the front door you reach, on foot, the medieval walls and the sea-facing bastions, the pedestrian streets of the old town, the marina and the cathedral. By car, in twenty to forty minutes, you reach the Grottoes of Neptune, Capo Caccia, the Porto Conte park and the Vermentino wineries.",
-        fr: "La Porta del Lido se trouve en position très centrale, à dix minutes à pied du Lido et à cinq du centre historique catalan. L'immeuble dispose d'un ascenseur ; stationnement gratuit en rue dans les voies environnantes. À l'intérieur : un vaste séjour avec cuisine ouverte entièrement équipée, deux chambres — une double et une à deux lits — pour quatre couchages au total, et une salle de bain avec douche. Le balcon donne sur une cour intérieure tranquille. Jusqu'à six personnes. Depuis la porte d'entrée, on rejoint à pied les remparts médiévaux et les bastions côté mer, les rues piétonnes de la vieille ville, le port de plaisance et la cathédrale. En voiture, en vingt à quarante minutes, on atteint les Grottes de Neptune, Capo Caccia, le parc de Porto Conte et les caves de Vermentino.",
-        de: 'La Porta del Lido liegt zentral, zehn Minuten zu Fuß vom Lido und fünf von der katalanischen Altstadt. Das Gebäude verfügt über einen Aufzug; kostenlose Parkplätze auf der Straße in den umliegenden Gassen. Innen: ein großzügiger Wohnraum mit voll ausgestatteter offener Küche, zwei Schlafzimmer — ein Doppel- und ein Zweibettzimmer — mit insgesamt vier Schlafplätzen, und ein Duschbad. Der Balkon geht auf einen ruhigen Innenhof. Bis zu sechs Gäste. Von der Haustür erreicht man zu Fuß die mittelalterlichen Stadtmauern und die Meer-Bastionen, die Fußgängerstraßen der Altstadt, den Jachthafen und die Kathedrale. Mit dem Auto sind in zwanzig bis vierzig Minuten die Neptungrotten, Capo Caccia, der Porto-Conte-Park und die Vermentino-Weingüter erreichbar.'
+        it: "La Porta del Lido è in posizione centralissima, a dieci minuti a piedi dal Lido e a cinque dal centro storico catalano. Parcheggio gratuito su strada nelle vie circostanti. Dentro: un soggiorno ampio con cucina a vista completamente attrezzata, due camere da letto — una matrimoniale e una doppia — per un totale di quattro posti letto, e un bagno con doccia. Il balcone dà su un cortile interno tranquillo. Fino a sei ospiti. Dalla porta di casa si arriva a piedi alle mura medievali e ai bastioni sul mare, alle vie pedonali del centro vecchio, al porto turistico, alla Cattedrale. Con l'auto, in venti-quaranta minuti, ci sono le Grotte di Nettuno, Capo Caccia, il Parco di Porto Conte e le cantine di Vermentino.",
+        en: "La Porta del Lido is in a very central position, ten minutes on foot from the Lido and five from the Catalan old town. Free on-street parking in the surrounding roads. Inside: a spacious living room with a full open-plan kitchen, two bedrooms — a double and a twin — with four beds in total, and a shower bathroom. The balcony looks onto a quiet inner courtyard. Sleeps up to six. From the front door you reach, on foot, the medieval walls and the sea-facing bastions, the pedestrian streets of the old town, the marina and the cathedral. By car, in twenty to forty minutes, you reach the Grottoes of Neptune, Capo Caccia, the Porto Conte park and the Vermentino wineries.",
+        fr: "La Porta del Lido se trouve en position très centrale, à dix minutes à pied du Lido et à cinq du centre historique catalan. Stationnement gratuit en rue dans les voies environnantes. À l'intérieur : un vaste séjour avec cuisine ouverte entièrement équipée, deux chambres — une double et une à deux lits — pour quatre couchages au total, et une salle de bain avec douche. Le balcon donne sur une cour intérieure tranquille. Jusqu'à six personnes. Depuis la porte d'entrée, on rejoint à pied les remparts médiévaux et les bastions côté mer, les rues piétonnes de la vieille ville, le port de plaisance et la cathédrale. En voiture, en vingt à quarante minutes, on atteint les Grottes de Neptune, Capo Caccia, le parc de Porto Conte et les caves de Vermentino.",
+        de: 'La Porta del Lido liegt zentral, zehn Minuten zu Fuß vom Lido und fünf von der katalanischen Altstadt. Kostenlose Parkplätze auf der Straße in den umliegenden Gassen. Innen: ein großzügiger Wohnraum mit voll ausgestatteter offener Küche, zwei Schlafzimmer — ein Doppel- und ein Zweibettzimmer — mit insgesamt vier Schlafplätzen, und ein Duschbad. Der Balkon geht auf einen ruhigen Innenhof. Bis zu sechs Gäste. Von der Haustür erreicht man zu Fuß die mittelalterlichen Stadtmauern und die Meer-Bastionen, die Fußgängerstraßen der Altstadt, den Jachthafen und die Kathedrale. Mit dem Auto sind in zwanzig bis vierzig Minuten die Neptungrotten, Capo Caccia, der Porto-Conte-Park und die Vermentino-Weingüter erreichbar.'
       },
       bestFor: [
         { it: 'Coppie',         en: 'Couples',   fr: 'Couples',     de: 'Paare' },
@@ -628,22 +611,10 @@
           en: 'No parties. Please respect the building quiet hours',
           fr: 'Pas de fêtes. Respecter le silence de la copropriété',
           de: 'Keine Partys. Bitte Ruhezeiten einhalten' },
-        { it: 'Caparra cauzionale € 200, resa alla partenza',
-          en: 'Refundable deposit €200, returned on departure',
-          fr: 'Caution remboursable de 200 €, rendue au départ',
-          de: 'Rückerstattbare Kaution 200 €, Rückgabe bei Abreise' },
-        { it: 'Pulizie finali incluse nel prezzo',
-          en: 'Final cleaning included in the price',
-          fr: 'Ménage final inclus dans le prix',
-          de: 'Endreinigung im Preis enthalten' },
-        { it: 'WiFi fibra ~100 Mbps incluso',
-          en: '~100 Mbps fibre WiFi included',
-          fr: 'WiFi fibre ~100 Mbps inclus',
-          de: 'Glasfaser-WLAN ~100 Mbit/s inklusive' },
-        { it: 'Biancheria da letto e da bagno inclusa',
-          en: 'Bed and bath linen included',
-          fr: 'Linge de lit et de bain inclus',
-          de: 'Bett- und Handwäsche inklusive' }
+        { it: 'WiFi incluso',
+          en: 'WiFi included',
+          fr: 'WiFi inclus',
+          de: 'WLAN inklusive' }
       ],
       activities: [
         {
@@ -802,24 +773,24 @@
           id: 'eat', icon: '🍽️',
           items: [
             {
-              name: 'Al Tuguri',
-              desc: { it: 'Cucina catalana storica, centro storico — prenota sempre', en: 'Historic Catalan cuisine, old town — always book ahead', fr: 'Cuisine catalane historique, vieille ville — réservez toujours', de: 'Historische katalanische Küche, Altstadt — immer reservieren' },
-              href: 'https://www.google.com/maps/search/?api=1&query=Al+Tuguri+Alghero'
+              name: 'Mabrouk',
+              desc: { it: 'Trattoria storica nel centro, menu fisso di pesce, prezzo onesto', en: 'Historic trattoria in the old town, fixed-price seafood menu, fair pricing', fr: 'Trattoria historique du centre, menu fixe de poisson, prix honnête', de: 'Historische Trattoria in der Altstadt, Fisch-Menü zum Festpreis, faire Preise' },
+              href: 'https://welcomealghero.com/it/ristorante/ristorante-mabrouk-2/'
             },
             {
-              name: 'Il Pavone',
-              desc: { it: 'Piazza Civica, vista bastioni, pesce e carne sarda', en: 'Piazza Civica, bastion view, fish and Sardinian meat', fr: 'Piazza Civica, vue sur les bastions, poisson et viande sarde', de: 'Piazza Civica, Blick auf die Bastionen, Fisch und sardisches Fleisch' },
-              href: 'https://www.google.com/maps/search/?api=1&query=Il+Pavone+Alghero'
+              name: 'Agriturismo Sa Mandra',
+              desc: { it: 'Cucina sarda autentica, menu degustazione, formaggi e salumi locali', en: 'Authentic Sardinian cuisine, tasting menu, local cheeses and cured meats', fr: 'Cuisine sarde authentique, menu dégustation, fromages et charcuteries locaux', de: 'Authentische sardische Küche, Degustationsmenü, lokale Käse und Wurstwaren' },
+              href: 'https://www.samandra.it/'
             },
             {
-              name: 'Ristorante La Piazzetta',
-              desc: { it: 'Cucina di mare, ottimo rapporto qualità-prezzo', en: 'Seafood cuisine, excellent value for money', fr: 'Cuisine de la mer, excellent rapport qualité-prix', de: 'Meeresküche, hervorragendes Preis-Leistungs-Verhältnis' },
-              href: 'https://www.google.com/maps/search/?api=1&query=Ristorante+La+Piazzetta+Alghero'
+              name: "Il Pesce D'Oro",
+              desc: { it: 'Specialità di pesce fresco, classico della cucina di mare algherese', en: 'Fresh seafood specialities, an Alghero classic of sea cuisine', fr: 'Spécialités de poisson frais, un classique de la cuisine de mer d\'Alghero', de: 'Spezialitäten von frischem Fisch, ein Klassiker der Algheroer Meeresküche' },
+              href: 'http://pescedoroalghero.it/'
             },
             {
-              name: 'Trattoria Lo Quarter',
-              desc: { it: 'Cucina sarda tradizionale, malloreddus e pecorino', en: 'Traditional Sardinian cuisine, malloreddus and pecorino', fr: 'Cuisine sarde traditionnelle, malloreddus et pecorino', de: 'Traditionelle sardische Küche, Malloreddus und Pecorino' },
-              href: 'https://www.google.com/maps/search/?api=1&query=Trattoria+Lo+Quarter+Alghero'
+              name: 'Il Milese',
+              desc: { it: 'Storica focacceria sul porto dal 1971, focaccia sarda ripiena', en: 'Historic focaccia bakery on the harbour since 1971, stuffed Sardinian focaccia', fr: 'Focaccia historique sur le port depuis 1971, focaccia sarde fourrée', de: 'Historische Focaccia-Bäckerei am Hafen seit 1971, gefüllte sardische Focaccia' },
+              href: 'https://www.barmilese.it/'
             }
           ]
         },
@@ -887,10 +858,10 @@
         fr: 'Climatisation',      de: 'Klimaanlage'
       },
       one_line: {
-        it: 'In ogni stanza, inclusa nel prezzo.',
-        en: 'In every room, included in the price.',
-        fr: 'Dans chaque pièce, inclus dans le prix.',
-        de: 'In jedem Zimmer, im Preis enthalten.'
+        it: 'In ogni stanza.',
+        en: 'In every room.',
+        fr: 'Dans chaque pièce.',
+        de: 'In jedem Zimmer.'
       },
       body: {
         it: 'Climatizzazione caldo/freddo in tutte le camere e nella zona giorno. In luglio e agosto, quando la Sardegna supera i trenta gradi, è una cosa che conta davvero.',
@@ -919,35 +890,16 @@
       }
     },
     {
-      id: 'biancheria', icon: '≈', tag: 'Incluso',
-      name: {
-        it: 'Biancheria e pulizie finali', en: 'Linen and final cleaning',
-        fr: 'Linge et ménage final',        de: 'Wäsche und Endreinigung'
-      },
-      one_line: {
-        it: 'Lenzuola, asciugamani, pulizia a fine soggiorno.',
-        en: 'Sheets, towels, cleaning at the end of your stay.',
-        fr: 'Draps, serviettes, ménage en fin de séjour.',
-        de: 'Bettwäsche, Handtücher, Reinigung am Ende des Aufenthalts.'
-      },
-      body: {
-        it: 'Biancheria da letto e da bagno inclusa, cambio al giro letto per soggiorni lunghi. Le pulizie finali sono a carico nostro: voi chiudete la porta e basta.',
-        en: 'Bed and bath linen included, a mid-stay change for longer visits. Final cleaning is on us — you just close the door on the way out.',
-        fr: 'Linge de lit et de bain inclus, un changement à mi-séjour pour les longs séjours. Le ménage final est pour nous : vous fermez simplement la porte en partant.',
-        de: 'Bett- und Handwäsche inklusive, bei längeren Aufenthalten ein Wechsel in der Mitte. Die Endreinigung übernehmen wir — Sie schließen einfach die Tür hinter sich ab.'
-      }
-    },
-    {
       id: 'wifi', icon: '→', tag: 'Incluso',
       name: {
-        it: 'WiFi fibra', en: 'Fibre WiFi',
-        fr: 'WiFi fibre', de: 'Glasfaser-WLAN'
+        it: 'WiFi', en: 'WiFi',
+        fr: 'WiFi', de: 'WLAN'
       },
       one_line: {
-        it: 'Connessione a circa 100 Mbps in tutta la casa.',
-        en: 'About 100 Mbps throughout the house.',
-        fr: 'Environ 100 Mbps dans toute la maison.',
-        de: 'Rund 100 Mbit/s im ganzen Haus.'
+        it: 'In tutta la casa.',
+        en: 'Throughout the house.',
+        fr: 'Dans toute la maison.',
+        de: 'Im ganzen Haus.'
       },
       body: {
         it: 'Una linea che regge lo streaming, le videochiamate e il lavoro da remoto in bassa stagione. Non pensavate di lavorare? Nemmeno noi — ma se serve, funziona.',
@@ -978,20 +930,20 @@
     {
       id: 'tv', icon: '◦', tag: 'Incluso',
       name: {
-        it: 'TV Smart', en: 'Smart TV',
-        fr: 'TV Smart', de: 'Smart-TV'
+        it: 'TV', en: 'TV',
+        fr: 'TV', de: 'TV'
       },
       one_line: {
-        it: 'Streaming, app, canali nazionali.',
-        en: 'Streaming, apps, national channels.',
-        fr: 'Streaming, applis, chaînes nationales.',
-        de: 'Streaming, Apps, nationale Sender.'
+        it: 'Canali nazionali, serata di pioggia salvata.',
+        en: 'National channels — a rainy evening saved.',
+        fr: 'Chaînes nationales, soirée de pluie sauvée.',
+        de: 'Nationale Sender, Regenabend gerettet.'
       },
       body: {
-        it: 'Smart TV nel soggiorno con accesso alle principali piattaforme. Non vi giudicheremo se passerete una serata di pioggia a guardarla.',
-        en: "Smart TV in the living room with all the main platforms. We won't judge if you spend a rainy evening watching it.",
-        fr: "TV connectée au salon, toutes les grandes plateformes. On ne vous jugera pas si vous passez une soirée de pluie devant.",
-        de: 'Smart-TV im Wohnzimmer mit allen wichtigen Plattformen. Kein böses Wort, wenn Sie einen Regenabend davor verbringen.'
+        it: 'TV nel soggiorno. Non vi giudicheremo se passerete una serata di pioggia a guardarla.',
+        en: "TV in the living room. We won't judge if you spend a rainy evening watching it.",
+        fr: "TV au salon. On ne vous jugera pas si vous passez une soirée de pluie devant.",
+        de: 'TV im Wohnzimmer. Kein böses Wort, wenn Sie einen Regenabend davor verbringen.'
       }
     },
     {
@@ -1016,10 +968,10 @@
     {
       id: 'extra', icon: '⌗', tag: 'Incluso',
       name: {
-        it: 'Barbecue, balcone, ascensore',
-        en: 'Barbecue, balcony, lift',
-        fr: 'Barbecue, balcon, ascenseur',
-        de: 'Grill, Balkon, Aufzug'
+        it: 'Barbecue, balcone',
+        en: 'Barbecue, balcony',
+        fr: 'Barbecue, balcon',
+        de: 'Grill, Balkon'
       },
       one_line: {
         it: 'Per la casa giusta, quello che la rende giusta.',
@@ -1028,29 +980,10 @@
         de: 'Für jedes Haus das, was es ausmacht.'
       },
       body: {
-        it: 'A Stintino: barbecue, lettini e tavolo da pranzo in giardino. Ad Alghero: balcone sul cortile interno, ascensore per risparmiarsi i piani a fine giornata.',
-        en: "In Stintino: barbecue, sunloungers and a dining table in the garden. In Alghero: balcony over the inner courtyard, and a lift to save you the stairs at the end of the day.",
-        fr: "À Stintino : barbecue, chaises longues et table dans le jardin. À Alghero : balcon sur la cour intérieure, ascenseur pour s'épargner les étages en fin de journée.",
-        de: 'In Stintino: Grill, Liegen und Esstisch im Garten. In Alghero: Balkon zum Innenhof und Aufzug, um sich die Treppen am Abend zu sparen.'
-      }
-    },
-    {
-      id: 'culla', icon: '≈', tag: 'Su richiesta',
-      name: {
-        it: 'Culla e seggiolone',   en: 'Cot and high chair',
-        fr: 'Berceau et chaise haute', de: 'Babybett und Hochstuhl'
-      },
-      one_line: {
-        it: 'Per chi viaggia con bambini piccoli.',
-        en: 'For guests travelling with small children.',
-        fr: 'Pour les hôtes qui voyagent avec de jeunes enfants.',
-        de: 'Für Gäste, die mit kleinen Kindern reisen.'
-      },
-      body: {
-        it: "Culla da campeggio e seggiolone disponibili in entrambe le case. Ci segnalate l'età del bambino quando prenotate e li troviamo in camera all'arrivo.",
-        en: "Travel cot and high chair available in both houses. Let us know the child's age when you book and we'll have them ready in the room on arrival.",
-        fr: "Lit parapluie et chaise haute disponibles dans les deux maisons. Dites-nous l'âge de l'enfant à la réservation et nous les trouverez dans la chambre à l'arrivée.",
-        de: 'Reisebett und Hochstuhl in beiden Häusern verfügbar. Teilen Sie uns bei der Buchung das Alter des Kindes mit — sie stehen bei Ankunft bereit.'
+        it: 'A Stintino: barbecue, lettini e tavolo da pranzo in giardino. Ad Alghero: balcone sul cortile interno.',
+        en: "In Stintino: barbecue, sunloungers and a dining table in the garden. In Alghero: balcony over the inner courtyard.",
+        fr: "À Stintino : barbecue, chaises longues et table dans le jardin. À Alghero : balcon sur la cour intérieure.",
+        de: 'In Stintino: Grill, Liegen und Esstisch im Garten. In Alghero: Balkon zum Innenhof.'
       }
     }
   ];
@@ -1072,10 +1005,10 @@
         de: 'Wie buche ich?'
       },
       a: {
-        it: "Scrivici dal modulo di contatto o via email. Rispondiamo entro ventiquattro ore con disponibilità e condizioni. Il trenta percento di caparra conferma la data; il saldo una settimana prima dell'arrivo.",
-        en: 'Write to us through the contact form or by email. We reply within twenty-four hours with availability and terms. A thirty percent deposit confirms the dates; the balance is paid a week before arrival.',
-        fr: "Écrivez-nous via le formulaire de contact ou par e-mail. Réponse sous vingt-quatre heures avec les disponibilités et les conditions. Un acompte de trente pour cent confirme les dates ; le solde est réglé une semaine avant l'arrivée.",
-        de: 'Schreiben Sie uns über das Kontaktformular oder per E-Mail. Antwort innerhalb von vierundzwanzig Stunden mit Verfügbarkeit und Konditionen. Eine Anzahlung von dreißig Prozent bestätigt die Daten; der Rest wird eine Woche vor Anreise bezahlt.'
+        it: "Scrivici dal modulo di contatto o via email. Rispondiamo entro ventiquattro ore con disponibilità e condizioni.",
+        en: 'Write to us through the contact form or by email. We reply within twenty-four hours with availability and terms.',
+        fr: "Écrivez-nous via le formulaire de contact ou par e-mail. Réponse sous vingt-quatre heures avec les disponibilités et les conditions.",
+        de: 'Schreiben Sie uns über das Kontaktformular oder per E-Mail. Antwort innerhalb von vierundzwanzig Stunden mit Verfügbarkeit und Konditionen.'
       }
     },
     {
@@ -1100,10 +1033,10 @@
         de: 'Was ist im Preis enthalten?'
       },
       a: {
-        it: "Soggiorno, biancheria da letto e da bagno, pulizia finale, WiFi in fibra, aria condizionata, utenze. La tassa di soggiorno comunale è a parte e si salda all'arrivo.",
-        en: 'The stay, bed and bath linen, final cleaning, fibre WiFi, air conditioning, utilities. The municipal tourist tax is separate and paid on arrival.',
-        fr: "Le séjour, le linge de lit et de bain, le ménage final, le WiFi fibre, la climatisation, les charges. La taxe de séjour communale est à part et se règle à l'arrivée.",
-        de: 'Der Aufenthalt, Bett- und Handwäsche, Endreinigung, Glasfaser-WLAN, Klimaanlage, Nebenkosten. Die kommunale Kurtaxe ist separat und wird bei der Anreise bezahlt.'
+        it: "Soggiorno, WiFi, aria condizionata, utenze. La tassa di soggiorno comunale è a parte e si salda all'arrivo.",
+        en: 'The stay, WiFi, air conditioning, utilities. The municipal tourist tax is separate and paid on arrival.',
+        fr: "Le séjour, le WiFi, la climatisation, les charges. La taxe de séjour communale est à part et se règle à l'arrivée.",
+        de: 'Der Aufenthalt, WLAN, Klimaanlage, Nebenkosten. Die kommunale Kurtaxe ist separat und wird bei der Anreise bezahlt.'
       }
     },
     {

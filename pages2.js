@@ -10,19 +10,10 @@
   var U = window.FH_UTIL;
   var esc = U.esc;
   var emFirstWord = U.emFirstWord;
-  var priceFmt = U.priceFmt;
   var t = function (v) {
     return (window.FH_I18N && window.FH_I18N.t) ? window.FH_I18N.t(v)
       : (typeof v === 'string' ? v : (v && (v.it || Object.values(v)[0])) || '');
   };
-
-  // Seasons used by the booking card chips (order matters)
-  var SEASONS = [
-    { key: 'giugno',    label: 'Giugno'    },
-    { key: 'luglio',    label: 'Luglio'    },
-    { key: 'agosto',    label: 'Agosto'    },
-    { key: 'settembre', label: 'Settembre' }
-  ];
 
   // ------------------------- DETAIL -------------------------
   function renderDetail(id) {
@@ -68,26 +59,6 @@
            '</button>' +
          '</div>')
       : '';
-
-    // --- Booking card (weekly seasonal) ---
-    var defaultKey = SEASONS[3].key;
-    SEASONS.forEach(function (s) {
-      if (h.prices[s.key] === h.priceFrom) defaultKey = s.key;
-    });
-    var chipsHtml = SEASONS.map(function (s) {
-      var active = s.key === defaultKey ? ' active' : '';
-      var p = h.prices[s.key];
-      return (
-        '<button type="button" class="season-chip' + active + '" data-season="' + s.key + '" data-price="' + p + '">' +
-          '<span class="lbl">' + t('det.book.month.' + s.key) + '</span>' +
-          '<span class="p">' + priceFmt(p) + '</span>' +
-        '</button>'
-      );
-    }).join('');
-
-    var defaultPrice = h.prices[defaultKey];
-    var cleaning = h.cleaning || 0;
-    var defaultTotal = defaultPrice + cleaning;
 
     var rulesHtml = (h.rules || []).map(function (r) {
       return '<li>' + esc(t(r)) + '</li>';
@@ -203,37 +174,24 @@
 
       '<section class="sect" style="padding-top: clamp(50px, 6vw, 80px);">' +
         '<div class="container">' +
-          '<div class="det-split">' +
-            '<div class="det-story" data-reveal>' +
-              '<p class="eyebrow">' + t('det.thehouse') + '</p>' +
-              '<h2 class="mt-md">' + esc(t(h.subtitle)) + '</h2>' +
-              '<p class="mt-md">' + esc(t(h.story)) + '</p>' +
-              '<div class="det-ameneties">' +
-                '<h3>' + t('det.amenities') + '</h3>' +
-                '<ul class="amenity-grid">' + amenHtml + '</ul>' +
-              '</div>' +
-              (rulesHtml ? (
-                '<div class="det-rules">' +
-                  '<h3>' + t('det.practical') + '</h3>' +
-                  '<ul class="amenity-grid">' + rulesHtml + '</ul>' +
-                '</div>'
-              ) : '') +
+          '<div class="det-story" data-reveal>' +
+            '<p class="eyebrow">' + t('det.thehouse') + '</p>' +
+            '<h2 class="mt-md">' + esc(t(h.subtitle)) + '</h2>' +
+            '<p class="mt-md">' + esc(t(h.story)) + '</p>' +
+            '<div class="det-ameneties">' +
+              '<h3>' + t('det.amenities') + '</h3>' +
+              '<ul class="amenity-grid">' + amenHtml + '</ul>' +
             '</div>' +
-            '<aside class="book-card" data-book-card data-house="' + esc(h.id) + '" data-cleaning="' + cleaning + '" data-reveal data-delay="2">' +
-              '<div class="bk-price">' +
-                '<span class="p" data-bk-price>' + priceFmt(defaultPrice) + '</span>' +
-                '<small>' + t('det.book.perweek') + '</small>' +
-              '</div>' +
-              '<div class="season-row" role="tablist" aria-label="' + esc(t('det.book.season_aria')) + '">' + chipsHtml + '</div>' +
-              '<div class="guests"><strong>' + t('det.book.guests') + '</strong> · ' + t('det.book.guests_up_to') + ' ' + h.guests + '</div>' +
-              '<div class="breakdown">' +
-                '<div class="ln"><span>' + t('det.book.nights') + ' <span data-bk-rate>' + priceFmt(defaultPrice) + '</span> ' + t('det.book.perweek') + '</span><span data-bk-base>' + priceFmt(defaultPrice) + '</span></div>' +
-                '<div class="ln"><span>' + t('det.book.cleaning') + '</span><span>' + (cleaning === 0 ? t('det.book.included') : priceFmt(cleaning)) + '</span></div>' +
-                '<div class="ln total"><span>' + t('det.book.total') + '</span><span data-bk-total>' + priceFmt(defaultTotal) + '</span></div>' +
-              '</div>' +
+            (rulesHtml ? (
+              '<div class="det-rules">' +
+                '<h3>' + t('det.practical') + '</h3>' +
+                '<ul class="amenity-grid">' + rulesHtml + '</ul>' +
+              '</div>'
+            ) : '') +
+            '<div class="det-cta-inline" data-reveal>' +
               '<a href="#/contatti?casa=' + esc(h.id) + '" class="btn-primary">' + t('det.book.cta') + '</a>' +
               '<p class="nota">' + t('det.book.note') + '</p>' +
-            '</aside>' +
+            '</div>' +
           '</div>' +
         '</div>' +
       '</section>' +

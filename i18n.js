@@ -130,10 +130,10 @@
     },
     'home.how.pt4.h': { it: 'Tutto incluso', en: 'Everything included', fr: 'Tout compris', de: 'Alles inklusive' },
     'home.how.pt4.t': {
-      it: 'Biancheria, pulizie finali, WiFi in fibra, aria condizionata. Il prezzo sul sito è quello che pagate.',
-      en: 'Linen, final cleaning, fibre WiFi, air conditioning. The price on the site is the price you pay.',
-      fr: 'Linge, ménage final, WiFi fibre, climatisation. Le prix affiché est le prix payé.',
-      de: 'Wäsche, Endreinigung, Glasfaser-WLAN, Klimaanlage. Der Preis auf der Seite ist der Preis, den Sie zahlen.'
+      it: 'WiFi, aria condizionata, utenze. Niente sorprese all\'arrivo.',
+      en: 'WiFi, air conditioning, utilities. No surprises on arrival.',
+      fr: 'WiFi, climatisation, charges. Aucune surprise à l\'arrivée.',
+      de: 'WLAN, Klimaanlage, Nebenkosten. Keine Überraschungen bei der Ankunft.'
     },
     'home.cite.q': {
       it: '"Sono case che conosciamo a memoria. Le teniamo come le terremmo per noi."',
@@ -263,7 +263,6 @@
     'det.book.guests':  { it: 'Ospiti',     en: 'Guests',   fr: 'Hôtes',    de: 'Gäste' },
     'det.book.guests_up_to': { it: 'fino a', en: 'up to',   fr: "jusqu'à", de: 'bis zu' },
     'det.book.nights':  { it: '7 notti ×',  en: '7 nights ×', fr: '7 nuits ×', de: '7 Nächte ×' },
-    'det.book.cleaning': { it: 'Pulizie finali', en: 'Final cleaning', fr: 'Ménage final', de: 'Endreinigung' },
     'det.book.included': { it: 'incluse',   en: 'included', fr: 'inclus',   de: 'inbegriffen' },
     'det.book.total':   { it: 'Totale settimana', en: 'Weekly total', fr: 'Total semaine', de: 'Wochentotal' },
     'det.book.month.giugno':     { it: 'Giugno',    en: 'June',      fr: 'Juin',      de: 'Juni' },
@@ -417,10 +416,10 @@
       de: 'Der Preis ist <em>der, den Sie sehen</em>.'
     },
     'inc.lede': {
-      it: "Tutto quello che trovate sotto è compreso nella tariffa settimanale. Niente supplementi per biancheria, pulizie finali, WiFi, aria condizionata. Solo la tassa di soggiorno si salda all'arrivo.",
-      en: 'Everything below is included in the weekly rate. No extras for linen, final cleaning, WiFi or air conditioning. Only the tourist tax is paid on arrival.',
-      fr: 'Tout ce qui figure ci-dessous est compris dans le tarif hebdomadaire. Aucun supplément pour le linge, le ménage final, le WiFi ou la climatisation. Seule la taxe de séjour est réglée à l\'arrivée.',
-      de: 'Alles, was Sie unten finden, ist im Wochenpreis enthalten. Keine Zuschläge für Wäsche, Endreinigung, WLAN oder Klimaanlage. Nur die Kurtaxe wird bei der Ankunft bezahlt.'
+      it: "Tutto quello che trovate sotto è compreso. Niente supplementi per WiFi, aria condizionata o utenze. Solo la tassa di soggiorno si salda all'arrivo.",
+      en: 'Everything below is included. No extras for WiFi, air conditioning or utilities. Only the tourist tax is paid on arrival.',
+      fr: 'Tout ce qui figure ci-dessous est compris. Aucun supplément pour le WiFi, la climatisation ou les charges. Seule la taxe de séjour est réglée à l\'arrivée.',
+      de: 'Alles, was Sie unten finden, ist enthalten. Keine Zuschläge für WLAN, Klimaanlage oder Nebenkosten. Nur die Kurtaxe wird bei der Ankunft bezahlt.'
     },
     'inc.badge.included':  { it: 'Incluso',     en: 'Included',   fr: 'Inclus',     de: 'Inbegriffen' },
     'inc.badge.onrequest': { it: 'Su richiesta', en: 'On request', fr: 'Sur demande', de: 'Auf Anfrage' },
@@ -432,16 +431,16 @@
       de: 'Nur ein paar Dinge, <em>klar benannt</em>.'
     },
     'inc.notinc.body1': {
-      it: 'La tassa di soggiorno comunale, che varia di pochi euro a persona per notte ed è fissata dal Comune. La cauzione rimborsabile alla partenza (trecento euro a Stintino, duecento ad Alghero). Le vostre consumazioni personali, ovviamente — noi lasciamo un benvenuto base, ma la spesa la fate voi.',
-      en: 'The municipal tourist tax, a few euros per person per night, set by the town hall. The refundable deposit, paid back at check-out (three hundred euros in Stintino, two hundred in Alghero). Your own groceries, of course — we leave a small welcome basket, but the shopping is yours.',
-      fr: 'La taxe de séjour communale, quelques euros par personne et par nuit, fixée par la mairie. La caution remboursable au départ (trois cents euros à Stintino, deux cents à Alghero). Vos consommations personnelles, bien entendu — nous laissons un petit panier d\'accueil, mais les courses sont à votre charge.',
-      de: 'Die kommunale Kurtaxe, einige Euro pro Person und Nacht, festgelegt von der Gemeinde. Die Kaution, die bei der Abreise zurückerstattet wird (dreihundert Euro in Stintino, zweihundert in Alghero). Ihre persönlichen Einkäufe natürlich — wir lassen einen kleinen Willkommensgruß da, den Einkauf übernehmen Sie.'
+      it: 'La tassa di soggiorno comunale, che varia di pochi euro a persona per notte ed è fissata dal Comune. Le vostre consumazioni personali, ovviamente — noi lasciamo un benvenuto base, ma la spesa la fate voi.',
+      en: 'The municipal tourist tax, a few euros per person per night, set by the town hall. Your own groceries, of course — we leave a small welcome basket, but the shopping is yours.',
+      fr: 'La taxe de séjour communale, quelques euros par personne et par nuit, fixée par la mairie. Vos consommations personnelles, bien entendu — nous laissons un petit panier d\'accueil, mais les courses sont à votre charge.',
+      de: 'Die kommunale Kurtaxe, einige Euro pro Person und Nacht, festgelegt von der Gemeinde. Ihre persönlichen Einkäufe natürlich — wir lassen einen kleinen Willkommensgruß da, den Einkauf übernehmen Sie.'
     },
     'inc.notinc.body2': {
-      it: "Nessun costo nascosto per biancheria, pulizie, utenze. Nessuna piattaforma terza che aggiunge percentuali. Quello che leggete nell'email di conferma è quello che paghereste.",
-      en: 'No hidden costs for linen, cleaning or utilities. No third-party platforms adding fees. What you read in the confirmation email is what you pay.',
-      fr: 'Aucun coût caché pour le linge, le ménage ou les charges. Aucune plateforme tierce qui ajoute des pourcentages. Ce que vous lisez dans l\'e-mail de confirmation, c\'est ce que vous payez.',
-      de: 'Keine versteckten Kosten für Wäsche, Reinigung oder Nebenkosten. Keine Drittanbieter-Plattformen, die Gebühren hinzufügen. Was in der Bestätigungs-E-Mail steht, zahlen Sie.'
+      it: "Niente costi nascosti su WiFi, aria condizionata o utenze. Nessuna piattaforma terza che aggiunge percentuali.",
+      en: 'No hidden costs for WiFi, air conditioning or utilities. No third-party platforms adding fees.',
+      fr: 'Aucun coût caché pour le WiFi, la climatisation ou les charges. Aucune plateforme tierce qui ajoute des pourcentages.',
+      de: 'Keine versteckten Kosten für WLAN, Klimaanlage oder Nebenkosten. Keine Drittanbieter-Plattformen, die Gebühren hinzufügen.'
     },
 
     // -------- chi siamo --------
@@ -697,22 +696,22 @@
       de: 'La Porta del Lido · Wohnung im Zentrum von Alghero | Le Porte di Sardegna'
     },
     'meta.route.alghero.description': {
-      it: 'Appartamento di 70 m² ad Alghero, Sardegna: due camere, quattro posti letto, un bagno, fino a sei ospiti, ascensore, balcone, a dieci minuti a piedi dal Lido e cinque dal centro storico catalano. Giugno–Settembre.',
-      en: 'A 70 m² apartment in Alghero, Sardinia: two bedrooms, four beds, one bathroom, sleeps up to six, lift, balcony, ten minutes on foot from the Lido and five from the Catalan old town. June–September.',
-      fr: "Appartement de 70 m² à Alghero, Sardaigne : deux chambres, quatre couchages, une salle de bain, jusqu'à six personnes, ascenseur, balcon, à dix minutes à pied du Lido et cinq du centre historique catalan. Juin–Septembre.",
-      de: 'Wohnung mit 70 m² in Alghero, Sardinien: zwei Schlafzimmer, vier Schlafplätze, ein Bad, bis zu sechs Gäste, Aufzug, Balkon, zehn Minuten zu Fuß vom Lido und fünf von der katalanischen Altstadt. Juni–September.'
+      it: 'Appartamento di 70 m² ad Alghero, Sardegna: due camere, quattro posti letto, un bagno, fino a sei ospiti, balcone, a dieci minuti a piedi dal Lido e cinque dal centro storico catalano. Giugno–Settembre.',
+      en: 'A 70 m² apartment in Alghero, Sardinia: two bedrooms, four beds, one bathroom, sleeps up to six, balcony, ten minutes on foot from the Lido and five from the Catalan old town. June–September.',
+      fr: "Appartement de 70 m² à Alghero, Sardaigne : deux chambres, quatre couchages, une salle de bain, jusqu'à six personnes, balcon, à dix minutes à pied du Lido et cinq du centre historique catalan. Juin–Septembre.",
+      de: 'Wohnung mit 70 m² in Alghero, Sardinien: zwei Schlafzimmer, vier Schlafplätze, ein Bad, bis zu sechs Gäste, Balkon, zehn Minuten zu Fuß vom Lido und fünf von der katalanischen Altstadt. Juni–September.'
     },
     'meta.route.incluso.title': {
-      it: 'Cosa è incluso · Biancheria, pulizie, WiFi, aria | Le Porte di Sardegna',
-      en: 'What\'s included · Linen, cleaning, WiFi, A/C | Le Porte di Sardegna',
-      fr: 'Ce qui est inclus · Linge, ménage, WiFi, clim | Le Porte di Sardegna',
-      de: 'Inbegriffene Leistungen · Wäsche, Reinigung, WLAN, Klima | Le Porte di Sardegna'
+      it: 'Cosa è incluso · WiFi, aria condizionata, utenze | Le Porte di Sardegna',
+      en: 'What\'s included · WiFi, A/C, utilities | Le Porte di Sardegna',
+      fr: 'Ce qui est inclus · WiFi, clim, charges | Le Porte di Sardegna',
+      de: 'Inbegriffene Leistungen · WLAN, Klima, Nebenkosten | Le Porte di Sardegna'
     },
     'meta.route.incluso.description': {
-      it: 'Tutto quello che è compreso nella tariffa settimanale: biancheria, pulizie finali, WiFi in fibra, aria condizionata. Nessun costo nascosto, solo la tassa di soggiorno a parte.',
-      en: 'Everything included in the weekly rate: linen, final cleaning, fibre WiFi, air conditioning. No hidden costs — only the tourist tax is paid separately.',
-      fr: "Tout ce qui est compris dans le tarif hebdomadaire : linge, ménage final, WiFi fibre, climatisation. Aucun coût caché, seule la taxe de séjour est à part.",
-      de: 'Alles, was im Wochenpreis enthalten ist: Wäsche, Endreinigung, Glasfaser-WLAN, Klimaanlage. Keine versteckten Kosten — nur die Kurtaxe wird separat bezahlt.'
+      it: 'Tutto quello che è compreso nel soggiorno: WiFi, aria condizionata, utenze. Nessun costo nascosto, solo la tassa di soggiorno a parte.',
+      en: 'Everything included in the stay: WiFi, air conditioning, utilities. No hidden costs — only the tourist tax is paid separately.',
+      fr: "Tout ce qui est compris dans le séjour : WiFi, climatisation, charges. Aucun coût caché, seule la taxe de séjour est à part.",
+      de: 'Alles, was im Aufenthalt enthalten ist: WLAN, Klimaanlage, Nebenkosten. Keine versteckten Kosten — nur die Kurtaxe wird separat bezahlt.'
     },
     'meta.route.chisiamo.title': {
       it: 'Chi siamo · Una famiglia, due case, la stessa Sardegna | Le Porte di Sardegna',
