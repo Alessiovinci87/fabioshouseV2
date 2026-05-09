@@ -326,10 +326,10 @@
     'det.guide.card.excursions': { it: 'Escursioni',    en: 'Excursions',   fr: 'Excursions',     de: 'Ausflüge' },
     'det.guide.card.services':   { it: 'Servizi utili', en: 'Useful services', fr: 'Services utiles', de: 'Nützliche Dienste' },
     'det.guide.note': {
-      it: 'Avete un posto preferito che qui non trovate? <a href="#/contatti">Scriveteci</a> — lo aggiungiamo volentieri.',
-      en: 'Got a favourite spot that\'s not on the list? <a href="#/contatti">Write to us</a> — we\'ll gladly add it.',
-      fr: 'Un endroit préféré qui n\'est pas ici ? <a href="#/contatti">Écrivez-nous</a> — on l\'ajoute volontiers.',
-      de: 'Haben Sie einen Lieblingsort, der hier fehlt? <a href="#/contatti">Schreiben Sie uns</a> — wir fügen ihn gern hinzu.'
+      it: 'Avete un posto preferito che qui non trovate? <a href="/contatti">Scriveteci</a> — lo aggiungiamo volentieri.',
+      en: 'Got a favourite spot that\'s not on the list? <a href="/contatti">Write to us</a> — we\'ll gladly add it.',
+      fr: 'Un endroit préféré qui n\'est pas ici ? <a href="/contatti">Écrivez-nous</a> — on l\'ajoute volontiers.',
+      de: 'Haben Sie einen Lieblingsort, der hier fehlt? <a href="/contatti">Schreiben Sie uns</a> — wir fügen ihn gern hinzu.'
     },
     'det.guide.link_aria': { it: 'apri in nuova scheda', en: 'open in a new tab', fr: 'ouvrir dans un nouvel onglet', de: 'in neuem Tab öffnen' },
     'det.other': { it: "L'altra casa", en: 'The other house', fr: "L'autre maison", de: 'Das andere Haus' },

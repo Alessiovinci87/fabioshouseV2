@@ -54,7 +54,7 @@
     var propHtml = D.houses.map(function (h, i) {
       var introAttr = INTRO_VIDEO[h.id] ? ' data-intro-video="' + esc(INTRO_VIDEO[h.id]) + '"' : '';
       return (
-        '<a href="#/case/' + esc(h.id) + '" class="prop-card pc-' + (i + 1) + '"' + introAttr + ' data-reveal data-delay="' + ((i % 4) + 1) + '">' +
+        '<a href="/case/' + esc(h.id) + '" class="prop-card pc-' + (i + 1) + '"' + introAttr + ' data-reveal data-delay="' + ((i % 4) + 1) + '">' +
           '<div class="prop-frame"><img src="' + esc(h.hero) + '" alt="' + esc(h.name) + '" loading="lazy" /></div>' +
           '<div class="prop-meta">' +
             '<h3>' + esc(h.name) + '</h3>' +
@@ -110,7 +110,7 @@
             '<div class="stat">2 <small>' + t('home.stats.houses') + '</small></div>' +
             '<div class="stat">' + t('home.stats.season_val') + ' <small>' + t('home.stats.season_label') + '</small></div>' +
             '<div class="stat">&lt; 24h <small>' + t('home.stats.response') + '</small></div>' +
-            '<a href="#/case" class="btn-primary">' + t('home.stats.cta') + '</a>' +
+            '<a href="/case" class="btn-primary">' + t('home.stats.cta') + '</a>' +
           '</div>' +
         '</div>' +
       '</section>' +
@@ -151,7 +151,7 @@
           '</div>' +
           '<div class="prop-grid">' + propHtml + '</div>' +
           '<div class="prop-grid-foot" data-reveal>' +
-            '<a href="#/case" class="btn-ghost">' + t('home.sect2.cta') + '</a>' +
+            '<a href="/case" class="btn-ghost">' + t('home.sect2.cta') + '</a>' +
           '</div>' +
         '</div>' +
       '</section>' +
@@ -161,7 +161,7 @@
           '<p class="eyebrow" style="color: oklch(72% 0.04 75);" data-reveal>' + t('home.final.eyebrow') + '</p>' +
           '<h2 data-reveal data-delay="1">' + t('home.final.h2') + '</h2>' +
           '<p class="lede" data-reveal data-delay="2">' + t('home.final.lede') + '</p>' +
-          '<a href="#/contatti" class="btn-cream" data-reveal data-delay="3">' + t('home.final.cta') + '</a>' +
+          '<a href="/contatti" class="btn-cream" data-reveal data-delay="3">' + t('home.final.cta') + '</a>' +
         '</div>' +
       '</section>'
     );
@@ -188,7 +188,7 @@
       return (
         '<article class="case-row' + alt + '" data-region="' + esc(h.location) + '" data-guests="' + h.guests + '" data-featured-order="' + i + '" data-reveal>' +
           '<div class="cr-media">' +
-            '<a href="#/case/' + esc(h.id) + '"><img src="' + esc(h.hero) + '" alt="' + esc(t(h.name)) + '" loading="lazy" /></a>' +
+            '<a href="/case/' + esc(h.id) + '"><img src="' + esc(h.hero) + '" alt="' + esc(t(h.name)) + '" loading="lazy" /></a>' +
           '</div>' +
           '<div class="cr-body">' +
             '<div class="cr-caption">№ ' + no + ' · ' + esc(h.location) + ' · ' + esc(t(h.type)) + '</div>' +
@@ -201,7 +201,7 @@
               '<div class="s"><span class="num">' + h.sqm    + '</span>' + t('case.row.sqm') + '</div>' +
             '</div>' +
             '<div class="cr-foot">' +
-              '<a href="#/case/' + esc(h.id) + '" class="btn-ghost">' + t('case.row.explore') + '</a>' +
+              '<a href="/case/' + esc(h.id) + '" class="btn-ghost">' + t('case.row.explore') + '</a>' +
             '</div>' +
           '</div>' +
         '</article>'

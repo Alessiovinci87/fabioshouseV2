@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/" />
   <title data-i18n="meta.title">Le Porte di Sardegna — Due case in Sardegna · Stintino e Alghero</title>
   <meta name="description" data-i18n-attr="content:meta.description" content="Due case vacanze in Sardegna, gestite da una famiglia. Villa La Mimosa a cinque minuti dalla Pelosa, La Porta del Lido nel centro catalano di Alghero. Giugno–Settembre." />
   <meta name="author" content="Le Porte di Sardegna" />
@@ -96,13 +97,13 @@
   {
     "@context": "https://schema.org",
     "@type": "LodgingBusiness",
-    "@id": "https://www.leportedisardegna.com/#/case/villa-stintino",
+    "@id": "https://www.leportedisardegna.com/case/villa-stintino",
     "name": "Villa La Mimosa",
     "description": "Villa con giardino e veranda a cinque minuti a piedi dalla Spiaggia della Pelosa. Quattro camere, sei posti letto, due bagni, fino a otto ospiti, barbecue e parcheggio privato. WiFi e aria condizionata inclusi.",
     "identifier": [
       { "@type": "PropertyValue", "propertyID": "CIN", "name": "Codice Identificativo Nazionale", "value": "IT090089C2000T0180" }
     ],
-    "url": "https://www.leportedisardegna.com/#/case/villa-stintino",
+    "url": "https://www.leportedisardegna.com/case/villa-stintino",
     "image": "https://www.leportedisardegna.com/img/home/hero-home-spiaggia-pelosa.jpg",
     "telephone": "",
     "priceRange": "€€",
@@ -141,13 +142,13 @@
   {
     "@context": "https://schema.org",
     "@type": "LodgingBusiness",
-    "@id": "https://www.leportedisardegna.com/#/case/appartamento-alghero",
+    "@id": "https://www.leportedisardegna.com/case/appartamento-alghero",
     "name": "La Porta del Lido",
     "description": "Appartamento nel centro di Alghero, a dieci minuti a piedi dal Lido e cinque dal centro storico catalano. Due camere, quattro posti letto, un bagno, fino a sei ospiti, balcone. Parcheggio gratuito su strada. WiFi e aria condizionata inclusi.",
     "identifier": [
       { "@type": "PropertyValue", "propertyID": "CIN", "name": "Codice Identificativo Nazionale", "value": "IT090003C2000U2044" }
     ],
-    "url": "https://www.leportedisardegna.com/#/case/appartamento-alghero",
+    "url": "https://www.leportedisardegna.com/case/appartamento-alghero",
     "image": "https://www.leportedisardegna.com/img/alghero/appartamento-alghero-hero.jpg",
     "priceRange": "€€",
     "numberOfRooms": 2,
@@ -191,7 +192,7 @@
     "uploadDate": "2026-04-20",
     "duration": "PT1M20S",
     "inLanguage": "it",
-    "isPartOf": { "@id": "https://www.leportedisardegna.com/#/case/appartamento-alghero" }
+    "isPartOf": { "@id": "https://www.leportedisardegna.com/case/appartamento-alghero" }
   }
   </script>
 
@@ -206,14 +207,14 @@
       {
         "@type": "ListItem",
         "position": 1,
-        "url":  "https://www.leportedisardegna.com/#/case/villa-stintino",
+        "url":  "https://www.leportedisardegna.com/case/villa-stintino",
         "name": "Villa La Mimosa",
         "image": "https://www.leportedisardegna.com/img/home/hero-home-spiaggia-pelosa.jpg"
       },
       {
         "@type": "ListItem",
         "position": 2,
-        "url":  "https://www.leportedisardegna.com/#/case/appartamento-alghero",
+        "url":  "https://www.leportedisardegna.com/case/appartamento-alghero",
         "name": "La Porta del Lido",
         "image": "https://www.leportedisardegna.com/img/alghero/appartamento-alghero-hero.jpg"
       }
@@ -227,7 +228,7 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home",    "item": "https://www.leportedisardegna.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Le Case", "item": "https://www.leportedisardegna.com/#/case" },
+      { "@type": "ListItem", "position": 2, "name": "Le Case", "item": "https://www.leportedisardegna.com/case" },
       { "@type": "ListItem", "position": 3, "name": "Villa La Mimosa" }
     ]
   }
@@ -239,7 +240,7 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home",    "item": "https://www.leportedisardegna.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Le Case", "item": "https://www.leportedisardegna.com/#/case" },
+      { "@type": "ListItem", "position": 2, "name": "Le Case", "item": "https://www.leportedisardegna.com/case" },
       { "@type": "ListItem", "position": 3, "name": "La Porta del Lido" }
     ]
   }
@@ -310,16 +311,16 @@
               aria-label="Apri menu" aria-expanded="false" aria-controls="mobile-drawer">
         <span class="nav-burger-icon" aria-hidden="true"><span></span></span>
       </button>
-      <a href="#/" class="brand" aria-label="Le Porte di Sardegna home">
+      <a href="/" class="brand" aria-label="Le Porte di Sardegna home">
         <span class="brand-mark" aria-hidden="true"><img src="img/home/logo-new.jpeg" alt="" /></span>
         <span class="brand-name">Le Porte di <em>Sardegna</em></span>
       </a>
       <nav class="nav-links" id="nav-links">
-        <a href="#/"           data-route="/"           data-i18n="nav.home">Home</a>
-        <a href="#/case"       data-route="/case"       data-i18n="nav.cases">Le Case</a>
-        <a href="#/incluso"    data-route="/incluso"    data-i18n="nav.included">Cosa è incluso</a>
-        <a href="#/chi-siamo"  data-route="/chi-siamo"  data-i18n="nav.about">Chi siamo</a>
-        <a href="#/contatti"   data-route="/contatti"   data-i18n="nav.contact">Contatti</a>
+        <a href="/"           data-route="/"           data-i18n="nav.home">Home</a>
+        <a href="/case"       data-route="/case"       data-i18n="nav.cases">Le Case</a>
+        <a href="/incluso"    data-route="/incluso"    data-i18n="nav.included">Cosa è incluso</a>
+        <a href="/chi-siamo"  data-route="/chi-siamo"  data-i18n="nav.about">Chi siamo</a>
+        <a href="/contatti"   data-route="/contatti"   data-i18n="nav.contact">Contatti</a>
       </nav>
       <div class="nav-right">
         <div class="lang-switcher" role="group" aria-label="Lingua">
@@ -328,7 +329,7 @@
           <button type="button" data-lang-btn="fr" aria-label="Français">FR</button>
           <button type="button" data-lang-btn="de" aria-label="Deutsch">DE</button>
         </div>
-        <a href="#/contatti" class="cta-pill">
+        <a href="/contatti" class="cta-pill">
           <span class="dot" aria-hidden="true"></span>
           <span data-i18n="nav.book">Prenota</span>
         </a>
@@ -339,11 +340,11 @@
   <div id="drawer-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
   <aside id="mobile-drawer" class="mobile-drawer" aria-hidden="true" aria-label="Menu">
     <nav class="drawer-links">
-      <a href="#/"          data-route="/"          data-i18n="nav.home">Home</a>
-      <a href="#/case"      data-route="/case"      data-i18n="nav.cases">Le Case</a>
-      <a href="#/incluso"   data-route="/incluso"   data-i18n="nav.included">Cosa è incluso</a>
-      <a href="#/chi-siamo" data-route="/chi-siamo" data-i18n="nav.about">Chi siamo</a>
-      <a href="#/contatti"  data-route="/contatti"  data-i18n="nav.contact">Contatti</a>
+      <a href="/"          data-route="/"          data-i18n="nav.home">Home</a>
+      <a href="/case"      data-route="/case"      data-i18n="nav.cases">Le Case</a>
+      <a href="/incluso"   data-route="/incluso"   data-i18n="nav.included">Cosa è incluso</a>
+      <a href="/chi-siamo" data-route="/chi-siamo" data-i18n="nav.about">Chi siamo</a>
+      <a href="/contatti"  data-route="/contatti"  data-i18n="nav.contact">Contatti</a>
     </nav>
     <div class="drawer-foot">
       <div class="drawer-lang" role="group" aria-label="Lingua">
@@ -352,7 +353,7 @@
         <button type="button" data-lang-btn="fr" aria-label="Français">FR</button>
         <button type="button" data-lang-btn="de" aria-label="Deutsch">DE</button>
       </div>
-      <a href="#/contatti" class="drawer-cta">
+      <a href="/contatti" class="drawer-cta">
         <span class="dot" aria-hidden="true"></span>
         <span data-i18n="nav.book">Prenota</span>
       </a>
@@ -390,11 +391,11 @@
         <p class="foot-tag" data-i18n="foot.brand_tag">Due case esclusive a Stintino e Alghero per la tua estate sarda.</p>
       </div>
       <nav class="foot-nav" aria-label="Footer">
-        <a href="#/"           data-i18n="nav.home">Home</a>
-        <a href="#/case"       data-i18n="nav.cases">Le Case</a>
-        <a href="#/incluso"    data-i18n="nav.included">Cosa è incluso</a>
-        <a href="#/contatti"   data-i18n="nav.contact">Contatti</a>
-        <a href="#/chi-siamo"  data-i18n="nav.about">Chi siamo</a>
+        <a href="/"           data-i18n="nav.home">Home</a>
+        <a href="/case"       data-i18n="nav.cases">Le Case</a>
+        <a href="/incluso"    data-i18n="nav.included">Cosa è incluso</a>
+        <a href="/contatti"   data-i18n="nav.contact">Contatti</a>
+        <a href="/chi-siamo"  data-i18n="nav.about">Chi siamo</a>
         <a href="privacy.html" data-i18n="foot.privacy">Privacy &amp; Cookie</a>
       </nav>
       <p class="foot-contact"><a href="mailto:cosmoalghero@gmail.com" class="mono">cosmoalghero@gmail.com</a> · <span data-i18n="foot.location">Sardegna · Italia</span></p>

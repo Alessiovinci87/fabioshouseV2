@@ -73,7 +73,7 @@
         ? '<p class="act-practical">' + esc(practicalStr) + '</p>'
         : '';
       var moreBtn = a.slug
-        ? '<p class="act-more"><a class="btn-ghost" href="#/luogo/' + esc(a.slug) + '">' + t('det.dintorni.cta') + ' →</a></p>'
+        ? '<p class="act-more"><a class="btn-ghost" href="/luogo/' + esc(a.slug) + '">' + t('det.dintorni.cta') + ' →</a></p>'
         : '';
       return (
         '<article class="act-row' + alt + '" data-reveal>' +
@@ -134,8 +134,8 @@
       '<nav class="det-breadcrumb" aria-label="' + esc(t('det.breadcrumb_aria')) + '">' +
         '<div class="container">' +
           '<ol>' +
-            '<li><a href="#/">' + t('nav.home') + '</a></li>' +
-            '<li><a href="#/case">' + t('nav.cases') + '</a></li>' +
+            '<li><a href="/">' + t('nav.home') + '</a></li>' +
+            '<li><a href="/case">' + t('nav.cases') + '</a></li>' +
             '<li aria-current="page">' + esc(t(h.name)) + '</li>' +
           '</ol>' +
         '</div>' +
@@ -189,7 +189,7 @@
               '</div>'
             ) : '') +
             '<div class="det-cta-inline" data-reveal>' +
-              '<a href="#/contatti?casa=' + esc(h.id) + '" class="btn-primary">' + t('det.book.cta') + '</a>' +
+              '<a href="/contatti?casa=' + esc(h.id) + '" class="btn-primary">' + t('det.book.cta') + '</a>' +
               '<p class="nota">' + t('det.book.note') + '</p>' +
             '</div>' +
           '</div>' +
@@ -325,7 +325,7 @@
 
       '<section class="det-foot">' +
         '<div class="container" data-reveal>' +
-          '<a href="#/case/' + esc(next.id) + '">' +
+          '<a href="/case/' + esc(next.id) + '">' +
             '<small>' + t('det.other') + '</small>' +
             emFirstWord(t(next.name)) + ' →' +
           '</a>' +
@@ -342,8 +342,8 @@
           '<h1 style="font-size: clamp(44px, 6vw, 88px);" class="mt-md">' + t('nf.h1') + '</h1>' +
           '<p class="lede mt-md" style="max-width: 50ch;">' + t('nf.lede') + '</p>' +
           '<div class="mt-xl" style="display:flex; gap:16px; flex-wrap:wrap;">' +
-            '<a href="#/case" class="btn-primary">' + t('nf.cta.cases') + '</a>' +
-            '<a href="#/contatti" class="btn-ghost">' + t('nf.cta.contact') + '</a>' +
+            '<a href="/case" class="btn-primary">' + t('nf.cta.cases') + '</a>' +
+            '<a href="/contatti" class="btn-ghost">' + t('nf.cta.contact') + '</a>' +
           '</div>' +
         '</div>' +
       '</section>'
@@ -435,7 +435,7 @@
           '<p class="eyebrow" style="color: oklch(72% 0.04 75);" data-reveal>' + t('about.cta.eyebrow') + '</p>' +
           '<h2 data-reveal data-delay="1">' + t('about.cta.h2') + '</h2>' +
           '<p class="lede" data-reveal data-delay="2">' + t('about.cta.lede') + '</p>' +
-          '<a href="#/contatti" class="btn-cream" data-reveal data-delay="3">' + t('home.final.cta') + '</a>' +
+          '<a href="/contatti" class="btn-cream" data-reveal data-delay="3">' + t('home.final.cta') + '</a>' +
         '</div>' +
       '</section>'
     );
@@ -570,7 +570,7 @@
           ? '<div class="place-img"><img src="' + esc(R.hero) + '" alt="' + name + '" loading="lazy" /></div>'
           : '';
         return (
-          '<a class="place-card" href="#/luogo/' + esc(slug) + '" aria-label="' + name + '">' +
+          '<a class="place-card" href="/luogo/' + esc(slug) + '" aria-label="' + name + '">' +
             img +
             '<div class="place-body">' +
               '<h3>' + name + '</h3>' +
@@ -628,15 +628,15 @@
       : '';
 
     var breadcrumbParent = parentHouse
-      ? '<li><a href="#/case/' + esc(parentHouse.id) + '">' + esc(t(parentHouse.name)) + '</a></li>'
+      ? '<li><a href="/case/' + esc(parentHouse.id) + '">' + esc(t(parentHouse.name)) + '</a></li>'
       : '';
 
     return (
       '<nav class="det-breadcrumb" aria-label="' + esc(t('det.breadcrumb_aria')) + '">' +
         '<div class="container">' +
           '<ol>' +
-            '<li><a href="#/">' + t('nav.home') + '</a></li>' +
-            '<li><a href="#/case">' + t('nav.cases') + '</a></li>' +
+            '<li><a href="/">' + t('nav.home') + '</a></li>' +
+            '<li><a href="/case">' + t('nav.cases') + '</a></li>' +
             breadcrumbParent +
             '<li aria-current="page">' + esc(t(L.name)) + '</li>' +
           '</ol>' +
@@ -681,7 +681,7 @@
       (parentHouse ? (
         '<section class="det-foot">' +
           '<div class="container" data-reveal>' +
-            '<a href="#/case/' + esc(parentHouse.id) + '">' +
+            '<a href="/case/' + esc(parentHouse.id) + '">' +
               '<small>' + t('luogo.back.small') + '</small>' +
               emFirstWord(t(parentHouse.name)) + ' →' +
             '</a>' +

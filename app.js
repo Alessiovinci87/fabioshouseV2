@@ -40,19 +40,18 @@
     storia:    '/chi-siamo'
   };
 
-  function parseHash() {
-    var raw = (location.hash || '#/').replace(/^#/, '');
-    // strip query string for routing
-    var h = raw.split('?')[0];
-    if (!h || h === '/') return { name: 'home' };
-    var parts = h.split('/').filter(Boolean); // ['case','id']
+  function parseRoute() {
+    // location.pathname always starts with '/'
+    var raw = location.pathname || '/';
+    if (raw !== '/') raw = raw.replace(/\/+$/, '') || '/'; // strip trailing slash
+    if (!raw || raw === '/') return { name: 'home' };
+    var parts = raw.split('/').filter(Boolean); // ['case','id']
     var head = parts[0];
 
     // handle redirects
     if (REDIRECTS[head] != null) {
-      var target = '#' + REDIRECTS[head];
-      history.replaceState(null, '', target);
-      return parseHash();
+      history.replaceState(null, '', REDIRECTS[head]);
+      return parseRoute();
     }
 
     switch (head) {
@@ -94,7 +93,7 @@
   }
 
   function renderRoute() {
-    var r = parseHash();
+    var r = parseRoute();
     preloadRouteHero(r);
     var html = '';
     switch (r.name) {
@@ -134,7 +133,7 @@
     if (!restored) window.scrollTo({ top: 0, behavior: 'auto' });
 
     // persist
-    try { localStorage.setItem('fh_route', location.hash || '#/'); } catch (e) {}
+    try { localStorage.setItem('fh_route', location.pathname || '/'); } catch (e) {}
 
     updateActiveNav(r);
     // applica i18n ai [data-i18n] appena renderizzati
@@ -241,7 +240,7 @@
     var areaName = (h && h.location) ||
                    (L.parent === 'villa-stintino' ? 'Stintino' :
                     L.parent === 'appartamento-alghero' ? 'Alghero' : 'Sardegna');
-    var url = SITE_ORIGIN + '/#/luogo/' + r.slug;
+    var url = SITE_ORIGIN + '/luogo/' + r.slug;
     var img = L.hero ? absUrl(L.hero) : DEFAULT_OG_IMAGE;
     var data = {
       '@context': 'https://schema.org',
@@ -262,7 +261,7 @@
     if (h) {
       data.containedInPlace = {
         '@type': 'LodgingBusiness',
-        '@id': SITE_ORIGIN + '/#/case/' + h.id,
+        '@id': SITE_ORIGIN + '/case/' + h.id,
         name: (typeof h.name === 'string') ? h.name : t(h.name)
       };
     }
@@ -292,16 +291,16 @@
     });
   }
 
-  window.addEventListener('hashchange', renderRoute);
+  window.addEventListener('popstate', renderRoute);
 
   // Salva la posizione della detail quando si entra in una pagina luogo
   // (qualsiasi link a #/luogo/<slug>: card del carosello, "Scopri di più"
   // delle activity, ecc.) così al ritorno si riapre allo scroll del click
   // invece che in cima alla pagina.
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[href^="#/luogo/"]');
+    var a = e.target.closest && e.target.closest('a[href^="/luogo/"]');
     if (!a) return;
-    var r = parseHash();
+    var r = parseRoute();
     if (r.name !== 'detail' || !r.id) return;
     try {
       sessionStorage.setItem('fh_places_return', JSON.stringify({
@@ -315,9 +314,9 @@
   // Click su una prop-card della home con [data-intro-video]: apre overlay
   // full-screen, riproduce il video ~4s, fade-to-white ~0.8s, poi naviga.
   // Fallback (errore caricamento, play bloccato, reduced-motion): naviga
-  // diretto come una qualsiasi <a href="#/...">.
+  // diretto come una qualsiasi <a href="/...">.
   var introBusy = false;
-  function playIntroAndGo(videoSrc, targetHash) {
+  function playIntroAndGo(videoSrc, targetPath) {
     if (introBusy) return;
     introBusy = true;
 
@@ -336,11 +335,11 @@
     function go() {
       if (navigated) return;
       navigated = true;
-      if (location.hash === targetHash) {
-        // stessa route: forziamo un re-render via hashchange manuale
+      if (location.pathname === targetPath) {
         renderRoute();
       } else {
-        location.hash = targetHash;
+        history.pushState(null, '', targetPath);
+        renderRoute();
       }
       // tieni il bianco coprente fino a che la nuova pagina ha fatto scroll/render
       setTimeout(function () {
@@ -360,7 +359,8 @@
       if (navigated) return;
       navigated = true;
       clearTimeout(fadeTimer);
-      location.hash = targetHash;
+      history.pushState(null, '', targetPath);
+      renderRoute();
       overlay.remove();
       document.documentElement.classList.remove('fh-intro-active');
       introBusy = false;
@@ -382,7 +382,7 @@
   }
 
   // Click sul brand (logo + nome) della navbar: porta alla home anche
-  // se l'href "#/" è un no-op perché siamo già lì (in quel caso scrolla
+  // se l'href "/" è un no-op perché siamo già lì (in quel caso scrolla
   // in cima). Funziona in tutta la SPA, non sulle pagine statiche
   // (privacy/404) che hanno href verso index.html.
   document.addEventListener('click', function (e) {
@@ -392,13 +392,14 @@
     if (e.button !== 0) return;
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     var href = brand.getAttribute('href') || '';
-    if (href.charAt(0) !== '#') return; // pagine statiche: lascia il default
+    if (href !== '/') return; // pagine statiche (privacy.html, ecc.): lascia il default
     e.preventDefault();
-    var atHome = !location.hash || location.hash === '#/' || location.hash === '#';
+    var atHome = location.pathname === '/' || location.pathname === '';
     if (atHome) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      location.hash = '#/';
+      history.pushState(null, '', '/');
+      renderRoute();
     }
   });
 
@@ -411,11 +412,52 @@
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     var src = card.getAttribute('data-intro-video');
     var href = card.getAttribute('href') || '';
-    if (!src || href.charAt(0) !== '#') return;
+    if (!src || href.charAt(0) !== '/') return;
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce) return; // segui il link normalmente
     e.preventDefault();
     playIntroAndGo(src, href);
+  });
+
+  // --------------------------- GLOBAL LINK INTERCEPTOR ---------------------------
+  // Intercetta i click sui link interni (path che inizia con "/") per usare
+  // history.pushState invece del default browser navigation (full reload).
+  // Necessario per il client-side routing senza hash.
+  // Esclude:
+  // - link con target="_blank" o attributo download
+  // - click con modifier keys (cmd/ctrl/shift/alt) o tasto non sinistro
+  // - href esterni (http://, https://, mailto:, tel:)
+  // - in-page anchor (#gallery, #contatti)
+  // - file con estensione (privacy.html, .pdf, ecc.)
+  // - eventi già preventDefault'd da handler precedenti (brand, intro-video)
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented) return;
+    if (e.button !== 0) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    if (a.target === '_blank') return;
+    if (a.hasAttribute('download')) return;
+
+    var href = a.getAttribute('href') || '';
+    if (href.charAt(0) === '#') return; // anchor in-pagina
+    if (/^[a-z]+:/i.test(href)) {
+      // protocollo (mailto:, tel:, http://, https://)
+      // se è same-origin lo trattiamo come internal
+      if (!(href.indexOf(location.origin) === 0)) return;
+      href = href.slice(location.origin.length) || '/';
+    }
+    // se ancora non inizia con "/" è un link relativo (es. privacy.html) — lascia il default
+    if (href.charAt(0) !== '/') return;
+    // file con estensione (.html, .pdf, ecc.) — lascia il default
+    var pathPart = href.split('?')[0].split('#')[0];
+    if (/\.[a-z0-9]+$/i.test(pathPart)) return;
+
+    e.preventDefault();
+    var current = location.pathname + location.search;
+    if (href !== current) history.pushState(null, '', href);
+    renderRoute();
   });
 
   // --------------------------- REVEAL ---------------------------
@@ -899,9 +941,9 @@
   }
 
   // Pre-fill "casa di interesse" when coming from a detail page CTA
-  // (#/contatti?casa=<id>)
+  // (/contatti?casa=<id>)
   function prefillContactHouse() {
-    var raw = (location.hash || '').split('?')[1] || '';
+    var raw = (location.search || '').replace(/^\?/, '');
     if (!raw) return;
     var params = {};
     raw.split('&').forEach(function (p) {
@@ -1064,8 +1106,12 @@
   // --------------------------- BOOTSTRAP ---------------------------
   try {
     var saved = localStorage.getItem('fh_route');
-    if (saved && !location.hash) {
-      history.replaceState(null, '', saved);
+    // restore solo se l'utente è arrivato sulla home pulita (no path, no query)
+    if (saved && location.pathname === '/' && !location.search) {
+      // migra formato hash legacy (es. "#/case") a path ("/case")
+      if (saved.charAt(0) === '#') saved = saved.slice(1) || '/';
+      if (saved.charAt(0) !== '/') saved = '/' + saved;
+      if (saved !== '/') history.replaceState(null, '', saved);
     }
   } catch (e) {}
 
