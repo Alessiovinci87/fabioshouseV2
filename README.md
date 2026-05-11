@@ -2,8 +2,8 @@
 
 Sito vetrina statico per due case vacanze in Sardegna, gestite da una famiglia:
 
-- **La Mimosa** — villa con giardino, 6 ospiti, a 5 min dalla Pelosa
-- **La Porta del Lido** — appartamento nel centro catalano di Alghero, 4 ospiti
+- **La Mimosa** — villa con giardino, 8 ospiti, a 5 min in auto dalla Pelosa (Villaggio Cala Lupo)
+- **La Porta del Lido** — appartamento nel centro catalano di Alghero, 6 ospiti
 
 Dominio: `www.leportedisardegna.com`
 

@@ -37,12 +37,12 @@
         fr: 'Villa avec jardin',  de: 'Villa mit Garten'
       },
       subtitle: {
-        it: 'A 5 minuti a piedi dalla Pelosa.',
-        en: 'Five minutes on foot from La Pelosa.',
-        fr: 'À cinq minutes à pied de La Pelosa.',
-        de: 'Fünf Minuten zu Fuß von La Pelosa.'
+        it: 'A 5 minuti in auto dalla Spiaggia della Pelosa.',
+        en: 'Five minutes by car from La Pelosa beach.',
+        fr: 'À cinq minutes en voiture de la plage de La Pelosa.',
+        de: 'Fünf Autominuten vom Strand La Pelosa.'
       },
-      beds: 4, totalBeds: 6, guests: 8, baths: 2, sqm: 90,
+      beds: 4, totalBeds: 8, guests: 8, baths: 2, sqm: 90,
       prices: { giugno: 800, luglio: 1200, agosto: 1500, settembre: 700 },
       priceFrom: 700, cleaning: 0,
       year_restored: null,
@@ -152,10 +152,10 @@
         { it: 'WiFi',                 en: 'WiFi',                fr: 'WiFi',                   de: 'WLAN' }
       ],
       story: {
-        it: "Villa La Mimosa è una proprietà immersa nel verde della macchia mediterranea, a cinque minuti a piedi dalla Spiaggia della Pelosa — sabbia bianchissima, acqua trasparente, la Torre aragonese sullo sfondo. Intorno alla villa un giardino privato con veranda, barbecue e tavoli da esterno. Dentro, un soggiorno luminoso con angolo cottura completo, quattro camere da letto per un totale di sei posti letto e due bagni con doccia. Aria condizionata, fino a otto ospiti. È il punto di partenza giusto per il nord-ovest della Sardegna: dal porto di Stintino partono i traghetti per l'Asinara, poco lontano il sentiero di Capo Falcone, il Museo della Tonnara e i ristoranti di pesce del borgo. Alghero è a un'ora d'auto, comoda per una gita di un giorno.",
-        en: "Villa La Mimosa sits immersed in the Mediterranean scrub, five minutes on foot from La Pelosa beach — brilliant white sand, crystal-clear water, the Aragonese tower in the background. Around the villa, a private garden with veranda, barbecue and outdoor tables. Inside, a bright living room with a full kitchenette, four bedrooms with six beds in total and two shower bathrooms. Air conditioning, sleeps up to eight. It's the right base for Sardinia's north-west: the ferries to Asinara leave from Stintino's harbour, just nearby you'll find the Capo Falcone trail, the Tuna Fishery Museum and the village's seafood restaurants. Alghero is an hour's drive — comfortable for a day trip.",
-        fr: "Villa La Mimosa est nichée dans le maquis méditerranéen, à cinq minutes à pied de la plage de La Pelosa — sable d'un blanc éclatant, eau transparente, la tour aragonaise en toile de fond. Autour de la villa, un jardin privé avec véranda, barbecue et tables extérieures. À l'intérieur, un séjour lumineux avec kitchenette complète, quatre chambres pour un total de six couchages et deux salles de bain avec douche. Climatisation, jusqu'à huit personnes. C'est la bonne base pour le nord-ouest de la Sardaigne : les ferries pour l'Asinara partent du port de Stintino, tout près se trouvent le sentier de Capo Falcone, le Musée de la Tonnara et les restaurants de poisson du village. Alghero est à une heure de route, parfaite pour une excursion d'une journée.",
-        de: 'Villa La Mimosa liegt eingebettet in die mediterrane Macchia, fünf Minuten zu Fuß vom Strand La Pelosa — leuchtend weißer Sand, kristallklares Wasser, der aragonesische Turm im Hintergrund. Rund um die Villa ein privater Garten mit Veranda, Grill und Außentischen. Innen ein heller Wohnraum mit voll ausgestatteter Kochnische, vier Schlafzimmer mit insgesamt sechs Schlafplätzen und zwei Duschbäder. Klimaanlage, bis zu acht Gäste. Der richtige Ausgangspunkt für den Nordwesten Sardiniens: Vom Hafen in Stintino fahren die Fähren zur Asinara, ganz in der Nähe liegen der Capo-Falcone-Wanderweg, das Thunfisch-Museum und die Fischrestaurants des Dorfes. Alghero erreicht man in einer Stunde mit dem Auto — angenehm für einen Tagesausflug.'
+        it: "Villa La Mimosa è una proprietà immersa nel verde della macchia mediterranea, all'interno del Villaggio Cala Lupo, a metà strada tra Stintino paese e la Spiaggia della Pelosa. Di fronte alla villa c'è la fermata dell'autobus che in estate passa circa ogni quindici minuti e raggiunge la Pelosa in dieci-quindici minuti; in auto la spiaggia è a cinque minuti — sabbia bianchissima, acqua trasparente, la Torre aragonese sullo sfondo. Intorno alla villa un giardino privato con veranda, barbecue e tavoli da esterno. Dentro, un soggiorno luminoso con angolo cottura completo, quattro camere da letto per un totale di otto posti letto e due bagni con doccia. Aria condizionata, fino a otto ospiti. È il punto di partenza giusto per il nord-ovest della Sardegna: dal porto di Stintino partono i traghetti per l'Asinara, poco lontano il sentiero di Capo Falcone, il Museo della Tonnara e i ristoranti di pesce del borgo. Alghero è a un'ora d'auto, comoda per una gita di un giorno.",
+        en: "Villa La Mimosa sits immersed in the Mediterranean scrub, inside the Cala Lupo Village, halfway between the village of Stintino and La Pelosa beach. Right opposite the villa there is the bus stop — in summer the bus runs roughly every fifteen minutes and reaches La Pelosa in ten to fifteen minutes; by car the beach is five minutes away — brilliant white sand, crystal-clear water, the Aragonese tower in the background. Around the villa, a private garden with veranda, barbecue and outdoor tables. Inside, a bright living room with a full kitchenette, four bedrooms with eight beds in total and two shower bathrooms. Air conditioning, sleeps up to eight. It's the right base for Sardinia's north-west: the ferries to Asinara leave from Stintino's harbour, just nearby you'll find the Capo Falcone trail, the Tuna Fishery Museum and the village's seafood restaurants. Alghero is an hour's drive — comfortable for a day trip.",
+        fr: "Villa La Mimosa est nichée dans le maquis méditerranéen, à l'intérieur du Village de Cala Lupo, à mi-chemin entre le village de Stintino et la plage de La Pelosa. Juste en face de la villa se trouve l'arrêt de bus : en été, le bus passe environ toutes les quinze minutes et rejoint La Pelosa en dix à quinze minutes ; en voiture, la plage est à cinq minutes — sable d'un blanc éclatant, eau transparente, la tour aragonaise en toile de fond. Autour de la villa, un jardin privé avec véranda, barbecue et tables extérieures. À l'intérieur, un séjour lumineux avec kitchenette complète, quatre chambres pour un total de huit couchages et deux salles de bain avec douche. Climatisation, jusqu'à huit personnes. C'est la bonne base pour le nord-ouest de la Sardaigne : les ferries pour l'Asinara partent du port de Stintino, tout près se trouvent le sentier de Capo Falcone, le Musée de la Tonnara et les restaurants de poisson du village. Alghero est à une heure de route, parfaite pour une excursion d'une journée.",
+        de: 'Villa La Mimosa liegt eingebettet in die mediterrane Macchia, im Villaggio Cala Lupo, auf halbem Weg zwischen dem Dorf Stintino und dem Strand La Pelosa. Direkt gegenüber der Villa befindet sich die Bushaltestelle — im Sommer fährt der Bus etwa alle fünfzehn Minuten und erreicht La Pelosa in zehn bis fünfzehn Minuten; mit dem Auto ist der Strand in fünf Minuten zu erreichen — leuchtend weißer Sand, kristallklares Wasser, der aragonesische Turm im Hintergrund. Rund um die Villa ein privater Garten mit Veranda, Grill und Außentischen. Innen ein heller Wohnraum mit voll ausgestatteter Kochnische, vier Schlafzimmer mit insgesamt acht Schlafplätzen und zwei Duschbäder. Klimaanlage, bis zu acht Gäste. Der richtige Ausgangspunkt für den Nordwesten Sardiniens: Vom Hafen in Stintino fahren die Fähren zur Asinara, ganz in der Nähe liegen der Capo-Falcone-Wanderweg, das Thunfisch-Museum und die Fischrestaurants des Dorfes. Alghero erreicht man in einer Stunde mit dem Auto — angenehm für einen Tagesausflug.'
       },
       bestFor: [
         { it: 'Famiglie', en: 'Families', fr: 'Familles', de: 'Familien' },
@@ -197,8 +197,8 @@
             fr: 'Plage de La Pelosa', de: 'Strand La Pelosa'
           },
           distance: {
-            it: '5 min a piedi', en: '5 min on foot',
-            fr: '5 min à pied',  de: '5 Min. zu Fuß'
+            it: '5 min in auto', en: '5 min by car',
+            fr: '5 min en voiture',  de: '5 Autominuten'
           },
           image: STID('spiaggia-la-pelosa'),
           description: {
@@ -1100,10 +1100,10 @@
         de: 'Strand La Pelosa'
       },
       subtitle: {
-        it: 'Una delle spiagge più belle d\'Europa, a cinque minuti dalla villa',
-        en: 'One of the most beautiful beaches in Europe, five minutes from the villa',
-        fr: 'L\'une des plus belles plages d\'Europe, à cinq minutes de la villa',
-        de: 'Einer der schönsten Strände Europas, fünf Minuten von der Villa'
+        it: 'Una delle spiagge più belle d\'Europa, a cinque minuti in auto dalla villa',
+        en: 'One of the most beautiful beaches in Europe, five minutes by car from the villa',
+        fr: 'L\'une des plus belles plages d\'Europe, à cinq minutes en voiture de la villa',
+        de: 'Einer der schönsten Strände Europas, fünf Autominuten von der Villa'
       },
       location: {
         it: 'Stintino · Golfo dell\'Asinara',
@@ -1112,18 +1112,18 @@
         de: 'Stintino · Golf von Asinara'
       },
       distance: {
-        it: '5 minuti a piedi dalla villa',
-        en: '5 minutes on foot from the villa',
-        fr: '5 minutes à pied de la villa',
-        de: '5 Minuten zu Fuß von der Villa'
+        it: '5 minuti in auto dalla villa',
+        en: '5 minutes by car from the villa',
+        fr: '5 minutes en voiture de la villa',
+        de: '5 Autominuten von der Villa'
       },
       hero: 'img/stintino/dintorni/spiaggia-la-pelosa.png',
       heroFocus: 'center center',
       intro: {
-        it: "La Spiaggia della Pelosa è il simbolo di Stintino e una delle spiagge più fotografate al mondo: sabbia bianca finissima, acqua trasparente con gradazioni che vanno dal verde al turchese più acceso, un fondale di posidonia che ondeggia appena sotto la superficie e, sullo sfondo, la Torre della Pelosa aragonese del XVI secolo che sembra galleggiare su un piccolo isolotto. A soli cinque minuti a piedi dalla villa, è la prima meta per chi soggiorna da noi — ma è anche un ecosistema fragile, protetto da un regolamento d'accesso che vale la pena conoscere prima di arrivare.",
-        en: "La Pelosa beach is the symbol of Stintino and one of the most photographed beaches in the world: fine white sand, transparent water shifting from green to the brightest turquoise, a seagrass bed swaying just below the surface, and in the background the 16th-century Aragonese Pelosa Tower seeming to float on a small islet. Just five minutes on foot from the villa, it's the first destination for those staying with us — but it is also a fragile ecosystem, protected by access rules worth knowing before you arrive.",
-        fr: "La plage de La Pelosa est le symbole de Stintino et l'une des plages les plus photographiées au monde : sable blanc très fin, eau transparente aux nuances allant du vert au turquoise le plus vif, un fond de posidonie qui ondule juste sous la surface et, en arrière-plan, la tour aragonaise de La Pelosa du XVIᵉ siècle qui semble flotter sur un petit îlot. À seulement cinq minutes à pied de la villa, c'est la première destination pour qui séjourne chez nous — mais c'est aussi un écosystème fragile, protégé par un règlement d'accès qu'il vaut la peine de connaître avant d'arriver.",
-        de: "Der Strand La Pelosa ist das Wahrzeichen Stintinos und einer der meistfotografierten Strände der Welt: feinster weißer Sand, durchsichtiges Wasser mit Nuancen von Grün bis leuchtendem Türkis, ein Seegrasbett, das knapp unter der Oberfläche wogt, und im Hintergrund der aragonesische Pelosa-Turm aus dem 16. Jahrhundert, der auf einer kleinen Insel zu schweben scheint. Nur fünf Minuten zu Fuß von der Villa entfernt, ist er das erste Ziel für alle, die bei uns wohnen — zugleich ein empfindliches Ökosystem, das durch eine Zugangsregelung geschützt wird, die man vor der Ankunft kennen sollte."
+        it: "La Spiaggia della Pelosa è il simbolo di Stintino e una delle spiagge più fotografate al mondo: sabbia bianca finissima, acqua trasparente con gradazioni che vanno dal verde al turchese più acceso, un fondale di posidonia che ondeggia appena sotto la superficie e, sullo sfondo, la Torre della Pelosa aragonese del XVI secolo che sembra galleggiare su un piccolo isolotto. A soli cinque minuti in auto dalla villa, è la prima meta per chi soggiorna da noi — ma è anche un ecosistema fragile, protetto da un regolamento d'accesso che vale la pena conoscere prima di arrivare.",
+        en: "La Pelosa beach is the symbol of Stintino and one of the most photographed beaches in the world: fine white sand, transparent water shifting from green to the brightest turquoise, a seagrass bed swaying just below the surface, and in the background the 16th-century Aragonese Pelosa Tower seeming to float on a small islet. Just five minutes by car from the villa, it's the first destination for those staying with us — but it is also a fragile ecosystem, protected by access rules worth knowing before you arrive.",
+        fr: "La plage de La Pelosa est le symbole de Stintino et l'une des plages les plus photographiées au monde : sable blanc très fin, eau transparente aux nuances allant du vert au turquoise le plus vif, un fond de posidonie qui ondule juste sous la surface et, en arrière-plan, la tour aragonaise de La Pelosa du XVIᵉ siècle qui semble flotter sur un petit îlot. À seulement cinq minutes en voiture de la villa, c'est la première destination pour qui séjourne chez nous — mais c'est aussi un écosystème fragile, protégé par un règlement d'accès qu'il vaut la peine de connaître avant d'arriver.",
+        de: "Der Strand La Pelosa ist das Wahrzeichen Stintinos und einer der meistfotografierten Strände der Welt: feinster weißer Sand, durchsichtiges Wasser mit Nuancen von Grün bis leuchtendem Türkis, ein Seegrasbett, das knapp unter der Oberfläche wogt, und im Hintergrund der aragonesische Pelosa-Turm aus dem 16. Jahrhundert, der auf einer kleinen Insel zu schweben scheint. Nur fünf Autominuten von der Villa entfernt, ist er das erste Ziel für alle, die bei uns wohnen — zugleich ein empfindliches Ökosystem, das durch eine Zugangsregelung geschützt wird, die man vor der Ankunft kennen sollte."
       },
       sections: [
         {

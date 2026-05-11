@@ -60,10 +60,10 @@
       de: 'Ihr Sommer <em>zwischen Stintino</em> und Alghero.'
     },
     'home.side_note': {
-      it: 'Due case gestite da una famiglia: una villa a cinque minuti dalla Pelosa, un appartamento nel centro catalano di Alghero. La stessa cura in posti che non si somigliano.',
-      en: "Two houses run by a family: a villa five minutes from La Pelosa, and an apartment in the Catalan heart of Alghero. The same care in two places that couldn't be more different.",
-      fr: "Deux maisons tenues par une famille : une villa à cinq minutes de La Pelosa, un appartement dans le centre catalan d'Alghero. La même attention, dans deux endroits qui ne se ressemblent pas.",
-      de: 'Zwei Häuser, geführt von einer Familie: eine Villa fünf Minuten von La Pelosa entfernt, eine Wohnung im katalanischen Zentrum von Alghero. Dieselbe Sorgfalt an zwei ganz unterschiedlichen Orten.'
+      it: 'Due case gestite da una famiglia: una villa a cinque minuti in auto dalla Pelosa, un appartamento nel centro catalano di Alghero. La stessa cura in posti che non si somigliano.',
+      en: "Two houses run by a family: a villa five minutes by car from La Pelosa, and an apartment in the Catalan heart of Alghero. The same care in two places that couldn't be more different.",
+      fr: "Deux maisons tenues par une famille : une villa à cinq minutes en voiture de La Pelosa, un appartement dans le centre catalan d'Alghero. La même attention, dans deux endroits qui ne se ressemblent pas.",
+      de: 'Zwei Häuser, geführt von einer Familie: eine Villa fünf Autominuten von La Pelosa entfernt, eine Wohnung im katalanischen Zentrum von Alghero. Dieselbe Sorgfalt an zwei ganz unterschiedlichen Orten.'
     },
     'home.hero.tag': {
       it: 'La Pelosa · Stintino', en: 'La Pelosa · Stintino',
@@ -116,10 +116,10 @@
     },
     'home.how.pt2.h': { it: 'Sardegna vera', en: 'The real Sardinia', fr: 'La vraie Sardaigne', de: 'Echtes Sardinien' },
     'home.how.pt2.t': {
-      it: 'Pelosa a piedi a Stintino, centro catalano ad Alghero. Due pezzi di isola diversi, entrambi autentici.',
-      en: 'La Pelosa on foot from Stintino, the Catalan old town in Alghero. Two different corners of the island — both genuine.',
-      fr: 'La Pelosa à pied depuis Stintino, le centre catalan à Alghero. Deux morceaux d\'île différents, tous deux authentiques.',
-      de: 'La Pelosa zu Fuß von Stintino, die katalanische Altstadt in Alghero. Zwei ganz unterschiedliche Ecken der Insel — beide echt.'
+      it: 'La Pelosa a un quarto d\'ora di bus o cinque minuti d\'auto a Stintino, centro catalano a piedi ad Alghero. Due pezzi di isola diversi, entrambi autentici.',
+      en: 'La Pelosa a fifteen-minute bus ride or five-minute drive from Stintino, the Catalan old town on foot in Alghero. Two different corners of the island — both genuine.',
+      fr: 'La Pelosa à un quart d\'heure de bus ou cinq minutes en voiture depuis Stintino, le centre catalan à pied à Alghero. Deux morceaux d\'île différents, tous deux authentiques.',
+      de: 'La Pelosa eine Viertelstunde mit dem Bus oder fünf Autominuten von Stintino, die katalanische Altstadt zu Fuß in Alghero. Zwei ganz unterschiedliche Ecken der Insel — beide echt.'
     },
     'home.how.pt3.h': { it: 'Ospiti, non clienti', en: 'Guests, not customers', fr: 'Hôtes, pas clients', de: 'Gäste, keine Kunden' },
     'home.how.pt3.t': {
@@ -205,10 +205,10 @@
     'case.eyebrow': { it: 'Sardegna · due case', en: 'Sardinia · two houses', fr: 'Sardaigne · deux maisons', de: 'Sardinien · zwei Häuser' },
     'case.h1':      { it: 'Le <em>Case</em>.',   en: 'The <em>Houses</em>.',  fr: 'Les <em>Maisons</em>.',    de: 'Die <em>Häuser</em>.' },
     'case.lede': {
-      it: 'Una villa di novanta metri quadri a Stintino, cinque minuti a piedi dalla Pelosa. Un appartamento di settanta metri quadri nel centro storico di Alghero. Stessa cura, due vacanze molto diverse.',
-      en: 'A ninety-square-metre villa in Stintino, five minutes on foot from La Pelosa. A seventy-square-metre apartment in the old town of Alghero. Same care, two very different holidays.',
-      fr: 'Une villa de quatre-vingt-dix mètres carrés à Stintino, à cinq minutes à pied de La Pelosa. Un appartement de soixante-dix mètres carrés dans la vieille ville d\'Alghero. Même soin, deux vacances bien différentes.',
-      de: 'Eine Villa mit neunzig Quadratmetern in Stintino, fünf Minuten zu Fuß von La Pelosa. Eine Wohnung mit siebzig Quadratmetern in der Altstadt von Alghero. Dieselbe Sorgfalt, zwei sehr unterschiedliche Urlaube.'
+      it: 'Una villa di novanta metri quadri a Stintino, cinque minuti in auto dalla Pelosa. Un appartamento di settanta metri quadri nel centro storico di Alghero. Stessa cura, due vacanze molto diverse.',
+      en: 'A ninety-square-metre villa in Stintino, five minutes by car from La Pelosa. A seventy-square-metre apartment in the old town of Alghero. Same care, two very different holidays.',
+      fr: 'Une villa de quatre-vingt-dix mètres carrés à Stintino, à cinq minutes en voiture de La Pelosa. Un appartement de soixante-dix mètres carrés dans la vieille ville d\'Alghero. Même soin, deux vacances bien différentes.',
+      de: 'Eine Villa mit neunzig Quadratmetern in Stintino, fünf Autominuten von La Pelosa. Eine Wohnung mit siebzig Quadratmetern in der Altstadt von Alghero. Dieselbe Sorgfalt, zwei sehr unterschiedliche Urlaube.'
     },
     'case.chip_all':       { it: 'Tutte',            en: 'All',          fr: 'Toutes',            de: 'Alle' },
     'case.sort_aria':      { it: 'Ordina le case',   en: 'Sort houses',  fr: 'Trier les maisons', de: 'Häuser sortieren' },
@@ -465,10 +465,10 @@
       de: 'Wir kümmern uns selbst um die Häuser. Wir antworten auf Nachrichten, übergeben die Schlüssel, und wenn etwas zu reparieren ist, rufen wir keine Verwaltung an — wir machen es. Das ist der Unterschied, den Sie spüren, wenn Sie uns schreiben — und den Sie hoffentlich auch spüren, wenn Sie angekommen sind.'
     },
     'about.body2': {
-      it: 'Non abbiamo grandi piani di espansione. Due case sono quello che riusciamo a curare davvero, e ci va bene così. Quello che proviamo a dare è una Sardegna onesta: la Pelosa a piedi da una parte, il centro catalano dall\'altra, e la possibilità di viverli senza l\'ansia della prenotazione massiva.',
-      en: 'We have no grand plans to expand. Two houses is what we can look after properly, and we\'re fine with that. What we try to offer is an honest Sardinia: La Pelosa on foot on one side, the Catalan old town on the other, and the chance to enjoy them without the pressure of mass bookings.',
-      fr: 'Nous n\'avons pas de grands projets d\'expansion. Deux maisons, c\'est ce que nous arrivons à vraiment bien tenir, et cela nous convient. Ce que nous essayons d\'offrir, c\'est une Sardaigne honnête : La Pelosa à pied d\'un côté, le centre catalan de l\'autre, et la possibilité d\'en profiter sans l\'angoisse de la réservation de masse.',
-      de: 'Wir haben keine großen Expansionspläne. Zwei Häuser sind das, was wir wirklich gut betreuen können, und das passt uns so. Was wir anbieten möchten, ist ein ehrliches Sardinien: La Pelosa zu Fuß auf der einen Seite, die katalanische Altstadt auf der anderen — und die Möglichkeit, sie ohne Massenbuchungs-Stress zu erleben.'
+      it: 'Non abbiamo grandi piani di espansione. Due case sono quello che riusciamo a curare davvero, e ci va bene così. Quello che proviamo a dare è una Sardegna onesta: la Pelosa da una parte, il centro catalano dall\'altra, e la possibilità di viverli senza l\'ansia della prenotazione massiva.',
+      en: 'We have no grand plans to expand. Two houses is what we can look after properly, and we\'re fine with that. What we try to offer is an honest Sardinia: La Pelosa on one side, the Catalan old town on the other, and the chance to enjoy them without the pressure of mass bookings.',
+      fr: 'Nous n\'avons pas de grands projets d\'expansion. Deux maisons, c\'est ce que nous arrivons à vraiment bien tenir, et cela nous convient. Ce que nous essayons d\'offrir, c\'est une Sardaigne honnête : La Pelosa d\'un côté, le centre catalan de l\'autre, et la possibilité d\'en profiter sans l\'angoisse de la réservation de masse.',
+      de: 'Wir haben keine großen Expansionspläne. Zwei Häuser sind das, was wir wirklich gut betreuen können, und das passt uns so. Was wir anbieten möchten, ist ein ehrliches Sardinien: La Pelosa auf der einen Seite, die katalanische Altstadt auf der anderen — und die Möglichkeit, sie ohne Massenbuchungs-Stress zu erleben.'
     },
     'about.body3': {
       it: 'Se state pensando a una settimana da noi, scriveteci. Ci sentiamo direttamente, senza moduli automatici.',
@@ -597,10 +597,10 @@
       de: 'Le Porte di Sardegna — Zwei Häuser auf Sardinien · Stintino und Alghero'
     },
     'meta.description': {
-      it: "Due case vacanze in Sardegna, gestite da una famiglia. Villa La Mimosa a cinque minuti dalla Pelosa, La Porta del Lido nel centro catalano di Alghero. Giugno–Settembre.",
-      en: 'Two holiday houses in Sardinia, run by a family. Villa La Mimosa five minutes from La Pelosa, La Porta del Lido in the Catalan heart of Alghero. June–September.',
-      fr: "Deux maisons de vacances en Sardaigne, tenues par une famille. Villa La Mimosa à cinq minutes de La Pelosa, La Porta del Lido au cœur catalan d'Alghero. Juin–Septembre.",
-      de: 'Zwei Ferienhäuser auf Sardinien, geführt von einer Familie. Villa La Mimosa fünf Minuten von La Pelosa, La Porta del Lido im katalanischen Zentrum von Alghero. Juni–September.'
+      it: "Due case vacanze in Sardegna, gestite da una famiglia. Villa La Mimosa a cinque minuti in auto dalla Pelosa, La Porta del Lido nel centro catalano di Alghero. Giugno–Settembre.",
+      en: 'Two holiday houses in Sardinia, run by a family. Villa La Mimosa five minutes by car from La Pelosa, La Porta del Lido in the Catalan heart of Alghero. June–September.',
+      fr: "Deux maisons de vacances en Sardaigne, tenues par une famille. Villa La Mimosa à cinq minutes en voiture de La Pelosa, La Porta del Lido au cœur catalan d'Alghero. Juin–Septembre.",
+      de: 'Zwei Ferienhäuser auf Sardinien, geführt von einer Familie. Villa La Mimosa fünf Autominuten von La Pelosa, La Porta del Lido im katalanischen Zentrum von Alghero. Juni–September.'
     },
     'meta.og.title': {
       it: 'Le Porte di Sardegna — Due case in Sardegna · Stintino e Alghero',
@@ -609,10 +609,10 @@
       de: 'Le Porte di Sardegna — Zwei Häuser auf Sardinien · Stintino und Alghero'
     },
     'meta.og.description': {
-      it: 'Una villa a cinque minuti dalla Pelosa, un appartamento nel centro catalano di Alghero. Gestite direttamente, senza intermediari. Giugno–Settembre.',
-      en: 'A villa five minutes from La Pelosa, an apartment in the Catalan heart of Alghero. Managed directly, no middlemen. June–September.',
-      fr: "Une villa à cinq minutes de La Pelosa, un appartement au cœur catalan d'Alghero. Gérées en direct, sans intermédiaires. Juin–Septembre.",
-      de: 'Eine Villa fünf Minuten von La Pelosa, eine Wohnung im katalanischen Zentrum von Alghero. Direkt verwaltet, ohne Mittelsmänner. Juni–September.'
+      it: 'Una villa a cinque minuti in auto dalla Pelosa, un appartamento nel centro catalano di Alghero. Gestite direttamente, senza intermediari. Giugno–Settembre.',
+      en: 'A villa five minutes by car from La Pelosa, an apartment in the Catalan heart of Alghero. Managed directly, no middlemen. June–September.',
+      fr: "Une villa à cinq minutes en voiture de La Pelosa, un appartement au cœur catalan d'Alghero. Gérées en direct, sans intermédiaires. Juin–Septembre.",
+      de: 'Eine Villa fünf Autominuten von La Pelosa, eine Wohnung im katalanischen Zentrum von Alghero. Direkt verwaltet, ohne Mittelsmänner. Juni–September.'
     },
     'meta.og.image_alt': {
       it: "La Pelosa, Stintino — Torre aragonese e barca a vela sull'acqua turchese",
@@ -630,10 +630,10 @@
       de: 'Le Porte di Sardegna — Zwei Häuser auf Sardinien'
     },
     'meta.twitter.description': {
-      it: 'Villa La Mimosa a cinque minuti dalla Pelosa, La Porta del Lido nel centro catalano di Alghero. Due case, una famiglia.',
-      en: 'Villa La Mimosa five minutes from La Pelosa, La Porta del Lido in the Catalan heart of Alghero. Two houses, one family.',
-      fr: "Villa La Mimosa à cinq minutes de La Pelosa, La Porta del Lido au cœur catalan d'Alghero. Deux maisons, une famille.",
-      de: 'Villa La Mimosa fünf Minuten von La Pelosa, La Porta del Lido im katalanischen Zentrum von Alghero. Zwei Häuser, eine Familie.'
+      it: 'Villa La Mimosa a cinque minuti in auto dalla Pelosa, La Porta del Lido nel centro catalano di Alghero. Due case, una famiglia.',
+      en: 'Villa La Mimosa five minutes by car from La Pelosa, La Porta del Lido in the Catalan heart of Alghero. Two houses, one family.',
+      fr: "Villa La Mimosa à cinq minutes en voiture de La Pelosa, La Porta del Lido au cœur catalan d'Alghero. Deux maisons, une famille.",
+      de: 'Villa La Mimosa fünf Autominuten von La Pelosa, La Porta del Lido im katalanischen Zentrum von Alghero. Zwei Häuser, eine Familie.'
     },
 
     // Privacy (privacy.html)
@@ -672,22 +672,22 @@
       de: 'Die Häuser · Villa La Mimosa und La Porta del Lido | Le Porte di Sardegna'
     },
     'meta.route.case.description': {
-      it: 'Due case in Sardegna: una villa di 90 m² a Stintino a 5 min dalla Pelosa, un appartamento di 70 m² nel centro storico di Alghero. Stessa cura, due vacanze molto diverse.',
-      en: 'Two houses in Sardinia: a 90 m² villa in Stintino, 5 min from La Pelosa, and a 70 m² apartment in the old town of Alghero. Same care, two very different holidays.',
-      fr: "Deux maisons en Sardaigne : une villa de 90 m² à Stintino, à 5 min de La Pelosa, et un appartement de 70 m² dans la vieille ville d'Alghero. Même soin, deux vacances bien différentes.",
-      de: 'Zwei Häuser auf Sardinien: eine 90 m² Villa in Stintino, 5 Min. von La Pelosa, und eine 70 m² Wohnung in der Altstadt von Alghero. Dieselbe Sorgfalt, zwei sehr unterschiedliche Urlaube.'
+      it: 'Due case in Sardegna: una villa di 90 m² a Stintino a 5 min in auto dalla Pelosa, un appartamento di 70 m² nel centro storico di Alghero. Stessa cura, due vacanze molto diverse.',
+      en: 'Two houses in Sardinia: a 90 m² villa in Stintino, 5 min by car from La Pelosa, and a 70 m² apartment in the old town of Alghero. Same care, two very different holidays.',
+      fr: "Deux maisons en Sardaigne : une villa de 90 m² à Stintino, à 5 min en voiture de La Pelosa, et un appartement de 70 m² dans la vieille ville d'Alghero. Même soin, deux vacances bien différentes.",
+      de: 'Zwei Häuser auf Sardinien: eine 90 m² Villa in Stintino, 5 Autominuten von La Pelosa, und eine 70 m² Wohnung in der Altstadt von Alghero. Dieselbe Sorgfalt, zwei sehr unterschiedliche Urlaube.'
     },
     'meta.route.stintino.title': {
-      it: 'Villa La Mimosa · Casa vacanze a 5 min dalla Pelosa | Le Porte di Sardegna',
-      en: 'Villa La Mimosa · Holiday home 5 min from La Pelosa | Le Porte di Sardegna',
-      fr: 'Villa La Mimosa · Maison de vacances à 5 min de La Pelosa | Le Porte di Sardegna',
-      de: 'Villa La Mimosa · Ferienhaus 5 Min. von La Pelosa | Le Porte di Sardegna'
+      it: 'Villa La Mimosa · Casa vacanze a 5 min in auto dalla Pelosa | Le Porte di Sardegna',
+      en: 'Villa La Mimosa · Holiday home 5 min by car from La Pelosa | Le Porte di Sardegna',
+      fr: 'Villa La Mimosa · Maison de vacances à 5 min en voiture de La Pelosa | Le Porte di Sardegna',
+      de: 'Villa La Mimosa · Ferienhaus 5 Autominuten von La Pelosa | Le Porte di Sardegna'
     },
     'meta.route.stintino.description': {
-      it: 'Villa di 90 m² a Stintino, Sardegna: quattro camere, sei posti letto, due bagni, fino a otto ospiti, giardino con veranda e barbecue, cinque minuti a piedi dalla Spiaggia della Pelosa. Giugno–Settembre.',
-      en: 'A 90 m² villa in Stintino, Sardinia: four bedrooms, six beds, two bathrooms, sleeps up to eight, garden with veranda and barbecue, five minutes on foot from La Pelosa beach. June–September.',
-      fr: 'Villa de 90 m² à Stintino, Sardaigne : quatre chambres, six couchages, deux salles de bain, jusqu\'à huit personnes, jardin avec véranda et barbecue, à cinq minutes à pied de la plage de La Pelosa. Juin–Septembre.',
-      de: 'Villa mit 90 m² in Stintino, Sardinien: vier Schlafzimmer, sechs Schlafplätze, zwei Bäder, bis zu acht Gäste, Garten mit Veranda und Grill, fünf Minuten zu Fuß vom Strand La Pelosa. Juni–September.'
+      it: 'Villa di 90 m² a Stintino, Sardegna: quattro camere, otto posti letto, due bagni, fino a otto ospiti, giardino con veranda e barbecue, cinque minuti in auto dalla Spiaggia della Pelosa. Giugno–Settembre.',
+      en: 'A 90 m² villa in Stintino, Sardinia: four bedrooms, eight beds, two bathrooms, sleeps up to eight, garden with veranda and barbecue, five minutes by car from La Pelosa beach. June–September.',
+      fr: 'Villa de 90 m² à Stintino, Sardaigne : quatre chambres, huit couchages, deux salles de bain, jusqu\'à huit personnes, jardin avec véranda et barbecue, à cinq minutes en voiture de la plage de La Pelosa. Juin–Septembre.',
+      de: 'Villa mit 90 m² in Stintino, Sardinien: vier Schlafzimmer, acht Schlafplätze, zwei Bäder, bis zu acht Gäste, Garten mit Veranda und Grill, fünf Autominuten vom Strand La Pelosa. Juni–September.'
     },
     'meta.route.alghero.title': {
       it: 'La Porta del Lido · Appartamento nel centro di Alghero | Le Porte di Sardegna',
