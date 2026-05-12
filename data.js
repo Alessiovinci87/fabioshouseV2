@@ -778,9 +778,9 @@
               href: 'https://welcomealghero.com/it/ristorante/ristorante-mabrouk-2/'
             },
             {
-              name: 'Agriturismo Sa Mandra',
-              desc: { it: 'Cucina sarda autentica, menu degustazione, formaggi e salumi locali', en: 'Authentic Sardinian cuisine, tasting menu, local cheeses and cured meats', fr: 'Cuisine sarde authentique, menu dégustation, fromages et charcuteries locaux', de: 'Authentische sardische Küche, Degustationsmenü, lokale Käse und Wurstwaren' },
-              href: 'https://www.samandra.it/'
+              name: 'Gioberti',
+              desc: { it: 'Cucina di pesce nel centro storico, tradizione sarda rivisitata dallo chef Massimo Casu', en: 'Seafood in the old town, Sardinian tradition reinterpreted by chef Massimo Casu', fr: 'Cuisine de poisson dans le centre historique, tradition sarde revisitée par le chef Massimo Casu', de: 'Fischküche in der Altstadt, sardische Tradition neu interpretiert von Chef Massimo Casu' },
+              href: 'https://www.giobertialghero.it/'
             },
             {
               name: "Il Pesce D'Oro",

@@ -467,10 +467,7 @@ body.drawer-open { overflow: hidden; }
 
 /* ===== HERO (home) ===== */
 .hero-top {
-  min-height: calc(100svh - 70px);
-  padding: clamp(14px, 2.4vw, 28px) 0 clamp(14px, 2vw, 28px);
-  display: flex;
-  flex-direction: column;
+  padding: clamp(60px, 9vw, 110px) 0 clamp(40px, 6vw, 80px);
 }
 .hero-top .head-grid {
   display: grid;
@@ -482,7 +479,7 @@ body.drawer-open { overflow: hidden; }
   font-size: var(--fs-display);
   line-height: 0.96;
   letter-spacing: -0.025em;
-  max-width: 12ch;
+  max-width: 14ch;
 }
 .hero-top .side-note {
   max-width: 28ch;
@@ -491,28 +488,19 @@ body.drawer-open { overflow: hidden; }
   line-height: 1.55;
 }
 @media (max-width: 860px) {
-  .hero-top {
-    min-height: 0;
-    padding: clamp(40px, 7vw, 80px) 0 clamp(28px, 5vw, 56px);
-  }
   .hero-top .head-grid {
     grid-template-columns: 1fr;
     gap: clamp(16px, 3vw, 28px);
     align-items: start;
   }
   .hero-top .side-note { max-width: 56ch; }
-  .hero-frame {
-    flex: none;
-    height: 60vh;
-    min-height: 380px;
-  }
 }
 .hero-frame {
   position: relative;
-  flex: 1;
-  min-height: min(70svh, calc(100svh - 300px));
+  height: 78vh;
+  min-height: 520px;
   overflow: hidden;
-  margin-top: clamp(12px, 1.8vw, 20px);
+  margin-top: clamp(32px, 4vw, 56px);
 }
 .hero-frame .slide {
   position: absolute; inset: 0;
