@@ -1,0 +1,10 @@
+# Le Porte di Sardegna — config Netlify
+# Le redirect SPA restano in `_redirects`; qui solo functions + sicurezza minima.
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  # Forza Node moderno (fetch globale, AbortController).
+  node_bundler = "esbuild"

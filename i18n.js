@@ -271,6 +271,38 @@
     'det.book.month.settembre':  { it: 'Settembre', en: 'September', fr: 'Septembre', de: 'September' },
     'det.book.cta':     { it: 'Richiedi disponibilità →', en: 'Check availability →', fr: 'Vérifier la disponibilité →', de: 'Verfügbarkeit anfragen →' },
     'det.book.note':    { it: 'Nessun pagamento adesso. Rispondiamo entro 24h.', en: 'No payment now. We reply within 24 hours.', fr: 'Aucun paiement maintenant. Nous répondons sous 24 heures.', de: 'Keine Zahlung jetzt. Wir antworten innerhalb von 24 Stunden.' },
+
+    // -------- detail: availability widget (calendario iCal Airbnb) --------
+    'det.avail.eyebrow': { it: 'Disponibilità', en: 'Availability', fr: 'Disponibilité', de: 'Verfügbarkeit' },
+    'det.avail.h2': {
+      it: 'Verifica <em>le date</em>.',
+      en: 'Check <em>the dates</em>.',
+      fr: 'Vérifiez <em>les dates</em>.',
+      de: 'Termine <em>prüfen</em>.'
+    },
+    'det.avail.lede': {
+      it: 'Il calendario si aggiorna in tempo reale dal nostro Airbnb. I giorni in scuro sono già occupati, quelli chiari sono liberi. Quando trovate le date giuste, scriveteci.',
+      en: 'The calendar updates in real time from our Airbnb. Dark days are already booked, light ones are free. When you find the right dates, write to us.',
+      fr: 'Le calendrier se met à jour en temps réel depuis notre Airbnb. Les jours en sombre sont déjà occupés, les clairs sont libres. Quand vous trouvez les bonnes dates, écrivez-nous.',
+      de: 'Der Kalender wird in Echtzeit von unserem Airbnb aktualisiert. Dunkle Tage sind bereits belegt, helle frei. Wenn Sie die richtigen Termine gefunden haben, schreiben Sie uns.'
+    },
+    'det.avail.legend.free': { it: 'Disponibile', en: 'Available', fr: 'Disponible', de: 'Verfügbar' },
+    'det.avail.legend.busy': { it: 'Occupato',    en: 'Booked',    fr: 'Réservé',   de: 'Belegt' },
+    'det.avail.loading': {
+      it: 'Carico le disponibilità…',
+      en: 'Loading availability…',
+      fr: 'Chargement des disponibilités…',
+      de: 'Verfügbarkeit wird geladen…'
+    },
+    'det.avail.error': {
+      it: 'Non riesco a caricare il calendario in questo momento. Scriveteci, vi confermiamo noi le date.',
+      en: "Can't load the calendar right now. Write to us — we'll confirm the dates directly.",
+      fr: 'Impossible de charger le calendrier pour le moment. Écrivez-nous, nous confirmerons les dates directement.',
+      de: 'Der Kalender lässt sich gerade nicht laden. Schreiben Sie uns — wir bestätigen die Termine direkt.'
+    },
+    'det.avail.prev': { it: 'Mese precedente', en: 'Previous month', fr: 'Mois précédent', de: 'Vormonat' },
+    'det.avail.next': { it: 'Mese successivo', en: 'Next month',     fr: 'Mois suivant',   de: 'Folgemonat' },
+    'det.avail.cta':  { it: 'Scriveteci per prenotare', en: 'Write to book', fr: 'Écrivez pour réserver', de: 'Schreiben zum Buchen' },
     'det.dintorni.eyebrow': { it: 'Dintorni', en: 'Nearby', fr: 'Aux alentours', de: 'In der Nähe' },
     'det.dintorni.cta':     { it: 'Scopri di più', en: 'Find out more', fr: 'En savoir plus', de: 'Mehr erfahren' },
     'det.dintorni.stintino_h2': {
@@ -529,6 +561,19 @@
       de: 'Anlass, Gäste, besondere Bedürfnisse, worauf Sie Wert legen…'
     },
     'contact.form.submit':     { it: 'Inviare la richiesta →', en: 'Send request →', fr: 'Envoyer la demande →', de: 'Anfrage senden →' },
+    'contact.form.sending':    { it: 'Invio in corso…', en: 'Sending…', fr: 'Envoi en cours…', de: 'Wird gesendet…' },
+    'contact.form.success': {
+      it: 'Grazie! Abbiamo ricevuto la richiesta — vi rispondiamo entro 24 ore.',
+      en: "Thank you! We've received your request — we'll reply within 24 hours.",
+      fr: 'Merci ! Nous avons reçu votre demande — réponse sous 24 heures.',
+      de: 'Vielen Dank! Wir haben Ihre Anfrage erhalten — Antwort innerhalb von 24 Stunden.'
+    },
+    'contact.form.error': {
+      it: 'Qualcosa è andato storto. Riprovate tra poco o scriveteci a cosmoalghero@gmail.com.',
+      en: "Something went wrong. Please try again shortly or write to cosmoalghero@gmail.com.",
+      fr: "Une erreur s'est produite. Réessayez sous peu ou écrivez à cosmoalghero@gmail.com.",
+      de: 'Etwas ist schiefgelaufen. Versuchen Sie es gleich erneut oder schreiben Sie an cosmoalghero@gmail.com.'
+    },
     'contact.form.privacy_notice': {
       it: "Inviando il modulo dichiari di aver letto l'",
       en: 'By submitting this form you confirm you have read the ',

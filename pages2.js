@@ -196,6 +196,19 @@
         '</div>' +
       '</section>' +
 
+      '<section class="det-avail" id="disponibilita">' +
+        '<div class="container">' +
+          '<div class="sect-head" data-reveal>' +
+            '<p class="eyebrow">' + t('det.avail.eyebrow') + '</p>' +
+            '<h2>' + t('det.avail.h2') + '</h2>' +
+            '<p class="side-note">' + t('det.avail.lede') + '</p>' +
+          '</div>' +
+          '<div class="avail-widget" data-reveal data-avail-property="' + esc(h.id === 'villa-stintino' ? 'stintino' : 'alghero') + '">' +
+            '<p class="avail-state mono" data-avail-state>' + t('det.avail.loading') + '</p>' +
+          '</div>' +
+        '</div>' +
+      '</section>' +
+
       '<section class="container" id="gallery">' +
         '<div class="sect-head" data-reveal style="padding-bottom: clamp(20px, 3vw, 40px);">' +
           '<p class="eyebrow">' + t('det.gallery.eyebrow') + '</p>' +
@@ -485,24 +498,26 @@
               '<p class="sub">' + t('contact.side.languages_sub') + '</p>' +
             '</div>' +
           '</aside>' +
-          '<form class="cnt-form" id="cnt-form" data-reveal data-delay="2" onsubmit="return false;">' +
+          '<form class="cnt-form" id="cnt-form" data-reveal data-delay="2" action="https://formspree.io/f/xnjwwgwd" method="POST">' +
+            '<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-10000px; width:1px; height:1px; opacity:0;" />' +
+            '<input type="hidden" name="_subject" value="Le Porte di Sardegna — Nuova richiesta dal sito" />' +
             '<div class="row"><label>' + t('contact.form.name') + '</label><input type="text" name="name" required /></div>' +
             '<div class="row"><label>' + t('contact.side.email') + '</label><input type="email" name="email" required /></div>' +
             '<div class="row"><label>' + t('contact.form.phone') + '</label><input type="tel" name="phone" /></div>' +
-            '<div class="row"><label>' + t('contact.form.guests') + '</label><input type="number" name="guests" min="1" max="8" /></div>' +
+            '<div class="row"><label>' + t('contact.form.guests') + '</label><input type="number" name="ospiti" min="1" max="8" /></div>' +
             '<div class="row wide"><label>' + t('contact.form.house') + '</label>' +
-              '<select name="house">' +
+              '<select name="casa">' +
                 '<option value="">' + t('contact.form.undecided') + '</option>' +
                 caseOptions +
                 '<option value="entrambe">' + t('contact.form.both') + '</option>' +
               '</select>' +
             '</div>' +
-            '<div class="row"><label>' + t('contact.form.arrival') + '</label><input type="text" name="arrival" placeholder="' + esc(t('contact.form.arrival_ph')) + '" /></div>' +
-            '<div class="row"><label>' + t('contact.form.duration') + '</label><input type="text" name="duration" placeholder="' + esc(t('contact.form.duration_ph')) + '" /></div>' +
+            '<div class="row"><label>' + t('contact.form.arrival') + '</label><input type="text" name="periodo" placeholder="' + esc(t('contact.form.arrival_ph')) + '" /></div>' +
+            '<div class="row"><label>' + t('contact.form.duration') + '</label><input type="text" name="durata" placeholder="' + esc(t('contact.form.duration_ph')) + '" /></div>' +
             '<div class="row wide"><label>' + t('contact.form.message') + '</label><textarea name="message" placeholder="' + esc(t('contact.form.message_ph')) + '"></textarea></div>' +
-            '<div class="submit"><button type="submit" class="btn-primary">' + t('contact.form.submit') + '</button>' +
+            '<div class="submit"><button type="submit" class="btn-primary" id="cnt-submit">' + t('contact.form.submit') + '</button>' +
             '<p class="cnt-privacy">' + t('contact.form.privacy_notice') + ' <a href="privacy.html" target="_blank" rel="noopener">' + t('contact.form.privacy_link') + '</a>.</p>' +
-            '<p class="nota mono" id="cnt-ok" style="margin-top:14px; color: var(--olive); min-height:18px;"></p></div>' +
+            '<p class="nota mono" id="cnt-ok" role="status" aria-live="polite" style="margin-top:14px; min-height:18px;"></p></div>' +
           '</form>' +
         '</div>' +
       '</section>' +

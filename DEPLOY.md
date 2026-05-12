@@ -33,15 +33,23 @@ Tutte le operazioni da fare quando il sito sarà pronto per andare online. Ogni 
 - [ ] Verifica che `/404.html` dia status 404 reale (non 200): su Netlify serve `_redirects` o `_headers`, oppure configurazione "Custom 404"
 - [ ] Verifica che `/sitemap.xml` e `/robots.txt` siano raggiungibili
 
-## 3. Form contatti (Formspree)
+## 3. Form contatti (Formspree) — ✅ integrato
 
-Il form in `renderContatti` è ora `onsubmit="return false;"` — non invia. Serve integrazione:
+Endpoint attivo: `https://formspree.io/f/xnjwwgwd` (collegato a info di Fabio).
 
-- [ ] Crea account Formspree (o FormSubmit, Basin, Getform)
-- [ ] Crea un form e ottieni l'endpoint (`https://formspree.io/f/xxxxxxx`)
-- [ ] Modifica `pages2.js renderContatti`: il `<form>` deve avere `action="ENDPOINT"` + `method="POST"` e togliere `onsubmit="return false;"`
-- [ ] Aggiungi handler JS in `app.js initContactForm` che fa fetch POST dell'endpoint + mostra conferma UI
-- [ ] Test: invia da una email di prova → arriva sull'inbox di Fabio? Protezione spam (honeypot + reCAPTCHA v3 se necessario)
+- [x] `pages2.js renderContatti`: `<form action="..." method="POST">` + honeypot `_gotcha`
+- [x] Field names allineati: `name`, `email`, `phone`, `ospiti`, `casa`, `periodo`, `durata`, `message`
+- [x] `app.js initContactForm`: fetch POST AJAX + messaggio inline (success/error/sending) tradotto 4 lingue
+- [ ] **Test end-to-end** quando il sito è live: invio reale da `/contatti` → arrivo email a Fabio? Verifica anche dashboard Formspree.
+- [ ] Se spam fuori controllo: aggiungere reCAPTCHA v3 (honeypot già attivo)
+
+## 3-bis. Calendari Airbnb (proxy + widget) — ✅ integrato
+
+- [x] Netlify Function `netlify/functions/calendar.js`: proxy iCal Airbnb → JSON, cache CDN 5 min
+- [x] Widget disponibilità in pagina detail (`#disponibilita`), 2 mesi desktop / 1 mese mobile
+- [x] iCal links Airbnb hard-coded nella function (Villa La Mimosa + La Porta del Lido)
+- [ ] **Test in locale**: il dev server Python NON esegue le Netlify Functions. Per testare il calendario in locale usare `npx netlify-cli dev` (richiede `npm i -g netlify-cli` e login). In alternativa: deploy preview Netlify.
+- [ ] Dopo prima conferma in produzione, valutare lo swap del CTA navbar "Prenota" → `/disponibilita` (memory `project_prenota_cta_calendar_link`)
 
 ## 4. Analytics (opzionale ma consigliato)
 
@@ -92,7 +100,7 @@ Nota: lo scraper Facebook non esegue JS → vede sempre la versione IT dei meta.
 - [ ] Video tour Stintino (se registrato)
 - [ ] P.IVA / CF / CIN nel footer e privacy — sono oggi "IN AGGIORNAMENTO"
 - [ ] Indirizzi esatti delle case — per il task mappa POI (v2 attuale usa coordinate comunali generiche)
-- [ ] iCal Airbnb/Booking → pagina `#/disponibilita` con calendario, swap CTA "Prenota" homepage
+- [x] iCal Airbnb → widget `#disponibilita` in detail page (2026-05-12). Swap CTA navbar "Prenota" pending.
 
 ## 9. Sicurezza / hardening (dopo deploy)
 

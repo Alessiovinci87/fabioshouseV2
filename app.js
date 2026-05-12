@@ -590,7 +590,7 @@
   function initPageSpecific(r) {
     if (r.name === 'home')     initHeroCarousel();
     if (r.name === 'case')     initCaseFilters();
-    if (r.name === 'detail')   { initGallery(r.id); initBookingCard(); initVideoTour(); initDetailMap(r.id); }
+    if (r.name === 'detail')   { initGallery(r.id); initBookingCard(); initVideoTour(); initDetailMap(r.id); initAvailability(); }
     if (r.name === 'contatti') { initContactForm(); prefillContactHouse(); }
 
     // "Vedi galleria" scroll
@@ -940,14 +940,51 @@
   });
 
   // --------------------------- CONTACT FORM ---------------------------
+  // Submit AJAX a Formspree (endpoint impostato come `action` nel form).
+  // Mostra stato inline (sending/success/error) coerente con lo stile sito.
   function initContactForm() {
     var form = document.getElementById('cnt-form');
     var ok = document.getElementById('cnt-ok');
+    var btn = document.getElementById('cnt-submit');
     if (!form) return;
+    var t = (window.FH_I18N && window.FH_I18N.t) ? window.FH_I18N.t : function (s) { return s; };
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (ok) ok.textContent = 'Grazie — rispondiamo entro 24 ore.';
-      form.reset();
+      if (form.dataset.sending === '1') return;
+      var endpoint = form.getAttribute('action');
+      if (!endpoint) {
+        if (ok) { ok.textContent = t('contact.form.error'); ok.style.color = 'var(--terra)'; }
+        return;
+      }
+      form.dataset.sending = '1';
+      if (btn) btn.disabled = true;
+      if (ok) { ok.textContent = t('contact.form.sending'); ok.style.color = 'var(--ink-2)'; }
+      var data = new FormData(form);
+      fetch(endpoint, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        return res.json().catch(function () { return {}; }).then(function (body) {
+          return { ok: res.ok, body: body };
+        });
+      }).then(function (r) {
+        form.dataset.sending = '0';
+        if (btn) btn.disabled = false;
+        if (r.ok) {
+          if (ok) { ok.textContent = t('contact.form.success'); ok.style.color = 'var(--olive)'; }
+          form.reset();
+        } else {
+          var msg = (r.body && r.body.errors && r.body.errors[0] && r.body.errors[0].message)
+            ? r.body.errors[0].message
+            : t('contact.form.error');
+          if (ok) { ok.textContent = msg; ok.style.color = 'var(--terra)'; }
+        }
+      }).catch(function () {
+        form.dataset.sending = '0';
+        if (btn) btn.disabled = false;
+        if (ok) { ok.textContent = t('contact.form.error'); ok.style.color = 'var(--terra)'; }
+      });
     });
   }
 
@@ -962,10 +999,207 @@
       if (kv[0]) params[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1] || '');
     });
     if (!params.casa) return;
-    var sel = document.querySelector('form#cnt-form select[name="house"]');
+    var sel = document.querySelector('form#cnt-form select[name="casa"]');
     if (!sel) return;
     var opt = sel.querySelector('option[value="' + params.casa + '"]');
     if (opt) sel.value = params.casa;
+  }
+
+  // --------------------------- AVAILABILITY WIDGET ---------------------------
+  // Calendario lato detail page: 2 mesi desktop / 1 mese mobile,
+  // navigazione forward (no past months), dati dal proxy Netlify.
+  // Cache in-memory per sessione: lang change non rifa la fetch.
+  var availCache = {};
+
+  function isoDay(d) {
+    var y = d.getFullYear();
+    var m = String(d.getMonth() + 1).padStart(2, '0');
+    var dd = String(d.getDate()).padStart(2, '0');
+    return y + '-' + m + '-' + dd;
+  }
+
+  function buildBusySet(ranges) {
+    // ranges: [[isoStart, isoEndExclusive], ...]
+    // Espande a Set di stringhe ISO "YYYY-MM-DD" per O(1) lookup.
+    var set = Object.create(null);
+    ranges.forEach(function (r) {
+      var s = new Date(r[0] + 'T00:00:00Z');
+      var e = new Date(r[1] + 'T00:00:00Z');
+      for (var d = new Date(s); d < e; d.setUTCDate(d.getUTCDate() + 1)) {
+        var iso = d.toISOString().slice(0, 10);
+        set[iso] = true;
+      }
+    });
+    return set;
+  }
+
+  function initAvailability() {
+    var mount = document.querySelector('.avail-widget[data-avail-property]');
+    if (!mount) return;
+    var property = mount.getAttribute('data-avail-property');
+    if (!property) return;
+    var t = (window.FH_I18N && window.FH_I18N.t) ? window.FH_I18N.t : function (s) { return s; };
+
+    // Stato widget
+    var state = {
+      property: property,
+      busy: null,
+      anchor: null, // primo mese visibile (Date locale, giorno 1)
+      monthsToShow: 1
+    };
+
+    function computeMonthsToShow() {
+      return window.matchMedia('(max-width: 720px)').matches ? 1 : 2;
+    }
+
+    function showState(msg, kind) {
+      mount.innerHTML =
+        '<p class="avail-state mono" data-avail-state' +
+          (kind === 'error' ? ' style="color: var(--terra);"' : '') +
+        '>' + msg + '</p>';
+    }
+
+    function fetchData() {
+      if (availCache[property]) return Promise.resolve(availCache[property]);
+      return fetch('/.netlify/functions/calendar?property=' + encodeURIComponent(property), {
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (!res.ok) throw new Error('http ' + res.status);
+        return res.json();
+      }).then(function (json) {
+        availCache[property] = json;
+        return json;
+      });
+    }
+
+    function monthName(d) {
+      var lang = (window.FH_I18N && window.FH_I18N.current) || 'it';
+      try {
+        var s = new Intl.DateTimeFormat(lang, { month: 'long', year: 'numeric' }).format(d);
+        return s.charAt(0).toUpperCase() + s.slice(1);
+      } catch (e) {
+        return (d.getMonth() + 1) + '/' + d.getFullYear();
+      }
+    }
+
+    function weekdayLabels() {
+      var lang = (window.FH_I18N && window.FH_I18N.current) || 'it';
+      // Lunedì 7 marzo 2022, prendiamo 7 giorni successivi
+      var base = new Date(2022, 2, 7);
+      var fmt;
+      try { fmt = new Intl.DateTimeFormat(lang, { weekday: 'narrow' }); }
+      catch (e) { fmt = { format: function () { return ''; } }; }
+      var out = [];
+      for (var i = 0; i < 7; i++) {
+        var d = new Date(base);
+        d.setDate(base.getDate() + i);
+        out.push(fmt.format(d).toUpperCase());
+      }
+      return out;
+    }
+
+    function renderMonth(year, month, busy, todayIso) {
+      var first = new Date(year, month, 1);
+      // Sposta a lunedì come primo giorno (ISO week)
+      var dowFirst = (first.getDay() + 6) % 7; // 0 = lun, 6 = dom
+      var daysInMonth = new Date(year, month + 1, 0).getDate();
+      var weekdays = weekdayLabels();
+      var head = '<div class="avail-month-head">' + monthName(first) + '</div>';
+      var dowsHtml = weekdays.map(function (w) {
+        return '<div class="avail-dow">' + w + '</div>';
+      }).join('');
+      var cellsHtml = '';
+      for (var i = 0; i < dowFirst; i++) {
+        cellsHtml += '<div class="avail-cell avail-cell--pad" aria-hidden="true"></div>';
+      }
+      for (var day = 1; day <= daysInMonth; day++) {
+        var d = new Date(year, month, day);
+        var iso = isoDay(d);
+        var classes = ['avail-cell'];
+        var isPast = iso < todayIso;
+        if (isPast) classes.push('avail-cell--past');
+        if (busy[iso]) classes.push('avail-cell--busy');
+        if (iso === todayIso) classes.push('avail-cell--today');
+        cellsHtml +=
+          '<div class="' + classes.join(' ') + '" data-day="' + iso + '">' +
+            '<span>' + day + '</span>' +
+          '</div>';
+      }
+      return (
+        '<div class="avail-month">' +
+          head +
+          '<div class="avail-grid">' + dowsHtml + cellsHtml + '</div>' +
+        '</div>'
+      );
+    }
+
+    function render() {
+      if (!state.busy || !state.anchor) return;
+      var todayIso = isoDay(new Date());
+      var monthsHtml = '';
+      for (var k = 0; k < state.monthsToShow; k++) {
+        var d = new Date(state.anchor);
+        d.setMonth(state.anchor.getMonth() + k);
+        monthsHtml += renderMonth(d.getFullYear(), d.getMonth(), state.busy, todayIso);
+      }
+      var minMonth = new Date();
+      minMonth.setDate(1);
+      var atMin = state.anchor.getFullYear() === minMonth.getFullYear()
+        && state.anchor.getMonth() === minMonth.getMonth();
+      mount.innerHTML =
+        '<div class="avail-nav">' +
+          '<button type="button" class="avail-arrow" data-avail-prev ' +
+            (atMin ? 'disabled aria-disabled="true"' : '') +
+            ' aria-label="' + t('det.avail.prev') + '">←</button>' +
+          '<div class="avail-months">' + monthsHtml + '</div>' +
+          '<button type="button" class="avail-arrow" data-avail-next aria-label="' + t('det.avail.next') + '">→</button>' +
+        '</div>' +
+        '<div class="avail-legend mono">' +
+          '<span><i class="lg lg-free" aria-hidden="true"></i>' + t('det.avail.legend.free') + '</span>' +
+          '<span><i class="lg lg-busy" aria-hidden="true"></i>' + t('det.avail.legend.busy') + '</span>' +
+        '</div>' +
+        '<p class="avail-cta">' +
+          '<a class="btn-ghost" href="/contatti?casa=' +
+            (property === 'stintino' ? 'villa-stintino' : 'appartamento-alghero') +
+          '">' + t('det.avail.cta') + ' →</a>' +
+        '</p>';
+      var prev = mount.querySelector('[data-avail-prev]');
+      var next = mount.querySelector('[data-avail-next]');
+      if (prev) prev.addEventListener('click', function () {
+        if (atMin) return;
+        var d = new Date(state.anchor); d.setMonth(d.getMonth() - 1);
+        if (d < minMonth) d = minMonth;
+        state.anchor = d; render();
+      });
+      if (next) next.addEventListener('click', function () {
+        var d = new Date(state.anchor); d.setMonth(d.getMonth() + 1);
+        state.anchor = d; render();
+      });
+    }
+
+    function onResize() {
+      // Self-cleanup: se il widget è stato smontato (re-render route o lang change), stop.
+      if (!document.body.contains(mount)) {
+        window.removeEventListener('resize', onResize);
+        return;
+      }
+      var n = computeMonthsToShow();
+      if (n !== state.monthsToShow) { state.monthsToShow = n; render(); }
+    }
+
+    state.monthsToShow = computeMonthsToShow();
+    var anchor = new Date(); anchor.setDate(1);
+    state.anchor = anchor;
+
+    fetchData().then(function (json) {
+      if (!document.body.contains(mount)) return; // navigato via prima della risposta
+      state.busy = buildBusySet(json.ranges || []);
+      render();
+      window.addEventListener('resize', onResize);
+    }).catch(function () {
+      if (!document.body.contains(mount)) return;
+      showState(t('det.avail.error'), 'error');
+    });
   }
 
   // --------------------------- HOVER CUE ---------------------------

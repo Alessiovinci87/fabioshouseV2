@@ -1094,6 +1094,139 @@ body.drawer-open { overflow: hidden; }
 }
 .share-btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
+/* ===== DISPONIBILITÀ — calendario iCal Airbnb ===== */
+.det-avail {
+  padding: clamp(40px, 6vw, 80px) 0 clamp(20px, 3vw, 40px);
+  background: var(--paper-2);
+}
+.det-avail .sect-head { padding-bottom: clamp(24px, 3vw, 40px); }
+.avail-widget {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2.4vw, 28px);
+}
+.avail-state {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  text-align: center;
+  padding: clamp(28px, 5vw, 56px) 0;
+}
+.avail-nav {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: clamp(8px, 1.5vw, 20px);
+}
+.avail-arrow {
+  width: 40px; height: 40px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  color: var(--ink);
+  background: var(--paper);
+  font-size: 16px; line-height: 1;
+  cursor: pointer;
+  transition: border-color var(--t-fast) var(--ease),
+              background var(--t-fast) var(--ease);
+  margin-top: 6px;
+}
+.avail-arrow:hover { border-color: var(--ink); background: var(--ink); color: var(--paper); }
+.avail-arrow[disabled] {
+  opacity: 0.35; cursor: not-allowed;
+  border-color: var(--line);
+}
+.avail-arrow[disabled]:hover { background: var(--paper); color: var(--ink); border-color: var(--line); }
+.avail-months {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 3vw, 40px);
+}
+@media (max-width: 720px) {
+  .avail-months { grid-template-columns: 1fr; }
+}
+.avail-month-head {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 14px;
+  text-align: center;
+}
+.avail-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.avail-dow {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  text-align: center;
+  padding: 8px 0 12px;
+}
+.avail-cell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  color: var(--ink);
+  border-radius: 4px;
+  background: transparent;
+  transition: background var(--t-fast) var(--ease),
+              color var(--t-fast) var(--ease);
+}
+.avail-cell--pad { background: transparent; }
+.avail-cell--past {
+  color: var(--ink-3);
+  opacity: 0.4;
+}
+.avail-cell--busy {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 4px;
+}
+.avail-cell--busy.avail-cell--past {
+  background: color-mix(in oklab, var(--ink) 30%, var(--paper-2));
+  color: var(--paper);
+  opacity: 1;
+}
+.avail-cell--today {
+  outline: 1px solid var(--terra);
+  outline-offset: -2px;
+}
+.avail-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(16px, 3vw, 28px);
+  justify-content: center;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.avail-legend span { display: inline-flex; align-items: center; gap: 8px; }
+.avail-legend .lg {
+  width: 14px; height: 14px;
+  display: inline-block;
+  border-radius: 3px;
+  border: 1px solid var(--line);
+}
+.avail-legend .lg-free { background: var(--paper); }
+.avail-legend .lg-busy { background: var(--ink); border-color: var(--ink); }
+.avail-cta {
+  text-align: center;
+  margin: 0;
+}
+
 /* ===== LUOGHI DA VEDERE — carosello orizzontale foto ===== */
 .det-places {
   padding: clamp(40px, 6vw, 80px) 0 clamp(30px, 4vw, 60px);
@@ -2638,6 +2771,7 @@ html.fh-intro-active body {
   .wa-float, .back-to-top,
   .det-breadcrumb, .ticker,
   .video-tour, .det-places,
+  .det-avail,
   .det-map-section,
   .gallery-more,
   .det-foot { display: none !important; }
