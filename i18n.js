@@ -634,30 +634,32 @@
     'priv.back': { it: '← Torna alla home', en: '← Back to home', fr: "← Retour à l'accueil", de: '← Zur Startseite' },
 
     // -------- SEO meta (per pagina, per lingua) --------
-    // Home (index.html)
+    // Home (index.html). Title in stile commerciale (keyword 'case vacanze',
+    // 'Stintino', 'Alghero'); description ibrida — keyword presenti ma con
+    // il tono editoriale-familiare del brand.
     'meta.title': {
-      it: 'Le Porte di Sardegna — Due case in Sardegna · Stintino e Alghero',
-      en: 'Le Porte di Sardegna — Two houses in Sardinia · Stintino and Alghero',
-      fr: 'Le Porte di Sardegna — Deux maisons en Sardaigne · Stintino et Alghero',
-      de: 'Le Porte di Sardegna — Zwei Häuser auf Sardinien · Stintino und Alghero'
+      it: 'Le Porte di Sardegna — Affitto Case Vacanze a Stintino e Alghero',
+      en: 'Le Porte di Sardegna — Holiday Homes for Rent in Stintino and Alghero, Sardinia',
+      fr: 'Le Porte di Sardegna — Locations de Vacances à Stintino et Alghero, Sardaigne',
+      de: 'Le Porte di Sardegna — Ferienhäuser zur Miete in Stintino und Alghero, Sardinien'
     },
     'meta.description': {
-      it: "Due case vacanze in Sardegna, gestite da una famiglia. Villa La Mimosa a cinque minuti in auto dalla Pelosa, La Porta del Lido nel centro catalano di Alghero. Giugno–Settembre.",
-      en: 'Two holiday houses in Sardinia, run by a family. Villa La Mimosa five minutes by car from La Pelosa, La Porta del Lido in the Catalan heart of Alghero. June–September.',
-      fr: "Deux maisons de vacances en Sardaigne, tenues par une famille. Villa La Mimosa à cinq minutes en voiture de La Pelosa, La Porta del Lido au cœur catalan d'Alghero. Juin–Septembre.",
-      de: 'Zwei Ferienhäuser auf Sardinien, geführt von einer Familie. Villa La Mimosa fünf Autominuten von La Pelosa, La Porta del Lido im katalanischen Zentrum von Alghero. Juni–September.'
+      it: "Due case vacanze in Sardegna gestite direttamente da una famiglia: Villa La Mimosa a cinque minuti in auto dalla Spiaggia della Pelosa (Stintino) e La Porta del Lido nel centro catalano di Alghero. Affitto diretto, senza intermediari. Giugno–Settembre.",
+      en: 'Two holiday homes in Sardinia run directly by a family: Villa La Mimosa five minutes by car from La Pelosa beach (Stintino) and La Porta del Lido in the Catalan heart of Alghero. Direct rental, no middlemen. June–September.',
+      fr: "Deux maisons de vacances en Sardaigne gérées directement par une famille : Villa La Mimosa à cinq minutes en voiture de la plage de La Pelosa (Stintino) et La Porta del Lido au cœur catalan d'Alghero. Location directe, sans intermédiaires. Juin–Septembre.",
+      de: 'Zwei Ferienhäuser auf Sardinien, direkt von einer Familie geführt: Villa La Mimosa fünf Autominuten vom Strand La Pelosa (Stintino) und La Porta del Lido im katalanischen Zentrum von Alghero. Direktvermietung, ohne Mittelsmänner. Juni–September.'
     },
     'meta.og.title': {
-      it: 'Le Porte di Sardegna — Due case in Sardegna · Stintino e Alghero',
-      en: 'Le Porte di Sardegna — Two houses in Sardinia · Stintino and Alghero',
-      fr: 'Le Porte di Sardegna — Deux maisons en Sardaigne · Stintino et Alghero',
-      de: 'Le Porte di Sardegna — Zwei Häuser auf Sardinien · Stintino und Alghero'
+      it: 'Le Porte di Sardegna — Affitto Case Vacanze a Stintino e Alghero',
+      en: 'Le Porte di Sardegna — Holiday Homes for Rent in Stintino and Alghero, Sardinia',
+      fr: 'Le Porte di Sardegna — Locations de Vacances à Stintino et Alghero, Sardaigne',
+      de: 'Le Porte di Sardegna — Ferienhäuser zur Miete in Stintino und Alghero, Sardinien'
     },
     'meta.og.description': {
-      it: 'Una villa a cinque minuti in auto dalla Pelosa, un appartamento nel centro catalano di Alghero. Gestite direttamente, senza intermediari. Giugno–Settembre.',
-      en: 'A villa five minutes by car from La Pelosa, an apartment in the Catalan heart of Alghero. Managed directly, no middlemen. June–September.',
-      fr: "Une villa à cinq minutes en voiture de La Pelosa, un appartement au cœur catalan d'Alghero. Gérées en direct, sans intermédiaires. Juin–Septembre.",
-      de: 'Eine Villa fünf Autominuten von La Pelosa, eine Wohnung im katalanischen Zentrum von Alghero. Direkt verwaltet, ohne Mittelsmänner. Juni–September.'
+      it: 'Una villa con giardino a cinque minuti in auto dalla Pelosa, un appartamento nel centro catalano di Alghero. Gestite direttamente, senza intermediari. Giugno–Settembre.',
+      en: 'A villa with garden five minutes by car from La Pelosa, an apartment in the Catalan heart of Alghero. Managed directly, no middlemen. June–September.',
+      fr: "Une villa avec jardin à cinq minutes en voiture de La Pelosa, un appartement au cœur catalan d'Alghero. Gérées en direct, sans intermédiaires. Juin–Septembre.",
+      de: 'Eine Villa mit Garten fünf Autominuten von La Pelosa, eine Wohnung im katalanischen Zentrum von Alghero. Direkt verwaltet, ohne Mittelsmänner. Juni–September.'
     },
     'meta.og.image_alt': {
       it: "La Pelosa, Stintino — Torre aragonese e barca a vela sull'acqua turchese",
@@ -669,16 +671,16 @@
       it: 'it_IT', en: 'en_GB', fr: 'fr_FR', de: 'de_DE'
     },
     'meta.twitter.title': {
-      it: 'Le Porte di Sardegna — Due case in Sardegna',
-      en: 'Le Porte di Sardegna — Two houses in Sardinia',
-      fr: 'Le Porte di Sardegna — Deux maisons en Sardaigne',
-      de: 'Le Porte di Sardegna — Zwei Häuser auf Sardinien'
+      it: 'Le Porte di Sardegna — Affitto Case Vacanze a Stintino e Alghero',
+      en: 'Le Porte di Sardegna — Holiday Homes in Stintino and Alghero',
+      fr: 'Le Porte di Sardegna — Locations de Vacances à Stintino et Alghero',
+      de: 'Le Porte di Sardegna — Ferienhäuser in Stintino und Alghero'
     },
     'meta.twitter.description': {
-      it: 'Villa La Mimosa a cinque minuti in auto dalla Pelosa, La Porta del Lido nel centro catalano di Alghero. Due case, una famiglia.',
-      en: 'Villa La Mimosa five minutes by car from La Pelosa, La Porta del Lido in the Catalan heart of Alghero. Two houses, one family.',
-      fr: "Villa La Mimosa à cinq minutes en voiture de La Pelosa, La Porta del Lido au cœur catalan d'Alghero. Deux maisons, une famille.",
-      de: 'Villa La Mimosa fünf Autominuten von La Pelosa, La Porta del Lido im katalanischen Zentrum von Alghero. Zwei Häuser, eine Familie.'
+      it: 'Villa La Mimosa a cinque minuti dalla Pelosa, La Porta del Lido nel centro catalano di Alghero. Due case vacanze in Sardegna, una famiglia.',
+      en: 'Villa La Mimosa five minutes from La Pelosa, La Porta del Lido in the Catalan heart of Alghero. Two holiday homes in Sardinia, one family.',
+      fr: "Villa La Mimosa à cinq minutes de La Pelosa, La Porta del Lido au cœur catalan d'Alghero. Deux maisons de vacances en Sardaigne, une famille.",
+      de: 'Villa La Mimosa fünf Minuten von La Pelosa, La Porta del Lido im katalanischen Zentrum von Alghero. Zwei Ferienhäuser auf Sardinien, eine Familie.'
     },
 
     // Privacy (privacy.html)
@@ -711,76 +713,76 @@
 
     // -------- SEO: title + description per ogni route SPA --------
     'meta.route.case.title': {
-      it: 'Le Case · Villa La Mimosa e La Porta del Lido | Le Porte di Sardegna',
-      en: 'The Houses · Villa La Mimosa and La Porta del Lido | Le Porte di Sardegna',
-      fr: 'Les Maisons · Villa La Mimosa et La Porta del Lido | Le Porte di Sardegna',
-      de: 'Die Häuser · Villa La Mimosa und La Porta del Lido | Le Porte di Sardegna'
+      it: 'Le Nostre Case Vacanze in Sardegna — Stintino e Alghero | Le Porte di Sardegna',
+      en: 'Our Holiday Homes in Sardinia — Stintino and Alghero | Le Porte di Sardegna',
+      fr: 'Nos Maisons de Vacances en Sardaigne — Stintino et Alghero | Le Porte di Sardegna',
+      de: 'Unsere Ferienhäuser auf Sardinien — Stintino und Alghero | Le Porte di Sardegna'
     },
     'meta.route.case.description': {
-      it: 'Due case in Sardegna: una villa di 90 m² a Stintino a 5 min in auto dalla Pelosa, un appartamento di 70 m² nel centro storico di Alghero. Stessa cura, due vacanze molto diverse.',
-      en: 'Two houses in Sardinia: a 90 m² villa in Stintino, 5 min by car from La Pelosa, and a 70 m² apartment in the old town of Alghero. Same care, two very different holidays.',
-      fr: "Deux maisons en Sardaigne : une villa de 90 m² à Stintino, à 5 min en voiture de La Pelosa, et un appartement de 70 m² dans la vieille ville d'Alghero. Même soin, deux vacances bien différentes.",
-      de: 'Zwei Häuser auf Sardinien: eine 90 m² Villa in Stintino, 5 Autominuten von La Pelosa, und eine 70 m² Wohnung in der Altstadt von Alghero. Dieselbe Sorgfalt, zwei sehr unterschiedliche Urlaube.'
+      it: 'Villa La Mimosa a Stintino (90 m², fino a 8 ospiti, 5 min in auto dalla Pelosa) e La Porta del Lido ad Alghero (70 m², fino a 6 ospiti, centro storico catalano). Due case vacanze, una sola famiglia che le gestisce.',
+      en: 'Villa La Mimosa in Stintino (90 m², up to 8 guests, 5 min by car from La Pelosa) and La Porta del Lido in Alghero (70 m², up to 6 guests, Catalan old town). Two holiday homes, one family running them.',
+      fr: "Villa La Mimosa à Stintino (90 m², jusqu'à 8 personnes, 5 min en voiture de La Pelosa) et La Porta del Lido à Alghero (70 m², jusqu'à 6 personnes, vieille ville catalane). Deux maisons de vacances, une seule famille qui les gère.",
+      de: 'Villa La Mimosa in Stintino (90 m², bis zu 8 Gäste, 5 Autominuten von La Pelosa) und La Porta del Lido in Alghero (70 m², bis zu 6 Gäste, katalanische Altstadt). Zwei Ferienhäuser, eine Familie, die sie führt.'
     },
     'meta.route.stintino.title': {
-      it: 'Villa La Mimosa · Casa vacanze a 5 min in auto dalla Pelosa | Le Porte di Sardegna',
-      en: 'Villa La Mimosa · Holiday home 5 min by car from La Pelosa | Le Porte di Sardegna',
-      fr: 'Villa La Mimosa · Maison de vacances à 5 min en voiture de La Pelosa | Le Porte di Sardegna',
-      de: 'Villa La Mimosa · Ferienhaus 5 Autominuten von La Pelosa | Le Porte di Sardegna'
+      it: 'Villa La Mimosa — Casa Vacanze a Stintino vicino alla Pelosa | Le Porte di Sardegna',
+      en: 'Villa La Mimosa — Holiday Home in Stintino near La Pelosa Beach | Le Porte di Sardegna',
+      fr: 'Villa La Mimosa — Maison de Vacances à Stintino près de La Pelosa | Le Porte di Sardegna',
+      de: 'Villa La Mimosa — Ferienhaus in Stintino in der Nähe von La Pelosa | Le Porte di Sardegna'
     },
     'meta.route.stintino.description': {
-      it: 'Villa di 90 m² a Stintino, Sardegna: quattro camere, otto posti letto, due bagni, fino a otto ospiti, giardino con veranda e barbecue, cinque minuti in auto dalla Spiaggia della Pelosa. Giugno–Settembre.',
-      en: 'A 90 m² villa in Stintino, Sardinia: four bedrooms, eight beds, two bathrooms, sleeps up to eight, garden with veranda and barbecue, five minutes by car from La Pelosa beach. June–September.',
-      fr: 'Villa de 90 m² à Stintino, Sardaigne : quatre chambres, huit couchages, deux salles de bain, jusqu\'à huit personnes, jardin avec véranda et barbecue, à cinq minutes en voiture de la plage de La Pelosa. Juin–Septembre.',
-      de: 'Villa mit 90 m² in Stintino, Sardinien: vier Schlafzimmer, acht Schlafplätze, zwei Bäder, bis zu acht Gäste, Garten mit Veranda und Grill, fünf Autominuten vom Strand La Pelosa. Juni–September.'
+      it: 'Villa con giardino e veranda nel Villaggio Cala Lupo a Stintino, cinque minuti in auto dalla Spiaggia della Pelosa. Quattro camere, fino a otto ospiti, barbecue, parcheggio privato, aria condizionata. Affitto diretto giugno–settembre.',
+      en: 'Villa with garden and veranda in Cala Lupo, Stintino, five minutes by car from La Pelosa beach. Four bedrooms, sleeps up to eight, BBQ, private parking, air conditioning. Direct rental June–September.',
+      fr: "Villa avec jardin et véranda dans le hameau de Cala Lupo à Stintino, à cinq minutes en voiture de la plage de La Pelosa. Quatre chambres, jusqu'à huit personnes, barbecue, parking privé, climatisation. Location directe juin–septembre.",
+      de: 'Villa mit Garten und Veranda im Weiler Cala Lupo in Stintino, fünf Autominuten vom Strand La Pelosa. Vier Schlafzimmer, bis zu acht Gäste, Grill, Privatparkplatz, Klimaanlage. Direktvermietung Juni–September.'
     },
     'meta.route.alghero.title': {
-      it: 'La Porta del Lido · Appartamento nel centro di Alghero | Le Porte di Sardegna',
-      en: 'La Porta del Lido · Apartment in the centre of Alghero | Le Porte di Sardegna',
-      fr: 'La Porta del Lido · Appartement au centre d\'Alghero | Le Porte di Sardegna',
-      de: 'La Porta del Lido · Wohnung im Zentrum von Alghero | Le Porte di Sardegna'
+      it: 'La Porta del Lido — Appartamento Vacanze ad Alghero Centro | Le Porte di Sardegna',
+      en: 'La Porta del Lido — Holiday Apartment in Alghero Old Town | Le Porte di Sardegna',
+      fr: 'La Porta del Lido — Appartement de Vacances au Centre d\'Alghero | Le Porte di Sardegna',
+      de: 'La Porta del Lido — Ferienwohnung im Zentrum von Alghero | Le Porte di Sardegna'
     },
     'meta.route.alghero.description': {
-      it: 'Appartamento di 70 m² ad Alghero, Sardegna: due camere, quattro posti letto, un bagno, fino a sei ospiti, balcone, a dieci minuti a piedi dal Lido e cinque dal centro storico catalano. Giugno–Settembre.',
-      en: 'A 70 m² apartment in Alghero, Sardinia: two bedrooms, four beds, one bathroom, sleeps up to six, balcony, ten minutes on foot from the Lido and five from the Catalan old town. June–September.',
-      fr: "Appartement de 70 m² à Alghero, Sardaigne : deux chambres, quatre couchages, une salle de bain, jusqu'à six personnes, balcon, à dix minutes à pied du Lido et cinq du centre historique catalan. Juin–Septembre.",
-      de: 'Wohnung mit 70 m² in Alghero, Sardinien: zwei Schlafzimmer, vier Schlafplätze, ein Bad, bis zu sechs Gäste, Balkon, zehn Minuten zu Fuß vom Lido und fünf von der katalanischen Altstadt. Juni–September.'
+      it: 'Appartamento nel centro storico catalano di Alghero, a dieci minuti a piedi dal Lido e cinque dal centro. Due camere, fino a sei ospiti, balcone, aria condizionata. Casa vacanze ad Alghero in affitto diretto, giugno–settembre.',
+      en: 'Apartment in the Catalan old town of Alghero, ten minutes on foot from the Lido and five from the centre. Two bedrooms, sleeps up to six, balcony, air conditioning. Holiday apartment in Alghero, direct rental, June–September.',
+      fr: "Appartement dans la vieille ville catalane d'Alghero, à dix minutes à pied du Lido et cinq du centre. Deux chambres, jusqu'à six personnes, balcon, climatisation. Appartement de vacances à Alghero en location directe, juin–septembre.",
+      de: 'Wohnung in der katalanischen Altstadt von Alghero, zehn Minuten zu Fuß vom Lido und fünf vom Zentrum. Zwei Schlafzimmer, bis zu sechs Gäste, Balkon, Klimaanlage. Ferienwohnung in Alghero zur Direktvermietung, Juni–September.'
     },
     'meta.route.incluso.title': {
-      it: 'Cosa è incluso · WiFi, aria condizionata, utenze | Le Porte di Sardegna',
-      en: 'What\'s included · WiFi, A/C, utilities | Le Porte di Sardegna',
-      fr: 'Ce qui est inclus · WiFi, clim, charges | Le Porte di Sardegna',
-      de: 'Inbegriffene Leistungen · WLAN, Klima, Nebenkosten | Le Porte di Sardegna'
+      it: 'Cosa è Incluso — Servizi e Dotazioni delle Case Vacanze | Le Porte di Sardegna',
+      en: 'What\'s Included — Services and Amenities of Our Holiday Homes | Le Porte di Sardegna',
+      fr: 'Ce qui est Inclus — Services et Équipements des Maisons de Vacances | Le Porte di Sardegna',
+      de: 'Was ist Inbegriffen — Leistungen und Ausstattung der Ferienhäuser | Le Porte di Sardegna'
     },
     'meta.route.incluso.description': {
-      it: 'Tutto quello che è compreso nel soggiorno: WiFi, aria condizionata, utenze. Nessun costo nascosto, solo la tassa di soggiorno a parte.',
-      en: 'Everything included in the stay: WiFi, air conditioning, utilities. No hidden costs — only the tourist tax is paid separately.',
-      fr: "Tout ce qui est compris dans le séjour : WiFi, climatisation, charges. Aucun coût caché, seule la taxe de séjour est à part.",
-      de: 'Alles, was im Aufenthalt enthalten ist: WLAN, Klimaanlage, Nebenkosten. Keine versteckten Kosten — nur die Kurtaxe wird separat bezahlt.'
+      it: 'WiFi, aria condizionata, utenze: tutto quello che è compreso nel soggiorno alle nostre case vacanze in Sardegna. Niente costi nascosti, solo la tassa di soggiorno si salda a parte all\'arrivo.',
+      en: 'WiFi, air conditioning, utilities: everything included in a stay at our holiday homes in Sardinia. No hidden costs — only the tourist tax is paid separately on arrival.',
+      fr: "WiFi, climatisation, charges : tout ce qui est compris dans le séjour dans nos maisons de vacances en Sardaigne. Aucun coût caché, seule la taxe de séjour se règle à part à l'arrivée.",
+      de: 'WLAN, Klimaanlage, Nebenkosten: alles, was im Aufenthalt in unseren Ferienhäusern auf Sardinien enthalten ist. Keine versteckten Kosten — nur die Kurtaxe wird bei der Ankunft separat bezahlt.'
     },
     'meta.route.chisiamo.title': {
-      it: 'Chi siamo · Una famiglia, due case, la stessa Sardegna | Le Porte di Sardegna',
-      en: 'About us · One family, two houses, the same Sardinia | Le Porte di Sardegna',
-      fr: 'À propos · Une famille, deux maisons, la même Sardaigne | Le Porte di Sardegna',
-      de: 'Über uns · Eine Familie, zwei Häuser, dasselbe Sardinien | Le Porte di Sardegna'
+      it: 'Chi Siamo — La Famiglia dietro Le Porte di Sardegna',
+      en: 'About Us — The Family behind Le Porte di Sardegna',
+      fr: 'À Propos — La Famille derrière Le Porte di Sardegna',
+      de: 'Über Uns — Die Familie hinter Le Porte di Sardegna'
     },
     'meta.route.chisiamo.description': {
-      it: 'Siamo una famiglia sarda che gestisce direttamente due case vacanze nel nord-ovest dell\'isola: la villa di Stintino e l\'appartamento nel centro catalano di Alghero.',
-      en: 'We are a Sardinian family managing two holiday houses in the island\'s north-west directly: the villa in Stintino and the apartment in the Catalan heart of Alghero.',
-      fr: "Nous sommes une famille sarde qui gère directement deux maisons de vacances dans le nord-ouest de l'île : la villa de Stintino et l'appartement au cœur catalan d'Alghero.",
-      de: 'Wir sind eine sardische Familie, die zwei Ferienhäuser im Nordwesten der Insel direkt verwaltet: die Villa in Stintino und die Wohnung im katalanischen Zentrum von Alghero.'
+      it: 'Siamo una famiglia sarda che affitta direttamente le proprie case vacanze a Stintino e Alghero. Nessun intermediario. Risposta garantita entro 24 ore in italiano, inglese, francese e tedesco.',
+      en: 'We are a Sardinian family renting our own holiday homes directly in Stintino and Alghero. No middlemen. Reply guaranteed within 24 hours in Italian, English, French and German.',
+      fr: "Nous sommes une famille sarde qui loue directement ses propres maisons de vacances à Stintino et Alghero. Aucun intermédiaire. Réponse garantie sous 24 heures en italien, anglais, français et allemand.",
+      de: 'Wir sind eine sardische Familie, die ihre eigenen Ferienhäuser in Stintino und Alghero direkt vermietet. Keine Mittelsmänner. Antwort garantiert innerhalb von 24 Stunden auf Italienisch, Englisch, Französisch und Deutsch.'
     },
     'meta.route.contatti.title': {
-      it: 'Contatti · Scriveteci per disponibilità e prenotazioni | Le Porte di Sardegna',
-      en: 'Contact · Write to us for availability and bookings | Le Porte di Sardegna',
-      fr: 'Contact · Écrivez-nous pour disponibilité et réservations | Le Porte di Sardegna',
-      de: 'Kontakt · Schreiben Sie uns für Verfügbarkeit und Buchungen | Le Porte di Sardegna'
+      it: 'Contatti e Prenotazioni — Le Porte di Sardegna | Stintino e Alghero',
+      en: 'Contact and Bookings — Le Porte di Sardegna | Stintino and Alghero',
+      fr: 'Contact et Réservations — Le Porte di Sardegna | Stintino et Alghero',
+      de: 'Kontakt und Buchungen — Le Porte di Sardegna | Stintino und Alghero'
     },
     'meta.route.contatti.description': {
-      it: 'Modulo di contatto e email diretta per prenotazioni a Villa La Mimosa e La Porta del Lido. Rispondiamo entro 24 ore, in italiano, inglese, francese o tedesco.',
-      en: 'Contact form and direct email for bookings at Villa La Mimosa and La Porta del Lido. We reply within 24 hours, in Italian, English, French or German.',
-      fr: 'Formulaire de contact et e-mail direct pour les réservations à Villa La Mimosa et La Porta del Lido. Réponse sous 24 heures, en italien, anglais, français ou allemand.',
-      de: 'Kontaktformular und direkte E-Mail für Buchungen in Villa La Mimosa und La Porta del Lido. Antwort innerhalb von 24 Stunden — auf Italienisch, Englisch, Französisch oder Deutsch.'
+      it: 'Contattaci per disponibilità e prenotazioni di Villa La Mimosa (Stintino) e La Porta del Lido (Alghero). Rispondiamo entro 24 ore in italiano, inglese, francese o tedesco — via email o WhatsApp.',
+      en: 'Contact us for availability and bookings of Villa La Mimosa (Stintino) and La Porta del Lido (Alghero). We reply within 24 hours in Italian, English, French or German — via email or WhatsApp.',
+      fr: 'Contactez-nous pour la disponibilité et les réservations de Villa La Mimosa (Stintino) et La Porta del Lido (Alghero). Réponse sous 24 heures en italien, anglais, français ou allemand — par e-mail ou WhatsApp.',
+      de: 'Kontaktieren Sie uns für Verfügbarkeit und Buchungen von Villa La Mimosa (Stintino) und La Porta del Lido (Alghero). Antwort innerhalb von 24 Stunden auf Italienisch, Englisch, Französisch oder Deutsch — per E-Mail oder WhatsApp.'
     }
   };
 

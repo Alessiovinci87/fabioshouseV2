@@ -162,13 +162,31 @@
     return SITE_ORIGIN + '/' + String(path).replace(/^\/+/, '');
   }
 
+  // Canonical URL della route corrente. location.pathname è già strippato
+  // dei trailing slash dal router; per la home pathname=='/' → restituisce
+  // SITE_ORIGIN + '/'. Per ogni altra route → SITE_ORIGIN + pathname.
+  // Le query string (es. ?lang=en) non entrano nel canonical: la versione
+  // localizzata è dichiarata via <link rel="alternate" hreflang>.
+  function canonicalUrl() {
+    var p = (location.pathname || '/').replace(/\/+$/, '') || '/';
+    return SITE_ORIGIN + p;
+  }
+  function setCanonical(url) {
+    var link = document.querySelector('link[rel="canonical"]');
+    if (link) link.setAttribute('href', url);
+  }
+
   // SEO per route: aggiorna <title> + meta description + og:title/description/image
-  // coerenti con la route SPA attiva e la lingua corrente.
+  // + canonical + og:url coerenti con la route SPA attiva e la lingua corrente.
   function applyRouteMeta(r) {
     if (!window.FH_I18N) return;
     var t = window.FH_I18N.t;
     var key;
     var ogImage = DEFAULT_OG_IMAGE;
+    // Canonical + og:url derivano dal pathname e sono indipendenti dalla route data.
+    var cUrl = canonicalUrl();
+    setCanonical(cUrl);
+    setMeta('property', 'og:url', cUrl);
     // Rotte "luogo": titolo/description/og:image generati dal dato del luogo,
     // non da una chiave i18n: ogni luogo nuovo funziona senza toccare i dict.
     if (r.name === 'luogo' && window.FH_getLuogo) {
