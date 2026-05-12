@@ -594,7 +594,7 @@
       de: 'Die <em>häufigen</em> Fragen.'
     },
     'contact.faq.lede': {
-      it: 'Sei voci che ci fanno quasi tutti, con risposte non generiche.',
+      it: 'Sei domande che ci fanno quasi tutti, con risposte non generiche.',
       en: "Six questions almost everyone asks us — with answers that aren't generic.",
       fr: 'Six questions que presque tous nous posent — avec des réponses qui ne sont pas génériques.',
       de: 'Sechs Fragen, die uns fast alle stellen — mit Antworten, die nicht allgemein gehalten sind.'
