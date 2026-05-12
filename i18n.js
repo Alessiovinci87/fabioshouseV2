@@ -102,17 +102,17 @@
       de: 'Zwei Häuser, mehr nicht. Wir kümmern uns lieber richtig um sie, als zehn halbherzig zu verwalten.'
     },
     'home.how.intro': {
-      it: "Una famiglia che da qualche anno affitta le proprie due case sarde a chi vuole passare un'estate nel nord-ovest dell'isola. Rispondiamo noi ai messaggi, consegniamo noi le chiavi, e se serve qualcosa durante il soggiorno basta una telefonata.",
-      en: "A family that, for a few years now, has been renting out its two Sardinian houses to people who want to spend a summer in the island's north-west. We reply to your messages, we hand over the keys, and if you need anything during your stay, a single phone call is enough.",
-      fr: "Une famille qui, depuis quelques années, loue ses deux maisons sardes à ceux qui veulent passer un été dans le nord-ouest de l'île. C'est nous qui répondons aux messages, qui remettons les clés, et s'il vous faut quoi que ce soit pendant le séjour, un coup de fil suffit.",
-      de: 'Eine Familie, die seit einigen Jahren ihre beiden sardischen Häuser an Gäste vermietet, die einen Sommer im Nordwesten der Insel verbringen möchten. Wir beantworten Ihre Nachrichten selbst, übergeben die Schlüssel persönlich, und wenn während des Aufenthalts etwas nötig ist, genügt ein Anruf.'
+      it: "Una famiglia che da qualche anno affitta le proprie due case sarde a chi vuole passare un'estate nel nord-ovest dell'isola. Rispondiamo noi ai messaggi, prepariamo la casa per il vostro arrivo e le chiavi vi aspettano nella cassetta di sicurezza: vi sistemate con i vostri tempi, senza attese. Se serve qualcosa durante il soggiorno basta una telefonata.",
+      en: "A family that, for a few years now, has been renting out its two Sardinian houses to people who want to spend a summer in the island's north-west. We reply to your messages ourselves, we get the house ready for your arrival, and the keys wait for you in a secure key safe: you settle in at your own pace, with no waiting. If you need anything during your stay, a single phone call is enough.",
+      fr: "Une famille qui, depuis quelques années, loue ses deux maisons sardes à ceux qui veulent passer un été dans le nord-ouest de l'île. C'est nous qui répondons aux messages, qui préparons la maison pour votre arrivée, et les clés vous attendent dans une boîte sécurisée : vous vous installez à votre rythme, sans attendre. S'il vous faut quoi que ce soit pendant le séjour, un coup de fil suffit.",
+      de: 'Eine Familie, die seit einigen Jahren ihre beiden sardischen Häuser an Gäste vermietet, die einen Sommer im Nordwesten der Insel verbringen möchten. Wir beantworten Ihre Nachrichten selbst, bereiten das Haus für Ihre Ankunft vor, und die Schlüssel warten in einer Schlüsselbox auf Sie: Sie ziehen in Ihrem eigenen Tempo ein, ohne zu warten. Wenn während des Aufenthalts etwas nötig ist, genügt ein Anruf.'
     },
     'home.how.pt1.h': { it: 'Due case, stessa mano',  en: 'Two houses, one pair of hands', fr: 'Deux maisons, une seule main', de: 'Zwei Häuser, eine Hand' },
     'home.how.pt1.t': {
-      it: 'Le gestiamo noi, direttamente. Le chiavi le diamo noi, rispondiamo noi ai messaggi.',
-      en: 'We manage them directly. We hand over the keys, we answer your messages.',
-      fr: 'On les gère nous-mêmes. C\'est nous qui donnons les clés, qui répondons aux messages.',
-      de: 'Wir verwalten sie selbst. Wir übergeben die Schlüssel, wir antworten auf Nachrichten.'
+      it: 'Le gestiamo noi, direttamente. Rispondiamo noi ai messaggi e all\'arrivo le chiavi sono già in cassetta di sicurezza: vi sistemate con i vostri tempi, senza attese.',
+      en: 'We manage them directly. We answer messages ourselves, and on arrival the keys are already in a secure key safe: you settle in at your own pace, with no waiting.',
+      fr: 'On les gère nous-mêmes. C\'est nous qui répondons aux messages, et à l\'arrivée les clés sont déjà dans la boîte sécurisée : vous vous installez à votre rythme, sans attendre.',
+      de: 'Wir verwalten sie selbst. Wir antworten auf Nachrichten, und bei der Ankunft liegen die Schlüssel bereits in der Schlüsselbox: Sie ziehen in Ihrem eigenen Tempo ein, ohne zu warten.'
     },
     'home.how.pt2.h': { it: 'Sardegna vera', en: 'The real Sardinia', fr: 'La vraie Sardaigne', de: 'Echtes Sardinien' },
     'home.how.pt2.t': {
@@ -459,10 +459,10 @@
     },
     'about.img_alt': { it: 'La Pelosa al mattino', en: 'La Pelosa in the morning', fr: 'La Pelosa au matin', de: 'La Pelosa am Morgen' },
     'about.body1': {
-      it: "Le case le teniamo noi. Rispondiamo noi ai messaggi, consegniamo noi le chiavi, e quando c'è da sistemare qualcosa non chiamiamo una gestione: ci pensiamo. Questa è la differenza che sentite quando ci scrivete — e che speriamo si senta anche una volta arrivati.",
-      en: 'We look after the houses ourselves. We reply to messages, we hand over the keys, and when something needs fixing we don\'t call a management company — we do it. That\'s the difference you notice when you write to us, and one we hope you\'ll feel once you arrive.',
-      fr: 'Nous nous occupons nous-mêmes des maisons. Nous répondons aux messages, nous remettons les clés, et quand il faut réparer quelque chose, nous n\'appelons pas de gestionnaire : nous le faisons. C\'est la différence que vous sentez quand vous nous écrivez — et que nous espérons vous faire sentir une fois arrivés.',
-      de: 'Wir kümmern uns selbst um die Häuser. Wir antworten auf Nachrichten, übergeben die Schlüssel, und wenn etwas zu reparieren ist, rufen wir keine Verwaltung an — wir machen es. Das ist der Unterschied, den Sie spüren, wenn Sie uns schreiben — und den Sie hoffentlich auch spüren, wenn Sie angekommen sind.'
+      it: "Le case le teniamo noi. Rispondiamo noi ai messaggi, prepariamo tutto per il vostro arrivo — le chiavi le trovate nella cassetta di sicurezza, così vi sistemate quando volete senza attese — e quando c'è da sistemare qualcosa non chiamiamo una gestione: ci pensiamo. Questa è la differenza che sentite quando ci scrivete — e che speriamo si senta anche una volta arrivati.",
+      en: 'We look after the houses ourselves. We reply to messages, we get everything ready for your arrival — you\'ll find the keys in a secure key safe, so you can settle in whenever you like with no waiting — and when something needs fixing we don\'t call a management company: we do it. That\'s the difference you notice when you write to us, and one we hope you\'ll feel once you arrive.',
+      fr: 'Nous nous occupons nous-mêmes des maisons. Nous répondons aux messages, nous préparons tout pour votre arrivée — vous trouvez les clés dans une boîte sécurisée, vous vous installez ainsi quand vous voulez sans attendre — et quand il faut réparer quelque chose, nous n\'appelons pas de gestionnaire : nous le faisons. C\'est la différence que vous sentez quand vous nous écrivez — et que nous espérons vous faire sentir une fois arrivés.',
+      de: 'Wir kümmern uns selbst um die Häuser. Wir antworten auf Nachrichten, bereiten alles für Ihre Ankunft vor — die Schlüssel finden Sie in einer Schlüsselbox, so ziehen Sie ein, wann Sie möchten, ohne zu warten — und wenn etwas zu reparieren ist, rufen wir keine Verwaltung an: wir machen es. Das ist der Unterschied, den Sie spüren, wenn Sie uns schreiben — und den Sie hoffentlich auch spüren, wenn Sie angekommen sind.'
     },
     'about.body2': {
       it: 'Non abbiamo grandi piani di espansione. Due case sono quello che riusciamo a curare davvero, e ci va bene così. Quello che proviamo a dare è una Sardegna onesta: la Pelosa da una parte, il centro catalano dall\'altra, e la possibilità di viverli senza l\'ansia della prenotazione massiva.',

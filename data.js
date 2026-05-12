@@ -1061,10 +1061,10 @@
         de: 'Wie funktioniert der Check-in?'
       },
       a: {
-        it: "Check-in dalle sedici, check-out entro le dieci. Possiamo organizzare arrivi tardivi (entro mezzanotte) o check-in autonomo con cassetta di sicurezza. Segnalateci l'orario stimato il giorno prima: ci sentiamo direttamente.",
-        en: 'Check-in from four in the afternoon, check-out by ten in the morning. We can arrange late arrivals (up to midnight) or self check-in with a lockbox. Let us know the estimated time the day before — we stay in direct touch.',
-        fr: "Check-in à partir de seize heures, check-out avant dix heures. On peut organiser les arrivées tardives (jusqu'à minuit) ou un check-in autonome avec boîte à clés. Indiquez-nous l'heure estimée la veille — on est en contact direct.",
-        de: 'Check-in ab sechzehn Uhr, Check-out bis zehn Uhr. Späte Anreisen (bis Mitternacht) oder Self-Check-in mit Schlüsselbox sind möglich. Teilen Sie uns die ungefähre Uhrzeit am Vortag mit — wir bleiben in direktem Kontakt.'
+        it: "Check-in dalle sedici, check-out entro le dieci: orari fissi e nessuna attesa. Il check-in è autonomo con cassetta di sicurezza — le chiavi sono già lì al vostro arrivo, vi sistemate con i vostri tempi anche se arrivate tardi la sera. Vi mandiamo codice e istruzioni il giorno prima e restiamo a un messaggio di distanza per qualsiasi necessità.",
+        en: 'Check-in from four in the afternoon, check-out by ten in the morning: fixed hours and no waiting. Check-in is self-service with a secure key safe — the keys are already there when you arrive, so you can settle in at your own pace, even on late evenings. We send the code and instructions the day before and stay one message away for anything you might need.',
+        fr: "Check-in à partir de seize heures, check-out avant dix heures : horaires fixes et aucune attente. Le check-in est autonome avec boîte à clés sécurisée — les clés sont déjà là à votre arrivée, vous vous installez à votre rythme même si vous arrivez tard le soir. On vous envoie le code et les instructions la veille et on reste à un message près pour tout besoin.",
+        de: 'Check-in ab sechzehn Uhr, Check-out bis zehn Uhr: feste Zeiten, keine Wartezeiten. Der Check-in erfolgt selbständig über eine Schlüsselbox — die Schlüssel liegen schon bereit, wenn Sie ankommen, Sie ziehen in Ihrem eigenen Tempo ein, auch bei später Anreise. Wir senden Code und Anleitung am Vortag und bleiben für alles Weitere eine Nachricht entfernt.'
       }
     },
     {
