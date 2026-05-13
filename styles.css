@@ -1227,6 +1227,68 @@ body.drawer-open { overflow: hidden; }
   margin: 0;
 }
 
+/* ===== HOME · DISPONIBILITÀ — 2 calendari affiancati (stintino + alghero) ===== */
+.home-avail {
+  padding: clamp(40px, 6vw, 80px) 0;
+  background: var(--paper-2);
+}
+.home-avail .sect-head { padding-bottom: clamp(24px, 3vw, 40px); }
+.home-avail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 4vw, 56px);
+}
+@media (max-width: 860px) {
+  .home-avail-grid {
+    grid-template-columns: 1fr;
+    gap: clamp(36px, 5vw, 56px);
+  }
+}
+.home-avail-card {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2vw, 24px);
+}
+.home-avail-thumb {
+  display: block;
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--paper);
+}
+.home-avail-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s var(--ease);
+}
+.home-avail-thumb:hover img { transform: scale(1.03); }
+.home-avail-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+.home-avail-head h3 {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 400;
+  font-style: italic;
+  margin: 0;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.home-avail-head .loc {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
 /* ===== LUOGHI DA VEDERE — carosello orizzontale foto ===== */
 .det-places {
   padding: clamp(40px, 6vw, 80px) 0 clamp(30px, 4vw, 60px);
@@ -2771,7 +2833,7 @@ html.fh-intro-active body {
   .wa-float, .back-to-top,
   .det-breadcrumb, .ticker,
   .video-tour, .det-places,
-  .det-avail,
+  .det-avail, .home-avail,
   .det-map-section,
   .gallery-more,
   .det-foot { display: none !important; }

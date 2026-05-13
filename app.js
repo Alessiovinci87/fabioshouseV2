@@ -136,7 +136,20 @@
         }
       } catch (e) {}
     }
-    if (!restored) window.scrollTo({ top: 0, behavior: 'auto' });
+    // Se la URL ha un hash (es. /#disponibilita), scrolla alla sezione
+    // dopo che il DOM è settled. Altrimenti torna in cima.
+    var hash = location.hash && location.hash.slice(1);
+    if (!restored && hash) {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          var target = document.getElementById(hash);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          else window.scrollTo({ top: 0, behavior: 'auto' });
+        });
+      });
+    } else if (!restored) {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
 
     // persist
     try { localStorage.setItem('fh_route', location.pathname || '/'); } catch (e) {}
@@ -606,7 +619,7 @@
 
   // --------------------------- PAGE-SPECIFIC ---------------------------
   function initPageSpecific(r) {
-    if (r.name === 'home')     initHeroCarousel();
+    if (r.name === 'home')     { initHeroCarousel(); initAvailability(); }
     if (r.name === 'case')     initCaseFilters();
     if (r.name === 'detail')   { initGallery(r.id); initBookingCard(); initVideoTour(); initDetailMap(r.id); initAvailability(); }
     if (r.name === 'contatti') { initContactForm(); prefillContactHouse(); }
@@ -1052,8 +1065,13 @@
   }
 
   function initAvailability() {
-    var mount = document.querySelector('.avail-widget[data-avail-property]');
-    if (!mount) return;
+    // Monta tutti i widget calendario presenti nella view corrente.
+    // In detail page: 1 widget. In home: 2 (stintino + alghero).
+    var mounts = document.querySelectorAll('.avail-widget[data-avail-property]');
+    mounts.forEach(mountAvailability);
+  }
+
+  function mountAvailability(mount) {
     var property = mount.getAttribute('data-avail-property');
     if (!property) return;
     var t = (window.FH_I18N && window.FH_I18N.t) ? window.FH_I18N.t : function (s) { return s; };
@@ -1066,7 +1084,9 @@
       monthsToShow: 1
     };
 
+    var forceCompact = mount.hasAttribute('data-avail-compact');
     function computeMonthsToShow() {
+      if (forceCompact) return 1;
       return window.matchMedia('(max-width: 720px)').matches ? 1 : 2;
     }
 
