@@ -156,6 +156,35 @@
         '</div>' +
       '</section>' +
 
+      '<section class="home-avail" id="disponibilita">' +
+        '<div class="container">' +
+          '<div class="sect-head" data-reveal>' +
+            '<p class="eyebrow">' + t('home.avail.eyebrow') + '</p>' +
+            '<h2>' + t('home.avail.h2') + '</h2>' +
+            '<p class="side-note">' + t('home.avail.lede') + '</p>' +
+          '</div>' +
+          '<div class="home-avail-grid">' +
+            D.houses.map(function (h, i) {
+              var prop = h.id === 'villa-stintino' ? 'stintino' : 'alghero';
+              return (
+                '<article class="home-avail-card" data-reveal data-delay="' + ((i % 4) + 1) + '">' +
+                  '<a href="/case/' + esc(h.id) + '" class="home-avail-thumb">' +
+                    '<img src="' + esc(h.hero) + '" alt="' + esc(t(h.name)) + '" loading="lazy" />' +
+                  '</a>' +
+                  '<div class="home-avail-head">' +
+                    '<h3>' + esc(t(h.name)) + '</h3>' +
+                    '<span class="loc">' + esc(h.location) + '</span>' +
+                  '</div>' +
+                  '<div class="avail-widget" data-avail-property="' + prop + '" data-avail-compact>' +
+                    '<p class="avail-state mono" data-avail-state>' + t('det.avail.loading') + '</p>' +
+                  '</div>' +
+                '</article>'
+              );
+            }).join('') +
+          '</div>' +
+        '</div>' +
+      '</section>' +
+
       '<section class="final-cta">' +
         '<div class="container">' +
           '<p class="eyebrow" style="color: oklch(72% 0.04 75);" data-reveal>' + t('home.final.eyebrow') + '</p>' +

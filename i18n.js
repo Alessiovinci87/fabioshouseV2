@@ -180,6 +180,26 @@
     },
     'home.sect3.by': { it: 'ospiti a', en: 'guests at', fr: 'hôtes chez', de: 'Gäste bei' },
 
+    // -------- home: disponibilità calendari --------
+    'home.avail.eyebrow': {
+      it: 'Disponibilità · aggiornata da Airbnb',
+      en: 'Availability · synced from Airbnb',
+      fr: 'Disponibilités · synchronisées avec Airbnb',
+      de: 'Verfügbarkeit · synchron mit Airbnb'
+    },
+    'home.avail.h2': {
+      it: 'Quando potete <em>venire</em>.',
+      en: 'When you can <em>come</em>.',
+      fr: 'Quand vous pouvez <em>venir</em>.',
+      de: 'Wann Sie <em>kommen</em> können.'
+    },
+    'home.avail.lede': {
+      it: 'Le date occupate qui sotto vengono dai calendari Airbnb delle due case. Se vedete un periodo libero che vi piace, scriveteci: rispondiamo entro ventiquattro ore.',
+      en: 'The busy dates below come straight from the Airbnb calendars of the two houses. See a free period you like? Write to us — we reply within twenty-four hours.',
+      fr: 'Les dates occupées ci-dessous proviennent directement des calendriers Airbnb des deux maisons. Une période libre vous plaît ? Écrivez-nous — nous répondons sous vingt-quatre heures.',
+      de: 'Die belegten Daten unten stammen direkt aus den Airbnb-Kalendern der beiden Häuser. Sehen Sie einen freien Zeitraum, der Ihnen gefällt? Schreiben Sie uns — Antwort innerhalb von vierundzwanzig Stunden.'
+    },
+
     // -------- home: final CTA --------
     'home.final.eyebrow': { it: 'Raccontateci', en: 'Tell us', fr: 'Écrivez-nous', de: 'Erzählen Sie uns' },
     'home.final.h2': {
