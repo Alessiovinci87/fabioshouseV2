@@ -131,4 +131,4 @@ Apri il file con doppio clic → pulsante **Stampa / Salva PDF**: formato **A5**
 
 Pulsanti "Registra il soggiorno →" / "Lascia una recensione →" con etichetta nella lingua del telefono (IT/EN/FR/ES). File omonimi `.html` nella radice (noindex, non in menu); i link senza `.html` sono in `_redirects`.
 
-**PDF già pronti** (con i colori, formato A5): `stampa/cartoncini-porta-del-lido.pdf` e `stampa/cartoncini-villa-la-mimosa.pdf` — basta stamparli. Se invece salvi tu il PDF dal browser e i colori spariscono, nella finestra di stampa apri "Altre impostazioni" e attiva **"Grafica di sfondo"**.
+**PDF già pronti** (con i colori, sfondo crema, formato A5): `img/alghero/cartoncini-porta-del-lido.pdf` e `img/stintino/cartoncini-villa-la-mimosa.pdf` — basta stamparli. Se invece salvi tu il PDF dal browser e i colori spariscono, nella finestra di stampa apri "Altre impostazioni" e attiva **"Grafica di sfondo"**.

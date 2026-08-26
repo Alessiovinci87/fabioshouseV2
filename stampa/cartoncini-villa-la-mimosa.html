@@ -13,7 +13,7 @@
        Cartoncini stampabili — palette e font del sito
        (--paper, --ink, --terra, Fraunces / Geist / JetBrains Mono)
        ============================================================ */
-    :root { --gold: oklch(78% 0.14 85); --card-w: 420px; }
+    :root { --gold: oklch(78% 0.14 85); --card-w: 420px; --cream: #f4efe3; --cream-2: #ebe4d6; }
     body { background: var(--paper-2); }
 
     .toolbar {
@@ -36,7 +36,7 @@
     /* ---------- cartoncino ---------- */
     .card {
       width: 100%; max-width: var(--card-w);
-      background: #fff; color: var(--ink);
+      background: var(--cream); color: var(--ink);
       border-radius: 18px; overflow: hidden;
       box-shadow: 0 24px 60px -30px oklch(22% 0.015 60 / 0.45), 0 2px 6px oklch(22% 0.015 60 / 0.08);
       break-inside: avoid; page-break-inside: avoid;
@@ -52,9 +52,8 @@
 
     .card-body { padding: 26px 30px 24px; display: grid; gap: 22px; justify-items: center; }
     .qr-wrap { display: grid; justify-items: center; gap: 10px; }
-    .qr { padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: #fff; width: 264px; height: 264px; display: grid; place-items: center; }
+    .qr { padding: 12px; border: 1px solid var(--cream-2); border-radius: 12px; background: #fff; width: 264px; height: 264px; display: grid; place-items: center; }
     .qr img, .qr canvas { display: block; }
-    .qr-url { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-3); word-break: break-all; text-align: center; max-width: 300px; }
     .qr-actions { display: flex; gap: 8px; }
 
     .lines { display: grid; gap: 11px; width: 100%; }
@@ -62,7 +61,7 @@
     .line svg { width: 22px; height: 15px; border-radius: 2px; box-shadow: 0 0 0 1px oklch(0% 0 0 / 0.12); margin-top: 2px; display: block; }
     .line b { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-3); margin-bottom: 1px; }
 
-    .card-foot { padding: 14px 30px 20px; border-top: 1px solid var(--line); font-size: 11px; color: var(--ink-3); text-align: center; line-height: 1.5; }
+    .card-foot { padding: 14px 30px 20px; border-top: 1px solid var(--cream-2); background: var(--cream); font-size: 11px; color: var(--ink-3); text-align: center; line-height: 1.5; }
     .card-foot .g { font-weight: 500; color: var(--ink-2); }
     .card-review .card-foot .g { color: var(--terra-deep); }
 
@@ -84,7 +83,6 @@
       .card-body { padding: 18px 24px 16px; gap: 14px; }
       .qr { width: 216px; height: 216px; padding: 8px; }
       .qr img, .qr canvas { width: 198px !important; height: 198px !important; }
-      .qr-url { font-size: 9.5px; }
       .lines { gap: 8px; }
       .line { font-size: 11.5px; line-height: 1.4; }
       .card-foot { padding: 10px 24px 14px; font-size: 10px; }
@@ -116,7 +114,6 @@
       <div class="card-body">
         <div class="qr-wrap">
           <div class="qr" id="qr-checkin"></div>
-          <div class="qr-url" id="url-checkin"></div>
         </div>
         <div class="lines">
           <div class="line"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg><span><b>ITALIANO</b>Inquadra il codice con la fotocamera e compila il modulo per registrare il soggiorno.</span></div>
@@ -141,7 +138,6 @@
       <div class="card-body">
         <div class="qr-wrap">
           <div class="qr" id="qr-review"></div>
-          <div class="qr-url" id="url-review"></div>
         </div>
         <div class="lines">
           <div class="line"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg><span><b>ITALIANO</b>Inquadra il codice e lascia una recensione su Google. Grazie di cuore!</span></div>
@@ -166,13 +162,11 @@
     const MIMOSA_CHECKIN = "https://www.leportedisardegna.com/checkin-villa-la-mimosa";
     const MIMOSA_REVIEW  = "https://g.page/r/Ca_s29HmHlB3EBM/review";
 
-    function makeQr(id, urlId, text) {
-      const el = document.getElementById(id);
-      new QRCode(el, { text, width: 240, height: 240, colorDark: '#2b2622', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.H });
-      document.getElementById(urlId).textContent = text.replace(/^https?:\/\//, '');
+    function makeQr(id, text) {
+      new QRCode(document.getElementById(id), { text, width: 240, height: 240, colorDark: '#2b2622', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.H });
     }
-    makeQr('qr-checkin', 'url-checkin', MIMOSA_CHECKIN);
-    makeQr('qr-review',  'url-review',  MIMOSA_REVIEW);
+    makeQr('qr-checkin', MIMOSA_CHECKIN);
+    makeQr('qr-review',  MIMOSA_REVIEW);
   </script>
 </body>
 </html>
