@@ -1,3 +1,7 @@
+# Link "parlanti" del check-in ospiti → stesso form, casa preselezionata (rewrite 200: l URL resta pulito)
+/checkin-la-porta-del-lido   /checkin-k4v9m2xq.html?casa=lido    200
+/checkin-villa-la-mimosa     /checkin-k4v9m2xq.html?casa=mimosa  200
+
 # SPA fallback: ogni path inesistente serve index.html con status 200
 # (200 = canonical, NON 301: Google indicizza l'URL richiesta come pagina reale)
 /*    /index.html   200

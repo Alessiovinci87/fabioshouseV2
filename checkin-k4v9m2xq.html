@@ -744,8 +744,13 @@
     var docCityField = document.getElementById('docCityField');
     var lastErrors = null;
 
-    // Casa preselezionata via ?casa=lido | ?casa=mimosa
-    try { var qc = new URL(location.href).searchParams.get('casa'); if (qc && CONFIG.houses[qc]) houseSel.value = qc; } catch (_) {}
+    // Casa preselezionata via ?casa=lido | ?casa=mimosa, oppure dal link "parlante"
+    // (/checkin-la-porta-del-lido, /checkin-villa-la-mimosa → regole in _redirects)
+    try {
+      var qc = new URL(location.href).searchParams.get('casa');
+      if (!qc) { var pth = location.pathname.toLowerCase(); qc = /lido/.test(pth) ? 'lido' : (/mimosa/.test(pth) ? 'mimosa' : ''); }
+      if (qc && CONFIG.houses[qc]) { houseSel.value = qc; document.title = 'Check-in ' + CONFIG.houses[qc].name + ' | Le Porte di Sardegna'; }
+    } catch (_) {}
 
     // Date: partenza min = arrivo + 1, nascita max = oggi
     var today = new Date(); var todayIso = today.toISOString().slice(0, 10);

@@ -64,14 +64,14 @@ git commit -m "Check-in ospiti: form + funzione Netlify PDF/email + informativa"
 git push
 ```
 
-Dopo 1–2 minuti il form è online:
+Dopo 1–2 minuti il form è online. **Link da mandare agli ospiti** (uno per casa):
 
 ```
-https://www.leportedisardegna.com/checkin-k4v9m2xq.html?casa=lido
-https://www.leportedisardegna.com/checkin-k4v9m2xq.html?casa=mimosa
+https://www.leportedisardegna.com/checkin-la-porta-del-lido
+https://www.leportedisardegna.com/checkin-villa-la-mimosa
 ```
 
-`?casa=` preseleziona la struttura (l'ospite può cambiarla). Aggiungi `&lang=en` / `fr` / `es` per aprirlo già nella lingua dell'ospite (viene comunque rilevata dal browser e ricordata).
+Sono "link parlanti" definiti in `_redirects`: aprono lo stesso file `checkin-k4v9m2xq.html` con la struttura già selezionata (l'ospite può comunque cambiarla). Funzionano anche `checkin-k4v9m2xq.html?casa=lido` / `?casa=mimosa`. Aggiungi `?lang=en` / `fr` / `es` per aprirlo già nella lingua dell'ospite (viene comunque rilevata dal browser e ricordata).
 La pagina non compare nel menu né nella sitemap e ha `noindex`: chi non ha il link non la trova. **Manda il link agli ospiti via WhatsApp/email.**
 
 ## 4. Prova
