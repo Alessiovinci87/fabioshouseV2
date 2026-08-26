@@ -1,0 +1,1031 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- Pagina "invisibile": non indicizzata, non linkata dal menu, non in sitemap. Si condivide solo via link diretto. -->
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+  <title>Check-in ospiti | Villa La Mimosa</title>
+  <meta name="description" content="Registrazione ospiti per il soggiorno a Villa La Mimosa (Stintino). I dati servono per la comunicazione obbligatoria alla Questura." />
+  <meta name="theme-color" content="#f4efe3" />
+
+  <!-- Anteprima link (WhatsApp, ecc.): titolo e foto per questa casa -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Le Porte di Sardegna" />
+  <meta property="og:title" content="Check-in ospiti | Villa La Mimosa" />
+  <meta property="og:description" content="Registrazione ospiti per il soggiorno a Villa La Mimosa (Stintino). Compila i dati di tutte le persone: servono per la comunicazione alla Questura." />
+  <meta property="og:url" content="https://www.leportedisardegna.com/checkin-villa-la-mimosa" />
+  <meta property="og:image" content="https://www.leportedisardegna.com/img/og-home.jpg" />
+
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+
+  <!-- Palette, font e componenti base del sito -->
+  <link rel="stylesheet" href="fonts/fonts.css" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ============================================================
+       CHECK-IN — stile specifico pagina (tokens dal sito: --paper,
+       --ink, --terra, --line, Fraunces/Geist/JetBrains Mono)
+       ============================================================ */
+    .ck-head { position: sticky; top: 0; z-index: 50; background: color-mix(in oklab, var(--paper) 88%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .ck-head-inner { max-width: var(--container); margin: 0 auto; padding: 12px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+
+    /* Selettore lingua con bandiere SVG inline */
+    .flags { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: var(--r-pill); background: color-mix(in oklab, var(--paper) 70%, transparent); }
+    .flags button { display: inline-flex; align-items: center; gap: 6px; padding: 5px 9px; border-radius: var(--r-pill); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--ink-3); transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease); }
+    .flags button svg { width: 18px; height: 13px; border-radius: 2px; box-shadow: 0 0 0 1px oklch(0% 0 0 / 0.12); display: block; }
+    .flags button:hover { color: var(--ink); }
+    .flags button.active { background: var(--ink); color: var(--paper); }
+    @media (max-width: 520px) { .flags button span { display: none; } .flags button { padding: 6px 7px; } }
+
+    .ck-main { padding: clamp(44px, 7vw, 90px) 0 clamp(60px, 8vw, 110px); }
+    .ck-wrap { max-width: 860px; margin: 0 auto; padding: 0 var(--gutter); }
+    .ck-intro .eyebrow { margin-bottom: 18px; }
+    .ck-intro h1 { font-size: clamp(40px, 6vw, 76px); line-height: 1; letter-spacing: -0.02em; margin-bottom: 18px; }
+    .ck-intro .lede { font-size: 17px; max-width: 62ch; margin: 0 0 8px; }
+    .ck-note { font-size: 13px; color: var(--ink-3); max-width: 62ch; margin: 0 0 clamp(28px, 4vw, 44px); }
+
+    .ck-section { border-top: 1px solid var(--line); padding: clamp(24px, 3.5vw, 36px) 0; }
+    .ck-section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+    .ck-section h2 { font-size: clamp(24px, 2.6vw, 32px); line-height: 1.1; }
+    .ck-section .hint { font-size: 13px; color: var(--ink-3); margin: 4px 0 0; max-width: 60ch; }
+
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; }
+    .grid .wide { grid-column: 1 / -1; }
+    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+    .field { display: grid; gap: 6px; align-content: start; }
+    .field label, .field .lbl { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+    .field input, .field select {
+      border: 0; border-bottom: 1px solid var(--line-2); border-radius: 0;
+      background: transparent; padding: 10px 0; width: 100%;
+      font-family: inherit; font-size: 16px; color: var(--ink); outline: 0;
+      transition: border-color var(--t-fast) var(--ease);
+      -webkit-appearance: none; appearance: none;
+    }
+    .field select { background-image: linear-gradient(45deg, transparent 50%, var(--ink-3) 50%), linear-gradient(135deg, var(--ink-3) 50%, transparent 50%); background-position: calc(100% - 12px) 55%, calc(100% - 7px) 55%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 22px; }
+    .field input:focus, .field select:focus { border-color: var(--ink); }
+    .field input::placeholder { color: var(--ink-3); opacity: 0.7; }
+    .field.invalid input, .field.invalid select { border-bottom-color: var(--terra); }
+    .field.invalid label, .field.invalid .lbl { color: var(--terra-deep); }
+    .field input[type="date"] { min-height: 42px; }
+
+    /* Segmented (sesso, tipo gruppo) */
+    .seg { display: inline-flex; gap: 6px; flex-wrap: wrap; padding-top: 2px; }
+    .seg label { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border: 1px solid var(--line-2); border-radius: var(--r-pill); font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--ink-2); cursor: pointer; transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease); }
+    .seg input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .seg input:checked + label { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .seg input:focus-visible + label { outline: 2px solid var(--terra); outline-offset: 2px; }
+    .field.invalid .seg label { border-color: var(--terra); }
+
+    /* Card ospite aggiuntivo */
+    .guests { display: grid; gap: 16px; }
+    .guest-card { border: 1px solid var(--line); border-radius: 12px; padding: clamp(16px, 3vw, 24px); background: color-mix(in oklab, var(--paper-2) 60%, transparent); }
+    .guest-card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .guest-card-head h3 { font-size: 22px; font-style: italic; color: var(--terra-deep); }
+    .btn-remove { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); padding: 6px 0; border-bottom: 1px solid transparent; transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease); }
+    .btn-remove:hover { color: var(--terra-deep); border-color: var(--terra-deep); }
+    .btn-add { margin-top: 16px; }
+    .guests-empty { font-size: 14px; color: var(--ink-3); font-style: italic; font-family: var(--font-display); font-size: 18px; }
+
+    /* Consenso + submit */
+    .consent { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; font-size: 14px; line-height: 1.55; color: var(--ink-2); }
+    .consent input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--ink); }
+    .consent a { color: var(--terra-deep); border-bottom: 1px solid color-mix(in oklab, var(--terra-deep) 40%, transparent); }
+    .consent a:hover { border-color: var(--terra-deep); }
+    .consent.invalid { color: var(--terra-deep); }
+    .submit-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 26px; }
+    .btn-primary[disabled] { opacity: 0.6; cursor: wait; transform: none; }
+    .btn-primary .spin { width: 14px; height: 14px; border: 2px solid color-mix(in oklab, var(--paper) 40%, transparent); border-top-color: var(--paper); border-radius: 50%; animation: spin 0.8s linear infinite; display: none; }
+    .btn-primary.busy .spin { display: inline-block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .err-box { display: none; margin: 22px 0 0; padding: 16px 18px; border-left: 3px solid var(--terra); background: color-mix(in oklab, var(--terra) 8%, var(--paper)); border-radius: 0 8px 8px 0; }
+    .err-box.on { display: block; }
+    .err-box strong { display: block; font-weight: 500; color: var(--terra-deep); margin-bottom: 6px; }
+    .err-box ul { margin: 0; padding-left: 18px; font-size: 14px; color: var(--ink-2); }
+    .err-box li { margin: 3px 0; }
+    .err-box li::marker { color: var(--terra); }
+
+    /* Schermata di conferma */
+    .ck-done { display: none; text-align: center; padding: clamp(40px, 8vw, 90px) 0; }
+    .ck-done.on { display: block; }
+    .ck-done .check { width: 84px; height: 84px; margin: 0 auto 26px; border-radius: 50%; background: var(--ink); color: var(--paper); display: grid; place-items: center; }
+    .ck-done .check svg { width: 40px; height: 40px; }
+    .ck-done h2 { font-size: clamp(36px, 5vw, 60px); line-height: 1.05; margin-bottom: 16px; }
+    .ck-done p { font-size: 17px; color: var(--ink-2); max-width: 52ch; margin: 0 auto 8px; }
+    .ck-done .small { font-size: 13px; color: var(--ink-3); margin-bottom: 34px; }
+    .ck-done .btn-primary { font-size: 15px; padding: 16px 26px; }
+
+    .site-foot .foot-legal { border-top: 0; padding-top: 0; }
+    .noscript { padding: 40px var(--gutter); text-align: center; color: var(--terra-deep); }
+  </style>
+</head>
+<body>
+
+  <header class="ck-head">
+    <div class="ck-head-inner">
+      <a href="/" class="brand" aria-label="Le Porte di Sardegna home">
+        <span class="brand-mark" aria-hidden="true"><img src="img/home/logo-new.jpeg" alt="" /></span>
+        <span class="brand-name">Le Porte di <em>Sardegna</em></span>
+      </a>
+      <div class="flags" role="group" aria-label="Lingua / Language">
+        <button type="button" data-lang-btn="it" aria-label="Italiano">
+          <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg><span>IT</span>
+        </button>
+        <button type="button" data-lang-btn="en" aria-label="English">
+          <svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><rect width="60" height="30"/></clipPath><g clip-path="url(#ukc)"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></g></svg><span>EN</span>
+        </button>
+        <button type="button" data-lang-btn="fr" aria-label="Français">
+          <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg><span>FR</span>
+        </button>
+        <button type="button" data-lang-btn="es" aria-label="Español">
+          <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y="0.5" width="3" height="1" fill="#F1BF00"/></svg><span>ES</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="ck-main">
+    <div class="ck-wrap">
+
+      <noscript><p class="noscript">Per compilare il check-in è necessario JavaScript. / JavaScript is required to complete the check-in.</p></noscript>
+
+      <!-- ========================= FORM ========================= -->
+      <div id="ck-form-wrap">
+        <div class="ck-intro">
+          <p class="eyebrow" data-i18n="head.eyebrow">Registrazione ospiti</p>
+          <h1 data-i18n="head.h1">Check-in <em>online</em></h1>
+          <p class="lede" data-i18n="head.lede">Inserisci i dati di tutte le persone che soggiorneranno. Servono per la comunicazione obbligatoria alla Questura (art. 109 TULPS).</p>
+          <p class="ck-note" data-i18n="head.note">I dati non restano sul sito: vengono solo inoltrati al proprietario, che li trasmette al Portale Alloggiati Web.</p>
+        </div>
+
+        <form id="ck-form" novalidate autocomplete="on">
+          <!-- honeypot anti-spam: invisibile, deve restare vuoto -->
+          <input type="text" id="hp-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
+
+          <!-- ---- Soggiorno ---- -->
+          <section class="ck-section">
+            <div class="ck-section-head">
+              <h2 data-i18n="sec.stay">Soggiorno</h2>
+            </div>
+            <div class="grid">
+              <div class="field wide" data-field="stay.house">
+                <label for="house" data-i18n="f.house">Struttura</label>
+                <select id="house" name="house">
+                  <option value="" data-i18n="f.select">— Seleziona —</option>
+                  <option value="lido">La Porta del Lido · Alghero</option>
+                  <option value="mimosa">Villa La Mimosa · Stintino</option>
+                </select>
+              </div>
+              <div class="field" data-field="stay.arrival">
+                <label for="arrivo" data-i18n="f.arrival">Data di arrivo</label>
+                <input type="date" id="arrivo" name="arrivo" />
+              </div>
+              <div class="field" data-field="stay.departure">
+                <label for="partenza" data-i18n="f.departure">Data di partenza</label>
+                <input type="date" id="partenza" name="partenza" />
+              </div>
+              <div class="field" data-field="stay.guests">
+                <label for="numOspiti" data-i18n="f.guests">Numero totale ospiti</label>
+                <input type="number" id="numOspiti" name="numOspiti" min="1" max="20" step="1" value="1" inputmode="numeric" />
+              </div>
+              <div class="field" id="groupTypeField" data-field="stay.groupType" hidden>
+                <span class="lbl" data-i18n="f.groupType">Tipo di gruppo</span>
+                <div class="seg">
+                  <input type="radio" name="tipoGruppo" id="tg-fam" value="famiglia" checked /><label for="tg-fam" data-i18n="f.family">Famiglia</label>
+                  <input type="radio" name="tipoGruppo" id="tg-grp" value="gruppo" /><label for="tg-grp" data-i18n="f.group">Gruppo (amici, colleghi)</label>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ---- Capofamiglia ---- -->
+          <section class="ck-section">
+            <div class="ck-section-head">
+              <div>
+                <h2 id="headTitle" data-i18n="sec.head">Capofamiglia</h2>
+                <p class="hint" data-i18n="sec.head.hint">La persona che ha prenotato e presenta il documento d'identità.</p>
+              </div>
+            </div>
+            <div class="grid">
+              <div class="field" data-field="capo.nome">
+                <label for="c-nome" data-i18n="f.firstName">Nome</label>
+                <input type="text" id="c-nome" name="c-nome" autocomplete="given-name" autocapitalize="words" />
+              </div>
+              <div class="field" data-field="capo.cognome">
+                <label for="c-cognome" data-i18n="f.lastName">Cognome</label>
+                <input type="text" id="c-cognome" name="c-cognome" autocomplete="family-name" autocapitalize="words" />
+              </div>
+              <div class="field" data-field="capo.sesso">
+                <span class="lbl" data-i18n="f.sex">Sesso</span>
+                <div class="seg">
+                  <input type="radio" name="c-sesso" id="c-sesso-m" value="M" /><label for="c-sesso-m" data-i18n="f.male">Maschio</label>
+                  <input type="radio" name="c-sesso" id="c-sesso-f" value="F" /><label for="c-sesso-f" data-i18n="f.female">Femmina</label>
+                </div>
+              </div>
+              <div class="field" data-field="capo.dataNascita">
+                <label for="c-dob" data-i18n="f.dob">Data di nascita</label>
+                <input type="date" id="c-dob" name="c-dob" autocomplete="bday" />
+              </div>
+              <div class="field" data-field="capo.statoNascita">
+                <label for="c-statoNascita" data-i18n="f.birthCountry">Stato di nascita</label>
+                <select id="c-statoNascita" name="c-statoNascita" data-country-select></select>
+              </div>
+              <div class="field" data-field="capo.luogoNascita">
+                <label for="c-luogoNascita" data-i18n="f.birthPlace">Luogo di nascita (città)</label>
+                <input type="text" id="c-luogoNascita" name="c-luogoNascita" data-i18n-attr="placeholder:f.birthPlace.ph" placeholder="es. Sassari" autocapitalize="words" />
+              </div>
+              <div class="field" data-field="capo.cittadinanza">
+                <label for="c-cittadinanza" data-i18n="f.nationality">Cittadinanza / nazionalità</label>
+                <select id="c-cittadinanza" name="c-cittadinanza" data-country-select autocomplete="country-name"></select>
+              </div>
+              <div class="field" data-field="capo.docTipo">
+                <label for="c-docTipo" data-i18n="f.docType">Tipo documento</label>
+                <select id="c-docTipo" name="c-docTipo">
+                  <option value="" data-i18n="f.select">— Seleziona —</option>
+                  <option value="IDENT" data-i18n="doc.id">Carta d'identità</option>
+                  <option value="PASOR" data-i18n="doc.passport">Passaporto</option>
+                  <option value="PATEN" data-i18n="doc.license">Patente di guida</option>
+                </select>
+              </div>
+              <div class="field" data-field="capo.docNumero">
+                <label for="c-docNumero" data-i18n="f.docNumber">Numero documento</label>
+                <input type="text" id="c-docNumero" name="c-docNumero" autocapitalize="characters" autocomplete="off" />
+              </div>
+              <div class="field" data-field="capo.docStatoRilascio">
+                <label for="c-docStato" data-i18n="f.docCountry">Paese di rilascio del documento</label>
+                <select id="c-docStato" name="c-docStato" data-country-select></select>
+              </div>
+              <div class="field" id="docCityField" data-field="capo.docComuneRilascio" hidden>
+                <label for="c-docComune" data-i18n="f.docCity">Comune di rilascio</label>
+                <input type="text" id="c-docComune" name="c-docComune" data-i18n-attr="placeholder:f.docCity.ph" placeholder="es. Alghero" autocapitalize="words" />
+              </div>
+            </div>
+          </section>
+
+          <!-- ---- Altri ospiti ---- -->
+          <section class="ck-section">
+            <div class="ck-section-head">
+              <div>
+                <h2 data-i18n="sec.others">Altri ospiti</h2>
+                <p class="hint" data-i18n="sec.others.hint">Aggiungi ogni persona che soggiorna con te, bambini compresi.</p>
+              </div>
+            </div>
+            <div class="guests" id="guests"></div>
+            <p class="guests-empty" id="guestsEmpty" data-i18n="guests.empty">Nessun altro ospite.</p>
+            <button type="button" class="btn-ghost btn-add" id="btnAdd"><span data-i18n="btn.add">+ Aggiungi ospite</span></button>
+          </section>
+
+          <!-- ---- Privacy + invio ---- -->
+          <section class="ck-section">
+            <label class="consent" id="consentRow" data-field="privacy">
+              <input type="checkbox" id="privacy" name="privacy" />
+              <span data-i18n="privacy.label">Ho letto l'<a href="privacy-checkin.html" target="_blank" rel="noopener">informativa privacy</a> e confermo che i dati inseriti sono corretti, anche per conto degli altri ospiti indicati.</span>
+            </label>
+
+            <div class="err-box" id="errBox" role="alert" aria-live="polite">
+              <strong id="errTitle" data-i18n="err.title">Mancano alcuni dati:</strong>
+              <ul id="errList"></ul>
+            </div>
+
+            <div class="submit-row">
+              <button type="submit" class="btn-primary" id="btnSubmit">
+                <span class="spin" aria-hidden="true"></span>
+                <span data-i18n="btn.submit">Invia registrazione</span>
+              </button>
+              <span class="ck-note" style="margin:0" data-i18n="submit.note">Trasmissione cifrata. Nessun dato viene salvato sul sito.</span>
+            </div>
+          </section>
+        </form>
+      </div>
+
+      <!-- ========================= CONFERMA ========================= -->
+      <div class="ck-done" id="ck-done">
+        <div class="check" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>
+        </div>
+        <p class="eyebrow" data-i18n="ok.eyebrow">Check-in</p>
+        <h2 data-i18n="ok.title">Registrazione <em>completata</em></h2>
+        <p id="okText"></p>
+        <p class="small" data-i18n="ok.small">Non serve fare altro. I dati sono stati inoltrati al proprietario per la comunicazione alla Questura.</p>
+        <a class="btn-primary" id="okVisit" href="/"><span data-i18n="ok.visit">Visita il sito →</span></a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <p class="foot-legal mono">© 2026 Le Porte di Sardegna · CF PGTFTL84D05I452T · CIN Stintino IT090089C2000T0180 · CIN Alghero IT090003C2000U2044</p>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* ============================================================
+       CONFIG — il form invia alla Netlify Function del sito
+       (netlify/functions/checkin.js), che genera il PDF e spedisce
+       l'email. Nessun servizio esterno da configurare qui.
+       ============================================================ */
+    var CONFIG = {
+      siteHome: '/',
+      endpoint: '/.netlify/functions/checkin',
+      fixedHouse: 'mimosa',          // questa pagina è dedicata a UNA casa (generata da tools/build-checkin.js)
+      houses: {
+        lido:   { name: 'La Porta del Lido', place: 'Alghero'  },
+        mimosa: { name: 'Villa La Mimosa',   place: 'Stintino' }
+      }
+    };
+
+    /* ============================================================
+       TABELLA STATI del Portale Alloggiati (codice, nome ufficiale
+       italiano, ISO 3166-1 per la traduzione automatica del nome).
+       Il valore inviato al backend è il CODICE a 9 cifre.
+       ============================================================ */
+    var STATI = [
+      ["100000301","AFGHANISTAN","AF"],
+      ["100000201","ALBANIA","AL"],
+      ["100000401","ALGERIA","DZ"],
+      ["100000202","ANDORRA","AD"],
+      ["100000402","ANGOLA","AO"],
+      ["100000733","ANGUILLA (ISOLA)","AI"],
+      ["100000503","ANTIGUA E BARBUDA","AG"],
+      ["100000999","APOLIDE","--"],
+      ["100000302","ARABIA SAUDITA","SA"],
+      ["100000602","ARGENTINA","AR"],
+      ["100000358","ARMENIA","AM"],
+      ["100000701","AUSTRALIA","AU"],
+      ["100000203","AUSTRIA","AT"],
+      ["100000359","AZERBAIGIAN","AZ"],
+      ["100000505","BAHAMAS","BS"],
+      ["100000304","BAHREIN","BH"],
+      ["100000305","BANGLADESH","BD"],
+      ["100000506","BARBADOS","BB"],
+      ["100000206","BELGIO","BE"],
+      ["100000507","BELIZE","BZ"],
+      ["100000406","BENIN","BJ"],
+      ["100000739","BERMUDE","BM"],
+      ["100000306","BHUTAN","BT"],
+      ["100000256","BIELORUSSIA","BY"],
+      ["100000604","BOLIVIA","BO"],
+      ["100000252","BOSNIA ED ERZEGOVINA","BA"],
+      ["100000408","BOTSWANA","BW"],
+      ["100000605","BRASILE","BR"],
+      ["100000309","BRUNEI DARUSSALAM","BN"],
+      ["100000209","BULGARIA","BG"],
+      ["100000409","BURKINA FASO","BF"],
+      ["100000410","BURUNDI","BI"],
+      ["100000310","CAMBOGIA","KH"],
+      ["100000411","CAMERUN","CM"],
+      ["100000509","CANADA","CA"],
+      ["100000413","CAPO VERDE","CV"],
+      ["100000742","CAYMAN (ISOLE)","KY"],
+      ["100000743","CHRISTMAS","CX"],
+      ["100000415","CIAD","TD"],
+      ["100000606","CILE","CL"],
+      ["100000314","CINA","CN"],
+      ["100000315","CIPRO","CY"],
+      ["100000746","COCOS","CC"],
+      ["100000608","COLOMBIA","CO"],
+      ["100000417","COMORE","KM"],
+      ["100000418","CONGO","CG"],
+      ["100000319","COREA DEL NORD","KP"],
+      ["100000320","COREA DEL SUD","KR"],
+      ["100000404","COSTA D'AVORIO","CI"],
+      ["100000513","COSTA RICA","CR"],
+      ["100000250","CROAZIA","HR"],
+      ["100000514","CUBA","CU"],
+      ["100000212","DANIMARCA","DK"],
+      ["100000515","DOMINICA","DM"],
+      ["100000609","ECUADOR","EC"],
+      ["100000419","EGITTO","EG"],
+      ["100000517","EL SALVADOR","SV"],
+      ["100000322","EMIRATI ARABI UNITI","AE"],
+      ["100000466","ERITREA","ER"],
+      ["100000247","ESTONIA","EE"],
+      ["100000420","ETIOPIA","ET"],
+      ["100000755","FAER OER","FO"],
+      ["100000245","FEDERAZIONE RUSSA","RU"],
+      ["100000703","FIGI","FJ"],
+      ["100000323","FILIPPINE","PH"],
+      ["100000214","FINLANDIA","FI"],
+      ["100000215","FRANCIA","FR"],
+      ["100000421","GABON","GA"],
+      ["100000422","GAMBIA","GM"],
+      ["100000360","GEORGIA","GE"],
+      ["110000022","GEORGIA SUD E ISOLE SANDWICH AUSTRALI","GS"],
+      ["100000216","GERMANIA","DE"],
+      ["100000423","GHANA","GH"],
+      ["100000518","GIAMAICA","JM"],
+      ["100000326","GIAPPONE","JP"],
+      ["100000424","GIBUTI","DJ"],
+      ["100000327","GIORDANIA","JO"],
+      ["100000220","GRECIA","GR"],
+      ["100000519","GRENADA","GD"],
+      ["100000758","GROENLANDIA","GL"],
+      ["100000759","GUADALUPA","GP"],
+      ["100000760","GUAM","GU"],
+      ["100000523","GUATEMALA","GT"],
+      ["100000761","GUAYANA FRANCESE","GF"],
+      ["110000014","GUERNSEY","GG"],
+      ["100000425","GUINEA","GN"],
+      ["100000426","GUINEA BISSAU","GW"],
+      ["100000427","GUINEA EQUATORIALE","GQ"],
+      ["100000612","GUYANA","GY"],
+      ["100000524","HAITI","HT"],
+      ["100000525","HONDURAS","HN"],
+      ["110000005","HONG KONG","HK"],
+      ["100000330","INDIA","IN"],
+      ["100000331","INDONESIA","ID"],
+      ["100000332","IRAN","IR"],
+      ["100000333","IRAQ","IQ"],
+      ["100000221","IRLANDA","IE"],
+      ["100000223","ISLANDA","IS"],
+      ["100000764","ISOLE VERGINI","VI"],
+      ["100000334","ISRAELE","IL"],
+      ["100000100","ITALIA","IT"],
+      ["100000356","KAZAKISTAN","KZ"],
+      ["100000428","KENYA","KE"],
+      ["100000361","KIRGHIZISTAN","KG"],
+      ["100000708","KIRIBATI","KI"],
+      ["100001002","KOSOVO","XK"],
+      ["100000335","KUWAIT","KW"],
+      ["100000765","LA REUNION","RE"],
+      ["100000336","LAOS","LA"],
+      ["100000429","LESOTHO","LS"],
+      ["100000248","LETTONIA","LV"],
+      ["100000337","LIBANO","LB"],
+      ["100000430","LIBERIA","LR"],
+      ["100000431","LIBIA","LY"],
+      ["100000225","LIECHTENSTEIN","LI"],
+      ["100000249","LITUANIA","LT"],
+      ["100000226","LUSSEMBURGO","LU"],
+      ["110000003","MACAO","MO"],
+      ["100000997","MACEDONIA DEL NORD","MK"],
+      ["100000432","MADAGASCAR","MG"],
+      ["100000434","MALAWI","MW"],
+      ["100000767","MALAYSIA","MY"],
+      ["100000339","MALDIVE","MV"],
+      ["100000435","MALI","ML"],
+      ["100000227","MALTA","MT"],
+      ["100000768","MALVINE","FK"],
+      ["100000769","MAN","IM"],
+      ["100000436","MAROCCO","MA"],
+      ["100000772","MARSHALL","MH"],
+      ["100000773","MARTINICA","MQ"],
+      ["100000437","MAURITANIA","MR"],
+      ["100000438","MAURIZIO","MU"],
+      ["100000774","MAYOTTE","YT"],
+      ["100000527","MESSICO","MX"],
+      ["100000775","MICRONESIA STATI FEDERALI","FM"],
+      ["100000254","MOLDAVIA","MD"],
+      ["100000229","MONACO","MC"],
+      ["100000341","MONGOLIA","MN"],
+      ["100001001","MONTENEGRO","ME"],
+      ["100000777","MONTSERRAT","MS"],
+      ["100000440","MOZAMBICO","MZ"],
+      ["100000307","MYANMAR-BIRMANIA","MM"],
+      ["100000441","NAMIBIA","NA"],
+      ["100000715","NAURU","NR"],
+      ["100000342","NEPAL","NP"],
+      ["100000529","NICARAGUA","NI"],
+      ["100000442","NIGER","NE"],
+      ["100000443","NIGERIA","NG"],
+      ["100000778","NORFOLK","NF"],
+      ["100000231","NORVEGIA","NO"],
+      ["100000780","NUOVA CALEDONIA","NC"],
+      ["100000719","NUOVA ZELANDA","NZ"],
+      ["100000343","OMAN","OM"],
+      ["100000232","PAESI BASSI","NL"],
+      ["100000344","PAKISTAN","PK"],
+      ["100000783","PALAU REPUBBLICA","PW"],
+      ["110000001","PALESTINA","PS"],
+      ["100000530","PANAMA","PA"],
+      ["100000721","PAPUASIA-N.GUINEA","PG"],
+      ["100000614","PARAGUAY","PY"],
+      ["100000615","PERU'","PE"],
+      ["100000786","PITCAIRN","PN"],
+      ["100000787","POLINESIA","PF"],
+      ["100000233","POLONIA","PL"],
+      ["100000234","PORTOGALLO","PT"],
+      ["100000790","PUERTO RICO","PR"],
+      ["100000345","QATAR","QA"],
+      ["100000219","REGNO UNITO","GB"],
+      ["100000257","REPUBBLICA CECA","CZ"],
+      ["100000414","REPUBBLICA CENTRAFRICANA","CF"],
+      ["100000998","REPUBBLICA DEMOCRATICA DEL CONGO","CD"],
+      ["100000516","REPUBBLICA DOMINICANA","DO"],
+      ["100000255","REPUBBLICA SLOVACCA","SK"],
+      ["100000235","ROMANIA","RO"],
+      ["100000446","RUANDA","RW"],
+      ["100000534","S. CHRISTOPHER E NEVIS","KN"],
+      ["100000795","SAHARA SPAGNOLO","EH"],
+      ["100000532","SAINT LUCIA","LC"],
+      ["100000796","SAINT PIERRE ET MIQUELON","PM"],
+      ["100000797","SAINT VINCENT E GRENADINE","VC"],
+      ["100000725","SALOMONE","SB"],
+      ["100000727","SAMOA","WS"],
+      ["100000798","SAMOA AMERICANE","AS"],
+      ["100000236","SAN MARINO","SM"],
+      ["100000799","SANT ELENA","SH"],
+      ["100000448","SAO TOME' E PRINCIPE","ST"],
+      ["100000450","SENEGAL","SN"],
+      ["100001000","SERBIA","RS"],
+      ["100000449","SEYCHELLES","SC"],
+      ["100000451","SIERRA LEONE","SL"],
+      ["100000346","SINGAPORE","SG"],
+      ["100000348","SIRIA","SY"],
+      ["100000251","SLOVENIA","SI"],
+      ["100000453","SOMALIA","SO"],
+      ["100000239","SPAGNA","ES"],
+      ["100000311","SRI LANKA (CEYLON)","LK"],
+      ["100000536","STATI UNITI D'AMERICA","US"],
+      ["100000246","STATO DELLA CITTA' DEL VATICANO","VA"],
+      ["100000467","SUD SUDAN","SS"],
+      ["100000454","SUDAFRICA","ZA"],
+      ["100000455","SUDAN","SD"],
+      ["100000616","SURINAME","SR"],
+      ["100000240","SVEZIA","SE"],
+      ["100000241","SVIZZERA","CH"],
+      ["100000456","SWAZILAND","SZ"],
+      ["100000362","TAGIKISTAN","TJ"],
+      ["100000363","TAIWAN","TW"],
+      ["100000457","TANZANIA","TZ"],
+      ["100000349","THAILANDIA","TH"],
+      ["100000805","TIMOR","TL"],
+      ["100000458","TOGO","TG"],
+      ["100000806","TOKELAU","TK"],
+      ["100000730","TONGA","TO"],
+      ["100000617","TRINIDAD E TOBAGO","TT"],
+      ["100000460","TUNISIA","TN"],
+      ["100000351","TURCHIA","TR"],
+      ["100000364","TURKMENISTAN","TM"],
+      ["100000810","TURKS","TC"],
+      ["100000731","TUVALU","TV"],
+      ["100000243","UCRAINA","UA"],
+      ["100000461","UGANDA","UG"],
+      ["100000244","UNGHERIA","HU"],
+      ["100000618","URUGUAY","UY"],
+      ["100000357","UZBEKISTAN","UZ"],
+      ["100000732","VANUATU","VU"],
+      ["100000619","VENEZUELA","VE"],
+      ["100000812","VERGINI BRITANNICHE (ISOLE)","VG"],
+      ["100000353","VIETNAM","VN"],
+      ["100000815","WALLIS","WF"],
+      ["100000354","YEMEN","YE"],
+      ["100000464","ZAMBIA","ZM"],
+      ["100000465","ZIMBABWE","ZW"],
+    ];
+    var IT_CODE = '100000100';
+    var PINNED = ['IT', 'FR', 'DE', 'GB', 'ES', 'CH', 'NL', 'BE', 'AT', 'US'];
+
+    /* ============================================================
+       I18N — dizionario (una chiave per stringa, quattro lingue)
+       ============================================================ */
+    var LANGS = ['it', 'en', 'fr', 'es'];
+    var LANG_KEY = 'fh.checkin.lang';
+    var DICT = {
+      'meta.title':      { it: 'Check-in ospiti | {house}', en: 'Guest check-in | {house}', fr: 'Enregistrement des hôtes | {house}', es: 'Registro de huéspedes | {house}' },
+      'head.eyebrow':    { it: 'Registrazione ospiti · {house}', en: 'Guest registration · {house}', fr: 'Enregistrement des hôtes · {house}', es: 'Registro de huéspedes · {house}' },
+      'head.h1':         { it: 'Check-in <em>online</em>', en: 'Online <em>check-in</em>', fr: 'Check-in <em>en ligne</em>', es: 'Check-in <em>online</em>' },
+      'head.lede':       { it: 'Inserisci i dati di tutte le persone che soggiorneranno. Servono per la comunicazione obbligatoria alla Questura (art. 109 TULPS).',
+                           en: 'Enter the details of everyone who will be staying. Italian law requires hosts to report all guests to the Police (art. 109 TULPS).',
+                           fr: 'Saisissez les données de toutes les personnes qui séjourneront. La loi italienne impose de les communiquer à la Police (art. 109 TULPS).',
+                           es: 'Introduce los datos de todas las personas que se alojarán. La ley italiana obliga a comunicarlos a la Policía (art. 109 TULPS).' },
+      'head.note':       { it: 'I dati non restano sul sito: vengono solo inoltrati al proprietario, che li trasmette al Portale Alloggiati Web.',
+                           en: 'Nothing is stored on this website: the data is only forwarded to the owner, who submits it to the official Alloggiati Web portal.',
+                           fr: 'Rien n\'est conservé sur ce site : les données sont seulement transmises au propriétaire, qui les déclare sur le portail officiel Alloggiati Web.',
+                           es: 'Nada se guarda en esta web: los datos solo se envían al propietario, que los transmite al portal oficial Alloggiati Web.' },
+      'sec.stay':        { it: 'Soggiorno', en: 'Stay', fr: 'Séjour', es: 'Estancia' },
+      'f.house':         { it: 'Struttura', en: 'Property', fr: 'Hébergement', es: 'Alojamiento' },
+      'f.select':        { it: '— Seleziona —', en: '— Select —', fr: '— Sélectionner —', es: '— Seleccionar —' },
+      'f.arrival':       { it: 'Data di arrivo', en: 'Arrival date', fr: 'Date d\'arrivée', es: 'Fecha de llegada' },
+      'f.departure':     { it: 'Data di partenza', en: 'Departure date', fr: 'Date de départ', es: 'Fecha de salida' },
+      'f.guests':        { it: 'Numero totale ospiti', en: 'Total number of guests', fr: 'Nombre total d\'hôtes', es: 'Número total de huéspedes' },
+      'f.groupType':     { it: 'Tipo di gruppo', en: 'Type of party', fr: 'Type de groupe', es: 'Tipo de grupo' },
+      'f.family':        { it: 'Famiglia', en: 'Family', fr: 'Famille', es: 'Familia' },
+      'f.group':         { it: 'Gruppo (amici, colleghi)', en: 'Group (friends, colleagues)', fr: 'Groupe (amis, collègues)', es: 'Grupo (amigos, compañeros)' },
+      'sec.head':        { it: 'Capofamiglia', en: 'Head of the family', fr: 'Chef de famille', es: 'Cabeza de familia' },
+      'sec.single':      { it: 'Ospite', en: 'Guest', fr: 'Voyageur', es: 'Huésped' },
+      'sec.head.hint':   { it: 'La persona che ha prenotato e presenta il documento d\'identità.', en: 'The person who booked and presents the identity document.', fr: 'La personne qui a réservé et présente la pièce d\'identité.', es: 'La persona que ha reservado y presenta el documento de identidad.' },
+      'f.firstName':     { it: 'Nome', en: 'First name', fr: 'Prénom', es: 'Nombre' },
+      'f.lastName':      { it: 'Cognome', en: 'Last name', fr: 'Nom', es: 'Apellidos' },
+      'f.sex':           { it: 'Sesso', en: 'Sex', fr: 'Sexe', es: 'Sexo' },
+      'f.male':          { it: 'Maschio', en: 'Male', fr: 'Homme', es: 'Hombre' },
+      'f.female':        { it: 'Femmina', en: 'Female', fr: 'Femme', es: 'Mujer' },
+      'f.dob':           { it: 'Data di nascita', en: 'Date of birth', fr: 'Date de naissance', es: 'Fecha de nacimiento' },
+      'f.birthCountry':  { it: 'Stato di nascita', en: 'Country of birth', fr: 'Pays de naissance', es: 'País de nacimiento' },
+      'f.birthPlace':    { it: 'Luogo di nascita (città)', en: 'Place of birth (city)', fr: 'Lieu de naissance (ville)', es: 'Lugar de nacimiento (ciudad)' },
+      'f.birthPlace.ph': { it: 'es. Sassari', en: 'e.g. London', fr: 'ex. Lyon', es: 'ej. Madrid' },
+      'f.nationality':   { it: 'Cittadinanza / nazionalità', en: 'Nationality', fr: 'Nationalité', es: 'Nacionalidad' },
+      'f.docType':       { it: 'Tipo documento', en: 'Document type', fr: 'Type de document', es: 'Tipo de documento' },
+      'doc.id':          { it: 'Carta d\'identità', en: 'Identity card', fr: 'Carte d\'identité', es: 'Documento de identidad (DNI)' },
+      'doc.passport':    { it: 'Passaporto', en: 'Passport', fr: 'Passeport', es: 'Pasaporte' },
+      'doc.license':     { it: 'Patente di guida', en: 'Driving licence', fr: 'Permis de conduire', es: 'Permiso de conducir' },
+      'f.docNumber':     { it: 'Numero documento', en: 'Document number', fr: 'Numéro du document', es: 'Número del documento' },
+      'f.docCountry':    { it: 'Paese di rilascio del documento', en: 'Country of issue', fr: 'Pays de délivrance', es: 'País de expedición' },
+      'f.docCity':       { it: 'Comune di rilascio', en: 'Issuing municipality (Italy)', fr: 'Commune de délivrance (Italie)', es: 'Municipio de expedición (Italia)' },
+      'f.docCity.ph':    { it: 'es. Alghero', en: 'e.g. Alghero', fr: 'ex. Alghero', es: 'ej. Alghero' },
+      'sec.others':      { it: 'Altri ospiti', en: 'Other guests', fr: 'Autres hôtes', es: 'Otros huéspedes' },
+      'sec.others.hint': { it: 'Aggiungi ogni persona che soggiorna con te, bambini compresi.', en: 'Add every person staying with you, children included.', fr: 'Ajoutez chaque personne qui séjourne avec vous, enfants compris.', es: 'Añade a cada persona que se aloja contigo, niños incluidos.' },
+      'guests.empty':    { it: 'Nessun altro ospite.', en: 'No other guests.', fr: 'Aucun autre hôte.', es: 'Ningún otro huésped.' },
+      'guest.n':         { it: 'Ospite {n}', en: 'Guest {n}', fr: 'Hôte {n}', es: 'Huésped {n}' },
+      'btn.add':         { it: '+ Aggiungi ospite', en: '+ Add guest', fr: '+ Ajouter un hôte', es: '+ Añadir huésped' },
+      'btn.remove':      { it: 'Rimuovi', en: 'Remove', fr: 'Supprimer', es: 'Eliminar' },
+      'privacy.label':   { it: 'Ho letto l\'<a href="privacy-checkin.html?lang=it" target="_blank" rel="noopener">informativa privacy</a> e confermo che i dati inseriti sono corretti, anche per conto degli altri ospiti indicati.',
+                           en: 'I have read the <a href="privacy-checkin.html?lang=en" target="_blank" rel="noopener">privacy notice</a> and confirm that the details entered are correct, also on behalf of the other guests listed.',
+                           fr: 'J\'ai lu la <a href="privacy-checkin.html?lang=fr" target="_blank" rel="noopener">notice de confidentialité</a> et je confirme que les données saisies sont exactes, y compris pour les autres hôtes indiqués.',
+                           es: 'He leído la <a href="privacy-checkin.html?lang=es" target="_blank" rel="noopener">información de privacidad</a> y confirmo que los datos introducidos son correctos, también en nombre de los demás huéspedes indicados.' },
+      'btn.submit':      { it: 'Invia registrazione', en: 'Submit registration', fr: 'Envoyer l\'enregistrement', es: 'Enviar registro' },
+      'btn.sending':     { it: 'Invio in corso…', en: 'Sending…', fr: 'Envoi en cours…', es: 'Enviando…' },
+      'submit.note':     { it: 'Trasmissione cifrata. Nessun dato viene salvato sul sito.', en: 'Encrypted transmission. Nothing is stored on this website.', fr: 'Transmission chiffrée. Rien n\'est conservé sur ce site.', es: 'Transmisión cifrada. Nada se guarda en esta web.' },
+      'err.title':       { it: 'Mancano alcuni dati:', en: 'Some details are missing:', fr: 'Certaines données manquent :', es: 'Faltan algunos datos:' },
+      'err.title.send':  { it: 'Invio non riuscito', en: 'Submission failed', fr: 'Échec de l\'envoi', es: 'No se pudo enviar' },
+      'err.dates':       { it: 'La data di partenza deve essere successiva all\'arrivo', en: 'Departure date must be after arrival', fr: 'La date de départ doit être postérieure à l\'arrivée', es: 'La fecha de salida debe ser posterior a la llegada' },
+      'err.dob':         { it: 'Data di nascita non valida', en: 'Invalid date of birth', fr: 'Date de naissance non valide', es: 'Fecha de nacimiento no válida' },
+      'err.privacy':     { it: 'Consenso informativa privacy', en: 'Privacy notice acknowledgement', fr: 'Prise de connaissance de la notice de confidentialité', es: 'Aceptación de la información de privacidad' },
+      'err.network':     { it: 'Invio non riuscito. Controlla la connessione e riprova.', en: 'Could not send. Check your connection and try again.', fr: 'Envoi impossible. Vérifiez la connexion et réessayez.', es: 'No se pudo enviar. Comprueba la conexión e inténtalo de nuevo.' },
+      'err.server':      { it: 'Il server ha rifiutato i dati: {msg}', en: 'The server rejected the data: {msg}', fr: 'Le serveur a refusé les données : {msg}', es: 'El servidor rechazó los datos: {msg}' },
+      'err.config':      { it: 'Modulo non ancora configurato per questa struttura (manca l\'URL dello script).', en: 'Form not yet configured for this property (script URL missing).', fr: 'Formulaire pas encore configuré pour cet hébergement (URL du script manquante).', es: 'Formulario aún no configurado para este alojamiento (falta la URL del script).' },
+      'who.stay':        { it: 'Soggiorno', en: 'Stay', fr: 'Séjour', es: 'Estancia' },
+      'who.head':        { it: 'Capofamiglia', en: 'Head of the family', fr: 'Chef de famille', es: 'Cabeza de familia' },
+      'who.single':      { it: 'Ospite', en: 'Guest', fr: 'Voyageur', es: 'Huésped' },
+      'ok.eyebrow':      { it: 'Check-in', en: 'Check-in', fr: 'Check-in', es: 'Check-in' },
+      'ok.title':        { it: 'Registrazione <em>completata</em>', en: 'Registration <em>complete</em>', fr: 'Enregistrement <em>terminé</em>', es: 'Registro <em>completado</em>' },
+      'ok.text':         { it: 'Grazie {name}! I dati sono stati inviati a {house}. Vi aspettiamo il {date}.', en: 'Thank you {name}! Your details have been sent to {house}. We look forward to welcoming you on {date}.', fr: 'Merci {name} ! Vos données ont été envoyées à {house}. Nous vous attendons le {date}.', es: '¡Gracias {name}! Tus datos se han enviado a {house}. Te esperamos el {date}.' },
+      'ok.small':        { it: 'Non serve fare altro. I dati sono stati inoltrati al proprietario per la comunicazione alla Questura.', en: 'Nothing else to do. The details have been forwarded to the owner for the police report.', fr: 'Rien d\'autre à faire. Les données ont été transmises au propriétaire pour la déclaration à la police.', es: 'No hay que hacer nada más. Los datos se han enviado al propietario para la comunicación a la policía.' },
+      'ok.visit':        { it: 'Visita il sito →', en: 'Visit the website →', fr: 'Visiter le site →', es: 'Visita el sitio →' },
+      'country.stateless': { it: 'Apolide', en: 'Stateless', fr: 'Apatride', es: 'Apátrida' }
+    };
+
+    var lang = detectLang();
+
+    function detectLang() {
+      try { var q = new URL(location.href).searchParams.get('lang'); if (LANGS.indexOf(q) >= 0) return q; } catch (_) {}
+      try { var s = localStorage.getItem(LANG_KEY); if (LANGS.indexOf(s) >= 0) return s; } catch (_) {}
+      try { var s2 = localStorage.getItem('fh.lang'); if (LANGS.indexOf(s2) >= 0) return s2; } catch (_) {}
+      var n = (navigator.language || 'it').slice(0, 2).toLowerCase();
+      return LANGS.indexOf(n) >= 0 ? n : 'it';
+    }
+    function t(key, vars) {
+      var e = DICT[key];
+      var s = e ? (e[lang] || e.it || '') : key;
+      if (vars) Object.keys(vars).forEach(function (k) { s = s.split('{' + k + '}').join(vars[k]); });
+      return s;
+    }
+    function translateDom(root) {
+      root = root || document;
+      root.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n');
+        var v = el.getAttribute('data-i18n-vars');
+        el.innerHTML = t(key, v ? JSON.parse(v) : null);
+      });
+      root.querySelectorAll('[data-i18n-attr]').forEach(function (el) {
+        el.getAttribute('data-i18n-attr').split('|').forEach(function (pair) {
+          var p = pair.split(':'); if (p.length === 2) el.setAttribute(p[0].trim(), t(p[1].trim()));
+        });
+      });
+    }
+    function setLang(l) {
+      if (LANGS.indexOf(l) < 0) return;
+      lang = l;
+      document.documentElement.lang = l;
+      try { localStorage.setItem(LANG_KEY, l); } catch (_) {}
+      document.querySelectorAll('[data-lang-btn]').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang-btn') === l); });
+      translateDom(document);
+      document.querySelectorAll('[data-country-select]').forEach(fillCountrySelect);
+      updateHeadTitle();
+      if (lastErrors) showErrors(lastErrors.kind, lastErrors.items);
+    }
+    document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.getAttribute('data-lang-btn')); });
+    });
+
+    /* ============================================================
+       PAESI: nomi tradotti con Intl.DisplayNames (fallback: nome
+       ufficiale italiano della tabella del Portale)
+       ============================================================ */
+    var dnCache = {};
+    function countryName(row) {
+      if (row[2] === '--') return t('country.stateless');
+      try {
+        if (!dnCache[lang] && window.Intl && Intl.DisplayNames) dnCache[lang] = new Intl.DisplayNames([lang], { type: 'region' });
+        var n = dnCache[lang] && dnCache[lang].of(row[2]);
+        if (n && n !== row[2]) return n;
+      } catch (_) {}
+      return row[1].charAt(0) + row[1].slice(1).toLowerCase();
+    }
+    function fillCountrySelect(sel) {
+      var prev = sel.value;
+      var rows = STATI.map(function (r) { return { code: r[0], iso: r[2], name: countryName(r) }; });
+      var coll = new Intl.Collator(lang);
+      rows.sort(function (a, b) { return coll.compare(a.name, b.name); });
+      var pinned = PINNED.map(function (iso) { return rows.filter(function (r) { return r.iso === iso; })[0]; }).filter(Boolean);
+      var html = '<option value="">' + t('f.select') + '</option>';
+      pinned.forEach(function (r) { html += '<option value="' + r.code + '">' + esc(r.name) + '</option>'; });
+      html += '<option value="" disabled>──────────</option>';
+      rows.forEach(function (r) { html += '<option value="' + r.code + '">' + esc(r.name) + '</option>'; });
+      sel.innerHTML = html;
+      sel.value = prev;
+    }
+    function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+    /* ============================================================
+       DOM refs
+       ============================================================ */
+    var form = document.getElementById('ck-form');
+    var houseSel = document.getElementById('house');
+    var numOspiti = document.getElementById('numOspiti');
+    var groupTypeField = document.getElementById('groupTypeField');
+    var guestsWrap = document.getElementById('guests');
+    var guestsEmpty = document.getElementById('guestsEmpty');
+    var btnAdd = document.getElementById('btnAdd');
+    var btnSubmit = document.getElementById('btnSubmit');
+    var errBox = document.getElementById('errBox');
+    var errTitle = document.getElementById('errTitle');
+    var errList = document.getElementById('errList');
+    var docStato = document.getElementById('c-docStato');
+    var docCityField = document.getElementById('docCityField');
+    var lastErrors = null;
+
+    // Casa: fissata dalla pagina (una pagina per casa) — in alternativa ?casa=lido|mimosa
+    var fixed = CONFIG.houses[CONFIG.fixedHouse] ? CONFIG.fixedHouse : '';
+    try { var qc = new URL(location.href).searchParams.get('casa'); if (!fixed && qc && CONFIG.houses[qc]) houseSel.value = qc; } catch (_) {}
+    if (fixed) { houseSel.value = fixed; form.querySelector('[data-field="stay.house"]').hidden = true; }
+
+    // Titolo scheda + eyebrow con il nome della casa (aggiornati anche al cambio lingua/casa)
+    function houseName() { var h = CONFIG.houses[houseSel.value]; return h ? h.name : 'Le Porte di Sardegna'; }
+    function syncTitle() {
+      document.title = t('meta.title', { house: houseName() });
+      var eb = document.querySelector('.ck-intro .eyebrow');
+      if (eb) { eb.setAttribute('data-i18n-vars', JSON.stringify({ house: houseName() })); eb.innerHTML = t('head.eyebrow', { house: houseName() }); }
+    }
+    houseSel.addEventListener('change', syncTitle);
+    document.querySelectorAll('[data-lang-btn]').forEach(function (b) { b.addEventListener('click', syncTitle); });
+
+    // Date: partenza min = arrivo + 1, nascita max = oggi
+    var today = new Date(); var todayIso = today.toISOString().slice(0, 10);
+    document.getElementById('c-dob').max = todayIso;
+    document.getElementById('arrivo').addEventListener('change', function () {
+      var d = new Date(this.value + 'T00:00:00'); if (isNaN(d)) return;
+      d.setDate(d.getDate() + 1);
+      document.getElementById('partenza').min = d.toISOString().slice(0, 10);
+    });
+
+    // Comune di rilascio: solo se il documento è italiano
+    function syncDocCity() { docCityField.hidden = docStato.value !== IT_CODE; }
+    docStato.addEventListener('change', syncDocCity);
+
+    /* ============================================================
+       OSPITI AGGIUNTIVI
+       ============================================================ */
+    var guestSeq = 0;
+    function guestCardHtml(id) {
+      return '' +
+        '<div class="guest-card-head">' +
+          '<h3 class="guest-title"></h3>' +
+          '<button type="button" class="btn-remove" data-remove><span data-i18n="btn.remove">Rimuovi</span></button>' +
+        '</div>' +
+        '<div class="grid">' +
+          '<div class="field" data-field="nome"><label for="g' + id + '-nome" data-i18n="f.firstName">Nome</label><input type="text" id="g' + id + '-nome" data-k="nome" autocapitalize="words" /></div>' +
+          '<div class="field" data-field="cognome"><label for="g' + id + '-cognome" data-i18n="f.lastName">Cognome</label><input type="text" id="g' + id + '-cognome" data-k="cognome" autocapitalize="words" /></div>' +
+          '<div class="field" data-field="sesso"><span class="lbl" data-i18n="f.sex">Sesso</span><div class="seg">' +
+            '<input type="radio" name="g' + id + '-sesso" id="g' + id + '-sesso-m" value="M" /><label for="g' + id + '-sesso-m" data-i18n="f.male">Maschio</label>' +
+            '<input type="radio" name="g' + id + '-sesso" id="g' + id + '-sesso-f" value="F" /><label for="g' + id + '-sesso-f" data-i18n="f.female">Femmina</label>' +
+          '</div></div>' +
+          '<div class="field" data-field="dataNascita"><label for="g' + id + '-dob" data-i18n="f.dob">Data di nascita</label><input type="date" id="g' + id + '-dob" data-k="dataNascita" max="' + todayIso + '" /></div>' +
+          '<div class="field" data-field="statoNascita"><label for="g' + id + '-stato" data-i18n="f.birthCountry">Stato di nascita</label><select id="g' + id + '-stato" data-k="statoNascita" data-country-select></select></div>' +
+          '<div class="field" data-field="luogoNascita"><label for="g' + id + '-luogo" data-i18n="f.birthPlace">Luogo di nascita (città)</label><input type="text" id="g' + id + '-luogo" data-k="luogoNascita" data-i18n-attr="placeholder:f.birthPlace.ph" autocapitalize="words" /></div>' +
+          '<div class="field wide" data-field="cittadinanza"><label for="g' + id + '-citt" data-i18n="f.nationality">Cittadinanza</label><select id="g' + id + '-citt" data-k="cittadinanza" data-country-select></select></div>' +
+        '</div>';
+    }
+    function addGuest() {
+      var id = ++guestSeq;
+      var card = document.createElement('div');
+      card.className = 'guest-card';
+      card.setAttribute('data-guest', id);
+      card.innerHTML = guestCardHtml(id);
+      guestsWrap.appendChild(card);
+      translateDom(card);
+      card.querySelectorAll('[data-country-select]').forEach(fillCountrySelect);
+      // Default comodi: stesso stato di nascita / cittadinanza del capofamiglia (modificabili)
+      var cs = document.getElementById('c-statoNascita').value, cc = document.getElementById('c-cittadinanza').value;
+      if (cs) card.querySelector('[data-k="statoNascita"]').value = cs;
+      if (cc) card.querySelector('[data-k="cittadinanza"]').value = cc;
+      card.querySelector('[data-remove]').addEventListener('click', function () {
+        card.remove(); syncGuestCount(); renumberGuests();
+      });
+      renumberGuests();
+      syncGuestCount();
+      return card;   // nessun focus/scroll automatico: l'utente continua a compilare dal capofamiglia
+    }
+    function guestCards() { return Array.prototype.slice.call(guestsWrap.querySelectorAll('.guest-card')); }
+    function renumberGuests() {
+      guestCards().forEach(function (c, i) {
+        var h = c.querySelector('.guest-title');
+        h.setAttribute('data-i18n', 'guest.n');
+        h.setAttribute('data-i18n-vars', JSON.stringify({ n: i + 2 }));
+        h.innerHTML = t('guest.n', { n: i + 2 });
+      });
+      guestsEmpty.hidden = guestCards().length > 0;
+      updateHeadTitle();
+    }
+    function syncGuestCount() {
+      numOspiti.value = guestCards().length + 1;
+      groupTypeField.hidden = guestCards().length === 0;
+    }
+    function updateHeadTitle() {
+      var h = document.getElementById('headTitle');
+      var key = guestCards().length ? 'sec.head' : 'sec.single';
+      h.setAttribute('data-i18n', key); h.innerHTML = t(key);
+    }
+    btnAdd.addEventListener('click', addGuest);
+    numOspiti.addEventListener('change', function () {
+      var n = Math.max(1, Math.min(20, parseInt(numOspiti.value, 10) || 1));
+      var cur = guestCards().length;
+      while (cur < n - 1) { addGuest(); cur++; }
+      while (cur > n - 1) { guestCards()[cur - 1].remove(); cur--; }
+      renumberGuests(); syncGuestCount();
+    });
+
+    /* ============================================================
+       VALIDAZIONE lato client — elenco completo dei campi mancanti
+       ============================================================ */
+    function clearInvalid() {
+      form.querySelectorAll('.invalid').forEach(function (el) { el.classList.remove('invalid'); });
+    }
+    function markInvalid(el) { if (el) el.classList.add('invalid'); }
+
+    function validate() {
+      clearInvalid();
+      var items = [];   // { who, field }
+      var v = function (id) { return (document.getElementById(id).value || '').trim(); };
+      var fieldEl = function (name) { return form.querySelector('[data-field="' + name + '"]'); };
+      var need = function (cond, who, key, el) { if (!cond) { items.push({ who: who, key: key }); markInvalid(el); } };
+
+      // Soggiorno
+      need(!!houseSel.value, 'who.stay', 'f.house', fieldEl('stay.house'));
+      var arr = v('arrivo'), dep = v('partenza');
+      need(!!arr, 'who.stay', 'f.arrival', fieldEl('stay.arrival'));
+      need(!!dep, 'who.stay', 'f.departure', fieldEl('stay.departure'));
+      if (arr && dep && dep <= arr) { items.push({ who: 'who.stay', key: 'err.dates' }); markInvalid(fieldEl('stay.departure')); }
+
+      // Capofamiglia
+      var whoHead = guestCards().length ? 'who.head' : 'who.single';
+      need(!!v('c-nome'), whoHead, 'f.firstName', fieldEl('capo.nome'));
+      need(!!v('c-cognome'), whoHead, 'f.lastName', fieldEl('capo.cognome'));
+      need(!!form.querySelector('input[name="c-sesso"]:checked'), whoHead, 'f.sex', fieldEl('capo.sesso'));
+      var dob = v('c-dob');
+      need(!!dob, whoHead, 'f.dob', fieldEl('capo.dataNascita'));
+      if (dob && dob > todayIso) { items.push({ who: whoHead, key: 'err.dob' }); markInvalid(fieldEl('capo.dataNascita')); }
+      need(!!v('c-statoNascita'), whoHead, 'f.birthCountry', fieldEl('capo.statoNascita'));
+      need(!!v('c-luogoNascita'), whoHead, 'f.birthPlace', fieldEl('capo.luogoNascita'));
+      need(!!v('c-cittadinanza'), whoHead, 'f.nationality', fieldEl('capo.cittadinanza'));
+      need(!!v('c-docTipo'), whoHead, 'f.docType', fieldEl('capo.docTipo'));
+      need(!!v('c-docNumero'), whoHead, 'f.docNumber', fieldEl('capo.docNumero'));
+      need(!!v('c-docStato'), whoHead, 'f.docCountry', fieldEl('capo.docStatoRilascio'));
+      if (v('c-docStato') === IT_CODE) need(!!v('c-docComune'), whoHead, 'f.docCity', fieldEl('capo.docComuneRilascio'));
+
+      // Ogni componente aggiuntivo (incluso il luogo di nascita)
+      guestCards().forEach(function (card, i) {
+        var who = { key: 'guest.n', vars: { n: i + 2 } };
+        var gv = function (k) { var el = card.querySelector('[data-k="' + k + '"]'); return (el.value || '').trim(); };
+        var gf = function (k) { return card.querySelector('[data-field="' + k + '"]'); };
+        need(!!gv('nome'), who, 'f.firstName', gf('nome'));
+        need(!!gv('cognome'), who, 'f.lastName', gf('cognome'));
+        need(!!card.querySelector('input[type="radio"]:checked'), who, 'f.sex', gf('sesso'));
+        var gd = gv('dataNascita');
+        need(!!gd, who, 'f.dob', gf('dataNascita'));
+        if (gd && gd > todayIso) { items.push({ who: who, key: 'err.dob' }); markInvalid(gf('dataNascita')); }
+        need(!!gv('statoNascita'), who, 'f.birthCountry', gf('statoNascita'));
+        need(!!gv('luogoNascita'), who, 'f.birthPlace', gf('luogoNascita'));
+        need(!!gv('cittadinanza'), who, 'f.nationality', gf('cittadinanza'));
+      });
+
+      // Privacy
+      if (!document.getElementById('privacy').checked) { items.push({ who: null, key: 'err.privacy' }); document.getElementById('consentRow').classList.add('invalid'); }
+      else document.getElementById('consentRow').classList.remove('invalid');
+
+      return items;
+    }
+
+    function showErrors(kind, items) {
+      lastErrors = { kind: kind, items: items };
+      errTitle.textContent = kind === 'send' ? t('err.title.send') : t('err.title');
+      errList.innerHTML = '';
+      items.forEach(function (it) {
+        var li = document.createElement('li');
+        var who = it.who ? (typeof it.who === 'string' ? t(it.who) : t(it.who.key, it.who.vars)) : '';
+        var label = it.raw ? it.raw : t(it.key, it.vars);
+        li.textContent = who ? who + ' · ' + label : label;
+        errList.appendChild(li);
+      });
+      errBox.classList.add('on');
+      errBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    function hideErrors() { lastErrors = null; errBox.classList.remove('on'); }
+
+    /* ============================================================
+       PAYLOAD + INVIO (fetch con text/plain: niente preflight CORS)
+       ============================================================ */
+    function buildPayload() {
+      var v = function (id) { return (document.getElementById(id).value || '').trim(); };
+      var comp = guestCards().map(function (card) {
+        var gv = function (k) { return (card.querySelector('[data-k="' + k + '"]').value || '').trim(); };
+        var sx = card.querySelector('input[type="radio"]:checked');
+        return { nome: gv('nome'), cognome: gv('cognome'), sesso: sx ? sx.value : '', dataNascita: gv('dataNascita'),
+                 luogoNascita: gv('luogoNascita'), statoNascita: gv('statoNascita'), cittadinanza: gv('cittadinanza') };
+      });
+      var sx = form.querySelector('input[name="c-sesso"]:checked');
+      var tg = form.querySelector('input[name="tipoGruppo"]:checked');
+      return {
+        casa: houseSel.value,
+        lang: lang,
+        tipoGruppo: tg ? tg.value : 'famiglia',
+        arrivo: v('arrivo'), partenza: v('partenza'),
+        numOspiti: comp.length + 1,
+        capo: {
+          nome: v('c-nome'), cognome: v('c-cognome'), sesso: sx ? sx.value : '', dataNascita: v('c-dob'),
+          luogoNascita: v('c-luogoNascita'), statoNascita: v('c-statoNascita'), cittadinanza: v('c-cittadinanza'),
+          docTipo: v('c-docTipo'), docNumero: v('c-docNumero'),
+          docStatoRilascio: v('c-docStato'), docComuneRilascio: v('c-docStato') === IT_CODE ? v('c-docComune') : ''
+        },
+        componenti: comp,
+        privacy: document.getElementById('privacy').checked,
+        userAgent: navigator.userAgent
+      };
+    }
+
+    function setBusy(b) {
+      btnSubmit.disabled = b; btnSubmit.classList.toggle('busy', b);
+      btnSubmit.querySelector('[data-i18n]').setAttribute('data-i18n', b ? 'btn.sending' : 'btn.submit');
+      translateDom(btnSubmit);
+    }
+
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var items = validate();
+      if (items.length) { showErrors('validate', items); return; }
+      hideErrors();
+
+      var house = CONFIG.houses[houseSel.value];
+      if (!house || !CONFIG.endpoint) { showErrors('send', [{ key: 'err.config' }]); return; }
+      var payload = buildPayload();
+      payload._gotcha = (document.getElementById('hp-website') || {}).value || '';   // honeypot anti-spam
+      setBusy(true);
+
+      fetch(CONFIG.endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function (r) { return r.text(); })
+      .then(function (txt) {
+        var res; try { res = JSON.parse(txt); } catch (_) { throw new Error('Risposta non valida'); }
+        if (!res.ok) {
+          var msg = res.error || 'errore';
+          if (res.missing && res.missing.length) msg += ' (' + res.missing.join(', ') + ')';
+          showErrors('send', [{ raw: t('err.server', { msg: msg }) }]);
+          setBusy(false);
+          return;
+        }
+        showDone(payload, house);
+      })
+      .catch(function () {
+        showErrors('send', [{ key: 'err.network' }]);
+        setBusy(false);
+      });
+    });
+
+    function showDone(payload, house) {
+      var d = new Date(payload.arrivo + 'T00:00:00');
+      var dateStr = isNaN(d) ? payload.arrivo : d.toLocaleDateString(lang, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+      var okText = document.getElementById('okText');
+      okText.setAttribute('data-i18n', 'ok.text');
+      okText.setAttribute('data-i18n-vars', JSON.stringify({ name: esc(payload.capo.nome), house: esc(house.name), date: esc(dateStr) }));
+      document.getElementById('okVisit').href = CONFIG.siteHome;
+      document.getElementById('ck-form-wrap').style.display = 'none';
+      var done = document.getElementById('ck-done');
+      done.classList.add('on');
+      translateDom(done);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ============================================================
+       BOOT
+       ============================================================ */
+    setLang(lang);
+    syncDocCity();
+    renumberGuests();
+    syncGuestCount();
+    syncTitle();
+  })();
+  </script>
+</body>
+</html>

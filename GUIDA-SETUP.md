@@ -15,7 +15,7 @@ checkin-k4v9m2xq.html          netlify/functions/checkin.js       → cosmoalghe
 
 | File | Cosa è |
 |---|---|
-| `checkin-k4v9m2xq.html` | Il form (IT/EN/FR/ES, bandiere SVG). Pagina "invisibile": `noindex`, non in menu, non in sitemap. Si condivide solo via link. |
+| `checkin-la-porta-del-lido.html`, `checkin-villa-la-mimosa.html` | Il form, una pagina per casa (IT/EN/FR/ES, bandiere SVG). Pagine "invisibili": `noindex`, non in menu, non in sitemap. Si condividono solo via link. **Non modificarle a mano**: sono generate da `tools/checkin.template.html` con `node tools/build-checkin.js`. |
 | `privacy-checkin.html` | Informativa GDPR del check-in (4 lingue), linkata dal checkbox del form. |
 | `netlify/functions/checkin.js` | La funzione che riceve i dati, crea il PDF e invia l'email. |
 | `netlify/checkin-lib/core.js` | Validazione, tabelle, tracciato Alloggiati (168 caratteri), testi email. |
@@ -71,7 +71,7 @@ https://www.leportedisardegna.com/checkin-la-porta-del-lido
 https://www.leportedisardegna.com/checkin-villa-la-mimosa
 ```
 
-Sono "link parlanti" definiti in `_redirects`: aprono lo stesso file `checkin-k4v9m2xq.html` con la struttura già selezionata (l'ospite può comunque cambiarla). Funzionano anche `checkin-k4v9m2xq.html?casa=lido` / `?casa=mimosa`. Aggiungi `?lang=en` / `fr` / `es` per aprirlo già nella lingua dell'ospite (viene comunque rilevata dal browser e ricordata).
+Ogni link apre la pagina della sua casa (titolo e anteprima WhatsApp "Check-in ospiti | La Porta del Lido" / "… | Villa La Mimosa"); la struttura è già impostata e non si può sbagliare. I link senza `.html` sono definiti in `_redirects`. Aggiungi `?lang=en` / `fr` / `es` per aprirlo già nella lingua dell'ospite (viene comunque rilevata dal browser e ricordata).
 La pagina non compare nel menu né nella sitemap e ha `noindex`: chi non ha il link non la trova. **Manda il link agli ospiti via WhatsApp/email.**
 
 ## 4. Prova
