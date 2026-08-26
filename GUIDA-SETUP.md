@@ -6,7 +6,7 @@ Niente Google, niente fogli, niente database: tutto gira dentro Netlify (dove è
 
 ```
 ospite compila il form   ──►   Netlify Function del sito   ──►   email con PDF allegato
-checkin-k4v9m2xq.html          netlify/functions/checkin.js       → cosmoalghero@gmail.com
+checkin-<casa>.html            netlify/functions/checkin.js       → cosmoalghero@gmail.com
                                (genera il PDF in memoria,
                                 spedisce via SMTP, non salva nulla)
 ```
@@ -76,7 +76,7 @@ La pagina non compare nel menu né nella sitemap e ha `noindex`: chi non ha il l
 
 ## 4. Prova
 
-1. Apri il link `?casa=lido`, compila con dati di prova (1 ospite basta), spunta la privacy, invia.
+1. Apri `https://www.leportedisardegna.com/checkin-la-porta-del-lido`, compila con dati di prova (1 ospite basta), spunta la privacy, invia.
 2. Deve comparire la schermata verde "Registrazione completata" con il pulsante **Visita il sito**.
 3. Su `cosmoalghero@gmail.com` arriva **"Check-in La Porta del Lido — Rossi, 12/07 -> 15/07 (1 ospite)"** con il PDF allegato. Controlla anche lo spam la prima volta.
 
@@ -87,7 +87,7 @@ Se il form dice **"Invio non riuscito"** → su Netlify apri **Logs → Function
 ```bash
 python dev-server.py
 ```
-poi <http://localhost:8000/checkin-k4v9m2xq.html?casa=lido>. Si vede e si prova tutto il form (lingue, validazione), ma l'invio in locale dà "Invio non riuscito" perché il server locale non esegue le funzioni Netlify: l'invio vero si prova sul sito pubblicato (punto 4).
+poi <http://localhost:8000/checkin-la-porta-del-lido.html>. Si vede e si prova tutto il form (lingue, validazione), ma l'invio in locale dà "Invio non riuscito" perché il server locale non esegue le funzioni Netlify: l'invio vero si prova sul sito pubblicato (punto 4).
 
 ## 6. Cosa arriva in email
 
@@ -102,7 +102,7 @@ Ricorda: la comunicazione alla Questura va fatta **entro 24 ore** dall'arrivo su
 
 - **Cambiare destinatario**: variabile `MAIL_TO` su Netlify, poi "Trigger deploy". Nessun codice da toccare.
 - **Aggiungere una casa**: `HOUSES` in `netlify/checkin-lib/core.js` + la `<option>` e `CONFIG.houses` nel form.
-- **Rinominare il link** (se lo vuoi cambiare): rinomina `checkin-k4v9m2xq.html` e manda il nuovo link.
+- **Modificare il form**: edita `tools/checkin.template.html`, poi `node tools/build-checkin.js` rigenera le due pagine.
 - **Aggiornare le tabelle del Portale**: scarica da <https://alloggiatiweb.poliziadistato.it/portalealloggiati/tabelle.aspx> (Comuni ID=0, Stati ID=1) e rigenera `tabelle.js` (formato `CODICE;NOME;PROV`).
 
 ## 8. Privacy — cosa è già a posto
