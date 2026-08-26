@@ -1,0 +1,26 @@
+{
+  "name": "le-porte-di-sardegna",
+  "version": "1.0.0",
+  "description": "Sito statico + Netlify Functions (calendari Airbnb, check-in ospiti)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alessiovinci87/fabioshouseV2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Alessiovinci87/fabioshouseV2/issues"
+  },
+  "homepage": "https://github.com/Alessiovinci87/fabioshouseV2#readme",
+  "private": "true",
+  "dependencies": {
+    "nodemailer": "^9.0.5",
+    "pdf-lib": "^1.17.1"
+  }
+}

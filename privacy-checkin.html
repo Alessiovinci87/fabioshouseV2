@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Informativa privacy check-in ospiti | Le Porte di Sardegna</title>
+  <meta name="description" content="Informativa sul trattamento dei dati personali raccolti con il modulo di check-in ospiti (art. 13 GDPR) — Le Porte di Sardegna." />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="theme-color" content="#f4efe3" />
+
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+
+  <link rel="stylesheet" href="fonts/fonts.css" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Header compatto (brand + lingue con bandiere) — stesso del form di check-in */
+    .ck-head { position: sticky; top: 0; z-index: 50; background: color-mix(in oklab, var(--paper) 88%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .ck-head-inner { max-width: var(--container); margin: 0 auto; padding: 12px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .flags { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: var(--r-pill); background: color-mix(in oklab, var(--paper) 70%, transparent); }
+    .flags button { display: inline-flex; align-items: center; gap: 6px; padding: 5px 9px; border-radius: var(--r-pill); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--ink-3); transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease); }
+    .flags button svg { width: 18px; height: 13px; border-radius: 2px; box-shadow: 0 0 0 1px oklch(0% 0 0 / 0.12); display: block; }
+    .flags button:hover { color: var(--ink); }
+    .flags button.active { background: var(--ink); color: var(--paper); }
+    @media (max-width: 520px) { .flags button span { display: none; } .flags button { padding: 6px 7px; } }
+
+    .legal-content { padding: clamp(50px, 8vw, 110px) 0 clamp(60px, 8vw, 110px); }
+    .legal-content .eyebrow { margin-bottom: 20px; }
+    .legal-content h1 { font-size: clamp(40px, 6vw, 76px); line-height: 1; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .legal-content .meta { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 clamp(30px, 4vw, 50px); }
+    .legal-content h2 { font-size: clamp(24px, 2.4vw, 32px); line-height: 1.15; margin: clamp(36px, 4vw, 56px) 0 14px; letter-spacing: -0.01em; }
+    .legal-content p, .legal-content li { font-size: 16px; line-height: 1.7; color: var(--ink-2); max-width: 70ch; }
+    .legal-content p { margin: 0 0 14px; }
+    .legal-content ul { margin: 0 0 18px; padding-left: 22px; }
+    .legal-content li { margin-bottom: 8px; }
+    .legal-content li::marker { color: var(--terra); }
+    .legal-content a { color: var(--terra-deep); border-bottom: 1px solid color-mix(in oklab, var(--terra-deep) 40%, transparent); }
+    .legal-content a:hover { border-color: var(--terra-deep); }
+    .legal-content strong { color: var(--ink); font-weight: 500; }
+    .legal-content code { font-family: var(--font-mono); font-size: 13px; background: var(--paper-2); border: 1px solid var(--line); padding: 1px 6px; }
+    .legal-back { margin-top: clamp(40px, 5vw, 70px); padding-top: 24px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 12px 28px; }
+    .legal-back a { border: 0; font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--ink); }
+    .legal-back a:hover { color: var(--terra-deep); }
+    [data-lang-block] { display: none; }
+    [data-lang-block].on { display: block; }
+  </style>
+</head>
+<body>
+
+  <header class="ck-head">
+    <div class="ck-head-inner">
+      <a href="/" class="brand" aria-label="Le Porte di Sardegna home">
+        <span class="brand-mark" aria-hidden="true"><img src="img/home/logo-new.jpeg" alt="" /></span>
+        <span class="brand-name">Le Porte di <em>Sardegna</em></span>
+      </a>
+      <div class="flags" role="group" aria-label="Lingua / Language">
+        <button type="button" data-lang-btn="it" aria-label="Italiano">
+          <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg><span>IT</span>
+        </button>
+        <button type="button" data-lang-btn="en" aria-label="English">
+          <svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><rect width="60" height="30"/></clipPath><g clip-path="url(#ukc)"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></g></svg><span>EN</span>
+        </button>
+        <button type="button" data-lang-btn="fr" aria-label="Français">
+          <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg><span>FR</span>
+        </button>
+        <button type="button" data-lang-btn="es" aria-label="Español">
+          <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y="0.5" width="3" height="1" fill="#F1BF00"/></svg><span>ES</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="legal-content">
+    <div class="narrow">
+
+      <!-- ===================== ITALIANO ===================== -->
+      <div data-lang-block="it">
+        <p class="eyebrow">Informativa legale · Check-in ospiti</p>
+        <h1>Informativa <em>privacy</em> per la registrazione degli ospiti</h1>
+        <p class="meta">Art. 13 Regolamento (UE) 2016/679 · Ultimo aggiornamento: 26 agosto 2026</p>
+
+        <h2>1. Titolare del trattamento</h2>
+        <p><strong>Fabio Italo Peigotty</strong> (C.F. <code>PGTFTL84D05I452T</code>), Via Ziu Remundu n. 4, 07100 Sassari (SS), Italia — email <a href="mailto:cosmoalghero@gmail.com">cosmoalghero@gmail.com</a>, tel. <a href="tel:+393939714566">+39 393 971 4566</a>.
+        Strutture: <strong>Villa La Mimosa</strong> (Via Le Vele 9, Stintino — CIN <code>IT090089C2000T0180</code>) e <strong>La Porta del Lido</strong> (Via Goceano 23, Alghero — CIN <code>IT090003C2000U2044</code>).</p>
+
+        <h2>2. Quali dati raccogliamo</h2>
+        <p>Con il modulo di check-in raccogliamo, per <strong>ogni persona ospitata</strong>: nome e cognome, sesso, data e luogo di nascita, Stato di nascita, cittadinanza, date di arrivo e partenza. Per il capofamiglia (o ospite singolo) anche: tipo, numero e luogo di rilascio del documento d'identità. Il capofamiglia fornisce i dati degli altri componenti, inclusi i minori, dichiarando di esserne autorizzato.</p>
+
+        <h2>3. Perché li raccogliamo e su quale base giuridica</h2>
+        <ul>
+          <li><strong>Obbligo di legge</strong> (art. 6, par. 1, lett. c GDPR): l'art. 109 del TULPS (R.D. 773/1931) e il D.M. 7 gennaio 2013 obbligano chi ospita a comunicare alla Questura, entro 24 ore dall'arrivo, le generalità delle persone alloggiate tramite il <strong>Portale Alloggiati Web</strong> della Polizia di Stato.</li>
+          <li><strong>Altri obblighi di legge</strong> (art. 6, par. 1, lett. c GDPR): adempimenti fiscali e statistici connessi alla locazione turistica (es. imposta di soggiorno, rilevazioni ISTAT/regionali) ove applicabili.</li>
+          <li><strong>Esecuzione del contratto</strong> di locazione turistica (art. 6, par. 1, lett. b GDPR): gestione del soggiorno e dell'accoglienza.</li>
+        </ul>
+        <p>Il conferimento dei dati è <strong>obbligatorio</strong>: senza di essi non è possibile ospitarti, perché la legge lo vieta. La casella di spunta nel modulo attesta la presa visione di questa informativa; il trattamento non si basa sul consenso.</p>
+
+        <h2>4. Come funziona il modulo (nessun dato resta sul sito)</h2>
+        <p>Il sito web non memorizza i dati inseriti. Al momento dell'invio, i dati viaggiano su connessione cifrata (HTTPS) verso un servizio <strong>Google Apps Script</strong> gestito dal titolare, che genera automaticamente un riepilogo in PDF e il file di trasmissione per il Portale Alloggiati e li invia <strong>via email</strong> esclusivamente alla casella del titolare. Nessuna copia viene salvata su Google Drive, in fogli di calcolo o in database. Google Ireland Ltd. agisce come <strong>responsabile del trattamento</strong> ai sensi dell'art. 28 GDPR, sulla base dei propri termini per il trattamento dei dati; eventuali trasferimenti extra-UE avvengono con le Clausole Contrattuali Standard della Commissione Europea.</p>
+
+        <h2>5. A chi comunichiamo i dati</h2>
+        <ul>
+          <li><strong>Questura / Polizia di Stato</strong>, tramite il Portale Alloggiati Web (comunicazione obbligatoria).</li>
+          <li><strong>Enti pubblici</strong> (Comune, Regione, ISTAT) limitatamente agli obblighi fiscali e statistici, ove applicabili, e in forma aggregata quando possibile.</li>
+          <li><strong>Google</strong>, come fornitore tecnico dell'infrastruttura descritta al punto 4.</li>
+        </ul>
+        <p>I dati non vengono venduti, ceduti o usati per marketing, profilazione o decisioni automatizzate.</p>
+
+        <h2>6. Per quanto tempo li conserviamo</h2>
+        <p>L'email con il riepilogo e la ricevuta di trasmissione rilasciata dal Portale Alloggiati sono conservate dal titolare per <strong>5 anni</strong>, come previsto dal D.M. 7/1/2013 e dagli obblighi fiscali; trascorso tale termine vengono cancellate. Il file di trasmissione viene eliminato subito dopo il caricamento sul Portale.</p>
+
+        <h2>7. I tuoi diritti</h2>
+        <p>Ai sensi degli artt. 15–22 GDPR puoi chiedere l'accesso ai tuoi dati, la rettifica, la limitazione e — nei limiti compatibili con gli obblighi di legge sopra indicati — la cancellazione e l'opposizione. Scrivi a <a href="mailto:cosmoalghero@gmail.com">cosmoalghero@gmail.com</a>. Hai inoltre il diritto di proporre reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">garanteprivacy.it</a>).</p>
+
+        <h2>8. Minori</h2>
+        <p>I dati dei minori sono forniti dal genitore o dall'adulto che li accompagna e sono trattati solo per gli obblighi di legge sopra indicati.</p>
+
+        <h2>9. Cookie e archiviazione locale</h2>
+        <p>Il modulo di check-in non usa cookie né strumenti di tracciamento. Salva soltanto la lingua scelta nel <code>localStorage</code> del tuo browser (<code>fh.checkin.lang</code>), che non contiene dati personali e resta sul tuo dispositivo.</p>
+
+        <div class="legal-back">
+          <a href="javascript:history.back()">← Torna al modulo</a>
+          <a href="/">Visita il sito →</a>
+        </div>
+      </div>
+
+      <!-- ===================== ENGLISH ===================== -->
+      <div data-lang-block="en">
+        <p class="eyebrow">Legal notice · Guest check-in</p>
+        <h1>Privacy <em>notice</em> for guest registration</h1>
+        <p class="meta">Art. 13 Regulation (EU) 2016/679 · Last updated: 26 August 2026</p>
+
+        <h2>1. Data controller</h2>
+        <p><strong>Fabio Italo Peigotty</strong> (Italian tax code <code>PGTFTL84D05I452T</code>), Via Ziu Remundu 4, 07100 Sassari (SS), Italy — email <a href="mailto:cosmoalghero@gmail.com">cosmoalghero@gmail.com</a>, phone <a href="tel:+393939714566">+39 393 971 4566</a>.
+        Properties: <strong>Villa La Mimosa</strong> (Via Le Vele 9, Stintino — CIN <code>IT090089C2000T0180</code>) and <strong>La Porta del Lido</strong> (Via Goceano 23, Alghero — CIN <code>IT090003C2000U2044</code>).</p>
+
+        <h2>2. What data we collect</h2>
+        <p>Through the check-in form we collect, for <strong>every guest</strong>: first and last name, sex, date and place of birth, country of birth, nationality, arrival and departure dates. For the head of the family (or single guest) also: type, number and place of issue of the identity document. The head of the family provides the details of the other members, including minors, and declares to be authorised to do so.</p>
+
+        <h2>3. Why we collect them and on which legal basis</h2>
+        <ul>
+          <li><strong>Legal obligation</strong> (Art. 6(1)(c) GDPR): Italian law (Art. 109 TULPS, Royal Decree 773/1931, and Ministerial Decree of 7 January 2013) requires every host to report the identity of all guests to the Police Headquarters (Questura) within 24 hours of arrival, through the State Police <strong>"Alloggiati Web"</strong> portal.</li>
+          <li><strong>Other legal obligations</strong> (Art. 6(1)(c) GDPR): tax and statistical duties connected to short-term rentals (e.g. tourist tax, ISTAT/regional statistics) where applicable.</li>
+          <li><strong>Performance of the rental contract</strong> (Art. 6(1)(b) GDPR): managing your stay and welcome.</li>
+        </ul>
+        <p>Providing the data is <strong>mandatory</strong>: without it we cannot host you, because Italian law forbids it. The checkbox in the form confirms that you have read this notice; the processing is not based on consent.</p>
+
+        <h2>4. How the form works (nothing is stored on the website)</h2>
+        <p>The website does not store the data you enter. On submission, the data travels over an encrypted connection (HTTPS) to a <strong>Google Apps Script</strong> service operated by the controller, which automatically generates a PDF summary and the transmission file for the Alloggiati portal and sends them <strong>by email</strong> only to the controller's mailbox. No copy is saved on Google Drive, in spreadsheets or in databases. Google Ireland Ltd. acts as a <strong>data processor</strong> under Art. 28 GDPR on the basis of its data processing terms; any transfer outside the EU relies on the European Commission's Standard Contractual Clauses.</p>
+
+        <h2>5. Who receives the data</h2>
+        <ul>
+          <li><strong>Questura / Italian State Police</strong>, through the Alloggiati Web portal (mandatory report).</li>
+          <li><strong>Public bodies</strong> (Municipality, Region, ISTAT) strictly for tax and statistical obligations, where applicable and in aggregate form when possible.</li>
+          <li><strong>Google</strong>, as technical provider of the infrastructure described in point 4.</li>
+        </ul>
+        <p>Data is never sold, shared for marketing, profiled or used for automated decisions.</p>
+
+        <h2>6. How long we keep them</h2>
+        <p>The summary email and the transmission receipt issued by the Alloggiati portal are kept by the controller for <strong>5 years</strong>, as required by the Ministerial Decree of 7/1/2013 and by tax rules; after that they are deleted. The transmission file is deleted right after being uploaded to the portal.</p>
+
+        <h2>7. Your rights</h2>
+        <p>Under Arts. 15–22 GDPR you may request access to your data, rectification, restriction and — insofar as compatible with the legal obligations above — erasure and objection. Write to <a href="mailto:cosmoalghero@gmail.com">cosmoalghero@gmail.com</a>. You also have the right to lodge a complaint with the Italian Data Protection Authority (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">garanteprivacy.it</a>) or with the authority of your country.</p>
+
+        <h2>8. Minors</h2>
+        <p>Minors' data is provided by the parent or accompanying adult and processed only for the legal obligations described above.</p>
+
+        <h2>9. Cookies and local storage</h2>
+        <p>The check-in form uses no cookies or tracking tools. It only saves your language choice in your browser's <code>localStorage</code> (<code>fh.checkin.lang</code>), which contains no personal data and stays on your device.</p>
+
+        <div class="legal-back">
+          <a href="javascript:history.back()">← Back to the form</a>
+          <a href="/">Visit the website →</a>
+        </div>
+      </div>
+
+      <!-- ===================== FRANÇAIS ===================== -->
+      <div data-lang-block="fr">
+        <p class="eyebrow">Mentions légales · Enregistrement des hôtes</p>
+        <h1>Notice de <em>confidentialité</em> pour l'enregistrement des hôtes</h1>
+        <p class="meta">Art. 13 Règlement (UE) 2016/679 · Dernière mise à jour : 26 août 2026</p>
+
+        <h2>1. Responsable du traitement</h2>
+        <p><strong>Fabio Italo Peigotty</strong> (code fiscal italien <code>PGTFTL84D05I452T</code>), Via Ziu Remundu 4, 07100 Sassari (SS), Italie — e-mail <a href="mailto:cosmoalghero@gmail.com">cosmoalghero@gmail.com</a>, tél. <a href="tel:+393939714566">+39 393 971 4566</a>.
+        Hébergements : <strong>Villa La Mimosa</strong> (Via Le Vele 9, Stintino — CIN <code>IT090089C2000T0180</code>) et <strong>La Porta del Lido</strong> (Via Goceano 23, Alghero — CIN <code>IT090003C2000U2044</code>).</p>
+
+        <h2>2. Données collectées</h2>
+        <p>Avec le formulaire d'enregistrement nous collectons, pour <strong>chaque personne hébergée</strong> : nom et prénom, sexe, date et lieu de naissance, pays de naissance, nationalité, dates d'arrivée et de départ. Pour le chef de famille (ou voyageur seul) également : type, numéro et lieu de délivrance de la pièce d'identité. Le chef de famille fournit les données des autres membres, mineurs compris, et déclare y être autorisé.</p>
+
+        <h2>3. Finalités et base juridique</h2>
+        <ul>
+          <li><strong>Obligation légale</strong> (art. 6, § 1, c du RGPD) : la loi italienne (art. 109 TULPS, D.R. 773/1931, et décret ministériel du 7 janvier 2013) impose à tout hébergeur de communiquer à la Questura, dans les 24 heures suivant l'arrivée, l'identité des personnes hébergées via le portail <strong>« Alloggiati Web »</strong> de la Police d'État.</li>
+          <li><strong>Autres obligations légales</strong> (art. 6, § 1, c) : obligations fiscales et statistiques liées à la location touristique (taxe de séjour, statistiques ISTAT/régionales), le cas échéant.</li>
+          <li><strong>Exécution du contrat</strong> de location (art. 6, § 1, b) : gestion du séjour et de l'accueil.</li>
+        </ul>
+        <p>La communication des données est <strong>obligatoire</strong> : sans elles nous ne pouvons pas vous héberger, la loi l'interdit. La case à cocher du formulaire atteste la prise de connaissance de cette notice ; le traitement ne repose pas sur le consentement.</p>
+
+        <h2>4. Fonctionnement du formulaire (rien n'est conservé sur le site)</h2>
+        <p>Le site web ne mémorise pas les données saisies. À l'envoi, elles transitent par une connexion chiffrée (HTTPS) vers un service <strong>Google Apps Script</strong> géré par le responsable, qui génère automatiquement un récapitulatif PDF et le fichier de transmission pour le portail Alloggiati et les envoie <strong>par e-mail</strong> uniquement à la boîte du responsable. Aucune copie n'est enregistrée sur Google Drive, dans des feuilles de calcul ou des bases de données. Google Ireland Ltd. agit comme <strong>sous-traitant</strong> au sens de l'art. 28 du RGPD ; les éventuels transferts hors UE reposent sur les Clauses Contractuelles Types de la Commission européenne.</p>
+
+        <h2>5. Destinataires</h2>
+        <ul>
+          <li><strong>Questura / Police d'État italienne</strong>, via le portail Alloggiati Web (communication obligatoire).</li>
+          <li><strong>Organismes publics</strong> (Commune, Région, ISTAT) pour les seules obligations fiscales et statistiques, le cas échéant et sous forme agrégée si possible.</li>
+          <li><strong>Google</strong>, en tant que fournisseur technique de l'infrastructure décrite au point 4.</li>
+        </ul>
+        <p>Les données ne sont jamais vendues, cédées à des fins marketing, profilées ni utilisées pour des décisions automatisées.</p>
+
+        <h2>6. Durée de conservation</h2>
+        <p>L'e-mail récapitulatif et le reçu de transmission délivré par le portail Alloggiati sont conservés par le responsable pendant <strong>5 ans</strong>, conformément au décret du 7/1/2013 et aux règles fiscales, puis supprimés. Le fichier de transmission est supprimé aussitôt après son chargement sur le portail.</p>
+
+        <h2>7. Vos droits</h2>
+        <p>Conformément aux art. 15 à 22 du RGPD, vous pouvez demander l'accès à vos données, leur rectification, la limitation et — dans la mesure compatible avec les obligations légales ci-dessus — l'effacement et l'opposition. Écrivez à <a href="mailto:cosmoalghero@gmail.com">cosmoalghero@gmail.com</a>. Vous pouvez aussi introduire une réclamation auprès de l'autorité italienne (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">garanteprivacy.it</a>) ou de la CNIL.</p>
+
+        <h2>8. Mineurs</h2>
+        <p>Les données des mineurs sont fournies par le parent ou l'adulte accompagnant et traitées uniquement pour les obligations légales indiquées.</p>
+
+        <h2>9. Cookies et stockage local</h2>
+        <p>Le formulaire n'utilise ni cookies ni outils de suivi. Il enregistre seulement la langue choisie dans le <code>localStorage</code> de votre navigateur (<code>fh.checkin.lang</code>), sans données personnelles, sur votre appareil.</p>
+
+        <div class="legal-back">
+          <a href="javascript:history.back()">← Retour au formulaire</a>
+          <a href="/">Visiter le site →</a>
+        </div>
+      </div>
+
+      <!-- ===================== ESPAÑOL ===================== -->
+      <div data-lang-block="es">
+        <p class="eyebrow">Aviso legal · Registro de huéspedes</p>
+        <h1>Información sobre <em>privacidad</em> para el registro de huéspedes</h1>
+        <p class="meta">Art. 13 Reglamento (UE) 2016/679 · Última actualización: 26 de agosto de 2026</p>
+
+        <h2>1. Responsable del tratamiento</h2>
+        <p><strong>Fabio Italo Peigotty</strong> (código fiscal italiano <code>PGTFTL84D05I452T</code>), Via Ziu Remundu 4, 07100 Sassari (SS), Italia — correo <a href="mailto:cosmoalghero@gmail.com">cosmoalghero@gmail.com</a>, tel. <a href="tel:+393939714566">+39 393 971 4566</a>.
+        Alojamientos: <strong>Villa La Mimosa</strong> (Via Le Vele 9, Stintino — CIN <code>IT090089C2000T0180</code>) y <strong>La Porta del Lido</strong> (Via Goceano 23, Alghero — CIN <code>IT090003C2000U2044</code>).</p>
+
+        <h2>2. Qué datos recogemos</h2>
+        <p>Con el formulario de registro recogemos, para <strong>cada persona alojada</strong>: nombre y apellidos, sexo, fecha y lugar de nacimiento, país de nacimiento, nacionalidad, fechas de llegada y salida. Para el cabeza de familia (o huésped individual) también: tipo, número y lugar de expedición del documento de identidad. El cabeza de familia facilita los datos de los demás miembros, menores incluidos, y declara estar autorizado para ello.</p>
+
+        <h2>3. Finalidad y base jurídica</h2>
+        <ul>
+          <li><strong>Obligación legal</strong> (art. 6.1.c RGPD): la ley italiana (art. 109 TULPS, R.D. 773/1931, y Decreto Ministerial de 7 de enero de 2013) obliga a quien aloja a comunicar a la Questura, en las 24 horas siguientes a la llegada, la identidad de las personas alojadas a través del portal <strong>«Alloggiati Web»</strong> de la Policía del Estado.</li>
+          <li><strong>Otras obligaciones legales</strong> (art. 6.1.c): obligaciones fiscales y estadísticas del alquiler turístico (tasa turística, estadísticas ISTAT/regionales), cuando corresponda.</li>
+          <li><strong>Ejecución del contrato</strong> de alquiler (art. 6.1.b): gestión de la estancia y de la acogida.</li>
+        </ul>
+        <p>Facilitar los datos es <strong>obligatorio</strong>: sin ellos no podemos alojarle, porque la ley lo prohíbe. La casilla del formulario acredita que ha leído esta información; el tratamiento no se basa en el consentimiento.</p>
+
+        <h2>4. Cómo funciona el formulario (nada se guarda en la web)</h2>
+        <p>La web no almacena los datos introducidos. Al enviarlos, viajan por una conexión cifrada (HTTPS) hasta un servicio <strong>Google Apps Script</strong> gestionado por el responsable, que genera automáticamente un resumen en PDF y el fichero de transmisión para el portal Alloggiati y los envía <strong>por correo electrónico</strong> únicamente al buzón del responsable. No se guarda ninguna copia en Google Drive, hojas de cálculo ni bases de datos. Google Ireland Ltd. actúa como <strong>encargado del tratamiento</strong> según el art. 28 RGPD; las eventuales transferencias fuera de la UE se amparan en las Cláusulas Contractuales Tipo de la Comisión Europea.</p>
+
+        <h2>5. Destinatarios</h2>
+        <ul>
+          <li><strong>Questura / Policía del Estado italiana</strong>, a través del portal Alloggiati Web (comunicación obligatoria).</li>
+          <li><strong>Organismos públicos</strong> (Ayuntamiento, Región, ISTAT) solo para obligaciones fiscales y estadísticas, cuando corresponda y de forma agregada si es posible.</li>
+          <li><strong>Google</strong>, como proveedor técnico de la infraestructura descrita en el punto 4.</li>
+        </ul>
+        <p>Los datos nunca se venden, ceden con fines de marketing, perfilan ni se usan para decisiones automatizadas.</p>
+
+        <h2>6. Plazo de conservación</h2>
+        <p>El correo con el resumen y el recibo de transmisión emitido por el portal Alloggiati se conservan durante <strong>5 años</strong>, según el Decreto de 7/1/2013 y las normas fiscales; después se eliminan. El fichero de transmisión se borra justo después de cargarlo en el portal.</p>
+
+        <h2>7. Sus derechos</h2>
+        <p>Conforme a los arts. 15–22 RGPD puede solicitar el acceso a sus datos, su rectificación, la limitación y — en la medida compatible con las obligaciones legales indicadas — la supresión y la oposición. Escriba a <a href="mailto:cosmoalghero@gmail.com">cosmoalghero@gmail.com</a>. También puede presentar una reclamación ante la autoridad italiana (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">garanteprivacy.it</a>) o ante la AEPD.</p>
+
+        <h2>8. Menores</h2>
+        <p>Los datos de los menores los facilita el progenitor o el adulto acompañante y se tratan solo para las obligaciones legales indicadas.</p>
+
+        <h2>9. Cookies y almacenamiento local</h2>
+        <p>El formulario no usa cookies ni herramientas de seguimiento. Solo guarda el idioma elegido en el <code>localStorage</code> de su navegador (<code>fh.checkin.lang</code>), sin datos personales, en su dispositivo.</p>
+
+        <div class="legal-back">
+          <a href="javascript:history.back()">← Volver al formulario</a>
+          <a href="/">Visita el sitio →</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <p class="foot-legal mono">© 2026 Le Porte di Sardegna · CF PGTFTL84D05I452T · CIN Stintino IT090089C2000T0180 · CIN Alghero IT090003C2000U2044</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var LANGS = ['it', 'en', 'fr', 'es'], KEY = 'fh.checkin.lang';
+      function detect() {
+        try { var q = new URL(location.href).searchParams.get('lang'); if (LANGS.indexOf(q) >= 0) return q; } catch (_) {}
+        try { var s = localStorage.getItem(KEY); if (LANGS.indexOf(s) >= 0) return s; } catch (_) {}
+        try { var s2 = localStorage.getItem('fh.lang'); if (LANGS.indexOf(s2) >= 0) return s2; } catch (_) {}
+        var n = (navigator.language || 'it').slice(0, 2).toLowerCase();
+        return LANGS.indexOf(n) >= 0 ? n : 'it';
+      }
+      function apply(lang) {
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-lang-block]').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-lang-block') === lang); });
+        document.querySelectorAll('[data-lang-btn]').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang-btn') === lang); });
+        try { localStorage.setItem(KEY, lang); } catch (_) {}
+      }
+      document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
+        b.addEventListener('click', function () { apply(b.getAttribute('data-lang-btn')); });
+      });
+      apply(detect());
+    })();
+  </script>
+</body>
+</html>
