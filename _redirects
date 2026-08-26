@@ -4,6 +4,8 @@
 # Link puliti del check-in ospiti → una pagina per casa (rewrite 200: l URL resta senza .html)
 /checkin-la-porta-del-lido   /checkin-la-porta-del-lido.html   200
 /checkin-villa-la-mimosa     /checkin-villa-la-mimosa.html    200
+/benvenuto-la-porta-del-lido  /benvenuto-la-porta-del-lido.html  200
+/benvenuto-villa-la-mimosa    /benvenuto-villa-la-mimosa.html    200
 
 # SPA fallback: ogni path inesistente serve index.html con status 200
 # (200 = canonical, NON 301: Google indicizza l'URL richiesta come pagina reale)
