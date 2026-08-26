@@ -65,12 +65,31 @@
     .card-foot .g { font-weight: 500; color: var(--ink-2); }
     .card-review .card-foot .g { color: var(--terra-deep); }
     .site-foot .foot-legal { border-top: 0; padding-top: 0; }
+
+    /* ---------- export PDF "da smartphone": pagina stretta, pulsante cliccabile ---------- */
+    @media print {
+      @page { size: 105mm 178mm; margin: 6mm; }
+      html, body { background: #f4efe3 !important; }
+      main::before, main::after { content: none !important; display: none !important; }
+      .site-foot { display: none !important; }
+      .top { padding: 4mm 0 3mm; }
+      .sheet { padding: 0; display: block; }
+      .card { width: 100%; max-width: none; box-shadow: none; border: 1px solid #ebe4d6; border-radius: 12px; }
+      .card-head { padding: 18px 22px 16px; }
+      .card-head h1 { font-size: 28px; }
+      .card-body { padding: 18px 22px 16px; gap: 14px; }
+      .cta { min-height: 48px; font-size: 15px; }
+      .lines { gap: 8px; }
+      .line { font-size: 12px; }
+      .card-foot { padding: 10px 22px 14px; font-size: 10px; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    }
   </style>
 </head>
 <body>
 
   <div class="top">
-    <a href="/" class="brand" aria-label="Le Porte di Sardegna">
+    <a href="https://www.leportedisardegna.com/" class="brand" aria-label="Le Porte di Sardegna">
       <span class="brand-mark" aria-hidden="true"><img src="img/home/logo-new.jpeg" alt="" /></span>
       <span class="brand-name">Le Porte di <em>Sardegna</em></span>
     </a>
