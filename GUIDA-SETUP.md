@@ -112,3 +112,12 @@ Ricorda: la comunicazione alla Questura va fatta **entro 24 ore** dall'arrivo su
 - Il form non salva nulla nel browser tranne la lingua (`localStorage["fh.checkin.lang"]`). Nessun cookie. Honeypot anti-spam invisibile.
 - La funzione Netlify non scrive su nessun archivio: riceve, genera il PDF, spedisce, dimentica.
 - Consiglio: la casella mittente e quella destinataria contengono dati di documenti d'identità → attiva la verifica in 2 passaggi su entrambe.
+
+## 9. Cartoncini da stampare (QR check-in + recensione Google)
+
+Cartella `stampa/` (uso interno: online questi indirizzi mostrano la home, non sono raggiungibili):
+
+- `stampa/cartoncini-porta-del-lido.html`
+- `stampa/cartoncini-villa-la-mimosa.html`
+
+Apri il file con doppio clic → pulsante **Stampa / Salva PDF** (un cartoncino per foglio A4; per un formato più piccolo scegli "Adatta alla pagina" o stampa 2 per foglio dalle opzioni della stampante). I QR sono generati dai link in cima allo script (`LIDO_CHECKIN`, `LIDO_REVIEW`, `MIMOSA_CHECKIN`, `MIMOSA_REVIEW`): se cambi un link, riapri la pagina e il QR si aggiorna. "Scarica QR (PNG)" salva il singolo codice per usarlo altrove (WhatsApp, cornice, ecc.). Serve la connessione internet all'apertura (libreria QR da CDN).

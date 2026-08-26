@@ -1,3 +1,6 @@
+# Cartoncini da stampare (stampa/): uso interno, non raggiungibili online
+/stampa/*   /index.html   200!
+
 # Link puliti del check-in ospiti → una pagina per casa (rewrite 200: l URL resta senza .html)
 /checkin-la-porta-del-lido   /checkin-la-porta-del-lido.html   200
 /checkin-villa-la-mimosa     /checkin-villa-la-mimosa.html    200

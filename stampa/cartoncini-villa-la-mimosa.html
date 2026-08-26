@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Cartoncini da stampare — Villa La Mimosa</title>
+  <!-- Uso interno: apri il file e clicca "Stampa / Salva PDF". Un cartoncino per foglio. -->
+  <link rel="stylesheet" href="../fonts/fonts.css" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    /* ============================================================
+       Cartoncini stampabili — palette e font del sito
+       (--paper, --ink, --terra, Fraunces / Geist / JetBrains Mono)
+       ============================================================ */
+    :root { --gold: oklch(78% 0.14 85); --card-w: 420px; }
+    body { background: var(--paper-2); }
+
+    .toolbar {
+      position: sticky; top: 0; z-index: 10;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      padding: 14px var(--gutter);
+      background: color-mix(in oklab, var(--paper) 90%, transparent);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .toolbar .brand-name { font-size: 15px; }
+    .toolbar .hint { font-size: 13px; color: var(--ink-3); }
+    .toolbar .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-primary { cursor: pointer; }
+    .btn-small { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border: 1px solid var(--line-2); border-radius: var(--r-pill); font-size: 12.5px; color: var(--ink-2); cursor: pointer; background: var(--paper); transition: border-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease); }
+    .btn-small:hover { border-color: var(--ink); color: var(--ink); }
+
+    .sheet { display: grid; gap: 40px; justify-items: center; padding: 40px var(--gutter) 80px; }
+
+    /* ---------- cartoncino ---------- */
+    .card {
+      width: var(--card-w); max-width: 100%;
+      background: #fff; color: var(--ink);
+      border-radius: 18px; overflow: hidden;
+      box-shadow: 0 24px 60px -30px oklch(22% 0.015 60 / 0.45), 0 2px 6px oklch(22% 0.015 60 / 0.08);
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    .card-head { padding: 26px 30px 22px; color: var(--paper); }
+    .card-head .house { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.85; margin: 0 0 12px; }
+    .card-head h1 { font-family: var(--font-display); font-weight: 400; font-size: 34px; line-height: 1.05; letter-spacing: -0.015em; color: inherit; margin: 0; }
+    .card-head h1 em { color: inherit; font-style: italic; opacity: 0.9; }
+    .card-head .sub { font-family: var(--font-display); font-style: italic; font-size: 15px; opacity: 0.85; margin: 10px 0 0; }
+    .card-checkin .card-head { background: var(--ink); }
+    .card-review  .card-head { background: var(--terra); }
+    .stars { font-size: 22px; letter-spacing: 0.12em; color: var(--gold); margin: 0 0 10px; line-height: 1; }
+
+    .card-body { padding: 26px 30px 24px; display: grid; gap: 22px; justify-items: center; }
+    .qr-wrap { display: grid; justify-items: center; gap: 10px; }
+    .qr { padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: #fff; width: 264px; height: 264px; display: grid; place-items: center; }
+    .qr img, .qr canvas { display: block; }
+    .qr-url { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-3); word-break: break-all; text-align: center; max-width: 300px; }
+    .qr-actions { display: flex; gap: 8px; }
+
+    .lines { display: grid; gap: 11px; width: 100%; }
+    .line { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; font-size: 13px; line-height: 1.45; color: var(--ink-2); }
+    .line svg { width: 22px; height: 15px; border-radius: 2px; box-shadow: 0 0 0 1px oklch(0% 0 0 / 0.12); margin-top: 2px; display: block; }
+    .line b { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-3); margin-bottom: 1px; }
+
+    .card-foot { padding: 14px 30px 20px; border-top: 1px solid var(--line); font-size: 11px; color: var(--ink-3); text-align: center; line-height: 1.5; }
+    .card-foot .g { font-weight: 500; color: var(--ink-2); }
+    .card-review .card-foot .g { color: var(--terra-deep); }
+
+    /* ---------- stampa: un cartoncino per foglio ---------- */
+    @media print {
+      @page { size: A4 portrait; margin: 14mm; }
+      html, body { background: #fff !important; }
+      .toolbar, .no-print { display: none !important; }
+      .sheet { padding: 0; gap: 0; display: block; }
+      .card { box-shadow: none; margin: 0 auto; border: 1px solid var(--line); page-break-after: always; break-after: page; }
+      .card:last-child { page-break-after: auto; break-after: auto; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <div>
+      <span class="brand-name">Le Porte di <em>Sardegna</em></span>
+      <span class="hint"> · Cartoncini Villa La Mimosa — un cartoncino per foglio</span>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn-primary" onclick="window.print()">Stampa / Salva PDF</button>
+    </div>
+  </div>
+
+  <main class="sheet">
+
+    <!-- ============== CARTONCINO 1: CHECK-IN ============== -->
+    <article class="card card-checkin" id="card-checkin">
+      <header class="card-head">
+        <p class="house">Villa La Mimosa — Stintino</p>
+        <h1>Registrazione <em>ospiti</em></h1>
+        <p class="sub">Check-in · Enregistrement · Registro</p>
+      </header>
+      <div class="card-body">
+        <div class="qr-wrap">
+          <div class="qr" id="qr-checkin"></div>
+          <div class="qr-url" id="url-checkin"></div>
+          <div class="qr-actions no-print"><button type="button" class="btn-small" data-download="qr-checkin" data-name="qr-checkin-villa-la-mimosa.png">Scarica QR (PNG)</button></div>
+        </div>
+        <div class="lines">
+          <div class="line"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg><span><b>ITALIANO</b>Inquadra il codice con la fotocamera e compila il modulo per registrare il soggiorno.</span></div>
+          <div class="line"><svg viewBox="0 0 60 30" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg><span><b>ENGLISH</b>Scan the code with your camera and fill in the form to register your stay.</span></div>
+          <div class="line"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg><span><b>FRANÇAIS</b>Scannez le code avec l'appareil photo et remplissez le formulaire pour enregistrer votre séjour.</span></div>
+          <div class="line"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y="0.5" width="3" height="1" fill="#F1BF00"/></svg><span><b>ESPAÑOL</b>Escanea el código con la cámara y rellena el formulario para registrar tu estancia.</span></div>
+        </div>
+      </div>
+      <footer class="card-foot">
+        <span class="g">Comunicazione dati ospiti</span> — Questura · Portale Alloggiati Web
+      </footer>
+    </article>
+
+    <!-- ============== CARTONCINO 2: RECENSIONE ============== -->
+    <article class="card card-review" id="card-review">
+      <header class="card-head">
+        <p class="house">Villa La Mimosa — Stintino</p>
+        <p class="stars" aria-label="5 stelle">★★★★★</p>
+        <h1>Ti è piaciuto <em>il soggiorno?</em></h1>
+        <p class="sub">Lascia una recensione su Google: bastano 30 secondi.</p>
+      </header>
+      <div class="card-body">
+        <div class="qr-wrap">
+          <div class="qr" id="qr-review"></div>
+          <div class="qr-url" id="url-review"></div>
+          <div class="qr-actions no-print"><button type="button" class="btn-small" data-download="qr-review" data-name="qr-recensione-villa-la-mimosa.png">Scarica QR (PNG)</button></div>
+        </div>
+        <div class="lines">
+          <div class="line"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg><span><b>ITALIANO</b>Inquadra il codice e lascia una recensione su Google. Grazie di cuore!</span></div>
+          <div class="line"><svg viewBox="0 0 60 30" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg><span><b>ENGLISH</b>Scan the code and leave us a review on Google. Thank you!</span></div>
+          <div class="line"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg><span><b>FRANÇAIS</b>Scannez le code et laissez-nous un avis sur Google. Merci !</span></div>
+          <div class="line"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y="0.5" width="3" height="1" fill="#F1BF00"/></svg><span><b>ESPAÑOL</b>Escanea el código y déjanos una reseña en Google. ¡Gracias!</span></div>
+        </div>
+      </div>
+      <footer class="card-foot">
+        <span class="g">Google · Recensioni</span>
+      </footer>
+    </article>
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    /* ============================================================
+       LINK — Villa La Mimosa. Per cambiarli basta modificare qui e
+       riaprire la pagina: i QR si rigenerano da soli.
+       ============================================================ */
+    const MIMOSA_CHECKIN = "https://www.leportedisardegna.com/checkin-villa-la-mimosa";
+    const MIMOSA_REVIEW  = "https://g.page/r/Ca_s29HmHlB3EBM/review";
+
+    function makeQr(id, urlId, text) {
+      const el = document.getElementById(id);
+      new QRCode(el, { text, width: 240, height: 240, colorDark: '#2b2622', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.H });
+      document.getElementById(urlId).textContent = text.replace(/^https?:\/\//, '');
+    }
+    makeQr('qr-checkin', 'url-checkin', MIMOSA_CHECKIN);
+    makeQr('qr-review',  'url-review',  MIMOSA_REVIEW);
+
+    // "Scarica QR (PNG)": prende l'immagine generata dalla libreria
+    document.querySelectorAll('[data-download]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const box = document.getElementById(btn.getAttribute('data-download'));
+        const img = box.querySelector('img'), canvas = box.querySelector('canvas');
+        const src = (img && img.src) || (canvas && canvas.toDataURL('image/png'));
+        if (!src) return;
+        const a = document.createElement('a'); a.href = src; a.download = btn.getAttribute('data-name'); a.click();
+      });
+    });
+  </script>
+</body>
+</html>
