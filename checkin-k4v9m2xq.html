@@ -749,8 +749,15 @@
     try {
       var qc = new URL(location.href).searchParams.get('casa');
       if (!qc) { var pth = location.pathname.toLowerCase(); qc = /lido/.test(pth) ? 'lido' : (/mimosa/.test(pth) ? 'mimosa' : ''); }
-      if (qc && CONFIG.houses[qc]) { houseSel.value = qc; document.title = 'Check-in ' + CONFIG.houses[qc].name + ' | Le Porte di Sardegna'; }
+      if (qc && CONFIG.houses[qc]) houseSel.value = qc;
     } catch (_) {}
+    // Titolo scheda con il nome della casa selezionata (aggiornato anche al cambio lingua/casa)
+    function syncTitle() {
+      var h = CONFIG.houses[houseSel.value];
+      document.title = h ? 'Check-in ' + h.name + ' | Le Porte di Sardegna' : t('meta.title');
+    }
+    houseSel.addEventListener('change', syncTitle);
+    document.querySelectorAll('[data-lang-btn]').forEach(function (b) { b.addEventListener('click', syncTitle); });
 
     // Date: partenza min = arrivo + 1, nascita max = oggi
     var today = new Date(); var todayIso = today.toISOString().slice(0, 10);
@@ -1007,6 +1014,7 @@
     syncDocCity();
     renumberGuests();
     syncGuestCount();
+    syncTitle();
   })();
   </script>
 </body>
