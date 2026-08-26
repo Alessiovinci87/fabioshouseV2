@@ -801,8 +801,7 @@
       });
       renumberGuests();
       syncGuestCount();
-      card.querySelector('input[type="text"]').focus({ preventScroll: false });
-      return card;
+      return card;   // nessun focus/scroll automatico: l'utente continua a compilare dal capofamiglia
     }
     function guestCards() { return Array.prototype.slice.call(guestsWrap.querySelectorAll('.guest-card')); }
     function renumberGuests() {
