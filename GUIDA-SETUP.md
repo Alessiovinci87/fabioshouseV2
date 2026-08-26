@@ -122,11 +122,11 @@ Cartella `stampa/` (uso interno: online questi indirizzi mostrano la home, non s
 
 Apri il file con doppio clic → pulsante **Stampa / Salva PDF**: formato **A5**, un cartoncino per foglio (nella finestra di stampa scegli carta A5, oppure A4 con "2 pagine per foglio"). I QR sono generati dai link in cima allo script (`LIDO_CHECKIN`, `LIDO_REVIEW`, `MIMOSA_CHECKIN`, `MIMOSA_REVIEW`): se cambi un link, riapri la pagina e il QR si aggiorna. Serve la connessione internet all'apertura (libreria QR da CDN).
 
-**Versione mobile** (stessi cartoncini, ma con un pulsante al posto del QR — da mandare via WhatsApp agli ospiti, che sono già sul telefono):
+**Versione mobile** (stessi cartoncini, ma con un pulsante al posto del QR — da mandare via WhatsApp agli ospiti, che sono già sul telefono). Una pagina per cartoncino, così si mandano in momenti diversi:
 
-```
-https://www.leportedisardegna.com/benvenuto-la-porta-del-lido
-https://www.leportedisardegna.com/benvenuto-villa-la-mimosa
-```
+| | All'arrivo (registrazione) | Alla partenza (recensione) |
+|---|---|---|
+| La Porta del Lido | `leportedisardegna.com/registrazione-la-porta-del-lido` | `leportedisardegna.com/recensione-la-porta-del-lido` |
+| Villa La Mimosa | `leportedisardegna.com/registrazione-villa-la-mimosa` | `leportedisardegna.com/recensione-villa-la-mimosa` |
 
-Pulsanti "Registra il soggiorno →" e "Lascia una recensione →" (etichetta nella lingua del telefono: IT/EN/FR/ES). Si può linkare anche direttamente la seconda card: `…/benvenuto-villa-la-mimosa#recensione`. File: `benvenuto-la-porta-del-lido.html`, `benvenuto-villa-la-mimosa.html` (noindex, non in menu).
+Pulsanti "Registra il soggiorno →" / "Lascia una recensione →" con etichetta nella lingua del telefono (IT/EN/FR/ES). File omonimi `.html` nella radice (noindex, non in menu); i link senza `.html` sono in `_redirects`.
