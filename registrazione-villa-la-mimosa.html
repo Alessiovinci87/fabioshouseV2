@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Registrazione ospiti | Villa La Mimosa</title>
+  <meta name="description" content="Registra il tuo soggiorno a Villa La Mimosa (Stintino): bastano pochi minuti." />
+  <meta name="theme-color" content="#f4efe3" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Le Porte di Sardegna" />
+  <meta property="og:title" content="Registrazione ospiti | Villa La Mimosa" />
+  <meta property="og:description" content="Registra il tuo soggiorno a Villa La Mimosa (Stintino): bastano pochi minuti." />
+  <meta property="og:url" content="https://www.leportedisardegna.com/registrazione-villa-la-mimosa" />
+  <meta property="og:image" content="https://www.leportedisardegna.com/img/og-home.jpg" />
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+  <link rel="stylesheet" href="fonts/fonts.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ============================================================
+       Versione mobile dei cartoncini: stesso design, pulsante al
+       posto del QR (chi legge è già sul telefono).
+       ============================================================ */
+    :root { --gold: oklch(78% 0.14 85); --card-w: 420px; }
+    body { background: var(--paper-2); }
+
+    .top { display: flex; justify-content: center; padding: 18px var(--gutter) 6px; }
+    .sheet { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; justify-items: center; padding: 14px 16px 60px; }
+
+    .card {
+      width: 100%; max-width: var(--card-w);
+      background: #fff; color: var(--ink);
+      border-radius: 18px; overflow: hidden;
+      box-shadow: 0 24px 60px -30px oklch(22% 0.015 60 / 0.45), 0 2px 6px oklch(22% 0.015 60 / 0.08);
+    }
+    .card-head { padding: 24px 26px 20px; color: var(--paper); }
+    .card-head .house { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.85; margin: 0 0 10px; }
+    .card-head h1 { font-family: var(--font-display); font-weight: 400; font-size: 32px; line-height: 1.05; letter-spacing: -0.015em; color: inherit; margin: 0; }
+    .card-head h1 em { color: inherit; font-style: italic; opacity: 0.9; }
+    .card-head .sub { font-family: var(--font-display); font-style: italic; font-size: 15px; opacity: 0.85; margin: 10px 0 0; }
+    .card-checkin .card-head { background: var(--ink); }
+    .card-review  .card-head { background: var(--terra); }
+    .stars { font-size: 22px; letter-spacing: 0.12em; color: var(--gold); margin: 0 0 10px; line-height: 1; }
+
+    .card-body { padding: 22px 26px 22px; display: grid; gap: 20px; }
+    .cta {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; min-height: 56px; padding: 16px 22px;
+      border-radius: var(--r-pill); font-size: 16px; font-weight: 500;
+      color: var(--paper); background: var(--ink);
+      transition: transform var(--t-fast) var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .cta:active { transform: scale(0.98); }
+    .card-review .cta { background: var(--terra); }
+    .cta-sub { text-align: center; font-size: 12px; color: var(--ink-3); margin: -8px 0 0; }
+
+    .lines { display: grid; gap: 11px; }
+    .line { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
+    .line svg { width: 22px; height: 15px; border-radius: 2px; box-shadow: 0 0 0 1px oklch(0% 0 0 / 0.12); margin-top: 2px; display: block; }
+    .line b { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-3); margin-bottom: 1px; }
+
+    .card-foot { padding: 14px 26px 20px; border-top: 1px solid var(--line); font-size: 11px; color: var(--ink-3); text-align: center; line-height: 1.5; }
+    .card-foot .g { font-weight: 500; color: var(--ink-2); }
+    .card-review .card-foot .g { color: var(--terra-deep); }
+    .site-foot .foot-legal { border-top: 0; padding-top: 0; }
+  </style>
+</head>
+<body>
+
+  <div class="top">
+    <a href="/" class="brand" aria-label="Le Porte di Sardegna">
+      <span class="brand-mark" aria-hidden="true"><img src="img/home/logo-new.jpeg" alt="" /></span>
+      <span class="brand-name">Le Porte di <em>Sardegna</em></span>
+    </a>
+  </div>
+
+  <main class="sheet">
+
+    <!-- ============== CARD 1: CHECK-IN ============== -->
+    <article class="card card-checkin" id="checkin">
+      <header class="card-head">
+        <p class="house">Villa La Mimosa — Stintino</p>
+        <h1>Registrazione <em>ospiti</em></h1>
+        <p class="sub">Check-in · Enregistrement · Registro</p>
+      </header>
+      <div class="card-body">
+        <a class="cta" id="cta-checkin" href="https://www.leportedisardegna.com/checkin-villa-la-mimosa" data-labels='{"it":"Registra il soggiorno →","en":"Register your stay →","fr":"Enregistrer le séjour →","es":"Registrar la estancia →"}'>Registra il soggiorno →</a>
+        <div class="lines">
+          <div class="line"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg><span><b>ITALIANO</b>Tocca il pulsante e compila il modulo per registrare il soggiorno.</span></div>
+          <div class="line"><svg viewBox="0 0 60 30" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg><span><b>ENGLISH</b>Tap the button and fill in the form to register your stay.</span></div>
+          <div class="line"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg><span><b>FRANÇAIS</b>Appuyez sur le bouton et remplissez le formulaire pour enregistrer votre séjour.</span></div>
+          <div class="line"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y="0.5" width="3" height="1" fill="#F1BF00"/></svg><span><b>ESPAÑOL</b>Pulsa el botón y rellena el formulario para registrar tu estancia.</span></div>
+        </div>
+      </div>
+      <footer class="card-foot">
+        <span class="g">Comunicazione dati ospiti</span> — Questura · Portale Alloggiati Web
+      </footer>
+    </article>
+
+      </main>
+
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <p class="foot-legal mono">© 2026 Le Porte di Sardegna · CIN Stintino IT090089C2000T0180 · CIN Alghero IT090003C2000U2044</p>
+    </div>
+  </footer>
+
+  <script>
+    /* ============================================================
+       LINK — Villa La Mimosa (gli stessi dei cartoncini stampati)
+       ============================================================ */
+    const MIMOSA_CHECKIN = "https://www.leportedisardegna.com/checkin-villa-la-mimosa";
+    const MIMOSA_REVIEW  = "https://g.page/r/Ca_s29HmHlB3EBM/review";
+    document.getElementById('cta-checkin').href = MIMOSA_CHECKIN;
+    
+
+    // Etichetta del pulsante nella lingua del telefono (it/en/fr/es, altrimenti italiano)
+    (function () {
+      var l = (navigator.language || 'it').slice(0, 2).toLowerCase();
+      document.querySelectorAll('.cta[data-labels]').forEach(function (a) {
+        var labels = JSON.parse(a.getAttribute('data-labels'));
+        a.textContent = labels[l] || labels.it;
+      });
+      // il form di check-in si apre già nella stessa lingua
+      if (['en', 'fr', 'es'].indexOf(l) >= 0) document.getElementById('cta-checkin').href += '?lang=' + l;
+    })();
+  </script>
+</body>
+</html>
