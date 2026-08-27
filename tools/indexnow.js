@@ -21,11 +21,12 @@ if (!urls.length) {
 }
 (async () => {
   const check = await fetch(`https://${HOST}/${keyFile}`);
-  if (!check.ok || (await check.text()).trim() !== key) { console.error('La chiave non è ancora online (' + check.status + '): aspetta il deploy'); process.exit(1); }
+  if (!check.ok || (await check.text()).trim() !== key) { console.error('La chiave non è ancora online (' + check.status + '): aspetta il deploy'); process.exitCode = 1; return; }
   const res = await fetch('https://api.indexnow.org/indexnow', {
     method: 'POST', headers: { 'Content-Type': 'application/json; charset=utf-8' },
     body: JSON.stringify({ host: HOST, key, keyLocation: `https://${HOST}/${keyFile}`, urlList: urls })
   });
   console.log('IndexNow:', res.status, res.statusText, '·', urls.length, 'URL inviate');
-  process.exit(res.status === 200 || res.status === 202 ? 0 : 1);
+  // niente process.exit(): su Windows crasha con connessioni fetch ancora aperte
+  process.exitCode = (res.status === 200 || res.status === 202) ? 0 : 1;
 })();
