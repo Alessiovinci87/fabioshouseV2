@@ -1,0 +1,181 @@
+<title>Portali istituzionali</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: oklch(97% 0.012 80); --paper-2: oklch(94% 0.016 78);
+    --ink: oklch(22% 0.015 60); --ink-2: oklch(38% 0.018 62); --ink-3: oklch(56% 0.015 65);
+    --line: oklch(86% 0.012 75); --line-2: oklch(78% 0.015 72);
+    --terra: oklch(52% 0.14 42); --terra-soft: oklch(93% 0.035 45);
+    --blu: oklch(38% 0.09 250); --blu-soft: oklch(93% 0.025 250);
+    --olive: oklch(48% 0.07 115); --olive-soft: oklch(93% 0.03 115);
+    --bordeaux: oklch(35% 0.10 20);
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: oklch(19% 0.012 60); --paper-2: oklch(25% 0.014 62);
+      --ink: oklch(93% 0.012 80); --ink-2: oklch(80% 0.014 78); --ink-3: oklch(64% 0.014 75);
+      --line: oklch(32% 0.014 62); --line-2: oklch(42% 0.016 64);
+      --terra: oklch(70% 0.13 45); --terra-soft: oklch(30% 0.05 42);
+      --blu: oklch(75% 0.08 250); --blu-soft: oklch(28% 0.04 250);
+      --olive: oklch(72% 0.08 115); --olive-soft: oklch(28% 0.035 115);
+      --bordeaux: oklch(78% 0.08 20);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: oklch(19% 0.012 60); --paper-2: oklch(25% 0.014 62);
+    --ink: oklch(93% 0.012 80); --ink-2: oklch(80% 0.014 78); --ink-3: oklch(64% 0.014 75);
+    --line: oklch(32% 0.014 62); --line-2: oklch(42% 0.016 64);
+    --terra: oklch(70% 0.13 45); --terra-soft: oklch(30% 0.05 42);
+    --blu: oklch(75% 0.08 250); --blu-soft: oklch(28% 0.04 250);
+    --olive: oklch(72% 0.08 115); --olive-soft: oklch(28% 0.035 115);
+    --bordeaux: oklch(78% 0.08 20);
+  }
+  body { background: var(--paper); color: var(--ink); font-family: var(--font-sans); font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 24px 18px 80px; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+  h1 { font-family: var(--font-display); font-weight: 400; font-size: 34px; line-height: 1.08; margin: 8px 0 12px; text-wrap: balance; }
+  h1 em { font-style: italic; color: var(--bordeaux); }
+  .intro { color: var(--ink-2); margin: 0 0 20px; }
+  h2 { font-family: var(--font-display); font-weight: 500; font-size: 24px; line-height: 1.15; margin: 34px 0 10px; padding-top: 22px; border-top: 1px solid var(--line-2); text-wrap: balance; }
+  h3 { font-size: 13px; letter-spacing: .09em; text-transform: uppercase; font-weight: 600; color: var(--ink-3); margin: 20px 0 6px; }
+  p { margin: 0 0 10px; }
+  ul, ol { margin: 0 0 12px; padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  li::marker { color: var(--ink-3); }
+  strong { font-weight: 600; }
+  .tag { display: inline-block; font-size: 11.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; margin-right: 6px; vertical-align: 2px; }
+  .tag.sti { background: var(--terra-soft); color: var(--terra); }
+  .tag.alg { background: var(--blu-soft); color: var(--blu); }
+  .tag.ok { background: var(--olive-soft); color: var(--olive); }
+  .field { display: grid; grid-template-columns: 110px 1fr; gap: 10px; padding: 9px 0; border-top: 1px solid var(--line); font-size: 15.5px; }
+  .field:last-of-type { border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+  .field .k { font-weight: 600; color: var(--ink-2); }
+  .field code { font-family: var(--font-mono); font-size: 14px; word-break: break-all; }
+  .copy { position: relative; background: var(--paper-2); border-left: 3px solid var(--line-2); padding: 12px 84px 12px 14px; margin: 6px 0 12px; font-size: 15.5px; white-space: pre-wrap; word-break: break-word; }
+  .copy.sti { border-left-color: var(--terra); }
+  .copy.alg { border-left-color: var(--blu); }
+  .copy .lbl { display: block; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 6px; }
+  .copy button { position: absolute; right: 10px; top: 10px; font: 500 13px var(--font-sans); color: var(--ink-2); background: var(--paper); border: 1px solid var(--line-2); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+  .note { background: var(--terra-soft); border-left: 3px solid var(--terra); padding: 12px 14px; margin: 12px 0 14px; font-size: 15.5px; }
+  .note.ok { background: var(--olive-soft); border-left-color: var(--olive); }
+  .check { list-style: none; padding-left: 0; }
+  .check li { display: grid; grid-template-columns: 26px 1fr; gap: 8px; align-items: start; }
+  .check li::before { content: "☐"; color: var(--ink-3); font-size: 20px; line-height: 1.2; }
+  footer { margin-top: 40px; padding-top: 14px; border-top: 1px solid var(--line-2); color: var(--ink-3); font-size: 13.5px; }
+  a { color: var(--terra); }
+  button:focus-visible, a:focus-visible { outline: 2px solid var(--terra); outline-offset: 2px; }
+  @media (max-width: 480px) { .field { grid-template-columns: 1fr; gap: 2px; } }
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">Le Porte di Sardegna · siti turistici ufficiali</div>
+  <h1>Farsi inserire nei siti ufficiali di <em>Stintino</em> e <em>Alghero</em></h1>
+  <p class="intro">Da discutere con Fabio. Due email, due allegati da recuperare, nessun costo. Sono i link esterni più autorevoli che il sito possa ricevere, e oggi non ne ha nessuno.</p>
+
+  <h2>L'idea in due righe</h2>
+  <p>Google si fida di un sito quando altri siti seri lo citano. Il Comune di Stintino (Visit Stintino) e la Fondazione Alghero (Alghero Turismo) hanno una sezione "Dove dormire" riservata alle strutture in regola. Farsi inserire porta due cose:</p>
+  <ul>
+    <li>un <strong>link dal sito istituzionale</strong> del territorio verso leportedisardegna.com — pesa più di cento directory;</li>
+    <li><strong>visitatori che stanno già scegliendo Stintino o Alghero</strong> e cercano dove dormire.</li>
+  </ul>
+  <div class="note">Sardegna Turismo (portale della Regione) <strong>non</strong> pubblica le singole strutture: gestisce solo il registro IUN/CIN. Non serve scrivere lì.</div>
+
+  <h2>Cosa serve da Fabio</h2>
+  <ul class="check">
+    <li><strong>Nome e cognome dell'intestatario</strong> di ciascuna casa (chi firma l'email deve essere il titolare, o scrivere "per conto di").</li>
+    <li><strong>Attestazione dei versamenti dell'imposta di soggiorno</strong> per Villa La Mimosa (si scarica dal portale comunale dell'imposta di soggiorno di Stintino). Il Comune la chiede espressamente.</li>
+    <li><strong>Ricevuta di iscrizione negli elenchi comunali</strong> della villa, se ce l'ha (altrimenti basta il CIN).</li>
+    <li>Conferma che le email partano da <strong>cosmoalghero@gmail.com</strong> (l'indirizzo pubblico delle case) o da un indirizzo del titolare.</li>
+  </ul>
+
+  <!-- ===================== STINTINO ===================== -->
+  <h2><span class="tag sti">Stintino</span> Visit Stintino — Comune di Stintino</h2>
+  <div class="field"><div class="k">A</div><div><code>ufficioturistico@comune.stintino.ss.it</code></div></div>
+  <div class="field"><div class="k">Telefono</div><div>079 520081 — Ufficio Turistico, Via Sassari 121 C (dom–sab 9–12 / 17–19)</div></div>
+  <div class="field"><div class="k">Requisiti</div><div>iscrizione negli elenchi comunali + imposta di soggiorno in regola (documentazione da allegare)</div></div>
+  <div class="field"><div class="k">Allegati</div><div>attestazione versamenti imposta di soggiorno; ricevuta iscrizione elenchi comunali (se disponibile)</div></div>
+
+  <div class="copy sti" data-copy><span class="lbl">Oggetto</span>Inserimento struttura su Visit Stintino — Villa La Mimosa (Cala Lupo)<button type="button">Copia</button></div>
+  <div class="copy sti" data-copy><span class="lbl">Testo</span>Buongiorno,
+
+vi scrivo per chiedere l'inserimento della nostra casa vacanze nella sezione "Dove dormire" del sito Visit Stintino.
+
+Villa La Mimosa — Via Le Vele 9, Loc. Cala Lupo, 07040 Stintino
+Casa vacanze, 4 camere, 8 posti letto, giardino e parcheggio
+CIN: IT090089C2000T0180
+Titolare: [nome e cognome del titolare]
+Sito: https://www.leportedisardegna.com/case/villa-stintino
+Telefono: 393 971 4566 — Email: cosmoalghero@gmail.com
+
+La struttura è iscritta negli elenchi comunali ed è in regola con l'imposta di soggiorno: allego l'attestazione dei versamenti. Se servono altri documenti o un modulo specifico, restiamo a disposizione.
+
+Segnalo inoltre che sul nostro sito abbiamo pubblicato, in quattro lingue, delle pagine dedicate ai luoghi di Stintino — Spiaggia della Pelosa con le regole di prenotazione, Porto e Museo della Tonnara, Capo Falcone, Le Saline, Ezzi Mannu, Asinara — con rimando ai siti ufficiali. Se possono essere utili alla promozione del territorio, siamo felici di condividerle.
+
+Cordiali saluti,
+[Nome e cognome]
+Le Porte di Sardegna — www.leportedisardegna.com<button type="button">Copia</button></div>
+
+  <!-- ===================== ALGHERO ===================== -->
+  <h2><span class="tag alg">Alghero</span> Alghero Turismo — Fondazione Alghero</h2>
+  <div class="field"><div class="k">A</div><div><code>info@fondazionealghero.it</code></div></div>
+  <div class="field"><div class="k">Cc</div><div><code>infotourist@alghero-turismo.it</code></div></div>
+  <div class="field"><div class="k">Telefono</div><div>079 979054 — Largo Lo Quarter, 1° piano (lun–ven 8–14; mar e mer anche 15:30–19)</div></div>
+  <div class="field"><div class="k">Requisiti</div><div>non pubblicati: chiedere nell'email se serve un modulo</div></div>
+  <div class="field"><div class="k">Allegati</div><div>nessuno al primo contatto; tenere pronti CIN e attestazione imposta di soggiorno di Alghero</div></div>
+
+  <div class="copy alg" data-copy><span class="lbl">Oggetto</span>Inserimento nella sezione Alloggi di Alghero Turismo — La Porta del Lido<button type="button">Copia</button></div>
+  <div class="copy alg" data-copy><span class="lbl">Testo</span>Buongiorno,
+
+gestiamo direttamente un appartamento per vacanze nel centro di Alghero e vorremmo chiedere l'inserimento nella sezione "Alloggi – Casa Vacanza" del sito Alghero Turismo.
+
+La Porta del Lido — Via Goceano 23, 07041 Alghero
+Appartamento vacanze, 2 camere, 4 posti letto, balcone; a 5 minuti a piedi dal centro storico e 10 dal Lido
+CIN: IT090003C2000U2044
+Sito: https://www.leportedisardegna.com/case/appartamento-alghero
+Telefono: 393 971 4566 — Email: cosmoalghero@gmail.com
+
+Se è previsto un modulo o una documentazione da presentare, vi chiedo cortesemente di indicarmelo.
+
+Sul nostro sito abbiamo pubblicato pagine in italiano, inglese, francese e tedesco dedicate a bastioni e centro storico, Cattedrale, Grotte di Nettuno, Capo Caccia, Nuraghe Palmavera, Porto Conte, spiagge della Riviera e cucina algherese, con rimandi ai siti ufficiali e alla Fondazione. Le mettiamo volentieri a disposizione, se utili.
+
+Cordiali saluti,
+[Nome e cognome]
+Le Porte di Sardegna — www.leportedisardegna.com<button type="button">Copia</button></div>
+
+  <h2>Da controllare, senza email</h2>
+  <ul>
+    <li><strong>PortalTour Alghero</strong> — <a href="https://imposta-soggiorno.org/alghero/dove-dormire/index.php">imposta-soggiorno.org/alghero/dove-dormire</a>: elenca le strutture registrate per l'imposta di soggiorno del Comune di Alghero. Verificare se La Porta del Lido compare; se manca, l'inserimento si chiede dall'account comunale dell'imposta di soggiorno.</li>
+    <li>Dopo l'inserimento: aprire la pagina della struttura sui due siti e controllare che il link porti a <strong>www.leportedisardegna.com</strong> (non ad Airbnb o Booking) e che il nome sia scritto esattamente "Villa La Mimosa" / "La Porta del Lido".</li>
+  </ul>
+
+  <h2>Tempi e cosa aspettarsi</h2>
+  <ul>
+    <li>Risposta degli uffici: da pochi giorni a qualche settimana; se non arriva nulla in 15 giorni, una telefonata ai numeri sopra sblocca quasi sempre.</li>
+    <li>Nessun costo per entrambi gli inserimenti.</li>
+    <li>Effetto su Google: visibile dopo 1–2 mesi dalla pubblicazione del link.</li>
+  </ul>
+
+  <footer>Contatti verificati sui siti ufficiali il 27 agosto 2026 (comune.stintino.ss.it, fondazionealghero.it, algheroturismo.eu). Dati delle case dal sito leportedisardegna.com.</footer>
+</div>
+
+<script>
+  document.querySelectorAll('[data-copy]').forEach(function (box) {
+    var btn = box.querySelector('button');
+    function text() {
+      var c = box.cloneNode(true);
+      c.querySelectorAll('button, .lbl').forEach(function (n) { n.remove(); });
+      return c.textContent.trim();
+    }
+    btn.addEventListener('click', function () {
+      try {
+        navigator.clipboard.writeText(text()).then(function () {
+          btn.textContent = 'Copiato';
+          setTimeout(function () { btn.textContent = 'Copia'; }, 1500);
+        });
+      } catch (e) { btn.textContent = 'Seleziona e copia'; }
+    });
+  });
+</script>
