@@ -2,7 +2,8 @@
 /* ============================================================
    INDEXNOW — segnala a Bing/Yandex/Naver/Seznam le URL da (ri)indicizzare.
    Uso:  node tools/indexnow.js            invia tutte le URL della sitemap
-         node tools/indexnow.js /case /luogo/capo-caccia   solo alcune
+         node tools/indexnow.js case luogo/capo-caccia   solo alcune (senza slash iniziale:
+         Git Bash trasformerebbe "/case" in un percorso Windows)
    La chiave è il file <chiave>.txt nella radice del sito (deve rispondere 200).
    Da rilanciare dopo ogni deploy che cambia contenuti.
    ============================================================ */
@@ -14,7 +15,7 @@ const HOST = 'www.leportedisardegna.com';
 const keyFile = fs.readdirSync(ROOT).find(f => /^[0-9a-f]{32}\.txt$/.test(f));
 if (!keyFile) { console.error('File chiave IndexNow non trovato nella radice'); process.exit(1); }
 const key = keyFile.replace(/\.txt$/, '');
-let urls = process.argv.slice(2).map(u => 'https://' + HOST + u);
+let urls = process.argv.slice(2).map(u => 'https://' + HOST + '/' + u.replace(/^.*?[\/]Git[\/]/, '').replace(/^\/+/, ''));
 if (!urls.length) {
   const sm = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
   urls = [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
