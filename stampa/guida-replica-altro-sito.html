@@ -1,0 +1,154 @@
+<title>Visibilità per un altro sito</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: oklch(97% 0.012 80); --paper-2: oklch(94% 0.016 78);
+    --ink: oklch(22% 0.015 60); --ink-2: oklch(38% 0.018 62); --ink-3: oklch(56% 0.015 65);
+    --line: oklch(86% 0.012 75); --line-2: oklch(78% 0.015 72);
+    --terra: oklch(52% 0.14 42); --terra-soft: oklch(93% 0.035 45);
+    --olive: oklch(48% 0.07 115); --olive-soft: oklch(93% 0.03 115);
+    --bordeaux: oklch(35% 0.10 20);
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: oklch(19% 0.012 60); --paper-2: oklch(25% 0.014 62);
+      --ink: oklch(93% 0.012 80); --ink-2: oklch(80% 0.014 78); --ink-3: oklch(64% 0.014 75);
+      --line: oklch(32% 0.014 62); --line-2: oklch(42% 0.016 64);
+      --terra: oklch(70% 0.13 45); --terra-soft: oklch(30% 0.05 42);
+      --olive: oklch(72% 0.08 115); --olive-soft: oklch(28% 0.035 115);
+      --bordeaux: oklch(78% 0.08 20);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: oklch(19% 0.012 60); --paper-2: oklch(25% 0.014 62);
+    --ink: oklch(93% 0.012 80); --ink-2: oklch(80% 0.014 78); --ink-3: oklch(64% 0.014 75);
+    --line: oklch(32% 0.014 62); --line-2: oklch(42% 0.016 64);
+    --terra: oklch(70% 0.13 45); --terra-soft: oklch(30% 0.05 42);
+    --olive: oklch(72% 0.08 115); --olive-soft: oklch(28% 0.035 115);
+    --bordeaux: oklch(78% 0.08 20);
+  }
+  body { background: var(--paper); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: clamp(24px, 5vw, 56px) clamp(18px, 4vw, 40px) 96px; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+  h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(32px, 5vw, 46px); line-height: 1.08; margin: 8px 0 12px; text-wrap: balance; }
+  h1 em { font-style: italic; color: var(--bordeaux); }
+  .intro { color: var(--ink-2); max-width: 64ch; margin: 0 0 22px; }
+  h2 { font-family: var(--font-display); font-weight: 500; font-size: 25px; line-height: 1.15; margin: 36px 0 10px; padding-top: 22px; border-top: 1px solid var(--line-2); text-wrap: balance; }
+  h3 { font-size: 13px; letter-spacing: .09em; text-transform: uppercase; font-weight: 600; color: var(--ink-3); margin: 22px 0 6px; }
+  p { margin: 0 0 10px; max-width: 68ch; }
+  ul, ol { margin: 0 0 12px; padding-left: 22px; max-width: 68ch; }
+  li { margin-bottom: 7px; }
+  li::marker { color: var(--ink-3); }
+  strong { font-weight: 600; }
+  code { font-family: var(--font-mono); font-size: .86em; background: var(--paper-2); padding: 1px 5px; border-radius: 3px; }
+  .copy { position: relative; background: var(--paper-2); border-left: 3px solid var(--terra); padding: 14px 16px 44px; margin: 8px 0 16px; font-size: 14.5px; white-space: pre-wrap; word-break: break-word; font-family: var(--font-mono); line-height: 1.5; }
+  .copy .lbl { display: block; font-family: var(--font-sans); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 8px; }
+  .copy button { position: absolute; right: 12px; bottom: 10px; font: 500 13px var(--font-sans); color: var(--ink-2); background: var(--paper); border: 1px solid var(--line-2); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+  .note { background: var(--olive-soft); border-left: 3px solid var(--olive); padding: 12px 14px; margin: 12px 0 16px; max-width: 68ch; font-size: 15px; }
+  .note.warn { background: var(--terra-soft); border-left-color: var(--terra); }
+  .check { list-style: none; padding-left: 0; }
+  .check li { display: grid; grid-template-columns: 26px 1fr; gap: 8px; align-items: start; }
+  .check li::before { content: "☐"; color: var(--ink-3); font-size: 20px; line-height: 1.2; }
+  table { border-collapse: collapse; width: 100%; font-size: 14.5px; margin: 8px 0 18px; }
+  .tbl { overflow-x: auto; }
+  th { text-align: left; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line-2); }
+  td { padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  td:first-child { font-weight: 500; white-space: nowrap; }
+  footer { margin-top: 44px; padding-top: 14px; border-top: 1px solid var(--line-2); color: var(--ink-3); font-size: 13.5px; }
+  a { color: var(--terra); }
+  button:focus-visible, a:focus-visible { outline: 2px solid var(--terra); outline-offset: 2px; }
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">Guida riutilizzabile · agosto 2026</div>
+  <h1>Rifare il lavoro di visibilità su <em>un altro sito</em> di case vacanze</h1>
+  <p class="intro">Quello che abbiamo fatto per Le Porte di Sardegna, in ordine, con i dati da raccogliere prima e un prompt pronto da incollare nella nuova sessione di Claude Code aperta nella cartella dell'altro progetto.</p>
+
+  <h2>1. Dati da raccogliere prima di iniziare</h2>
+  <p>Con questi in mano la sessione fila senza interruzioni. Per ogni struttura:</p>
+  <div class="tbl"><table>
+    <tr><th>Dato</th><th>Dove lo trovi</th><th>Serve per</th></tr>
+    <tr><td>Nome esatto</td><td>Come è scritto su Google Business e sui portali (deve coincidere ovunque)</td><td>schede, JSON-LD, loghi</td></tr>
+    <tr><td>Indirizzo completo + CAP</td><td>Registrazione CIN / contratto</td><td>schede Google, Bing, Apple</td></tr>
+    <tr><td>Telefono e email pubblici</td><td>Quelli che il proprietario vuole ricevere</td><td>schede, sito</td></tr>
+    <tr><td>CIN (e IUN in Sardegna)</td><td>Ministero del Turismo / portale regionale</td><td>sito (obbligo di legge), portali istituzionali</td></tr>
+    <tr><td>Nome dell'intestatario</td><td>Registrazione CIN</td><td>email agli enti, verifica Apple</td></tr>
+    <tr><td>Posti letto, camere, bagni, m², servizi</td><td>Annuncio Airbnb/Booking</td><td>descrizioni (≤500 caratteri per Bing/Apple)</td></tr>
+    <tr><td>Prezzi per mese/settimana</td><td>Proprietario</td><td>pagine casa, post</td></tr>
+    <tr><td>Orari check-in/out, animali, cancellazioni</td><td>Proprietario</td><td>Q&amp;A Google, FAQ del sito</td></tr>
+    <tr><td>Link Airbnb/Booking</td><td>—</td><td>calendario disponibilità, coerenza nomi</td></tr>
+    <tr><td>Link recensione Google</td><td>Google Business → "Chiedi recensioni"</td><td>cartoncini QR</td></tr>
+    <tr><td>Foto (20+ per casa) e loghi</td><td>Proprietario / grafico</td><td>tutto</td></tr>
+    <tr><td>Chi ha accesso a Google Business, Search Console, Netlify/hosting, dominio (DNS)</td><td>—</td><td>verifiche e deploy</td></tr>
+  </table></div>
+  <div class="note warn">Cose imparate stavolta: le schede Google per <strong>case vacanze senza reception</strong> non hanno il campo Descrizione (c'è "Dettagli hotel") e sono a rischio policy: non cambiare mai il nome, niente parole chiave nel nome. Bing Places e Apple vogliono descrizioni <strong>≤ 500 caratteri</strong>. Apple rifiuta gli URL con parametri UTM e verifica con una <strong>chiamata automatica al numero della scheda</strong>: avvisa prima il proprietario. Sardegna Turismo non pubblica le singole strutture.</div>
+
+  <h2>2. Cosa si fa, in ordine</h2>
+  <ol>
+    <li><strong>Diagnosi</strong>: cosa vede un crawler senza JavaScript (<code>curl</code> su una pagina interna), sitemap/robots, Search Console verificata?, anteprima social (og:image), backlink, presenza dei nomi su Google.</li>
+    <li><strong>Tecnico sul sito</strong>: se è una SPA, prerendering per ogni URL; lingue su percorso (<code>/en/…</code>) con hreflang per rotta; sitemap con alternates; loghi/favicon/immagini OG con il marchio; JSON-LD LodgingBusiness con CIN e logo.</li>
+    <li><strong>Motori</strong>: Search Console (sitemap inviata + "Richiedi indicizzazione" sulle 4 pagine chiave), Bing Webmaster (import da Search Console), IndexNow (chiave sul sito + script).</li>
+    <li><strong>Schede</strong>: Google Business (categoria "Casa per vacanze", sito con UTM, Dettagli hotel, 20 foto rinominate + logo, 6 Q&amp;A, post), Bing Places (import da Google, descrizione, orari vuoti), Apple Business Connect (con il proprietario al telefono).</li>
+    <li><strong>Materiali</strong>: cartoncini QR check-in/recensione, kit descrizioni per Airbnb/Booking, email ai portali turistici del Comune.</li>
+  </ol>
+
+  <h2>3. Prompt per la nuova sessione</h2>
+  <p>Apri Claude Code nella cartella dell'altro sito, compila le parentesi quadre e incolla. Se un dato manca, scrivi "non lo so": Claude te lo chiede quando serve.</p>
+  <div class="copy" data-copy><span class="lbl">Prompt</span>Voglio rendere più visibile questo sito di case vacanze, seguendo lo stesso metodo usato per leportedisardegna.com (prerendering se è una SPA, lingue su percorso con hreflang, loghi/OG/favicon, Search Console + Bing Webmaster + IndexNow, schede Google Business / Bing Places / Apple Business Connect, cartoncini QR, kit per i portali).
+
+Dati:
+- Sito: [URL] — hosting: [Netlify/altro] — dominio gestito su: [registrar]
+- Struttura/e: [nome esatto] — [indirizzo completo, CAP, comune] — CIN [codice] — intestatario [nome]
+- Posti letto [n], camere [n], bagni [n], m² [n], servizi principali [wifi, aria condizionata, parcheggio…]
+- Prezzi: [per mese o settimana]
+- Check-in dalle [ora], check-out entro [ora]; animali [sì/no]; cancellazione [regola]
+- Telefono pubblico [numero] — email pubblica [email] — WhatsApp [sì/no]
+- Link Airbnb [url] — Booking [url] — link recensione Google [url o "da creare"]
+- Lingue del sito: [it, en, …] — lingue da aggiungere: [es, …]
+- Loghi: [dove sono i file / da fare]
+- Search Console: [verificata sì/no] — Google Business: [scheda esistente sì/no, verificata sì/no]
+- Chi gestisce le schede Google/Bing/Apple: [io / il proprietario] — il proprietario sa dell'iniziativa: [sì/no]
+
+Procedi così: prima la diagnosi del sito online (senza modificare nulla), poi un piano in ordine di impatto con cosa fai tu e cosa devo fare io con i miei account. Per ogni cosa che tocca un account mio, dammi i passaggi esatti e i testi pronti da incollare (descrizioni ≤ 500 caratteri, Q&A, post). Non installare analytics. Commit e push solo quando te lo dico.<button type="button">Copia</button></div>
+
+  <h2>4. Cosa riutilizzare da questo progetto</h2>
+  <p>Nella cartella <code>tools/</code> di FabioSHouse-v2 ci sono script già pronti e testati; Claude può copiarli e adattarli:</p>
+  <ul>
+    <li><code>tools/prerender.js</code> — HTML statico per ogni rotta di una SPA (jsdom), regole in <code>_redirects</code>, sitemap con hreflang.</li>
+    <li><code>tools/indexnow.js</code> — invio URL a Bing/Yandex (serve un file-chiave nella radice del sito).</li>
+    <li><code>tools/build-logos.py</code> — dai PNG del logo: versioni trasparenti, quadrate, favicon, icone PWA, immagini OG 1200×630.</li>
+    <li><code>tools/extract-i18n.js</code> + <code>tools/merge-lang.js</code> — aggiungere una lingua senza toccare i file originali.</li>
+    <li><code>stampa/cartoncino-tondo-*.html</code> e <code>stampa/cartoncini-*.html</code> — cartoncini QR (A5 e tondi Ø15).</li>
+    <li>Le tre guide: kit Google Business, Apple Business Connect, portali istituzionali (in <code>stampa/</code> e come artifact).</li>
+  </ul>
+  <p>Frase da dire a Claude nella nuova sessione: <em>"Gli script e le guide sono in C:\Users\aless\Fabio's House\FabioSHouse-v2\tools e \stampa: riusali dove ha senso."</em></p>
+
+  <h2>5. Checklist finale (da spuntare nell'altro progetto)</h2>
+  <ul class="check">
+    <li>Una pagina interna, scaricata senza JavaScript, contiene titolo e testo propri</li>
+    <li>Anteprima WhatsApp/Facebook con immagine e titolo giusti (Sharing Debugger)</li>
+    <li>Search Console: sitemap "Riuscita", pagine rilevate = numero atteso</li>
+    <li>Bing Webmaster importato; IndexNow risponde 200</li>
+    <li>Google Business: categoria, foto, logo, Q&A, post; nome identico al sito</li>
+    <li>Bing Places: descrizione, email, nessun orario</li>
+    <li>Apple: sedi verificate (chiamata al proprietario), nessun orario</li>
+    <li>Titoli Airbnb/Booking con nome + località; riga "gestito da [marchio]"</li>
+    <li>Email ai portali turistici del Comune inviate</li>
+  </ul>
+
+  <footer>Ricavata dal lavoro su leportedisardegna.com del 27 agosto 2026. I passaggi valgono per qualsiasi sito di case vacanze; i nomi dei menu di Google/Bing/Apple possono cambiare nel tempo.</footer>
+</div>
+
+<script>
+  document.querySelectorAll('[data-copy]').forEach(function (box) {
+    var btn = box.querySelector('button');
+    function text() { var c = box.cloneNode(true); c.querySelectorAll('button, .lbl').forEach(function (n) { n.remove(); }); return c.textContent.trim(); }
+    btn.addEventListener('click', function () {
+      try { navigator.clipboard.writeText(text()).then(function () { btn.textContent = 'Copiato'; setTimeout(function () { btn.textContent = 'Copia'; }, 1500); }); }
+      catch (e) { btn.textContent = 'Seleziona e copia'; }
+    });
+  });
+</script>

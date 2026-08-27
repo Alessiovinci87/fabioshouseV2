@@ -29,7 +29,7 @@ const { JSDOM, VirtualConsole } = require('jsdom');
 const ROOT = path.join(__dirname, '..');
 const OUT_DIR = path.join(ROOT, 'prerender');
 const ORIGIN = 'https://www.leportedisardegna.com';
-const SCRIPTS = ['i18n.js', 'data.js', 'pages.js', 'pages2.js', 'app.js'];
+const SCRIPTS = ['i18n.js', 'data.js', 'lang-es.js', 'pages.js', 'pages2.js', 'app.js'];
 const REDIRECTS = path.join(ROOT, '_redirects');
 const MARK_START = '# --- prerender (generato da tools/prerender.js, non modificare a mano) ---';
 const MARK_END = '# --- /prerender ---';
@@ -43,7 +43,8 @@ const LANGS = [
   { code: 'it', tag: 'it-IT', prefix: '' },
   { code: 'en', tag: 'en-GB', prefix: 'en' },
   { code: 'fr', tag: 'fr-FR', prefix: 'fr' },
-  { code: 'de', tag: 'de-DE', prefix: 'de' }
+  { code: 'de', tag: 'de-DE', prefix: 'de' },
+  { code: 'es', tag: 'es-ES', prefix: 'es' }
 ];
 const STATIC_SITEMAP = ['/privacy.html'];
 

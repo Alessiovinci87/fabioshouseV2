@@ -149,6 +149,41 @@
 /de/luogo/cantina-sella-mosca      /prerender/de/luogo/cantina-sella-mosca.html   200
 /de/luogo/spiagge-riviera          /prerender/de/luogo/spiagge-riviera.html   200
 /de/luogo/cucina-catalana          /prerender/de/luogo/cucina-catalana.html   200
+/es                                /prerender/es/home.html   200
+/es/                               /prerender/es/home.html   200
+/es/case                           /prerender/es/case.html   200
+/es/incluso                        /prerender/es/incluso.html   200
+/es/chi-siamo                      /prerender/es/chi-siamo.html   200
+/es/contatti                       /prerender/es/contatti.html   200
+/es/case/villa-stintino            /prerender/es/case/villa-stintino.html   200
+/es/case/appartamento-alghero      /prerender/es/case/appartamento-alghero.html   200
+/es/luogo/spiaggia-la-pelosa       /prerender/es/luogo/spiaggia-la-pelosa.html   200
+/es/luogo/porto-stintino           /prerender/es/luogo/porto-stintino.html   200
+/es/luogo/parco-asinara            /prerender/es/luogo/parco-asinara.html   200
+/es/luogo/museo-tonnare            /prerender/es/luogo/museo-tonnare.html   200
+/es/luogo/spiaggia-le-saline       /prerender/es/luogo/spiaggia-le-saline.html   200
+/es/luogo/spiaggia-ezzi-mannu      /prerender/es/luogo/spiaggia-ezzi-mannu.html   200
+/es/luogo/monte-accoddi            /prerender/es/luogo/monte-accoddi.html   200
+/es/luogo/castelsardo              /prerender/es/luogo/castelsardo.html   200
+/es/luogo/capo-falcone             /prerender/es/luogo/capo-falcone.html   200
+/es/luogo/snorkeling-windsurf      /prerender/es/luogo/snorkeling-windsurf.html   200
+/es/luogo/cucina-sarda             /prerender/es/luogo/cucina-sarda.html   200
+/es/luogo/spiaggia-del-lido        /prerender/es/luogo/spiaggia-del-lido.html   200
+/es/luogo/spiaggia-bombarde        /prerender/es/luogo/spiaggia-bombarde.html   200
+/es/luogo/spiaggia-lazzaretto      /prerender/es/luogo/spiaggia-lazzaretto.html   200
+/es/luogo/spiaggia-la-stalla       /prerender/es/luogo/spiaggia-la-stalla.html   200
+/es/luogo/spiaggia-maria-pia       /prerender/es/luogo/spiaggia-maria-pia.html   200
+/es/luogo/spiaggia-mugoni          /prerender/es/luogo/spiaggia-mugoni.html   200
+/es/luogo/spiaggia-porto-ferro     /prerender/es/luogo/spiaggia-porto-ferro.html   200
+/es/luogo/centro-storico-bastioni  /prerender/es/luogo/centro-storico-bastioni.html   200
+/es/luogo/cattedrale-santa-maria   /prerender/es/luogo/cattedrale-santa-maria.html   200
+/es/luogo/grotte-di-nettuno        /prerender/es/luogo/grotte-di-nettuno.html   200
+/es/luogo/capo-caccia              /prerender/es/luogo/capo-caccia.html   200
+/es/luogo/nuraghe-palmavera        /prerender/es/luogo/nuraghe-palmavera.html   200
+/es/luogo/parco-porto-conte        /prerender/es/luogo/parco-porto-conte.html   200
+/es/luogo/cantina-sella-mosca      /prerender/es/luogo/cantina-sella-mosca.html   200
+/es/luogo/spiagge-riviera          /prerender/es/luogo/spiagge-riviera.html   200
+/es/luogo/cucina-catalana          /prerender/es/luogo/cucina-catalana.html   200
 # --- /prerender ---
 
 # SPA fallback: ogni path inesistente serve index.html con status 200

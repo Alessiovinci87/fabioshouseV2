@@ -13,7 +13,7 @@
 (function () {
   'use strict';
 
-  var LANGS = ['it', 'en', 'fr', 'de'];
+  var LANGS = ['it', 'en', 'fr', 'de', 'es'];
   var DEFAULT = 'it';
   var state = { lang: DEFAULT };
 
@@ -23,7 +23,7 @@
   // browser/localStorage: i crawler devono vedere sempre la lingua della URL;
   // Google manda gli utenti alla versione giusta tramite hreflang).
   // ----------------------------------------------------------
-  var PATH_RE = /^\/(en|fr|de)(?=\/|$)/;
+  var PATH_RE = /^\/(en|fr|de|es)(?=\/|$)/;
   function pathLang(p) {
     var m = PATH_RE.exec(p == null ? (location.pathname || '/') : p);
     return m ? m[1] : null;
@@ -968,6 +968,14 @@
     t: t,
     setLang: setLang,
     translateDom: translateDom,
+    // Estensione del dizionario da file esterni (es. lang-es.js): { chiave: { es: '…' } }
+    extend: function (patch) {
+      Object.keys(patch || {}).forEach(function (k) {
+        if (!DICT[k]) DICT[k] = {};
+        Object.assign(DICT[k], patch[k]);
+      });
+    },
+    dict: DICT,
     pathLang: pathLang,
     basePath: basePath,
     localizePath: localizePath,
