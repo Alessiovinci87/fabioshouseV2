@@ -43,6 +43,8 @@
   function parseRoute() {
     // location.pathname always starts with '/'
     var raw = location.pathname || '/';
+    // toglie il prefisso lingua (/en/case → /case): la lingua la gestisce i18n
+    if (window.FH_I18N && window.FH_I18N.basePath) raw = window.FH_I18N.basePath(raw);
     if (raw !== '/') raw = raw.replace(/\/+$/, '') || '/'; // strip trailing slash
     if (!raw || raw === '/') return { name: 'home' };
     var parts = raw.split('/').filter(Boolean); // ['case','id']
@@ -157,6 +159,7 @@
     updateActiveNav(r);
     // applica i18n ai [data-i18n] appena renderizzati
     if (window.FH_I18N && window.FH_I18N.translateDom) window.FH_I18N.translateDom(view);
+    if (window.FH_I18N && window.FH_I18N.localizeLinks) window.FH_I18N.localizeLinks(view);
     applyRouteMeta(r);
     applyLuogoJsonLd(r);
     updateWhatsApp(r);
@@ -188,6 +191,16 @@
     var link = document.querySelector('link[rel="canonical"]');
     if (link) link.setAttribute('href', url);
   }
+  // hreflang della rotta corrente: IT alla radice, EN/FR/DE su /xx/…
+  function updateHreflang() {
+    var I = window.FH_I18N;
+    if (!I || !I.localizePath) return;
+    var base = I.basePath(location.pathname);
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(function (l) {
+      var hl = l.getAttribute('hreflang');
+      l.setAttribute('href', SITE_ORIGIN + I.localizePath(base, hl === 'x-default' ? 'it' : hl));
+    });
+  }
 
   // SEO per route: aggiorna <title> + meta description + og:title/description/image
   // + canonical + og:url coerenti con la route SPA attiva e la lingua corrente.
@@ -200,6 +213,7 @@
     var cUrl = canonicalUrl();
     setCanonical(cUrl);
     setMeta('property', 'og:url', cUrl);
+    updateHreflang();
     // Rotte "luogo": titolo/description/og:image generati dal dato del luogo,
     // non da una chiave i18n: ogni luogo nuovo funziona senza toccare i dict.
     if (r.name === 'luogo' && window.FH_getLuogo) {
@@ -438,11 +452,12 @@
     var href = brand.getAttribute('href') || '';
     if (href !== '/') return; // pagine statiche (privacy.html, ecc.): lascia il default
     e.preventDefault();
-    var atHome = location.pathname === '/' || location.pathname === '';
+    var I = window.FH_I18N;
+    var atHome = (I && I.basePath ? I.basePath() : location.pathname) === '/' || location.pathname === '';
     if (atHome) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      history.pushState(null, '', '/');
+      history.pushState(null, '', I && I.localizePath ? I.localizePath('/') : '/');
       renderRoute();
     }
   });
@@ -1390,11 +1405,15 @@
   try {
     var saved = localStorage.getItem('fh_route');
     // restore solo se l'utente è arrivato sulla home pulita (no path, no query)
-    if (saved && location.pathname === '/' && !location.search) {
+    var I0 = window.FH_I18N;
+    var atRoot = (I0 && I0.basePath ? I0.basePath() : location.pathname) === '/';
+    if (saved && atRoot && !location.search) {
       // migra formato hash legacy (es. "#/case") a path ("/case")
       if (saved.charAt(0) === '#') saved = saved.slice(1) || '/';
       if (saved.charAt(0) !== '/') saved = '/' + saved;
-      if (saved !== '/') history.replaceState(null, '', saved);
+      // riallinea al prefisso lingua della URL corrente
+      if (I0 && I0.localizePath) saved = I0.localizePath(saved);
+      if (I0 && I0.basePath ? I0.basePath(saved) !== '/' : saved !== '/') history.replaceState(null, '', saved);
     }
   } catch (e) {}
 

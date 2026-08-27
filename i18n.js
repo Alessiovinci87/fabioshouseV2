@@ -18,6 +18,50 @@
   var state = { lang: DEFAULT };
 
   // ----------------------------------------------------------
+  // Lingue su percorso: /en/…, /fr/…, /de/…; l'italiano resta alla radice.
+  // La URL è l'unica fonte di verità per la lingua (niente auto-redirect da
+  // browser/localStorage: i crawler devono vedere sempre la lingua della URL;
+  // Google manda gli utenti alla versione giusta tramite hreflang).
+  // ----------------------------------------------------------
+  var PATH_RE = /^\/(en|fr|de)(?=\/|$)/;
+  function pathLang(p) {
+    var m = PATH_RE.exec(p == null ? (location.pathname || '/') : p);
+    return m ? m[1] : null;
+  }
+  function basePath(p) {
+    p = (p == null ? location.pathname : p) || '/';
+    p = p.replace(PATH_RE, '');
+    return p || '/';
+  }
+  function localizePath(p, lang) {
+    lang = lang || state.lang;
+    var base = basePath(p);
+    if (lang === DEFAULT) return base;
+    return '/' + lang + (base === '/' ? '' : base);
+  }
+  // Riscrive i link interni delle rotte SPA con il prefisso della lingua
+  // corrente (i link statici sono scritti in IT: /case, /luogo/…).
+  var ROUTABLE = /^\/(?:$|case(?:\/|$)|luogo\/|incluso$|chi-siamo$|contatti$)/;
+  function localizeLinks(root) {
+    (root || document).querySelectorAll('a[href^="/"]').forEach(function (a) {
+      var href = a.getAttribute('href') || '';
+      var m = /^([^?#]*)(.*)$/.exec(href);
+      var path = m[1], rest = m[2];
+      var base = basePath(path);
+      if (!ROUTABLE.test(base)) return;
+      var loc = localizePath(base);
+      if (loc !== path) a.setAttribute('href', loc + rest);
+    });
+  }
+  function searchWithoutLang() {
+    try {
+      var u = new URL(location.href);
+      u.searchParams.delete('lang');
+      return u.search;
+    } catch (_) { return ''; }
+  }
+
+  // ----------------------------------------------------------
   // DIZIONARIO CENTRALE (UI chrome + home)
   // Contenuti lunghi (house.story, activities, guide) restano
   // come oggetti multilingua inline in data.js.
@@ -810,17 +854,15 @@
   // core
   // ----------------------------------------------------------
   function detectLang() {
+    // 1) prefisso nel percorso (/en/…)
+    var pl = pathLang();
+    if (pl) return pl;
+    // 2) ?lang= (link vecchi): viene normalizzato subito in percorso
     try {
       var u = new URL(location.href);
       var q = u.searchParams.get('lang');
       if (q && LANGS.indexOf(q) >= 0) return q;
     } catch (_) {}
-    try {
-      var s = localStorage.getItem('fh.lang');
-      if (s && LANGS.indexOf(s) >= 0) return s;
-    } catch (_) {}
-    var n = (navigator.language || DEFAULT).slice(0, 2).toLowerCase();
-    if (LANGS.indexOf(n) >= 0) return n;
     return DEFAULT;
   }
 
@@ -874,9 +916,7 @@
     try { localStorage.setItem('fh.lang', lang); } catch (_) {}
     document.documentElement.setAttribute('lang', lang);
     try {
-      var u = new URL(location.href);
-      u.searchParams.set('lang', lang);
-      history.replaceState(null, '', u.toString());
+      history.replaceState(null, '', localizePath(location.pathname, lang) + searchWithoutLang() + location.hash);
     } catch (_) {}
     // aggiorna language switcher UI
     document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
@@ -886,8 +926,9 @@
     document.querySelectorAll('[data-lang-current]').forEach(function (el) {
       el.textContent = lang.toUpperCase();
     });
-    // ri-traduci DOM statico
+    // ri-traduci DOM statico e riscrivi i link con il nuovo prefisso
     translateDom(document);
+    localizeLinks(document);
     // ri-renderizza SPA
     if (window.FH_rerender) window.FH_rerender();
   }
@@ -896,10 +937,17 @@
   //    Altrimenti il primo render userebbe 'it' e la pagina tornerebbe in IT al refresh.
   state.lang = detectLang();
   document.documentElement.setAttribute('lang', state.lang);
+  // Normalizza la URL: ?lang=xx → /xx/…  (e toglie il parametro)
+  try {
+    if (pathLang() !== (state.lang === DEFAULT ? null : state.lang) || /[?&]lang=/.test(location.search)) {
+      history.replaceState(null, '', localizePath(location.pathname, state.lang) + searchWithoutLang() + location.hash);
+    }
+  } catch (_) {}
 
   function init() {
     // DOM è pronto: traduci gli elementi statici (nav, footer) e aggancia eventi
     translateDom(document);
+    localizeLinks(document);
     document.addEventListener('click', function (e) {
       var btn = e.target.closest && e.target.closest('[data-lang-btn]');
       if (!btn) return;
@@ -919,7 +967,11 @@
     langs: LANGS,
     t: t,
     setLang: setLang,
-    translateDom: translateDom
+    translateDom: translateDom,
+    pathLang: pathLang,
+    basePath: basePath,
+    localizePath: localizePath,
+    localizeLinks: localizeLinks
   };
 
   if (document.readyState === 'loading') {

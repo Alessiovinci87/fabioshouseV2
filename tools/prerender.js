@@ -38,9 +38,14 @@ const args = process.argv.slice(2);
 const CLEAN = args.includes('--clean');
 const CHECK = args.includes('--check');
 
-// Lingue: per ora solo IT (le versioni EN/FR/DE via ?lang= non sono rotte
-// separate). Quando passeremo a /en/… basta aggiungere qui i prefissi.
-const LANGS = [{ code: 'it', tag: 'it-IT', prefix: '' }];
+// Lingue su percorso: IT alla radice, EN/FR/DE con prefisso (/en/case …).
+const LANGS = [
+  { code: 'it', tag: 'it-IT', prefix: '' },
+  { code: 'en', tag: 'en-GB', prefix: 'en' },
+  { code: 'fr', tag: 'fr-FR', prefix: 'fr' },
+  { code: 'de', tag: 'de-DE', prefix: 'de' }
+];
+const STATIC_SITEMAP = ['/privacy.html'];
 
 function readSource(name) {
   return fs.readFileSync(path.join(ROOT, name), 'utf8');
@@ -109,6 +114,9 @@ function render(shell, route, lang) {
     }
   }
   const doc = w.document;
+  // In jsdom DOMContentLoaded scatta in modo asincrono, dopo il nostro salvataggio:
+  // lo emettiamo ora così i18n.init() traduce nav/footer e prefissa i link.
+  doc.dispatchEvent(new w.Event('DOMContentLoaded', { bubbles: true }));
   const view = doc.getElementById('view');
   if (!view || !view.innerHTML.trim()) throw new Error(`#view vuoto per ${route}`);
   doc.body.classList.remove('has-tweaks');
@@ -121,13 +129,9 @@ function render(shell, route, lang) {
   if (route !== '/') {
     doc.querySelectorAll('link[rel="preload"][href*="hero-home-"]').forEach(l => l.remove());
   }
-  // 3) hreflang coerenti con la rotta (nello shell puntano tutti alla home).
-  const canonical = doc.querySelector('link[rel="canonical"]');
-  const canon = canonical ? canonical.getAttribute('href') : url;
-  doc.querySelectorAll('link[rel="alternate"][hreflang]').forEach(l => {
-    const hl = l.getAttribute('hreflang');
-    l.setAttribute('href', hl === 'it' || hl === 'x-default' ? canon : canon + '?lang=' + hl);
-  });
+  // (hreflang e canonical li scrive app.js in base al percorso)
+  const langAttr = doc.documentElement.getAttribute('lang');
+  if (langAttr !== lang.code) throw new Error(`lingua attesa ${lang.code}, trovata ${langAttr} per ${url}`);
   const html = dom.serialize();
   w.close();
   return { html, title: doc.title, words: view.textContent.split(/\s+/).filter(Boolean).length };
@@ -153,6 +157,54 @@ function updateRedirects(rules) {
 
 function escapeRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 
+function pubPath(route, lang) {
+  if (!lang.prefix) return route;
+  return '/' + lang.prefix + (route === '/' ? '' : route);
+}
+
+/** sitemap.xml: una <url> per lingua, con xhtml:link hreflang. lastmod,
+ *  changefreq e priority vengono conservati dalla sitemap precedente (per
+ *  rotta base); le rotte nuove prendono la data di oggi. */
+function writeSitemap(routes) {
+  const file = path.join(ROOT, 'sitemap.xml');
+  const old = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : '';
+  const prev = {};
+  for (const m of old.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
+    const block = m[1];
+    const loc = (block.match(/<loc>([^<]+)<\/loc>/) || [])[1];
+    if (!loc) continue;
+    let p = loc.replace(ORIGIN, '') || '/';
+    p = p.replace(/^\/(en|fr|de)(?=\/|$)/, '') || '/';
+    if (prev[p]) continue;
+    prev[p] = {
+      lastmod: (block.match(/<lastmod>([^<]+)<\/lastmod>/) || [])[1],
+      changefreq: (block.match(/<changefreq>([^<]+)<\/changefreq>/) || [])[1],
+      priority: (block.match(/<priority>([^<]+)<\/priority>/) || [])[1]
+    };
+  }
+  const today = new Date().toISOString().slice(0, 10);
+  const entries = [];
+  const alternates = route => LANGS.map(l => `      <xhtml:link rel="alternate" hreflang="${l.code}" href="${ORIGIN}${pubPath(route, l)}"/>`)
+    .concat([`      <xhtml:link rel="alternate" hreflang="x-default" href="${ORIGIN}${route}"/>`]).join('\n');
+  for (const route of routes) {
+    const meta = prev[route] || {};
+    const lastmod = meta.lastmod || today;
+    const changefreq = meta.changefreq || (route.startsWith('/luogo/') ? 'monthly' : 'weekly');
+    const priority = meta.priority || (route === '/' ? '1.0' : route.startsWith('/case') ? '0.9' : route.startsWith('/luogo/') ? '0.5' : '0.6');
+    for (const l of LANGS) {
+      entries.push(`  <url>\n    <loc>${ORIGIN}${pubPath(route, l)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n${alternates(route)}\n  </url>`);
+    }
+  }
+  for (const p of STATIC_SITEMAP) {
+    const meta = prev[p] || {};
+    entries.push(`  <url>\n    <loc>${ORIGIN}${p}</loc>\n    <lastmod>${meta.lastmod || today}</lastmod>\n    <changefreq>${meta.changefreq || 'yearly'}</changefreq>\n    <priority>${meta.priority || '0.2'}</priority>\n  </url>`);
+  }
+  const out = `<?xml version="1.0" encoding="UTF-8"?>\n<!-- Generata da tools/prerender.js: non modificare a mano -->\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${entries.join('\n')}\n</urlset>\n`;
+  if (out === old) return false;
+  fs.writeFileSync(file, out);
+  return true;
+}
+
 function main() {
   if (CLEAN) {
     fs.rmSync(OUT_DIR, { recursive: true, force: true });
@@ -170,10 +222,11 @@ function main() {
   for (const lang of LANGS) {
     for (const route of routes) {
       const rel = outFileFor(route, lang);
-      const pub = '/' + (lang.prefix ? lang.prefix + (route === '/' ? '' : route) : route.replace(/^\//, ''));
-      const from = pub === '/' ? '/' : pub.replace(/\/$/, '');
+      const from = pubPath(route, lang);
       // "/" ha già index.html come file statico: serve la regola forzata (200!)
       rules.push(`${from.padEnd(34)} /${rel}   ${from === '/' ? '200!' : '200'}`);
+      // /en → anche con slash finale
+      if (lang.prefix && route === '/') rules.push(`${(from + '/').padEnd(34)} /${rel}   200`);
       if (CHECK) continue;
       const res = render(shell, route, lang);
       const abs = path.join(ROOT, rel);
@@ -191,14 +244,9 @@ function main() {
   }
   if (r.changed) fs.writeFileSync(REDIRECTS, r.out);
 
-  // Confronto con la sitemap: avvisa se divergono.
-  try {
-    const sm = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
-    const locs = new Set([...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].replace(ORIGIN, '') || '/'));
-    const mine = new Set(stats.map(s => s.route));
-    [...mine].filter(x => !locs.has(x)).forEach(x => console.warn('  sitemap.xml non contiene ' + x));
-    [...locs].filter(x => !mine.has(x) && !/\.html$/.test(x)).forEach(x => console.warn('  sitemap.xml contiene una rotta non prerenderizzata: ' + x));
-  } catch (e) { /* sitemap opzionale */ }
+  // Sitemap con alternates hreflang, rigenerata dalle stesse rotte.
+  const smChanged = writeSitemap(routes);
+  if (smChanged) console.log('  sitemap.xml aggiornata');
 
   stats.forEach(s => console.log(`  ${s.route.padEnd(34)} ${String(s.words).padStart(5)} parole  ${s.title}`));
   console.log(`${stats.length} pagine in prerender/ · ${rules.length} regole in _redirects${r.changed ? ' (aggiornato)' : ''}`);
