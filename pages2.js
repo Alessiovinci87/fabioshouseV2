@@ -295,7 +295,7 @@
             : ' target="_blank" rel="noopener"';
           var imgClass = 'place-img' + (p.imageFocus ? ' place-img--focus-' + esc(p.imageFocus) : '');
           return (
-            '<a class="place-card" href="' + esc(primary) + '"' + linkAttrs + ' aria-label="' + name + '">' +
+            '<a class="place-card" role="listitem" href="' + esc(primary) + '"' + linkAttrs + '>' +
               '<div class="' + imgClass + '"><img src="' + esc(p.image) + '" alt="' + name + '" loading="lazy" /></div>' +
               '<div class="place-body">' +
                 '<h3>' + name + '</h3>' +
@@ -586,7 +586,7 @@
           ? '<div class="place-img"><img src="' + esc(R.hero) + '" alt="' + name + '" loading="lazy" /></div>'
           : '';
         return (
-          '<a class="place-card" href="/luogo/' + esc(slug) + '" aria-label="' + name + '">' +
+          '<a class="place-card" href="/luogo/' + esc(slug) + '">' +
             img +
             '<div class="place-body">' +
               '<h3>' + name + '</h3>' +

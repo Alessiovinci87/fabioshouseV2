@@ -110,18 +110,32 @@
     if (cueEl) cueEl.classList.remove('on');
     cueActive = false;
     preloadRouteHero(r);
-    var html = '';
-    switch (r.name) {
-      case 'home':     html = P.home();       break;
-      case 'case':     html = P.case();       break;
-      case 'detail':   html = P.detail(r.id); break;
-      case 'luogo':    html = P.luogo(r.slug); break;
-      case 'included': html = P.included();   break;
-      case 'chiSiamo': html = P.chiSiamo();   break;
-      case 'contatti': html = P.contatti();   break;
-      default:         html = P.notFound();
+    // Idratazione: al primo caricamento #view contiene già l'HTML statico della
+    // rotta (tools/prerender.js, attributi data-prerendered / -lang). Se rotta e
+    // lingua coincidono non lo ridisegniamo: l'hero già dipinto resta dov'è
+    // (niente secondo paint → LCP più basso) e agganciamo solo i comportamenti.
+    var preRoute = view.getAttribute('data-prerendered');
+    var preLang = view.getAttribute('data-prerendered-lang');
+    var curLang = (window.FH_I18N && window.FH_I18N.current) || 'it';
+    var basePathNow = (window.FH_I18N && window.FH_I18N.basePath) ? window.FH_I18N.basePath(location.pathname) : (location.pathname || '/');
+    basePathNow = basePathNow.replace(/\/+$/, '') || '/';
+    var hydrate = preRoute !== null && preRoute === basePathNow && preLang === curLang;
+    view.removeAttribute('data-prerendered');
+    view.removeAttribute('data-prerendered-lang');
+    if (!hydrate) {
+      var html = '';
+      switch (r.name) {
+        case 'home':     html = P.home();       break;
+        case 'case':     html = P.case();       break;
+        case 'detail':   html = P.detail(r.id); break;
+        case 'luogo':    html = P.luogo(r.slug); break;
+        case 'included': html = P.included();   break;
+        case 'chiSiamo': html = P.chiSiamo();   break;
+        case 'contatti': html = P.contatti();   break;
+        default:         html = P.notFound();
+      }
+      view.innerHTML = html;
     }
-    view.innerHTML = html;
 
     // Ripristino scroll quando si torna alla detail dal carosello "Luoghi
     // da vedere" (click su .place-card → salviamo houseId+scrollY in
@@ -645,7 +659,7 @@
   function initPageSpecific(r) {
     if (r.name === 'home')     { initHeroCarousel(); initAvailability(); }
     if (r.name === 'case')     initCaseFilters();
-    if (r.name === 'detail')   { initGallery(r.id); initBookingCard(); initVideoTour(); initDetailMap(r.id); initAvailability(); }
+    if (r.name === 'detail')   { initGallery(r.id); initBookingCard(); initVideoTour(); whenNearViewport('det-map', function () { initDetailMap(r.id); }); initAvailability(); }
     if (r.name === 'contatti') { initContactForm(); prefillContactHouse(); }
 
     // "Vedi galleria" scroll
@@ -778,6 +792,18 @@
     }
   }
 
+  // Esegue fn quando l'elemento #id si avvicina al viewport (600 px). Serve a non
+  // scaricare Leaflet (JS+CSS da CDN) prima che l'hero sia dipinto.
+  function whenNearViewport(id, fn) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    if (!('IntersectionObserver' in window)) { fn(); return; }
+    var io = new IntersectionObserver(function (entries) {
+      if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); fn(); }
+    }, { rootMargin: '600px 0px' });
+    io.observe(el);
+  }
+
   // --------------------------- MAP (Leaflet, lazy-loaded) ---------------------------
   // Carica Leaflet da CDN solo quando si apre una detail page con geo+poi.
   var _leafletPromise = null;
@@ -789,9 +815,13 @@
       css.rel = 'stylesheet';
       css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
       css.crossOrigin = '';
+      // non bloccare il rendering: applica il foglio solo a caricamento avvenuto
+      css.media = 'print';
+      css.onload = function () { css.media = 'all'; };
       document.head.appendChild(css);
       var js = document.createElement('script');
       js.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      js.async = true;
       js.crossOrigin = '';
       js.onload = function () { resolve(window.L); };
       js.onerror = reject;

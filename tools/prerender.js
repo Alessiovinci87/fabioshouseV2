@@ -122,6 +122,7 @@ function render(shell, route, lang) {
   if (!view || !view.innerHTML.trim()) throw new Error(`#view vuoto per ${route}`);
   doc.body.classList.remove('has-tweaks');
   view.setAttribute('data-prerendered', route);
+  view.setAttribute('data-prerendered-lang', lang.code);
 
   // --- Rifiniture del <head> per la pagina statica ---
   // 1) jsdom non serializza la proprietà `as` del preload creato da app.js.
