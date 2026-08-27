@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Alessiovinci87/fabioshouseV2#readme",
   "private": "true",
   "dependencies": {
+    "jsdom": "^30.0.1",
     "nodemailer": "^9.0.5",
     "pdf-lib": "^1.17.1"
   }

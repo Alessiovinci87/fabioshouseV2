@@ -42,7 +42,12 @@ Puro HTML / CSS / JS — **nessun framework, nessun build step**.
 - Open Graph + Twitter Card (con `data-i18n-attr` → seguono la lingua)
 - `hreflang` IT/EN/FR/DE + `x-default`
 - `canonical` + `preload` LCP hero con `fetchpriority="high"`
-- Sitemap con 8 URL, lastmod aggiornato
+- Sitemap con 35 URL, lastmod aggiornato
+- **Prerendering** (`tools/prerender.js`, eseguito da Netlify ad ogni deploy — vedi `netlify.toml`): fa girare la SPA in jsdom per ognuna delle 34 rotte e salva l'HTML completo in `prerender/` (ignorata da git). Le regole `200` in `_redirects` (blocco generato, tra i marker) servono quel file al posto di `index.html`; il client poi ri-renderizza con `app.js` come sempre. Così Bing/ChatGPT, anteprime social e Google al primo passaggio vedono titolo, testo e JSON-LD di ogni pagina. In locale: `node tools/prerender.js` (il dev server applica le stesse regole), `--clean` per rimuovere tutto, `--check` per verificare che `_redirects` sia allineato. Aggiunta una casa o un luogo in `data.js` → rilanciare lo script (aggiorna anche le regole; la sitemap resta da aggiornare a mano, lo script avvisa se divergono).
+
+## Marchio e loghi
+
+Sorgenti consegnate (agosto 2026) in `stampa/loghi/` (non raggiungibili online). `python tools/build-logos.py` genera da lì: `img/logo/` (marchio sito, marchi Alghero/Stintino con sfondo trasparente, logo completo, versioni quadrate su bianco per schema.org e Google Business), favicon/icone PWA (`favicon.ico`, `img/favicon-*.png`, `img/icon-*.png`, `apple-touch-icon.png`) e le immagini social 1200×630 (`img/og-home.jpg`, `og-villa-stintino.jpg`, `og-appartamento-alghero.jpg`). I marchi casa sono in `data.js` (`logo`, `logoSmall`, `og`) e compaiono in lista case, scheda casa, copertina guide, cartoncini e anteprime social.
 
 ## Dev server locale
 

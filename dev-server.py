@@ -43,6 +43,27 @@ MOCK_BUSY_OFFSETS = {
 }
 
 
+_RULES_CACHE = {'mtime': None, 'rules': {}}
+
+
+def _redirect_rules():
+    """Legge da _redirects le sole regole `/path  /file  200` (senza splat)."""
+    fp = os.path.join(os.path.dirname(os.path.abspath(__file__)), '_redirects')
+    try:
+        mtime = os.path.getmtime(fp)
+    except OSError:
+        return {}
+    if _RULES_CACHE['mtime'] != mtime:
+        rules = {}
+        with open(fp, encoding='utf-8') as f:
+            for line in f:
+                parts = line.split()
+                if len(parts) >= 3 and parts[2].startswith('200') and '*' not in parts[0] and ':' not in parts[0]:
+                    rules[parts[0]] = parts[1]
+        _RULES_CACHE.update(mtime=mtime, rules=rules)
+    return _RULES_CACHE['rules']
+
+
 def _build_mock_ranges(property_name):
     today = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
     out = []
@@ -101,6 +122,12 @@ class NoCacheSpaHandler(SimpleHTTPRequestHandler):
         is_dir_with_index = os.path.isdir(fs_path) and os.path.isfile(os.path.join(fs_path, 'index.html'))
         last_segment = path.rstrip('/').rsplit('/', 1)[-1]
         has_extension = '.' in last_segment
+        # Regole "200" esplicite di _redirects (pagine prerenderizzate): come su
+        # Netlify, la regola vale solo se il file di destinazione esiste.
+        target = _redirect_rules().get(path.rstrip('/') or '/')
+        if target and os.path.isfile(self.translate_path(target)):
+            self.path = target
+            return super().do_GET()
         if is_file or is_dir_with_index or has_extension:
             return super().do_GET()
         # SPA fallback: serve index.html con la URL originale

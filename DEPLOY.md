@@ -121,3 +121,12 @@ Nota: lo scraper Facebook non esegue JS → vede sempre la versione IT dei meta.
 - Priorità assoluta: 0 → 1 → 2 → 3. Senza 3 (form) si perdono lead.
 - 4 e 5 possono attendere, ma 5 (Search Console) va fatto entro una settimana per accelerare l'indicizzazione.
 - 7 (Lighthouse) è diagnostica post-deploy, non blocca il lancio.
+
+## 11. Prerendering (build Netlify)
+
+Da agosto 2026 il deploy esegue `node tools/prerender.js` (vedi `netlify.toml`, Node 22): ogni rotta della SPA viene salvata come HTML completo in `prerender/` e servita tramite le regole `200` generate in `_redirects`.
+
+- [ ] Dopo il primo deploy: aprire `view-source:https://www.leportedisardegna.com/luogo/grotte-di-nettuno` e verificare che titolo e testo siano nell'HTML (non solo dopo il JS)
+- [ ] Search Console → Controllo URL → "Richiedi indicizzazione" per home, /case, le due schede casa
+- [ ] Facebook Sharing Debugger e anteprima WhatsApp: le nuove immagini `og-*.jpg` con il marchio (la vecchia riportava ancora "FabioSHouse")
+- [ ] Se il build fallisce su Netlify: il log mostra la rotta e lo script; in locale `node tools/prerender.js` riproduce lo stesso passaggio
