@@ -1,0 +1,165 @@
+<title>Apple Mappe con Fabio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: oklch(97% 0.012 80); --paper-2: oklch(94% 0.016 78);
+    --ink: oklch(22% 0.015 60); --ink-2: oklch(38% 0.018 62); --ink-3: oklch(56% 0.015 65);
+    --line: oklch(86% 0.012 75); --line-2: oklch(78% 0.015 72);
+    --terra: oklch(52% 0.14 42); --terra-soft: oklch(93% 0.035 45);
+    --blu: oklch(38% 0.09 250); --blu-soft: oklch(93% 0.025 250);
+    --olive: oklch(48% 0.07 115); --olive-soft: oklch(93% 0.03 115);
+    --bordeaux: oklch(35% 0.10 20);
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: oklch(19% 0.012 60); --paper-2: oklch(25% 0.014 62);
+      --ink: oklch(93% 0.012 80); --ink-2: oklch(80% 0.014 78); --ink-3: oklch(64% 0.014 75);
+      --line: oklch(32% 0.014 62); --line-2: oklch(42% 0.016 64);
+      --terra: oklch(70% 0.13 45); --terra-soft: oklch(30% 0.05 42);
+      --blu: oklch(75% 0.08 250); --blu-soft: oklch(28% 0.04 250);
+      --olive: oklch(72% 0.08 115); --olive-soft: oklch(28% 0.035 115);
+      --bordeaux: oklch(78% 0.08 20);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: oklch(19% 0.012 60); --paper-2: oklch(25% 0.014 62);
+    --ink: oklch(93% 0.012 80); --ink-2: oklch(80% 0.014 78); --ink-3: oklch(64% 0.014 75);
+    --line: oklch(32% 0.014 62); --line-2: oklch(42% 0.016 64);
+    --terra: oklch(70% 0.13 45); --terra-soft: oklch(30% 0.05 42);
+    --blu: oklch(75% 0.08 250); --blu-soft: oklch(28% 0.04 250);
+    --olive: oklch(72% 0.08 115); --olive-soft: oklch(28% 0.035 115);
+    --bordeaux: oklch(78% 0.08 20);
+  }
+  body { background: var(--paper); color: var(--ink); font-family: var(--font-sans); font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 24px 18px 80px; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+  h1 { font-family: var(--font-display); font-weight: 400; font-size: 34px; line-height: 1.08; margin: 8px 0 12px; text-wrap: balance; }
+  h1 em { font-style: italic; color: var(--bordeaux); }
+  .intro { color: var(--ink-2); margin: 0 0 20px; }
+  h2 { font-family: var(--font-display); font-weight: 500; font-size: 24px; line-height: 1.15; margin: 34px 0 10px; padding-top: 22px; border-top: 1px solid var(--line-2); text-wrap: balance; }
+  h2 .n { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--terra); color: var(--paper); font-family: var(--font-sans); font-size: 15px; font-weight: 600; margin-right: 8px; vertical-align: 3px; }
+  h3 { font-size: 13px; letter-spacing: .09em; text-transform: uppercase; font-weight: 600; color: var(--ink-3); margin: 20px 0 6px; }
+  p { margin: 0 0 10px; }
+  ol, ul { margin: 0 0 12px; padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  li::marker { color: var(--ink-3); }
+  strong { font-weight: 600; }
+  .who { display: inline-block; font-size: 11.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; margin-right: 6px; vertical-align: 2px; }
+  .who.tu { background: var(--olive-soft); color: var(--olive); }
+  .who.fabio { background: var(--blu-soft); color: var(--blu); }
+  .copy { position: relative; background: var(--paper-2); border-left: 3px solid var(--line-2); padding: 12px 84px 12px 14px; margin: 6px 0 10px; font-size: 16px; white-space: pre-wrap; word-break: break-word; }
+  .copy.mono { font-family: var(--font-mono); font-size: 15px; }
+  .copy .lbl { display: block; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 4px; font-family: var(--font-sans); }
+  .copy button { position: absolute; right: 10px; top: 10px; font: 500 13px var(--font-sans); color: var(--ink-2); background: var(--paper); border: 1px solid var(--line-2); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+  .note { background: var(--terra-soft); border-left: 3px solid var(--terra); padding: 12px 14px; margin: 12px 0 14px; font-size: 15.5px; }
+  .note.ok { background: var(--olive-soft); border-left-color: var(--olive); }
+  .check { list-style: none; padding-left: 0; }
+  .check li { display: grid; grid-template-columns: 26px 1fr; gap: 8px; align-items: start; }
+  .check li::before { content: "☐"; color: var(--ink-3); font-size: 20px; line-height: 1.2; }
+  footer { margin-top: 40px; padding-top: 14px; border-top: 1px solid var(--line-2); color: var(--ink-3); font-size: 13.5px; }
+  a { color: var(--terra); }
+  button:focus-visible, a:focus-visible { outline: 2px solid var(--terra); outline-offset: 2px; }
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">Le Porte di Sardegna · Apple Business Connect</div>
+  <h1>Le due case su <em>Apple Mappe</em>, insieme a Fabio</h1>
+  <p class="intro">Tutto quello che serve per finire la registrazione delle case su Apple Mappe (iPhone, Siri, CarPlay). Gratuito, nessun impegno. Serve Fabio con il suo telefono: Apple lo chiama per un codice. Durata: 10–15 minuti. Si fa da smartphone o da PC.</p>
+
+  <div class="note">Stato al 27 agosto 2026: account creato (Apple ID <strong>ale87.v@icloud.com</strong>), organizzazione e brand "Le Porte di Sardegna" creati, sede <strong>Villa La Mimosa</strong> salvata in bozza ma <strong>non verificata</strong>. Da fare: togliere gli orari, verificare la villa, aggiungere e verificare La Porta del Lido.</div>
+
+  <h2><span class="n">1</span>Prima di iniziare</h2>
+  <ul class="check">
+    <li><span class="who fabio">Fabio</span> ha con sé il telefono con il numero <strong>393 971 4566</strong> e può rispondere a una chiamata automatica.</li>
+    <li><span class="who tu">Tu</span> apri <a href="https://businessconnect.apple.com">businessconnect.apple.com</a> (Safari o Chrome) e accedi con <strong>ale87.v@icloud.com</strong>.</li>
+    <li>Se chiede un codice di accesso Apple, arriva sul tuo iPhone/iPad o via SMS al tuo numero.</li>
+  </ul>
+  <p>Se Fabio vuole gestirla lui in futuro: dalla dashboard, <strong>Persone → Aggiungi</strong> con la sua email Apple. Si può fare in qualsiasi momento.</p>
+
+  <h2><span class="n">2</span>Togli gli orari dalla villa</h2>
+  <ol>
+    <li>Menu <strong>Brand → Sedi → Villa La Mimosa</strong>.</li>
+    <li>Sezione <strong>Orari</strong>: elimina la fascia 10:00–17:00 (icona cestino o "Rimuovi").</li>
+    <li>Se il sistema non permette di lasciare vuoto, scegli <strong>"Aperto 24 ore su 24"</strong>. Per una casa vacanze è comunque meglio di "chiuso alle 17".</li>
+    <li>Salva.</li>
+  </ol>
+
+  <h2><span class="n">3</span>Verifica la villa (chiamata a Fabio)</h2>
+  <ol>
+    <li>Nella sede Villa La Mimosa → <strong>Verifica</strong> → <strong>"Verifica della sede (immediata)"</strong>.</li>
+    <li>Apple chiama il <strong>393 971 4566</strong> entro pochi secondi. <span class="who fabio">Fabio</span> risponde: una voce automatica legge un codice di 4–6 cifre (lo ripete, si può ascoltare due volte).</li>
+    <li><span class="who tu">Tu</span> scrivi il codice nella pagina → Conferma.</li>
+    <li>Se la chiamata non arriva o il codice scade: "Richiedi un nuovo codice" e ripeti. Se propone l'SMS invece della chiamata, va bene uguale.</li>
+  </ol>
+  <div class="note ok">Fatto questo, la villa comparirà su Apple Mappe entro qualche giorno e si sblocca l'aggiunta della seconda sede.</div>
+
+  <h2><span class="n">4</span>Aggiungi La Porta del Lido</h2>
+  <p><strong>Brand → Sedi → Aggiungi sede</strong>. Se Apple la trova già su Mappe ad Alghero, scegli "Rivendica"; altrimenti "Nuova sede". Compila copiando da qui (usa i pulsanti Copia):</p>
+
+  <div class="copy" data-copy><span class="lbl">Nome sede</span>La Porta del Lido<button type="button">Copia</button></div>
+  <div class="copy" data-copy><span class="lbl">Categoria</span>Vacation Rental (in italiano: Casa vacanze)<button type="button">Copia</button></div>
+  <div class="copy" data-copy><span class="lbl">Indirizzo</span>Via Goceano 23<button type="button">Copia</button></div>
+  <div class="copy" data-copy><span class="lbl">Città · CAP · Provincia</span>Alghero · 07041 · Sassari<button type="button">Copia</button></div>
+  <div class="copy mono" data-copy><span class="lbl">Telefono</span>+39 393 971 4566<button type="button">Copia</button></div>
+  <div class="copy mono" data-copy><span class="lbl">Sito web (SENZA parametri dopo il punto interrogativo: Apple li rifiuta)</span>https://www.leportedisardegna.com/case/appartamento-alghero<button type="button">Copia</button></div>
+  <p>Se rifiuta anche questo indirizzo, usa solo <strong>https://www.leportedisardegna.com</strong>. Se il contatore del campo mostra un numero alto (es. 214) mentre vedi poco testo, dentro c'è roba incollata per sbaglio: tocca il campo, seleziona tutto, cancella finché il contatore è a 0, poi riscrivi.</p>
+  <div class="copy" data-copy><span class="lbl">Descrizione (479 caratteri)</span>La Porta del Lido è un appartamento vacanze nel centro di Alghero, a cinque minuti a piedi dal centro storico catalano e dieci dalla spiaggia del Lido. Due camere, quattro posti letto, un bagno, balcone. WiFi e aria condizionata inclusi, parcheggio gratuito in strada, aeroporto a dieci minuti. Check-in autonomo dalle 16. Gestito direttamente dalla famiglia di Le Porte di Sardegna: affitto diretto senza intermediari, da giugno a settembre. Alghero si vive a piedi, senza auto.<button type="button">Copia</button></div>
+  <ul>
+    <li><strong>Orari</strong>: nessuno (o "Aperto 24 ore su 24" se obbligatorio).</li>
+    <li><strong>Brand</strong>: collega al brand esistente "Le Porte di Sardegna".</li>
+    <li><strong>Foto e logo</strong>: si possono caricare dopo, dal PC (logo: <code>img/logo/alghero-quadrato.png</code>; foto della cucina/soggiorno come copertina).</li>
+  </ul>
+  <p>Poi <strong>Verifica → Verifica della sede (immediata)</strong>: seconda chiamata a Fabio, secondo codice, come al punto 3.</p>
+
+  <h2><span class="n">5</span>Controllo finale</h2>
+  <ul class="check">
+    <li>Brand → Sedi: entrambe le sedi con stato "Verificata".</li>
+    <li>Nessuna delle due ha orari 10–17.</li>
+    <li>Telefono e sito uguali in entrambe.</li>
+  </ul>
+  <p>Le schede appaiono su Apple Mappe entro 2–5 giorni. Controllo: su un iPhone, app Mappe, cerca "Villa La Mimosa Stintino".</p>
+
+  <h2>Se serve: dati della villa</h2>
+  <p>Nel caso la bozza di Villa La Mimosa fosse sparita e vada ricreata.</p>
+  <div class="copy" data-copy><span class="lbl">Nome sede</span>Villa La Mimosa<button type="button">Copia</button></div>
+  <div class="copy" data-copy><span class="lbl">Indirizzo</span>Via Le Vele 9<button type="button">Copia</button></div>
+  <div class="copy" data-copy><span class="lbl">Città · CAP · Provincia</span>Stintino · 07040 · Sassari<button type="button">Copia</button></div>
+  <div class="copy mono" data-copy><span class="lbl">Sito web</span>https://www.leportedisardegna.com/case/villa-stintino<button type="button">Copia</button></div>
+  <div class="copy" data-copy><span class="lbl">Descrizione (473 caratteri)</span>Villa La Mimosa è una casa vacanze con giardino a Stintino, a cinque minuti in auto dalla Spiaggia della Pelosa, con la fermata del bus davanti al cancello. Quattro camere, otto posti letto, due bagni, veranda, barbecue e parcheggio privato. WiFi e aria condizionata inclusi. Check-in autonomo dalle 16. Gestita direttamente dalla famiglia di Le Porte di Sardegna: affitto diretto senza intermediari, da giugno a settembre. Ideale per famiglie e gruppi fino a otto persone.<button type="button">Copia</button></div>
+
+  <h2>Se Apple chiede un documento</h2>
+  <p>Succede solo se la verifica telefonica non basta. Vale uno qualsiasi di questi, con indirizzo della casa leggibile:</p>
+  <ul>
+    <li>bolletta (luce, gas, acqua, internet) della casa;</li>
+    <li>ricevuta di registrazione CIN/BDSR — Villa: <code>IT090089C2000T0180</code> · Appartamento: <code>IT090003C2000U2044</code>;</li>
+    <li>visura camerale o certificato di partita IVA, se Fabio è registrato come attività.</li>
+  </ul>
+  <p>Foto o PDF vanno bene. Se il documento è intestato a un nome diverso da "Le Porte di Sardegna" (es. l'intestatario del CIN), la cosa più semplice è cambiare il nome dell'organizzazione con quello del documento: dashboard → nome in alto a destra → Impostazioni organizzazione.</p>
+
+  <h2>Cosa dire a Fabio</h2>
+  <div class="copy" data-copy>Ho registrato le due case anche su Apple Mappe e su Bing (gratis, come Google): chi cerca da iPhone, chiede a Siri o usa Bing/ChatGPT le trova. Per attivarle Apple fa una chiamata automatica al tuo numero e legge un codice: un minuto per casa. Nessun costo, nessun impegno, e se vuoi ti aggiungo come proprietario.<button type="button">Copia</button></div>
+
+  <footer>Dati presi dal sito leportedisardegna.com (data.js, JSON-LD) al 27 agosto 2026. Apple Business Connect è gratuito; Apple può cambiare i nomi dei menu, i passaggi restano gli stessi.</footer>
+</div>
+
+<script>
+  document.querySelectorAll('[data-copy]').forEach(function (box) {
+    var btn = box.querySelector('button');
+    function text() {
+      var c = box.cloneNode(true);
+      c.querySelectorAll('button, .lbl').forEach(function (n) { n.remove(); });
+      return c.textContent.trim();
+    }
+    btn.addEventListener('click', function () {
+      try {
+        navigator.clipboard.writeText(text()).then(function () {
+          btn.textContent = 'Copiato';
+          setTimeout(function () { btn.textContent = 'Copia'; }, 1500);
+        });
+      } catch (e) { btn.textContent = 'Seleziona e copia'; }
+    });
+  });
+</script>
