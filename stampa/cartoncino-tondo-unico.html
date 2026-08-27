@@ -46,8 +46,12 @@
     .col .l { font-size: 6.2pt; line-height: 1.3; color: oklch(38% 0.018 62); max-width: 44mm; }
     .col .l b { font-family: var(--font-mono); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-c); }
 
-    .langs { display: grid; grid-template-columns: auto auto; gap: 0.6mm 5mm; margin-top: 2.5mm; font-size: 5.8pt; line-height: 1.3; color: oklch(45% 0.015 62); text-align: left; }
-    .langs span::before { content: attr(data-l); font-family: var(--font-mono); font-size: 5.2pt; letter-spacing: 0.12em; color: var(--ink-c); margin-right: 1.2mm; }
+    .langs { display: grid; grid-template-columns: auto auto; gap: 0.8mm 5mm; margin-top: 2.5mm; font-size: 5.8pt; line-height: 1.3; color: oklch(45% 0.015 62); text-align: left; }
+    .langs span { display: grid; grid-template-columns: 4.2mm 1fr; gap: 1.2mm; align-items: center; }
+    .langs i { font-style: normal; }
+    .langs svg { width: 4.2mm; height: 2.8mm; border-radius: 0.3mm; display: block; }
+    .col .l { display: grid; grid-template-columns: 4.2mm 1fr; gap: 1.2mm; align-items: start; text-align: left; }
+    .col .l svg { width: 4.2mm; height: 2.8mm; border-radius: 0.3mm; display: block; margin-top: 0.5mm; }
     .foot { font-size: 5.6pt; color: oklch(52% 0.015 65); margin-top: 1.8mm; }
     .foot .g { font-family: var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; }
 
@@ -93,21 +97,21 @@
             <span class="tag">1 · All'arrivo</span>
             <p class="t">Registrazione <em>ospiti</em></p>
             <div class="qr" id="qr-mimosa-checkin"></div>
-            <p class="l"><b>Check-in</b> · compila il modulo per registrare il soggiorno</p>
+            <p class="l"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg><span><b>Check-in</b> · compila il modulo per registrare il soggiorno</span></p>
           </div>
           <div class="col rev">
             <span class="tag">2 · Alla partenza</span>
             <p class="t">Vi è <em>piaciuto?</em></p>
             <div class="qr" id="qr-mimosa-review"></div>
-            <p class="l"><b>Recensione</b> · 30 secondi su Google, grazie di cuore</p>
+            <p class="l"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg><span><b>Recensione</b> · 30 secondi su Google, grazie di cuore</span></p>
           </div>
         </div>
 
         <div class="langs">
-          <span data-l="EN">Left: register your stay · Right: leave a review</span>
-          <span data-l="FR">Gauche : enregistrement · Droite : laissez un avis</span>
-          <span data-l="DE">Links: Anmeldung · Rechts: Bewertung</span>
-          <span data-l="ES">Izquierda: registro · Derecha: reseña</span>
+          <span><svg viewBox="0 0 60 30" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg><i>Left: register your stay · Right: leave a review</i></span>
+          <span><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg><i>Gauche : enregistrement · Droite : laissez un avis</i></span>
+          <span><svg viewBox="0 0 5 3" aria-hidden="true"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#DD0000"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg><i>Links: Anmeldung · Rechts: Bewertung</i></span>
+          <span><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y="0.5" width="3" height="1" fill="#F1BF00"/></svg><i>Izquierda: registro · Derecha: reseña</i></span>
         </div>
         <p class="foot"><span class="g">Questura · Alloggiati Web</span> — <span class="g">Google · Recensioni</span></p>
       </article>
@@ -128,21 +132,21 @@
             <span class="tag">1 · All'arrivo</span>
             <p class="t">Registrazione <em>ospiti</em></p>
             <div class="qr" id="qr-lido-checkin"></div>
-            <p class="l"><b>Check-in</b> · compila il modulo per registrare il soggiorno</p>
+            <p class="l"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg><span><b>Check-in</b> · compila il modulo per registrare il soggiorno</span></p>
           </div>
           <div class="col rev">
             <span class="tag">2 · Alla partenza</span>
             <p class="t">Vi è <em>piaciuto?</em></p>
             <div class="qr" id="qr-lido-review"></div>
-            <p class="l"><b>Recensione</b> · 30 secondi su Google, grazie di cuore</p>
+            <p class="l"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg><span><b>Recensione</b> · 30 secondi su Google, grazie di cuore</span></p>
           </div>
         </div>
 
         <div class="langs">
-          <span data-l="EN">Left: register your stay · Right: leave a review</span>
-          <span data-l="FR">Gauche : enregistrement · Droite : laissez un avis</span>
-          <span data-l="DE">Links: Anmeldung · Rechts: Bewertung</span>
-          <span data-l="ES">Izquierda: registro · Derecha: reseña</span>
+          <span><svg viewBox="0 0 60 30" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg><i>Left: register your stay · Right: leave a review</i></span>
+          <span><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg><i>Gauche : enregistrement · Droite : laissez un avis</i></span>
+          <span><svg viewBox="0 0 5 3" aria-hidden="true"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#DD0000"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg><i>Links: Anmeldung · Rechts: Bewertung</i></span>
+          <span><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y="0.5" width="3" height="1" fill="#F1BF00"/></svg><i>Izquierda: registro · Derecha: reseña</i></span>
         </div>
         <p class="foot"><span class="g">Questura · Alloggiati Web</span> — <span class="g">Google · Recensioni</span></p>
       </article>
