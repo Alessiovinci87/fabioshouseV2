@@ -220,6 +220,7 @@
             '<a href="/case/' + esc(h.id) + '"><img src="' + esc(h.hero) + '" alt="' + esc(t(h.name)) + '" loading="lazy" /></a>' +
           '</div>' +
           '<div class="cr-body">' +
+            (h.logoSmall ? '<img class="house-logo" src="' + esc(h.logoSmall) + '" alt="" loading="lazy" />' : '') +
             '<div class="cr-caption">№ ' + no + ' · ' + esc(h.location) + ' · ' + esc(t(h.type)) + '</div>' +
             '<h2>' + emFirstWord(t(h.name)) + '</h2>' +
             '<p class="lede">' + esc(t(h.story).split('.')[0]) + '.</p>' +

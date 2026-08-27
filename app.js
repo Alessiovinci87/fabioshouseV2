@@ -227,7 +227,7 @@
     // Rotte "detail": og:image dalla foto hero della casa.
     if (r.name === 'detail' && window.FH_getHouse) {
       var h = window.FH_getHouse(r.id);
-      if (h && h.hero) ogImage = absUrl(h.hero);
+      if (h && (h.og || h.hero)) ogImage = absUrl(h.og || h.hero);
     }
     switch (r.name) {
       case 'home':     key = null; break; // meta base già a posto (meta.title/description)

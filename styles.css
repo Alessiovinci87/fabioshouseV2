@@ -108,11 +108,10 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--title-em); font-weight: 4
 .nav-burger { grid-area: burger; }
 .brand { display: inline-flex; align-items: center; gap: 10px; }
 .brand-mark {
-  width: 28px; height: 28px;
-  border-radius: 50%;
+  width: 34px; height: 34px;
   overflow: hidden;
-  background: var(--ink);
-  color: var(--paper);
+  background: transparent;
+  color: var(--ink);
   font-family: var(--font-display);
   font-style: italic;
   font-size: 18px;
@@ -121,9 +120,13 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--title-em); font-weight: 4
 }
 .brand-mark img {
   width: 100%; height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
+/* Marchi casa (Alghero blu, Stintino terracotta) nelle liste e nelle schede */
+.house-logo { display: block; width: 72px; height: auto; margin: 0 0 14px; }
+.case-row .house-logo { width: 56px; margin-bottom: 10px; }
+.foot-mark { display: block; width: 52px; height: auto; margin: 0 auto 8px; }
 .brand-name { font-family: var(--font-sans); font-weight: 500; font-size: 15px; }
 .brand-name em {
   font-family: var(--font-display);
@@ -443,7 +446,7 @@ body.drawer-open { overflow: hidden; }
 @media (max-width: 420px) {
   .nav-inner { padding-left: 14px; padding-right: 14px; gap: 6px; }
   .brand { gap: 8px; }
-  .brand-mark { width: 24px; height: 24px; font-size: 14px; }
+  .brand-mark { width: 28px; height: 28px; font-size: 14px; }
   .brand-name { font-size: 12.5px; }
   .cta-pill { padding: 8px 12px; font-size: 12px; gap: 6px; }
   .cta-pill .dot { width: 7px; height: 7px; }

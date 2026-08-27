@@ -117,6 +117,8 @@
           gmaps: 'https://www.google.com/maps/search/?api=1&query=Aeroporto+Alghero+Fertilia' }
       ],
       hero: STI('hero-giardino'),
+      logo: 'img/logo/stintino.png', logoSmall: 'img/logo/stintino-160.png',
+      og: 'img/og-villa-stintino.jpg',
       heroFocus: 'center 60%',
       gallery: [
         STI('hero-giardino'),
@@ -541,6 +543,8 @@
           gmaps: 'https://www.google.com/maps/search/?api=1&query=Aeroporto+Alghero+Fertilia' }
       ],
       hero:    'img/alghero/appartamento-alghero-hero.jpg',
+      logo: 'img/logo/alghero.png', logoSmall: 'img/logo/alghero-160.png',
+      og: 'img/og-appartamento-alghero.jpg',
       heroFocus: 'center center',
       videoTour: {
         src:    'video/video-tour-alghero.mp4',

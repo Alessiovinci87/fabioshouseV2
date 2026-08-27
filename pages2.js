@@ -145,6 +145,7 @@
         '<div class="container">' +
           '<div class="det-head-grid" data-reveal>' +
             '<div>' +
+              (h.logoSmall ? '<img class="house-logo" src="' + esc(h.logoSmall) + '" alt="" />' : '') +
               '<div class="caption">№ ' + no + ' · ' + esc(h.location) + ' · ' + esc(t(h.type)) + '</div>' +
               '<h1>' + emFirstWord(t(h.name)) + '</h1>' +
             '</div>' +

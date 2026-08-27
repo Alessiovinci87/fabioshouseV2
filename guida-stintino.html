@@ -135,6 +135,15 @@
       gap: 14mm;
       min-height: 297mm;
     }
+    .cover-logo {
+      display: block;
+      width: 30mm;
+      height: auto;
+      padding: 4mm;
+      background: rgba(246, 239, 224, 0.94);
+      border-radius: 6mm;
+      margin-bottom: 6mm;
+    }
     .cover-brand {
       font-family: var(--font-mono);
       font-size: 9pt;
@@ -598,7 +607,10 @@
   <section class="page cover">
     <div class="cover-img" aria-hidden="true"></div>
     <div class="cover-content">
-      <p class="cover-brand">Le Porte di <em>Sardegna</em></p>
+      <div>
+        <img class="cover-logo" src="img/logo/stintino.png" alt="" />
+        <p class="cover-brand">Le Porte di <em>Sardegna</em></p>
+      </div>
       <div class="cover-title">
         <p class="cover-eyebrow">La tua guida — Edizione 2026</p>
         <h1><em>Stintino</em></h1>
