@@ -51,6 +51,13 @@ Puro HTML / CSS / JS — **nessun framework, nessun build step**.
 
 Sorgenti consegnate (agosto 2026) in `stampa/loghi/` (non raggiungibili online). `python tools/build-logos.py` genera da lì: `img/logo/` (marchio sito, marchi Alghero/Stintino con sfondo trasparente, logo completo, versioni quadrate su bianco per schema.org e Google Business), favicon/icone PWA (`favicon.ico`, `img/favicon-*.png`, `img/icon-*.png`, `apple-touch-icon.png`) e le immagini social 1200×630 (`img/og-home.jpg`, `og-villa-stintino.jpg`, `og-appartamento-alghero.jpg`). I marchi casa sono in `data.js` (`logo`, `logoSmall`, `og`) e compaiono in lista case, scheda casa, copertina guide, cartoncini e anteprime social.
 
+## Performance
+
+- Foto: `python tools/build-images.py` genera le varianti WebP 400/800/1200/1600 per img/home, img/stintino, img/alghero; `FH_IMG.attrs()` (pages.js) produce `srcset/sizes`. Dopo aver aggiunto foto, rilanciare lo script.
+- Font: gli originali Google Fonts (latin) stanno in `tools/fonts-src/`; `python tools/build-fonts.py` scrive in `fonts/` le versioni ridotte ai pesi 300–400 (Fraunces 262 KB → 124 KB). Se servisse un peso diverso, cambiare `AXES` e il range in `fonts/fonts.css`.
+- Script con `defer`; al primo caricamento `app.js` non ridisegna il DOM prerenderizzato (`data-prerendered` su `#view`); Leaflet caricato solo quando la mappa entra in vista; `lang-es.js` solo su `/es`.
+- Misura: `npx lighthouse https://www.leportedisardegna.com/ --form-factor=mobile --screenEmulation.mobile --chrome-flags="--headless=new"`.
+
 ## Dev server locale
 
 ```bash
