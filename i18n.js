@@ -910,8 +910,26 @@
     });
   }
 
+  // Lingue servite da un file separato (generato da tools/merge-lang.js).
+  // index.html lo include solo sulle URL /xx/…; qui lo carichiamo al volo
+  // quando l'utente cambia lingua dal pulsante.
+  var PACKS = { es: 'lang-es.js' };
+  function ensurePack(lang, cb) {
+    var loaded = window.FH_LANG_LOADED || {};
+    if (!PACKS[lang] || loaded[lang]) { cb(); return; }
+    var s = document.createElement('script');
+    s.src = PACKS[lang];
+    s.onload = cb;
+    s.onerror = cb; // meglio la pagina in italiano che nessuna pagina
+    document.head.appendChild(s);
+  }
+
   function setLang(lang) {
     if (LANGS.indexOf(lang) < 0 || lang === state.lang) return;
+    if (PACKS[lang] && !(window.FH_LANG_LOADED && window.FH_LANG_LOADED[lang])) {
+      ensurePack(lang, function () { setLang(lang); });
+      return;
+    }
     state.lang = lang;
     try { localStorage.setItem('fh.lang', lang); } catch (_) {}
     document.documentElement.setAttribute('lang', lang);

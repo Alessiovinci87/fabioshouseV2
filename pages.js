@@ -19,6 +19,26 @@
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
+  // ---------------------------------------------------------------
+  // Immagini responsive: per le foto in img/home, img/stintino, img/alghero
+  // (primo livello, .jpg/.jpeg) tools/build-images.py genera le varianti
+  // <base>-400/-800/-1200/-1600.webp. Qui costruiamo srcset/sizes; il src
+  // resta il JPEG originale come fallback. Le altre immagini passano intatte.
+  // ---------------------------------------------------------------
+  var RESP_RE = /^img\/(home|stintino|alghero)\/[^\/]+\.jpe?g$/i;
+  var RESP_W = [400, 800, 1200, 1600];
+  function imgSrcset(src) {
+    if (!RESP_RE.test(src)) return '';
+    var base = src.replace(/\.jpe?g$/i, '');
+    return RESP_W.map(function (w) { return base + '-' + w + '.webp ' + w + 'w'; }).join(', ');
+  }
+  // attributi src (+ srcset/sizes) pronti da concatenare in un <img>
+  function imgAttrs(src, sizes) {
+    var ss = imgSrcset(src);
+    return ' src="' + esc(src) + '"' + (ss ? ' srcset="' + esc(ss) + '" sizes="' + esc(sizes || '100vw') + '"' : '');
+  }
+  window.FH_IMG = { srcset: imgSrcset, attrs: imgAttrs };
+
   // italicize first word of a house name for headings
   function emFirstWord(name) {
     var parts = esc(name).split(' ');
@@ -36,7 +56,7 @@
     // Uses the real Pelosa photo ported from V1 (img/home/hero-home-spiaggia-pelosa.jpg).
     var slidesHtml =
       '<div class="slide active" data-slide="0">' +
-        '<img src="img/home/hero-home-spiaggia-pelosa.jpg" alt="La Pelosa, Stintino — nord-ovest della Sardegna" loading="eager" style="object-position: center 55%;" />' +
+        '<img' + imgAttrs('img/home/hero-home-spiaggia-pelosa.jpg', '100vw') + ' alt="La Pelosa, Stintino — nord-ovest della Sardegna" loading="eager" fetchpriority="high" style="object-position: center 55%;" />' +
       '</div>';
     var dotsHtml = ''; // no carousel anymore — single hero frame
 
@@ -55,7 +75,7 @@
       var introAttr = INTRO_VIDEO[h.id] ? ' data-intro-video="' + esc(INTRO_VIDEO[h.id]) + '"' : '';
       return (
         '<a href="/case/' + esc(h.id) + '" class="prop-card pc-' + (i + 1) + '"' + introAttr + ' data-reveal data-delay="' + ((i % 4) + 1) + '">' +
-          '<div class="prop-frame"><img src="' + esc(h.hero) + '" alt="' + esc(h.name) + '" loading="lazy" /></div>' +
+          '<div class="prop-frame"><img' + imgAttrs(h.hero, '(max-width: 860px) 100vw, 50vw') + ' alt="' + esc(h.name) + '" loading="lazy" /></div>' +
           '<div class="prop-meta">' +
             '<h3>' + esc(h.name) + '</h3>' +
             '<span class="loc">' + esc(h.location) + '</span>' +
@@ -76,7 +96,7 @@
       return (
         '<div class="pt">' +
           '<div class="n">' + p.n + '</div>' +
-          '<h4>' + t(p.hKey) + '</h4>' +
+          '<h3>' + t(p.hKey) + '</h3>' +
           '<p>' + t(p.tKey) + '</p>' +
         '</div>'
       );
@@ -132,7 +152,7 @@
               '<div class="how-points">' + howHtml + '</div>' +
             '</div>' +
             '<div class="how-img-wrap" data-reveal data-delay="2">' +
-              '<img src="' + esc(howImg) + '" alt="' + esc(D.houses[1].name) + '" loading="lazy" />' +
+              '<img' + imgAttrs(howImg, '(max-width: 860px) 100vw, 45vw') + ' alt="' + esc(D.houses[1].name) + '" loading="lazy" />' +
               '<div class="how-cite">' +
                 '<blockquote>' + t('home.cite.q') + '</blockquote>' +
                 '<cite>' + t('home.cite.by') + '</cite>' +
@@ -169,7 +189,7 @@
               return (
                 '<article class="home-avail-card" data-reveal data-delay="' + ((i % 4) + 1) + '">' +
                   '<a href="/case/' + esc(h.id) + '" class="home-avail-thumb">' +
-                    '<img src="' + esc(h.hero) + '" alt="' + esc(t(h.name)) + '" loading="lazy" />' +
+                    '<img' + imgAttrs(h.hero, '(max-width: 860px) 100vw, 40vw') + ' alt="' + esc(t(h.name)) + '" loading="lazy" />' +
                   '</a>' +
                   '<div class="home-avail-head">' +
                     '<h3>' + esc(t(h.name)) + '</h3>' +
@@ -217,7 +237,7 @@
       return (
         '<article class="case-row' + alt + '" data-region="' + esc(h.location) + '" data-guests="' + h.guests + '" data-featured-order="' + i + '" data-reveal>' +
           '<div class="cr-media">' +
-            '<a href="/case/' + esc(h.id) + '"><img src="' + esc(h.hero) + '" alt="' + esc(t(h.name)) + '" loading="lazy" /></a>' +
+            '<a href="/case/' + esc(h.id) + '"><img' + imgAttrs(h.hero, '(max-width: 860px) 100vw, 55vw') + ' alt="' + esc(t(h.name)) + '" loading="lazy" /></a>' +
           '</div>' +
           '<div class="cr-body">' +
             (h.logoSmall ? '<img class="house-logo" src="' + esc(h.logoSmall) + '" alt="" loading="lazy" />' : '') +

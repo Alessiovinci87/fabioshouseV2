@@ -87,9 +87,16 @@
     if (!src) return;
     var link = document.createElement('link');
     link.id = 'preload-route-hero';
-    link.rel = 'preload';
-    link.as = 'image';
-    link.href = src;
+    link.setAttribute('rel', 'preload');
+    link.setAttribute('as', 'image');
+    var ss = window.FH_IMG ? window.FH_IMG.srcset(src) : '';
+    if (ss) {
+      // il browser sceglie la variante WebP giusta come farà l'<img>
+      link.setAttribute('imagesrcset', ss);
+      link.setAttribute('imagesizes', '100vw');
+    } else {
+      link.setAttribute('href', src);
+    }
     link.setAttribute('fetchpriority', 'high');
     document.head.appendChild(link);
   }
@@ -565,6 +572,8 @@
       var show = window.scrollY > 500;
       btt.classList.toggle('show', show);
       btt.setAttribute('aria-hidden', show ? 'false' : 'true');
+      // nascosto → fuori dal tab order (a11y: aria-hidden con elemento focalizzabile)
+      btt.tabIndex = show ? 0 : -1;
     };
     window.addEventListener('scroll', onScroll, { passive: true });
   }

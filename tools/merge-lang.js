@@ -26,6 +26,8 @@ const out = `/* ============================================================
   'use strict';
   var DICT = ${JSON.stringify(dict, null, 1)};
   var DATA = ${JSON.stringify(data, null, 1)};
+  window.FH_LANG_LOADED = window.FH_LANG_LOADED || {};
+  window.FH_LANG_LOADED.${lang} = true;
   if (window.FH_I18N && window.FH_I18N.extend) {
     var patch = {};
     Object.keys(DICT).forEach(function (k) { patch[k] = { ${lang}: DICT[k] }; });

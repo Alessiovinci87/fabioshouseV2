@@ -52,7 +52,7 @@
   <link rel="manifest" href="manifest.json" />
 
   <!-- Preload LCP (hero image) + self-hosted fonts (no terze parti, no IP a Google) -->
-  <link rel="preload" as="image" href="img/home/hero-home-spiaggia-pelosa.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" imagesrcset="img/home/hero-home-spiaggia-pelosa-400.webp 400w, img/home/hero-home-spiaggia-pelosa-800.webp 800w, img/home/hero-home-spiaggia-pelosa-1200.webp 1200w, img/home/hero-home-spiaggia-pelosa-1600.webp 1600w" imagesizes="100vw" fetchpriority="high" />
   <link rel="preload" as="font" type="font/woff2" href="fonts/fraunces-normal-latin.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="fonts/geist-latin.woff2" crossorigin />
   <link rel="stylesheet" href="fonts/fonts.css" />
@@ -340,7 +340,7 @@
         </div>
         <div class="lang-mobile">
           <button type="button" class="lang-mobile-toggle" id="lang-mobile-toggle"
-                  aria-haspopup="listbox" aria-expanded="false" aria-label="Lingua">
+                  aria-haspopup="listbox" aria-expanded="false">
             <span class="lang-mobile-code" data-lang-current>IT</span>
             <span class="lang-mobile-caret" aria-hidden="true">▾</span>
           </button>
@@ -449,7 +449,7 @@
     <span class="wa-lbl">WhatsApp</span>
   </a>
 
-  <button id="back-to-top" class="back-to-top" type="button" aria-hidden="true"
+  <button id="back-to-top" class="back-to-top" type="button" aria-hidden="true" tabindex="-1"
           data-i18n-attr="aria-label:ui.back_to_top|title:ui.back_to_top">
     <span aria-hidden="true">↑</span>
   </button>
@@ -504,7 +504,13 @@
 
   <script src="i18n.js"></script>
   <script src="data.js"></script>
-  <script src="lang-es.js"></script>
+  <script>
+    // Pacchetto lingua spagnola (130 KB): solo se la URL è /es/… (o ?lang=es legacy).
+    // Il cambio lingua dal pulsante lo carica al volo (vedi i18n.js, PACKS).
+    if (/^\/es(\/|$)/.test(location.pathname) || /[?&]lang=es(&|$)/.test(location.search)) {
+      document.write('<script src="lang-es.js"><\/script>');
+    }
+  </script>
   <script src="pages.js"></script>
   <script src="pages2.js"></script>
   <script src="nav-mobile.js"></script>

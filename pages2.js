@@ -46,7 +46,7 @@
       var clickIdx = isLastWithMore ? MOSAIC_LIMIT : i;
       return (
         '<figure class="' + cls + '" data-lightbox-src="' + esc(src) + '" data-lightbox-index="' + clickIdx + '" data-lightbox-house="' + esc(h.id) + '">' +
-          '<img src="' + esc(src) + '" alt="' + esc(t(h.name)) + ' — ' + (i + 1) + '" loading="lazy" />' +
+          '<img' + window.FH_IMG.attrs(src, '(max-width: 860px) 100vw, 33vw') + ' alt="' + esc(t(h.name)) + ' — ' + (i + 1) + '" loading="lazy" />' +
           overlay +
         '</figure>'
       );
@@ -78,7 +78,7 @@
       return (
         '<article class="act-row' + alt + '" data-reveal>' +
           '<div class="act-media">' +
-            '<img src="' + esc(a.image) + '" alt="' + esc(t(a.title)) + '" loading="lazy" />' +
+            '<img' + window.FH_IMG.attrs(a.image, '(max-width: 860px) 100vw, 30vw') + ' alt="' + esc(t(a.title)) + '" loading="lazy" />' +
           '</div>' +
           '<div class="act-body">' +
             '<div class="act-caption">№ ' + String(i + 1).padStart(2, '0') + ' ✽ ' + esc(t(a.distance || '')) + '</div>' +
@@ -160,7 +160,7 @@
         '</div>' +
         '<div class="container">' +
           '<div class="det-hero">' +
-            '<img src="' + esc(h.hero) + '" alt="' + esc(t(h.name)) + '" style="object-position: ' + esc(h.heroFocus || 'center center') + ';" />' +
+            '<img' + window.FH_IMG.attrs(h.hero, '100vw') + ' alt="' + esc(t(h.name)) + '" fetchpriority="high" style="object-position: ' + esc(h.heroFocus || 'center center') + ';" />' +
             '<button class="gallery-cta" data-scroll-to="#gallery">' + t('det.gallery_cta') + ' (' + h.gallery.length + ') →</button>' +
           '</div>' +
           '<div class="det-stats" data-reveal>' +

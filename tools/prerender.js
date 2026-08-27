@@ -128,7 +128,7 @@ function render(shell, route, lang) {
   doc.querySelectorAll('link[rel="preload"]:not([as])').forEach(l => l.setAttribute('as', 'image'));
   // 2) L'hero della home è precaricato nello shell: inutile sulle altre rotte.
   if (route !== '/') {
-    doc.querySelectorAll('link[rel="preload"][href*="hero-home-"]').forEach(l => l.remove());
+    doc.querySelectorAll('link[rel="preload"][href*="hero-home-"], link[rel="preload"][imagesrcset*="hero-home-"]').forEach(l => l.remove());
   }
   // (hreflang e canonical li scrive app.js in base al percorso)
   const langAttr = doc.documentElement.getAttribute('lang');

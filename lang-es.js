@@ -731,6 +731,8 @@
  "luoghi.26.placeholder.h2": "Nuestra selección de restaurantes",
  "luoghi.26.placeholder.body": "Estamos terminando de ordenar nuestra selección personal de restaurantes de Alghero —solo los que frecuentamos de verdad—, divididos por ocasión (cena romántica, comida rápida, aperitivo, cocina de pescado, cocina de carne) y por zona (casco antiguo, paseo marítimo, riviera). La publicaremos aquí en cuanto esté lista. Mientras tanto, escribidnos para consejos concretos sobre el día de vuestra reserva."
 };
+  window.FH_LANG_LOADED = window.FH_LANG_LOADED || {};
+  window.FH_LANG_LOADED.es = true;
   if (window.FH_I18N && window.FH_I18N.extend) {
     var patch = {};
     Object.keys(DICT).forEach(function (k) { patch[k] = { es: DICT[k] }; });
