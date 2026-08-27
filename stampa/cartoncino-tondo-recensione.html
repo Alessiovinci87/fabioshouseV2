@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Cartoncino tondo Ø 15 cm — Richiesta recensione</title>
+  <!-- Uso interno (test). Apri il file e clicca "Stampa / Salva PDF": una pagina per casa,
+       formato pagina 156×156 mm = cerchio Ø150 + 3 mm di abbondanza per il taglio tondo. -->
+  <link rel="stylesheet" href="../fonts/fonts.css" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    :root { --cream: #f4efe3; --cream-2: #ebe4d6; --ink-c: #2b2622; }
+    body { background: var(--paper-2); }
+
+    .toolbar {
+      position: sticky; top: 0; z-index: 10;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      padding: 14px var(--gutter);
+      background: color-mix(in oklab, var(--paper) 90%, transparent);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .toolbar .brand-name { font-size: 15px; }
+    .toolbar .hint { font-size: 13px; color: var(--ink-3); }
+    .btn-primary { cursor: pointer; }
+
+    .sheet { display: grid; gap: 40px; justify-items: center; padding: 40px var(--gutter) 80px; }
+
+    /* ---------- pagina 156×156 mm con cerchio Ø150 centrato ---------- */
+    .page {
+      width: 156mm; height: 156mm; position: relative;
+      display: grid; place-items: center;
+      background: #fff;
+      box-shadow: 0 24px 60px -30px oklch(22% 0.015 60 / 0.45);
+    }
+    /* abbondanza: disco Ø156 dello stesso colore, sotto il cartoncino */
+    .bleed { position: absolute; inset: 0; border-radius: 50%; background: var(--cream); }
+    /* guida di taglio Ø150 (solo a video) */
+    .cut { position: absolute; inset: 3mm; border-radius: 50%; border: 0.3mm dashed oklch(60% 0.02 60 / 0.5); pointer-events: none; }
+
+    .disc {
+      position: relative; width: 150mm; height: 150mm; border-radius: 50%;
+      background: var(--cream); color: var(--ink-c);
+      display: grid; grid-auto-rows: auto; justify-items: center; align-content: center; row-gap: 0.5mm;
+      padding: 10mm 18mm 10mm; box-sizing: border-box; text-align: center;
+    }
+    /* anello decorativo */
+    .disc::before { content: ""; position: absolute; inset: 4mm; border-radius: 50%; border: 0.4mm solid var(--ring); pointer-events: none; }
+    .disc.sti { --ring: oklch(52% 0.14 42); }
+    .disc.alg { --ring: oklch(38% 0.09 250); }
+
+    .logo { width: 17mm; height: auto; margin-bottom: 1.5mm; }
+    .house { font-family: var(--font-mono); font-size: 7.5pt; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ring); margin: 0 0 1.5mm; }
+    h1 { font-family: var(--font-display); font-weight: 400; font-size: 19pt; line-height: 1.05; letter-spacing: -0.015em; margin: 0; }
+    h1 em { font-style: italic; color: var(--ring); }
+    .sub { font-family: var(--font-display); font-style: italic; font-size: 8.5pt; color: oklch(45% 0.015 62); margin: 1mm 0 0; }
+    .stars { font-size: 11pt; letter-spacing: 0.14em; color: oklch(78% 0.14 85); line-height: 1; margin: 0 0 1mm; }
+
+    .qr { width: 46mm; height: 46mm; padding: 2.5mm; background: #fff; border-radius: 3mm; border: 0.3mm solid var(--cream-2); display: grid; place-items: center; margin: 3mm 0 2.5mm; }
+    .qr img, .qr canvas { width: 41mm !important; height: 41mm !important; display: block; }
+
+    .lines { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2mm 4mm; width: 100%; max-width: 98mm; text-align: left; }
+    .line { display: grid; grid-template-columns: 5mm 1fr; gap: 1.5mm; align-items: start; font-size: 6.3pt; line-height: 1.3; color: oklch(38% 0.018 62); }
+    .line svg { width: 5mm; height: 3.4mm; border-radius: 0.4mm; margin-top: 0.4mm; display: block; }
+    .line b { display: block; font-family: var(--font-mono); font-size: 5.5pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-c); margin-bottom: 0.3mm; }
+
+    .foot { font-size: 6pt; color: oklch(50% 0.015 65); margin: 2mm 0 0; }
+    .foot .g { font-family: var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; }
+
+    @media print {
+      @page { size: 156mm 156mm; margin: 0; }
+      html, body { background: #fff; margin: 0; padding: 0; height: auto; }
+      .toolbar { display: none; }
+      .sheet { padding: 0; gap: 0; display: block; }
+      /* altezza = formato pagina: ogni cartoncino riempie esattamente un foglio, senza pagine bianche */
+      .page { box-shadow: none; overflow: hidden; break-inside: avoid; }
+      .page + .page { break-before: page; }
+      /* styles.css aggiunge intestazione/piè di pagina di stampa a <main>: qui non servono */
+      main::before, main::after { content: none !important; display: none !important; }
+      .cut { display: none; }
+      .disc, .bleed { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <div>
+      <span class="brand-name">Le Porte di <em>Sardegna</em></span>
+      <span class="hint"> · Cartoncino tondo Ø 15 cm — richiesta recensione Google. Pagina 156×156 mm con 3 mm di abbondanza; la linea tratteggiata è la guida di taglio, non si stampa.</span>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn-primary" onclick="window.print()">Stampa / Salva PDF</button>
+    </div>
+  </div>
+
+  <main class="sheet">
+
+    <!-- ============== VILLA LA MIMOSA ============== -->
+    <section class="page">
+      <div class="bleed" aria-hidden="true"></div>
+      <div class="cut" aria-hidden="true"></div>
+      <article class="disc sti">
+        <img class="logo" src="../img/logo/stintino.png" alt="" />
+        <p class="house">Villa La Mimosa — Stintino</p>
+        <p class="stars" aria-label="5 stelle">★★★★★</p>
+        <h1>Ti è piaciuto <em>il soggiorno?</em></h1>
+        <p class="sub">Una recensione su Google: bastano 30 secondi.</p>
+        <div class="qr" id="qr-mimosa-review"></div>
+        <div class="lines">
+          <div class="line"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg><span><b>Italiano</b>Inquadra il codice e lascia una recensione su Google. Grazie di cuore!</span></div>
+          <div class="line"><svg viewBox="0 0 60 30" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg><span><b>English</b>Scan the code and leave us a review on Google. Thank you!</span></div>
+          <div class="line"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg><span><b>Français</b>Scannez le code et laissez-nous un avis sur Google. Merci !</span></div>
+          <div class="line"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y="0.5" width="3" height="1" fill="#F1BF00"/></svg><span><b>Español</b>Escanea el código y déjanos una reseña en Google. ¡Gracias!</span></div>
+        </div>
+        <p class="foot"><span class="g">Google · Recensioni</span> — Le Porte di Sardegna</p>
+      </article>
+    </section>
+
+    <!-- ============== LA PORTA DEL LIDO ============== -->
+    <section class="page">
+      <div class="bleed" aria-hidden="true"></div>
+      <div class="cut" aria-hidden="true"></div>
+      <article class="disc alg">
+        <img class="logo" src="../img/logo/alghero.png" alt="" />
+        <p class="house">La Porta del Lido — Alghero</p>
+        <p class="stars" aria-label="5 stelle">★★★★★</p>
+        <h1>Ti è piaciuto <em>il soggiorno?</em></h1>
+        <p class="sub">Una recensione su Google: bastano 30 secondi.</p>
+        <div class="qr" id="qr-lido-review"></div>
+        <div class="lines">
+          <div class="line"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg><span><b>Italiano</b>Inquadra il codice e lascia una recensione su Google. Grazie di cuore!</span></div>
+          <div class="line"><svg viewBox="0 0 60 30" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg><span><b>English</b>Scan the code and leave us a review on Google. Thank you!</span></div>
+          <div class="line"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg><span><b>Français</b>Scannez le code et laissez-nous un avis sur Google. Merci !</span></div>
+          <div class="line"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y="0.5" width="3" height="1" fill="#F1BF00"/></svg><span><b>Español</b>Escanea el código y déjanos una reseña en Google. ¡Gracias!</span></div>
+        </div>
+        <p class="foot"><span class="g">Google · Recensioni</span> — Le Porte di Sardegna</p>
+      </article>
+    </section>
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    const MIMOSA_REVIEW = "https://g.page/r/Ca_s29HmHlB3EBM/review";
+    const LIDO_REVIEW   = "https://g.page/r/CTKTOY2jAKkxEBM/review";
+    function makeQr(id, text) {
+      new QRCode(document.getElementById(id), { text, width: 320, height: 320, colorDark: '#2b2622', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.H });
+    }
+    makeQr('qr-mimosa-review', MIMOSA_REVIEW);
+    makeQr('qr-lido-review', LIDO_REVIEW);
+  </script>
+</body>
+</html>
