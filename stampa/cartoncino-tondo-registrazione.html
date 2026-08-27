@@ -69,11 +69,14 @@
 
     @media print {
       @page { size: 156mm 156mm; margin: 0; }
-      body { background: #fff; margin: 0; }
+      html, body { background: #fff; margin: 0; padding: 0; height: auto; }
       .toolbar { display: none; }
       .sheet { padding: 0; gap: 0; display: block; }
-      .page { box-shadow: none; page-break-after: always; break-after: page; }
-      .page:last-child { page-break-after: auto; break-after: auto; }
+      /* altezza = formato pagina: ogni cartoncino riempie esattamente un foglio, senza pagine bianche */
+      .page { box-shadow: none; overflow: hidden; break-inside: avoid; }
+      .page + .page { break-before: page; }
+      /* styles.css aggiunge intestazione/piè di pagina di stampa a <main>: qui non servono */
+      main::before, main::after { content: none !important; display: none !important; }
       .cut { display: none; }
       .disc, .bleed { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
