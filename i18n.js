@@ -951,6 +951,19 @@
     if (window.FH_rerender) window.FH_rerender();
   }
 
+  // 0) Pacchetti lingua caricati PRIMA di questo file (lang-xx.js via document.write
+  //    in <head>): li uniamo al dizionario adesso.
+  try {
+    var packs = window.FH_LANG_PACKS || {};
+    Object.keys(packs).forEach(function (lang) {
+      var d = packs[lang].dict || {};
+      Object.keys(d).forEach(function (k) {
+        if (!DICT[k]) DICT[k] = {};
+        DICT[k][lang] = d[k];
+      });
+    });
+  } catch (_) {}
+
   // 1) Rileva lingua SUBITO al load del modulo — prima che app.js esegua renderRoute().
   //    Altrimenti il primo render userebbe 'it' e la pagina tornerebbe in IT al refresh.
   state.lang = detectLang();

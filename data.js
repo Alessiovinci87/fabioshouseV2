@@ -2899,4 +2899,17 @@
     return null;
   };
 
+  // Lingue aggiuntive da file separati (lang-xx.js, vedi tools/merge-lang.js):
+  // { "houses.0.story": "…" } → FH_DATA.houses[0].story.xx = "…"
+  window.FH_applyLangData = function (lang) {
+    var pack = window.FH_LANG_PACKS && window.FH_LANG_PACKS[lang];
+    if (!pack || !pack.data) return;
+    Object.keys(pack.data).forEach(function (p) {
+      var parts = p.split('.'), o = window.FH_DATA;
+      for (var i = 0; i < parts.length && o; i++) o = o[parts[i]];
+      if (o && typeof o === 'object') o[lang] = pack.data[p];
+    });
+  };
+  Object.keys(window.FH_LANG_PACKS || {}).forEach(window.FH_applyLangData);
+
 })();

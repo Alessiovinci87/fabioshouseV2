@@ -1,7 +1,9 @@
 /* ============================================================
    Le Porte di Sardegna — lingua "es" (generato da tools/merge-lang.js: non modificare a mano,
    modifica i JSON in tools/lang/es/ e rilancia lo script)
-   Aggiunge le traduzioni a DICT (i18n.js) e a FH_DATA (data.js) dopo il caricamento.
+   Registra il pacchetto in window.FH_LANG_PACKS e, se i18n.js/data.js sono già
+   caricati, lo applica subito; altrimenti lo applicano loro al proprio avvio.
+   Funziona quindi sia caricato prima (document.write in <head>) sia dopo (setLang).
    ============================================================ */
 (function () {
   'use strict';
@@ -731,18 +733,18 @@
  "luoghi.26.placeholder.h2": "Nuestra selección de restaurantes",
  "luoghi.26.placeholder.body": "Estamos terminando de ordenar nuestra selección personal de restaurantes de Alghero —solo los que frecuentamos de verdad—, divididos por ocasión (cena romántica, comida rápida, aperitivo, cocina de pescado, cocina de carne) y por zona (casco antiguo, paseo marítimo, riviera). La publicaremos aquí en cuanto esté lista. Mientras tanto, escribidnos para consejos concretos sobre el día de vuestra reserva."
 };
+  window.FH_LANG_PACKS = window.FH_LANG_PACKS || {};
+  window.FH_LANG_PACKS.es = { dict: DICT, data: DATA };
   window.FH_LANG_LOADED = window.FH_LANG_LOADED || {};
   window.FH_LANG_LOADED.es = true;
+  var applied = false;
   if (window.FH_I18N && window.FH_I18N.extend) {
     var patch = {};
     Object.keys(DICT).forEach(function (k) { patch[k] = { es: DICT[k] }; });
     window.FH_I18N.extend(patch);
+    applied = true;
   }
-  if (window.FH_DATA) {
-    Object.keys(DATA).forEach(function (p) {
-      var parts = p.split('.'), o = window.FH_DATA;
-      for (var i = 0; i < parts.length && o; i++) o = o[parts[i]];
-      if (o && typeof o === 'object') o.es = DATA[p];
-    });
-  }
+  if (window.FH_DATA && window.FH_applyLangData) { window.FH_applyLangData('es'); applied = true; }
+  // Caricato dopo il primo render nella lingua corrente? Ridisegna con i testi giusti.
+  if (applied && window.FH_rerender && window.FH_I18N && window.FH_I18N.current === 'es') window.FH_rerender();
 })();

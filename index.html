@@ -311,6 +311,14 @@
     ]
   }
   </script>
+  <!-- Pacchetto lingua spagnola (130 KB): scaricato solo sulle URL /es/… (o ?lang=es).
+       Sincrono e prima degli script differiti, così i18n.js e data.js lo trovano già pronto.
+       Il cambio lingua dal pulsante lo carica al volo (i18n.js, PACKS). -->
+  <script>
+    if (/^\/es(\/|$)/.test(location.pathname) || /[?&]lang=es(&|$)/.test(location.search)) {
+      document.write('<script src="lang-es.js"><\/script>');
+    }
+  </script>
 </head>
 <body>
 
@@ -503,18 +511,11 @@
     </section>
   </aside>
 
-  <script src="i18n.js"></script>
-  <script src="data.js"></script>
-  <script>
-    // Pacchetto lingua spagnola (130 KB): solo se la URL è /es/… (o ?lang=es legacy).
-    // Il cambio lingua dal pulsante lo carica al volo (vedi i18n.js, PACKS).
-    if (/^\/es(\/|$)/.test(location.pathname) || /[?&]lang=es(&|$)/.test(location.search)) {
-      document.write('<script src="lang-es.js"><\/script>');
-    }
-  </script>
-  <script src="pages.js"></script>
-  <script src="pages2.js"></script>
-  <script src="nav-mobile.js"></script>
-  <script src="app.js"></script>
+  <script src="i18n.js" defer></script>
+  <script src="data.js" defer></script>
+  <script src="pages.js" defer></script>
+  <script src="pages2.js" defer></script>
+  <script src="nav-mobile.js" defer></script>
+  <script src="app.js" defer></script>
 </body>
 </html>

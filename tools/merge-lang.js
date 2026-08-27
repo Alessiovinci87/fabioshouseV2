@@ -20,26 +20,28 @@ for (const f of files) {
 const out = `/* ============================================================
    Le Porte di Sardegna — lingua "${lang}" (generato da tools/merge-lang.js: non modificare a mano,
    modifica i JSON in tools/lang/${lang}/ e rilancia lo script)
-   Aggiunge le traduzioni a DICT (i18n.js) e a FH_DATA (data.js) dopo il caricamento.
+   Registra il pacchetto in window.FH_LANG_PACKS e, se i18n.js/data.js sono già
+   caricati, lo applica subito; altrimenti lo applicano loro al proprio avvio.
+   Funziona quindi sia caricato prima (document.write in <head>) sia dopo (setLang).
    ============================================================ */
 (function () {
   'use strict';
   var DICT = ${JSON.stringify(dict, null, 1)};
   var DATA = ${JSON.stringify(data, null, 1)};
+  window.FH_LANG_PACKS = window.FH_LANG_PACKS || {};
+  window.FH_LANG_PACKS.${lang} = { dict: DICT, data: DATA };
   window.FH_LANG_LOADED = window.FH_LANG_LOADED || {};
   window.FH_LANG_LOADED.${lang} = true;
+  var applied = false;
   if (window.FH_I18N && window.FH_I18N.extend) {
     var patch = {};
     Object.keys(DICT).forEach(function (k) { patch[k] = { ${lang}: DICT[k] }; });
     window.FH_I18N.extend(patch);
+    applied = true;
   }
-  if (window.FH_DATA) {
-    Object.keys(DATA).forEach(function (p) {
-      var parts = p.split('.'), o = window.FH_DATA;
-      for (var i = 0; i < parts.length && o; i++) o = o[parts[i]];
-      if (o && typeof o === 'object') o.${lang} = DATA[p];
-    });
-  }
+  if (window.FH_DATA && window.FH_applyLangData) { window.FH_applyLangData('${lang}'); applied = true; }
+  // Caricato dopo il primo render nella lingua corrente? Ridisegna con i testi giusti.
+  if (applied && window.FH_rerender && window.FH_I18N && window.FH_I18N.current === '${lang}') window.FH_rerender();
 })();
 `;
 fs.writeFileSync(path.join(__dirname, '..', 'lang-' + lang + '.js'), out);
